@@ -801,6 +801,7 @@
       selectedCoordinate: null,
       stage: 'askTitle',
       title: '',
+      titleEn: '',
       authorUID: 'guest',
       authorDisplayName: '',
       seriesRootQuestID: '',
@@ -813,7 +814,7 @@
       assets: {},
       cover: { assetKey: null, url: '', libraryPath: null },
       allowFinishOptions: false,
-      textDraft: { type: 'text', narration: false, speaker: 'center', text: '' },
+      textDraft: { type: 'text', narration: false, speaker: 'center', text: '', textEn: '' },
       charDraft: {},
       pendingBackgroundChange: null,
       tempSlot: null,
@@ -1261,6 +1262,8 @@
     function renderAskTitle() {
       const titleLabel = createElement('label', { htmlFor: 'quest-title-input', textContent: 'クエストタイトル' });
       const titleInput = createElement('input', { type: 'text', id: 'quest-title-input', value: state.title, placeholder: '例: 失われた記憶のかけら' });
+      const titleEnLabel = createElement('label', { htmlFor: 'quest-title-en-input', textContent: 'クエストタイトル（英語・任意）' });
+      const titleEnInput = createElement('input', { type: 'text', id: 'quest-title-en-input', value: state.titleEn || '', placeholder: 'Example: Fragments of Lost Memory' });
       let nextButton;
       const updateNextButtonState = () => {
         if (nextButton) {
@@ -1280,6 +1283,10 @@
         state.title = titleInput.value;
         renderQuestPreview();
         updateNextButtonState();
+      });
+      titleEnInput.addEventListener('input', () => {
+        state.titleEn = titleEnInput.value;
+        renderQuestPreview();
       });
       titleInput.addEventListener('keydown', event => {
         if (event.key === 'Enter' && !event.isComposing && !isTitleComposing) {
@@ -1322,7 +1329,7 @@
       });
       actions.appendChild(nextButton);
 
-      stageContainer.append(titleLabel, titleInput, authorLabel, authorInput, seriesLabel, seriesInput, episodeLabel, episodeInput, actions);
+      stageContainer.append(titleLabel, titleInput, titleEnLabel, titleEnInput, authorLabel, authorInput, seriesLabel, seriesInput, episodeLabel, episodeInput, actions);
     }
     function renderAskBackground() {
       const info = createElement('p', { textContent: 'アプリと同様に、最初に表示する背景を選択します。YouTube動画か画像のどちらかを指定してください。' });
@@ -2025,12 +2032,12 @@
       const actions = createElement('div', { className: 'stage-actions' });
       const narrationButton = createElement('button', { className: 'flat', type: 'button', textContent: 'ナレーション' });
       narrationButton.addEventListener('click', () => {
-        state.textDraft = { type: 'text', narration: true, speaker: null, text: '' };
+        state.textDraft = { type: 'text', narration: true, speaker: null, text: '', textEn: '' };
         setStage('addText');
       });
       const dialogButton = createElement('button', { className: 'flat', type: 'button', textContent: 'キャラのセリフ' });
       dialogButton.addEventListener('click', () => {
-        state.textDraft = { type: 'text', narration: false, speaker: 'center', text: '' };
+        state.textDraft = { type: 'text', narration: false, speaker: 'center', text: '', textEn: '' };
         setStage('chooseTextSpeaker');
       });
       const cancelButton = createElement('button', { className: 'secondary', type: 'button', textContent: 'キャンセル' });
@@ -2075,9 +2082,14 @@
     function renderAddText() {
       const isNarration = state.textDraft.narration;
       const info = createElement('p', { textContent: isNarration ? 'ナレーションの文章を入力します。' : `${slotLabel(state.textDraft.speaker)}のセリフを入力します。` });
+      const enInfo = createElement('p', { textContent: '英語版（任意）を入力すると、英語設定のアプリで表示されます。' });
+      enInfo.className = 'log';
       const textarea = createElement('textarea');
       textarea.value = state.textDraft.text || '';
       textarea.placeholder = isNarration ? '例: こうして冒険は始まった。' : '例: さあ、行こう！';
+      const textareaEn = createElement('textarea');
+      textareaEn.value = state.textDraft.textEn || '';
+      textareaEn.placeholder = isNarration ? 'Example: And so the adventure began.' : 'Example: Let us go!';
       let addButton;
       
       textarea.addEventListener('input', () => {
@@ -2086,11 +2098,14 @@
           addButton.disabled = !(textarea.value || '').trim();
         }
       });
+      textareaEn.addEventListener('input', () => {
+        state.textDraft.textEn = textareaEn.value;
+      });
 
       const actions = createElement('div', { className: 'stage-actions' });
       const cancelButton = createElement('button', { className: 'secondary', type: 'button', textContent: 'キャンセル' });
       cancelButton.addEventListener('click', () => {
-        state.textDraft = { type: 'text', narration: false, speaker: 'center', text: '' };
+        state.textDraft = { type: 'text', narration: false, speaker: 'center', text: '', textEn: '' };
         setStage('menu');
       });
 
@@ -2104,16 +2119,17 @@
         const op = {
           kind: 'text',
           text: state.textDraft.text.trim(),
+          textEn: (state.textDraft.textEn || '').trim() || null,
           narration: state.textDraft.narration,
           slot: state.textDraft.narration ? null : state.textDraft.speaker || 'center'
         };
         appendFlowOp(op);
-        state.textDraft = { type: 'text', narration: false, speaker: 'center', text: '' };
+        state.textDraft = { type: 'text', narration: false, speaker: 'center', text: '', textEn: '' };
         setStage('menu');
       });
 
       actions.append(cancelButton, addButton);
-      stageContainer.append(info, textarea, actions);
+      stageContainer.append(info, textarea, enInfo, textareaEn, actions);
     }
 
     function renderAddWait() {
@@ -3131,20 +3147,21 @@
       return '';
     }
 
-    function generateScriptLines() {
+    function generateScriptLines(useEnglishText = false) {
       const lines = [];
       state.flowOps.forEach(op => {
         switch (op.kind) {
           case 'text':
-            if (!op.text) break;
+            const selectedText = useEnglishText ? ((op.textEn || '').trim() || op.text) : op.text;
+            if (!selectedText) break;
             if (op.narration) {
               lines.push(':::textType(narration)');
-              lines.push(op.text);
+              lines.push(selectedText);
             } else {
               lines.push(':::textType(dialog)');
               const speaker = op.slot || 'center';
               lines.push(`:::speaker(${speaker})`);
-              lines.push(op.text);
+              lines.push(selectedText);
             }
             break;
           case 'wait':
@@ -3223,11 +3240,17 @@
         if (!bgURL) return null;
       }
 
-      const lines = generateScriptLines();
+      const lines = generateScriptLines(false);
+      const linesEn = generateScriptLines(true);
+      const titleEn = (state.titleEn || '').trim();
+      const hasEnglishFlowText = state.flowOps.some(op => ((op.textEn || '').trim().length > 0));
       const parsedVillagers = parseCityVillagersJSON(state.postQuest.cityVillagersRawJSON);
       const location = buildLocationPayload();
+      const rewardAmount = state.reward.enabled ? Math.max(1, Math.min(10, Number(state.reward.lunarAmount || 3))) : null;
+      const draftCoverURL = state.cover.url || (state.cover.assetKey ? `asset://${state.cover.assetKey}` : '');
       const quest = {
         title: state.title.trim(),
+        localizedTitles: titleEn ? { en: titleEn } : null,
         authorUID: state.authorUID || 'guest',
         authorDisplayName: state.authorDisplayName || null,
         seriesRootQuestID: ensureSeriesRootQuestID(),
@@ -3237,13 +3260,18 @@
         charPosition: 'center',
         charAnim: 'none',
         dialogLines: lines,
-        flowOps: state.flowOps,
-        assets: state.assets,
-        cover: state.cover.assetKey ? { type: 'asset', key: state.cover.assetKey } : (state.cover.url ? { type: 'url', url: state.cover.url } : null),
-        location: location,
-        radius: Number(radiusInput.value) || 500,
+        localizedDialogLines: hasEnglishFlowText ? { en: linesEn } : null,
+        coverURL: draftCoverURL,
+        charURL: '',
+        placeType: 'dungeon',
+        createdAt: new Date().toISOString(),
+        locationMode: location.mode || 'everywhere',
+        locationLatitude: typeof location.latitude === 'number' && Number.isFinite(location.latitude) ? location.latitude : null,
+        locationLongitude: typeof location.longitude === 'number' && Number.isFinite(location.longitude) ? location.longitude : null,
+        locationName: location.name || null,
+        locationAddress: location.detail || null,
         grantsLunarReward: !!state.reward.enabled,
-        lunarRewardAmount: state.reward.enabled ? Math.max(1, Math.min(10, Number(state.reward.lunarAmount || 3))) : null,
+        lunarRewardAmount: rewardAmount,
         postQuestScene: state.postQuest.scene || 'none',
         postQuestCityMode: state.postQuest.scene === 'city' ? (state.postQuest.cityMode || 'randomGenerated') : null,
         postQuestCityID: state.postQuest.scene === 'city' && state.postQuest.cityMode === 'savedCity' ? (state.postQuest.cityID || null) : null,
@@ -3254,7 +3282,9 @@
         dungeonMinFloor: state.postQuest.scene === 'cave' ? Math.max(1, Math.min(27, Number(state.postQuest.dungeonMinFloor || 1))) : null,
         dungeonTreasureItemImageName: state.postQuest.scene === 'cave' && state.postQuest.dungeonTarget === 'treasure' ? (state.postQuest.dungeonTreasureItemImageName || null) : null,
         dungeonMonsterIdentifierRaw: state.postQuest.scene === 'cave' && state.postQuest.dungeonTarget === 'monster' ? (state.postQuest.dungeonMonsterIdentifierRaw || null) : null,
-        dungeonMonsterDropItemImageName: state.postQuest.scene === 'cave' && state.postQuest.dungeonTarget === 'monster' ? (state.postQuest.dungeonMonsterDropItemImageName || null) : null
+        dungeonMonsterDropItemImageName: state.postQuest.scene === 'cave' && state.postQuest.dungeonTarget === 'monster' ? (state.postQuest.dungeonMonsterDropItemImageName || null) : null,
+        likeCount: 0,
+        likedBy: []
       };
       return quest;
     }
@@ -3288,16 +3318,17 @@
       } else {
         const fallback = {
           title: state.title,
+          localizedTitles: (state.titleEn || '').trim() ? { en: state.titleEn.trim() } : null,
           authorUID: state.authorUID,
           authorDisplayName: state.authorDisplayName || null,
           seriesRootQuestID: state.seriesRootQuestID || null,
           episodeNumber: state.episodeNumber || 1,
           bgType: state.background.type,
           bgURL: state.background.type === 'youtube' ? state.background.youtubeId : state.background.assetURL || state.background.assetKey,
-          dialogLines: generateScriptLines(),
-          flowOps: state.flowOps,
-          assets: state.assets,
-          location: buildLocationPayload(),
+          dialogLines: generateScriptLines(false),
+          coverURL: state.cover.url || (state.cover.assetKey ? `asset://${state.cover.assetKey}` : ''),
+          placeType: 'dungeon',
+          locationMode: state.locationChoice.mode,
           grantsLunarReward: !!state.reward.enabled,
           lunarRewardAmount: state.reward.enabled ? state.reward.lunarAmount : null,
           postQuestScene: state.postQuest.scene || 'none'
@@ -3928,20 +3959,21 @@
       });
     }
 
-    function generateFinalDialogLines(assetURLMap) {
+    function generateFinalDialogLines(assetURLMap, useEnglishText = false) {
       const lines = [];
       state.flowOps.forEach(op => {
         switch (op.kind) {
           case 'text':
-            if (!op.text) break;
+            const selectedText = useEnglishText ? ((op.textEn || '').trim() || op.text) : op.text;
+            if (!selectedText) break;
             if (op.narration) {
               lines.push(':::textType(narration)');
-              lines.push(op.text);
+              lines.push(selectedText);
             } else {
               lines.push(':::textType(dialog)');
               const speaker = op.slot || 'center';
               lines.push(`:::speaker(${speaker})`);
-              lines.push(op.text);
+              lines.push(selectedText);
             }
             break;
           case 'wait':
@@ -4050,7 +4082,10 @@
         throw new Error('背景のURLを決定できませんでした。画像またはYouTubeを確認してください。');
       }
       const coverURL = resolveCoverURL(assetURLMap);
-      const dialogLines = generateFinalDialogLines(assetURLMap);
+      const dialogLines = generateFinalDialogLines(assetURLMap, false);
+      const dialogLinesEn = generateFinalDialogLines(assetURLMap, true);
+      const titleEn = (state.titleEn || '').trim();
+      const hasEnglishFlowText = state.flowOps.some(op => ((op.textEn || '').trim().length > 0));
       const location = buildLocationPayload();
       const rawCityVillagers = (state.postQuest.cityVillagersRawJSON || '').trim();
       const rewardAmount = state.reward.enabled ? Math.max(1, Math.min(10, Number(state.reward.lunarAmount || 3))) : null;
@@ -4060,6 +4095,7 @@
       }
       const questDocument = {
         title: baseQuest.title.trim(),
+        localizedTitles: titleEn ? { en: titleEn } : null,
         authorUID: user?.uid || baseQuest.authorUID || 'guest',
         authorDisplayName: state.authorDisplayName || null,
         seriesRootQuestID: ensureSeriesRootQuestID(),
@@ -4069,6 +4105,7 @@
         charPosition: 'center',
         charAnim: 'none',
         dialogLines,
+        localizedDialogLines: hasEnglishFlowText ? { en: dialogLinesEn } : null,
         coverURL: coverURL || '',
         charURL: '',
         placeType: 'dungeon',
@@ -4197,6 +4234,7 @@ if (firebaseConfigSaveButton) {
     function resetAll() {
       state.stage = 'askTitle';
       state.title = '';
+      state.titleEn = '';
       state.authorUID = 'guest';
       state.authorDisplayName = '';
       state.seriesRootQuestID = '';
@@ -4208,7 +4246,7 @@ if (firebaseConfigSaveButton) {
       state.insertIndex = null;
       state.assets = {};
       state.cover = { assetKey: null, url: '', libraryPath: null };
-      state.textDraft = { type: 'text', narration: false, speaker: 'center', text: '' };
+      state.textDraft = { type: 'text', narration: false, speaker: 'center', text: '', textEn: '' };
       state.charDraft = {};
       state.pendingBackgroundChange = null;
       state.tempSlot = null;
