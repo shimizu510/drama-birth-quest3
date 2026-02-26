@@ -1109,6 +1109,8 @@
       }
     }
 
+    // DEPRECATED: No longer used for localPhoto - replaced with procedural generation
+    // Kept for backward compatibility only
     function buildBackendStreetViewEndpoint(lat, lng, mode) {
       const base = getBackendApiBase();
       if (!base) {
@@ -1122,6 +1124,8 @@
       return `${base}/api/streetview?${params.toString()}`;
     }
 
+    // DEPRECATED: No longer used for localPhoto - replaced with procedural generation
+    // Kept for backward compatibility only
     function buildGoogleStreetViewStaticURL(lat, lng, mode = 'live') {
       const key = getGoogleMapsApiKey();
       if (!key) return null;
@@ -1138,6 +1142,8 @@
       return `https://maps.googleapis.com/maps/api/streetview?${params.toString()}`;
     }
 
+    // DEPRECATED: No longer used for localPhoto - replaced with procedural generation
+    // Kept for backward compatibility only
     async function fetchStreetViewUrl(lat, lng, mode = 'live') {
       console.log('[StreetView] fetch start', {
         lat,
@@ -4964,6 +4970,10 @@ if (firebaseConfigSaveButton) {
       const radius = parseFloat(radiusInput.value) || 500;
       if (Number.isFinite(lat) && Number.isFinite(lon)) {
         focusMap(lat, lon, radius);
+        // Always update state even if MapKit is not available
+        if (!state.map) {
+          setLatLng(lat, lon, '手動入力');
+        }
         mapLog.textContent = `緯度経度を手動設定: ${lat.toFixed(5)}, ${lon.toFixed(5)}`;
       }
     });
@@ -4974,6 +4984,10 @@ if (firebaseConfigSaveButton) {
       const radius = parseFloat(radiusInput.value) || 500;
       if (Number.isFinite(lat) && Number.isFinite(lon)) {
         focusMap(lat, lon, radius);
+        // Always update state even if MapKit is not available
+        if (!state.map) {
+          setLatLng(lat, lon, '手動入力');
+        }
         mapLog.textContent = `緯度経度を手動設定: ${lat.toFixed(5)}, ${lon.toFixed(5)}`;
       }
     });
