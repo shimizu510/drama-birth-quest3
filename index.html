@@ -592,14 +592,16 @@
       </details>
       <details class="config-panel" id="backend-api-base-panel">
         <summary>バックエンド設定（Street View / 低視点マップ）</summary>
-        <p>ライブビュー自動取得・低視点マップ生成はバックエンドAPI経由で実行されます。`/api/streetview` を提供しているURLを設定してください。</p>
+        <p>優先順: 1) バックエンドAPI 2) Google Street View APIキー直指定。どちらかを設定してください。</p>
         <label for="backend-api-base-input">BACKEND API BASE URL</label>
         <input id="backend-api-base-input" type="url" placeholder="https://your-backend.example.com">
+        <label for="google-maps-api-key-input">Google Maps API Key (Street View Static)</label>
+        <input id="google-maps-api-key-input" type="text" placeholder="AIza...">
         <div class="button-row">
           <button class="flat" type="button" id="save-backend-api-base">保存</button>
           <button class="flat" type="button" id="clear-backend-api-base">設定を削除</button>
         </div>
-        <p class="log" id="backend-api-base-log">未設定の場合、ライブビュー系ボタンは利用できません。</p>
+        <p class="log" id="backend-api-base-log">未設定の場合、ライブビュー系ボタンは利用できません。Google APIキーでも利用可能です。</p>
       </details>
       <div class="button-row">
         <button class="primary" type="button" id="upload-quest">アップロード</button>
@@ -630,6 +632,7 @@
     const firebaseConfigTestButton = document.getElementById('test-firebase-config');
     const backendApiBasePanel = document.getElementById('backend-api-base-panel');
     const backendApiBaseInput = document.getElementById('backend-api-base-input');
+    const googleMapsApiKeyInput = document.getElementById('google-maps-api-key-input');
     const backendApiBaseSaveButton = document.getElementById('save-backend-api-base');
     const backendApiBaseClearButton = document.getElementById('clear-backend-api-base');
     const backendApiBaseLog = document.getElementById('backend-api-base-log');
@@ -920,6 +923,7 @@
 
     const FIREBASE_CONFIG_STORAGE_KEY = 'dbq-firebase-config';
     const BACKEND_API_BASE_STORAGE_KEY = 'dbq-backend-api-base';
+    const GOOGLE_MAPS_API_KEY_STORAGE_KEY = 'dbq-google-maps-api-key';
 
     let firebaseApp = null;
     let firebaseAuth = null;
@@ -935,11 +939,22 @@
     let youtubeOwnershipCache = new Set();
     let firebaseConfig = loadStoredFirebaseConfig();
     let backendApiBase = loadStoredBackendApiBase();
+    let googleMapsApiKey = loadStoredGoogleMapsApiKey();
 
     function loadStoredBackendApiBase() {
       if (!('localStorage' in window)) return '';
       try {
         const raw = window.localStorage.getItem(BACKEND_API_BASE_STORAGE_KEY);
+        return typeof raw === 'string' ? raw.trim() : '';
+      } catch {
+        return '';
+      }
+    }
+
+    function loadStoredGoogleMapsApiKey() {
+      if (!('localStorage' in window)) return '';
+      try {
+        const raw = window.localStorage.getItem(GOOGLE_MAPS_API_KEY_STORAGE_KEY);
         return typeof raw === 'string' ? raw.trim() : '';
       } catch {
         return '';
@@ -959,8 +974,22 @@
       }
     }
 
+    function getGoogleMapsApiKey() {
+      const runtime = (window.DBQ_GOOGLE_MAPS_API_KEY || '').trim();
+      const stored = (googleMapsApiKey || '').trim();
+      return runtime || stored;
+    }
+
     function isBackendApiBaseConfigured() {
       return !!getBackendApiBase();
+    }
+
+    function isGoogleMapsApiKeyConfigured() {
+      return !!getGoogleMapsApiKey();
+    }
+
+    function isLiveViewSourceConfigured() {
+      return isBackendApiBaseConfigured() || isGoogleMapsApiKeyConfigured();
     }
 
     function openBackendApiBasePanelAndFocus(message) {
@@ -972,7 +1001,12 @@
       if (backendApiBasePanel) {
         backendApiBasePanel.open = true;
       }
-      if (backendApiBaseInput) {
+      if (isBackendApiBaseConfigured()) {
+        if (googleMapsApiKeyInput) {
+          googleMapsApiKeyInput.focus();
+          googleMapsApiKeyInput.select?.();
+        }
+      } else if (backendApiBaseInput) {
         backendApiBaseInput.focus();
         backendApiBaseInput.select?.();
       }
@@ -991,22 +1025,42 @@
       return `${base}/api/streetview?${params.toString()}`;
     }
 
+    function buildGoogleStreetViewStaticURL(lat, lng, mode = 'live') {
+      const key = getGoogleMapsApiKey();
+      if (!key) return null;
+      const params = new URLSearchParams({
+        size: '1280x720',
+        location: `${lat},${lng}`,
+        radius: '120',
+        source: 'outdoor',
+        fov: mode === 'low_angle' ? '95' : '85',
+        heading: '0',
+        pitch: mode === 'low_angle' ? '-20' : '0',
+        key
+      });
+      return `https://maps.googleapis.com/maps/api/streetview?${params.toString()}`;
+    }
+
     async function fetchStreetViewUrl(lat, lng, mode = 'live') {
       const endpoint = buildBackendStreetViewEndpoint(lat, lng, mode);
-      if (!endpoint) {
-        return null;
+      if (endpoint) {
+        const response = await fetch(endpoint, { method: 'GET' });
+        if (!response.ok) {
+          throw new Error(`バックエンドのstreetview取得に失敗しました (${response.status})`);
+        }
+        const payload = await response.json();
+        const ok = payload?.ok === true;
+        const resolved = typeof payload?.url === 'string' ? payload.url.trim() : '';
+        if (!ok || !resolved) {
+          throw new Error('バックエンドから有効なstreetview URLが返されませんでした。');
+        }
+        return resolved;
       }
-      const response = await fetch(endpoint, { method: 'GET' });
-      if (!response.ok) {
-        throw new Error(`バックエンドのstreetview取得に失敗しました (${response.status})`);
-      }
-      const payload = await response.json();
-      const ok = payload?.ok === true;
-      const resolved = typeof payload?.url === 'string' ? payload.url.trim() : '';
-      if (!ok || !resolved) {
-        throw new Error('バックエンドから有効なstreetview URLが返されませんでした。');
-      }
-      return resolved;
+
+      const directURL = buildGoogleStreetViewStaticURL(lat, lng, mode);
+      if (directURL) return directURL;
+
+      return null;
     }
 
     function createEmptyBackgroundSelection() {
@@ -1503,7 +1557,7 @@
       localPhotoActions.style.display = state.background.type === 'localPhoto' ? 'flex' : 'none';
       const livePhotoButton = createElement('button', { className: 'flat', type: 'button', textContent: 'ライブビュー自動取得' });
       livePhotoButton.addEventListener('click', async () => {
-        if (!isBackendApiBaseConfigured()) {
+        if (!isLiveViewSourceConfigured()) {
           openBackendApiBasePanelAndFocus();
           return;
         }
@@ -1516,7 +1570,7 @@
             remoteURL = await generateLowAngleFallbackPhotoURL(coordinate);
           }
           if (!remoteURL) {
-            openBackendApiBasePanelAndFocus('バックエンドURLが未設定です。設定後に再度お試しください。');
+            openBackendApiBasePanelAndFocus('バックエンドURLまたはGoogle APIキーを設定してください。');
             return;
           }
           state.background.assetKey = null;
@@ -1530,7 +1584,7 @@
       });
       const fallbackPhotoButton = createElement('button', { className: 'flat', type: 'button', textContent: '低視点マップを生成（代替）' });
       fallbackPhotoButton.addEventListener('click', async () => {
-        if (!isBackendApiBaseConfigured()) {
+        if (!isLiveViewSourceConfigured()) {
           openBackendApiBasePanelAndFocus();
           return;
         }
@@ -1538,7 +1592,7 @@
           const coordinate = await ensureCoordinateForLocalPhoto();
           const remoteURL = await generateLowAngleFallbackPhotoURL(coordinate);
           if (!remoteURL) {
-            openBackendApiBasePanelAndFocus('バックエンドURLが未設定です。設定後に再度お試しください。');
+            openBackendApiBasePanelAndFocus('バックエンドURLまたはGoogle APIキーを設定してください。');
             return;
           }
           state.background.assetKey = null;
@@ -1550,11 +1604,11 @@
           setBackendApiBaseLog(`低視点マップ取得に失敗しました: ${error?.message || String(error)}`);
         }
       });
-      const localPhotoConfigured = isBackendApiBaseConfigured();
+      const localPhotoConfigured = isLiveViewSourceConfigured();
       livePhotoButton.disabled = !localPhotoConfigured;
       fallbackPhotoButton.disabled = !localPhotoConfigured;
       if (!localPhotoConfigured) {
-        setBackendApiBaseLog('Street View/低視点マップ生成にはバックエンドURLの設定が必要です。下の「バックエンド設定」を開いて入力してください。');
+        setBackendApiBaseLog('Street View/低視点マップ生成には「バックエンドURL」または「Google APIキー」の設定が必要です。');
       }
       localPhotoActions.append(livePhotoButton, fallbackPhotoButton);
 
@@ -2389,7 +2443,7 @@
       localPhotoActions.style.display = state.pendingBackgroundChange.type === 'localPhoto' ? 'flex' : 'none';
       const livePhotoButton = createElement('button', { className: 'flat', type: 'button', textContent: 'ライブビュー自動取得' });
       livePhotoButton.addEventListener('click', async () => {
-        if (!isBackendApiBaseConfigured()) {
+        if (!isLiveViewSourceConfigured()) {
           openBackendApiBasePanelAndFocus();
           return;
         }
@@ -2402,7 +2456,7 @@
             remoteURL = await generateLowAngleFallbackPhotoURL(coordinate);
           }
           if (!remoteURL) {
-            openBackendApiBasePanelAndFocus('バックエンドURLが未設定です。設定後に再度お試しください。');
+            openBackendApiBasePanelAndFocus('バックエンドURLまたはGoogle APIキーを設定してください。');
             return;
           }
           state.pendingBackgroundChange.assetKey = null;
@@ -2415,7 +2469,7 @@
       });
       const fallbackPhotoButton = createElement('button', { className: 'flat', type: 'button', textContent: '低視点マップを生成（代替）' });
       fallbackPhotoButton.addEventListener('click', async () => {
-        if (!isBackendApiBaseConfigured()) {
+        if (!isLiveViewSourceConfigured()) {
           openBackendApiBasePanelAndFocus();
           return;
         }
@@ -2423,7 +2477,7 @@
           const coordinate = await ensureCoordinateForLocalPhoto();
           const remoteURL = await generateLowAngleFallbackPhotoURL(coordinate);
           if (!remoteURL) {
-            openBackendApiBasePanelAndFocus('バックエンドURLが未設定です。設定後に再度お試しください。');
+            openBackendApiBasePanelAndFocus('バックエンドURLまたはGoogle APIキーを設定してください。');
             return;
           }
           state.pendingBackgroundChange.assetKey = null;
@@ -2434,11 +2488,11 @@
           setBackendApiBaseLog(`低視点マップ取得に失敗しました: ${error?.message || String(error)}`);
         }
       });
-      const localPhotoConfigured = isBackendApiBaseConfigured();
+      const localPhotoConfigured = isLiveViewSourceConfigured();
       livePhotoButton.disabled = !localPhotoConfigured;
       fallbackPhotoButton.disabled = !localPhotoConfigured;
       if (!localPhotoConfigured) {
-        setBackendApiBaseLog('Street View/低視点マップ生成にはバックエンドURLの設定が必要です。下の「バックエンド設定」を開いて入力してください。');
+        setBackendApiBaseLog('Street View/低視点マップ生成には「バックエンドURL」または「Google APIキー」の設定が必要です。');
       }
       localPhotoActions.append(livePhotoButton, fallbackPhotoButton);
 
@@ -4520,22 +4574,36 @@ if (firebaseConfigSaveButton) {
     if (backendApiBaseInput) {
       backendApiBaseInput.value = getBackendApiBase();
     }
+    if (googleMapsApiKeyInput) {
+      googleMapsApiKeyInput.value = getGoogleMapsApiKey();
+    }
     if (backendApiBaseSaveButton) {
       backendApiBaseSaveButton.addEventListener('click', () => {
         const raw = (backendApiBaseInput?.value || '').trim().replace(/\/+$/, '');
-        if (!raw) {
-          setBackendApiBaseLog('バックエンドURLを入力してください。');
+        const apiKeyRaw = (googleMapsApiKeyInput?.value || '').trim();
+        if (!raw && !apiKeyRaw) {
+          setBackendApiBaseLog('バックエンドURLまたはGoogle APIキーを入力してください。');
           openBackendApiBasePanelAndFocus();
           return;
         }
-        if ('localStorage' in window) {
+        if ('localStorage' in window && raw) {
           window.localStorage.setItem(BACKEND_API_BASE_STORAGE_KEY, raw);
         }
-        backendApiBase = raw;
-        if (backendApiBaseInput) {
-          backendApiBaseInput.value = raw;
+        if ('localStorage' in window && apiKeyRaw) {
+          window.localStorage.setItem(GOOGLE_MAPS_API_KEY_STORAGE_KEY, apiKeyRaw);
         }
-        setBackendApiBaseLog(`バックエンドURLを保存しました: ${raw}`);
+        backendApiBase = raw || backendApiBase;
+        googleMapsApiKey = apiKeyRaw || googleMapsApiKey;
+        if (backendApiBaseInput) {
+          backendApiBaseInput.value = raw || backendApiBase;
+        }
+        if (googleMapsApiKeyInput) {
+          googleMapsApiKeyInput.value = apiKeyRaw || googleMapsApiKey;
+        }
+        const configuredParts = [];
+        if (getBackendApiBase()) configuredParts.push('バックエンドURL');
+        if (getGoogleMapsApiKey()) configuredParts.push('Google APIキー');
+        setBackendApiBaseLog(`設定を保存しました（${configuredParts.join(' / ')}）`);
         renderStage();
       });
     }
@@ -4543,12 +4611,17 @@ if (firebaseConfigSaveButton) {
       backendApiBaseClearButton.addEventListener('click', () => {
         if ('localStorage' in window) {
           window.localStorage.removeItem(BACKEND_API_BASE_STORAGE_KEY);
+          window.localStorage.removeItem(GOOGLE_MAPS_API_KEY_STORAGE_KEY);
         }
         backendApiBase = '';
+        googleMapsApiKey = '';
         if (backendApiBaseInput) {
           backendApiBaseInput.value = '';
         }
-        setBackendApiBaseLog('バックエンドURL設定を削除しました。');
+        if (googleMapsApiKeyInput) {
+          googleMapsApiKeyInput.value = '';
+        }
+        setBackendApiBaseLog('バックエンドURL / Google APIキー設定を削除しました。');
         renderStage();
       });
     }
