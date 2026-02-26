@@ -814,81 +814,34 @@
       throw new Error('現地写真には座標が必要です。地図で場所を指定するか「現在地を使用」を選択してください。');
     }
 
-    function pickLivePhotoFromCamera() {
-      return new Promise((resolve, reject) => {
-        const input = document.createElement('input');
-        input.type = 'file';
-        input.accept = 'image/*,.heic,.heif';
-        input.capture = 'environment';
-        input.style.display = 'none';
-        input.addEventListener('change', async () => {
-          try {
-            const file = input.files?.[0];
-            if (!file) {
-              reject(new Error('撮影画像が選択されませんでした。'));
-              return;
-            }
-            const prepared = await prepareAssetFromFile(file);
-            if (!prepared?.dataUrl) {
-              reject(new Error('撮影画像の読み込みに失敗しました。'));
-              return;
-            }
-            resolve({
-              dataUrl: prepared.dataUrl,
-              name: prepared.name || file.name || `live-${Date.now()}`
-            });
-          } catch (error) {
-            reject(error);
-          } finally {
-            input.remove();
-          }
-        }, { once: true });
-        document.body.appendChild(input);
-        input.click();
-      });
-    }
-
-    async function generateLowAngleFallbackPhoto(coordinate) {
+    async function resolveNearbyLocalPhotoURL(coordinate) {
       const lat = Number(coordinate.latitude);
       const lng = Number(coordinate.longitude);
       if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
         throw new Error('座標が不正です。');
       }
-      const mapURL = `https://staticmap.openstreetmap.de/staticmap.php?center=${lat},${lng}&zoom=18&size=1280x720&markers=${lat},${lng},red-pushpin`;
-      const response = await fetch(mapURL);
+
+      const endpoint = `https://commons.wikimedia.org/w/api.php?action=query&generator=geosearch&ggscoord=${lat}|${lng}&ggsradius=10000&ggslimit=20&prop=pageimages&piprop=thumbnail&pithumbsize=1280&format=json&origin=*`;
+      const response = await fetch(endpoint);
       if (!response.ok) {
-        throw new Error('代替マップ画像の取得に失敗しました。');
+        throw new Error('現地写真の候補取得に失敗しました。');
       }
-      const blob = await response.blob();
-      const image = await new Promise((resolve, reject) => {
-        const img = new Image();
-        img.onload = () => resolve(img);
-        img.onerror = () => reject(new Error('代替マップ画像を読み込めませんでした。'));
-        img.src = URL.createObjectURL(blob);
-      });
+      const data = await response.json();
+      const pages = Object.values(data?.query?.pages || {});
+      const hit = pages.find(page => page?.thumbnail?.source);
+      if (!hit?.thumbnail?.source) {
+        throw new Error('この付近で現地写真が見つかりませんでした。代替の低視点マップを使ってください。');
+      }
+      return hit.thumbnail.source;
+    }
 
-      const canvas = document.createElement('canvas');
-      canvas.width = 1280;
-      canvas.height = 720;
-      const ctx = canvas.getContext('2d');
-      if (!ctx) throw new Error('Canvas初期化に失敗しました。');
-
-      ctx.fillStyle = '#111';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.save();
-      ctx.translate(canvas.width / 2, canvas.height * 0.62);
-      ctx.scale(1.1, 0.72);
-      ctx.transform(1, -0.35, 0, 1, 0, 0);
-      ctx.drawImage(image, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
-      ctx.restore();
-
-      const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-      gradient.addColorStop(0, 'rgba(0,0,0,0)');
-      gradient.addColorStop(1, 'rgba(0,0,0,0.45)');
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      return canvas.toDataURL('image/jpeg', 0.9);
+    function generateLowAngleFallbackPhotoURL(coordinate) {
+      const lat = Number(coordinate.latitude);
+      const lng = Number(coordinate.longitude);
+      if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+        throw new Error('座標が不正です。');
+      }
+      return `https://staticmap.openstreetmap.de/staticmap.php?center=${lat},${lng}&zoom=18&size=1280x720&markers=${lat},${lng},red-pushpin`;
     }
 
 
@@ -1469,13 +1422,18 @@
 
       const localPhotoActions = createElement('div', { className: 'button-row' });
       localPhotoActions.style.display = state.background.type === 'localPhoto' ? 'flex' : 'none';
-      const livePhotoButton = createElement('button', { className: 'flat', type: 'button', textContent: 'ライブビューで撮影' });
+      const livePhotoButton = createElement('button', { className: 'flat', type: 'button', textContent: 'ライブビュー自動取得' });
       livePhotoButton.addEventListener('click', async () => {
         try {
-          const picked = await pickLivePhotoFromCamera();
-          const key = storeAsset(picked.dataUrl, 'background', picked.name || `live-${Date.now()}.jpg`);
-          state.background.assetKey = key;
-          state.background.assetURL = '';
+          const coordinate = await ensureCoordinateForLocalPhoto();
+          let remoteURL = '';
+          try {
+            remoteURL = await resolveNearbyLocalPhotoURL(coordinate);
+          } catch (_) {
+            remoteURL = generateLowAngleFallbackPhotoURL(coordinate);
+          }
+          state.background.assetKey = null;
+          state.background.assetURL = remoteURL;
           state.background.libraryPath = null;
           renderQuestPreview();
           renderStage();
@@ -1487,10 +1445,9 @@
       fallbackPhotoButton.addEventListener('click', async () => {
         try {
           const coordinate = await ensureCoordinateForLocalPhoto();
-          const dataUrl = await generateLowAngleFallbackPhoto(coordinate);
-          const key = storeAsset(dataUrl, 'background', `fallback-map-${Date.now()}.jpg`);
-          state.background.assetKey = key;
-          state.background.assetURL = '';
+          const remoteURL = generateLowAngleFallbackPhotoURL(coordinate);
+          state.background.assetKey = null;
+          state.background.assetURL = remoteURL;
           state.background.libraryPath = null;
           renderQuestPreview();
           renderStage();
@@ -2329,12 +2286,18 @@
 
       const localPhotoActions = createElement('div', { className: 'button-row' });
       localPhotoActions.style.display = state.pendingBackgroundChange.type === 'localPhoto' ? 'flex' : 'none';
-      const livePhotoButton = createElement('button', { className: 'flat', type: 'button', textContent: 'ライブビューで撮影' });
+      const livePhotoButton = createElement('button', { className: 'flat', type: 'button', textContent: 'ライブビュー自動取得' });
       livePhotoButton.addEventListener('click', async () => {
         try {
-          const picked = await pickLivePhotoFromCamera();
-          state.pendingBackgroundChange.assetKey = storeAsset(picked.dataUrl, 'background', picked.name || `live-${Date.now()}.jpg`);
-          state.pendingBackgroundChange.assetURL = '';
+          const coordinate = await ensureCoordinateForLocalPhoto();
+          let remoteURL = '';
+          try {
+            remoteURL = await resolveNearbyLocalPhotoURL(coordinate);
+          } catch (_) {
+            remoteURL = generateLowAngleFallbackPhotoURL(coordinate);
+          }
+          state.pendingBackgroundChange.assetKey = null;
+          state.pendingBackgroundChange.assetURL = remoteURL;
           state.pendingBackgroundChange.libraryPath = null;
           renderStage();
         } catch (error) {
@@ -2345,9 +2308,9 @@
       fallbackPhotoButton.addEventListener('click', async () => {
         try {
           const coordinate = await ensureCoordinateForLocalPhoto();
-          const dataUrl = await generateLowAngleFallbackPhoto(coordinate);
-          state.pendingBackgroundChange.assetKey = storeAsset(dataUrl, 'background', `fallback-map-${Date.now()}.jpg`);
-          state.pendingBackgroundChange.assetURL = '';
+          const remoteURL = generateLowAngleFallbackPhotoURL(coordinate);
+          state.pendingBackgroundChange.assetKey = null;
+          state.pendingBackgroundChange.assetURL = remoteURL;
           state.pendingBackgroundChange.libraryPath = null;
           renderStage();
         } catch (error) {
