@@ -653,6 +653,17 @@
     const placeOrUrlInput = document.getElementById('place-or-url');
     const geocodeRunBtn = document.getElementById('geocode-run');
 
+    latitudeInput.readOnly = true;
+    longitudeInput.readOnly = true;
+
+    function forceSpecificLocationMode() {
+      state.locationChoice.mode = 'specificLocation';
+      locationModeInputs.forEach(input => {
+        input.checked = input.value === 'specificLocation';
+        input.disabled = input.value !== 'specificLocation';
+      });
+    }
+
 
     async function ensureMapKitInitialized() {
       if (typeof mapkit === 'undefined') {
@@ -816,21 +827,7 @@
       if (state.selectedCoordinate && Number.isFinite(state.selectedCoordinate.latitude) && Number.isFinite(state.selectedCoordinate.longitude)) {
         return state.selectedCoordinate;
       }
-      if (state.locationChoice.mode === 'currentLocation') {
-        if (!('geolocation' in navigator)) {
-          throw new Error('現在地を取得できません。位置情報対応ブラウザで実行してください。');
-        }
-        const pos = await new Promise((resolve, reject) => {
-          navigator.geolocation.getCurrentPosition(resolve, reject, { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 });
-        });
-        const coordinate = {
-          latitude: Number(pos.coords.latitude),
-          longitude: Number(pos.coords.longitude)
-        };
-        state.selectedCoordinate = coordinate;
-        return coordinate;
-      }
-      throw new Error('現地写真には座標が必要です。地図で場所を指定するか「現在地を使用」を選択してください。');
+      throw new Error('地図をクリックして座標を選んでください。');
     }
 
     async function resolveNearbyLocalPhotoURL(coordinate) {
@@ -895,7 +892,7 @@
         error: '',
         options: []
       },
-      locationChoice: { mode: 'everywhere', name: '', detail: '' },
+      locationChoice: { mode: 'specificLocation', name: '', detail: '' },
       ui: {
         backgroundLibraryCollapsed: false,
         characterLibraryCollapsed: false,
@@ -1557,6 +1554,11 @@
       localPhotoActions.style.display = state.background.type === 'localPhoto' ? 'flex' : 'none';
       const livePhotoButton = createElement('button', { className: 'flat', type: 'button', textContent: 'ライブビュー自動取得' });
       livePhotoButton.addEventListener('click', async () => {
+        if (!(state.selectedCoordinate && Number.isFinite(state.selectedCoordinate.latitude) && Number.isFinite(state.selectedCoordinate.longitude))) {
+          setBackendApiBaseLog('地図をクリックして座標を選んでください');
+          mapLog.textContent = '地図をクリックして座標を選んでください。';
+          return;
+        }
         if (!isLiveViewSourceConfigured()) {
           openBackendApiBasePanelAndFocus();
           return;
@@ -1584,6 +1586,11 @@
       });
       const fallbackPhotoButton = createElement('button', { className: 'flat', type: 'button', textContent: '低視点マップを生成（代替）' });
       fallbackPhotoButton.addEventListener('click', async () => {
+        if (!(state.selectedCoordinate && Number.isFinite(state.selectedCoordinate.latitude) && Number.isFinite(state.selectedCoordinate.longitude))) {
+          setBackendApiBaseLog('地図をクリックして座標を選んでください');
+          mapLog.textContent = '地図をクリックして座標を選んでください。';
+          return;
+        }
         if (!isLiveViewSourceConfigured()) {
           openBackendApiBasePanelAndFocus();
           return;
@@ -1604,10 +1611,13 @@
           setBackendApiBaseLog(`低視点マップ取得に失敗しました: ${error?.message || String(error)}`);
         }
       });
-      const localPhotoConfigured = isLiveViewSourceConfigured();
+      const hasCoordinate = state.selectedCoordinate && Number.isFinite(state.selectedCoordinate.latitude) && Number.isFinite(state.selectedCoordinate.longitude);
+      const localPhotoConfigured = isLiveViewSourceConfigured() && hasCoordinate;
       livePhotoButton.disabled = !localPhotoConfigured;
       fallbackPhotoButton.disabled = !localPhotoConfigured;
-      if (!localPhotoConfigured) {
+      if (!hasCoordinate) {
+        setBackendApiBaseLog('地図をクリックして座標を選んでください');
+      } else if (!localPhotoConfigured) {
         setBackendApiBaseLog('Street View/低視点マップ生成には「バックエンドURL」または「Google APIキー」の設定が必要です。');
       }
       localPhotoActions.append(livePhotoButton, fallbackPhotoButton);
@@ -2443,6 +2453,11 @@
       localPhotoActions.style.display = state.pendingBackgroundChange.type === 'localPhoto' ? 'flex' : 'none';
       const livePhotoButton = createElement('button', { className: 'flat', type: 'button', textContent: 'ライブビュー自動取得' });
       livePhotoButton.addEventListener('click', async () => {
+        if (!(state.selectedCoordinate && Number.isFinite(state.selectedCoordinate.latitude) && Number.isFinite(state.selectedCoordinate.longitude))) {
+          setBackendApiBaseLog('地図をクリックして座標を選んでください');
+          mapLog.textContent = '地図をクリックして座標を選んでください。';
+          return;
+        }
         if (!isLiveViewSourceConfigured()) {
           openBackendApiBasePanelAndFocus();
           return;
@@ -2469,6 +2484,11 @@
       });
       const fallbackPhotoButton = createElement('button', { className: 'flat', type: 'button', textContent: '低視点マップを生成（代替）' });
       fallbackPhotoButton.addEventListener('click', async () => {
+        if (!(state.selectedCoordinate && Number.isFinite(state.selectedCoordinate.latitude) && Number.isFinite(state.selectedCoordinate.longitude))) {
+          setBackendApiBaseLog('地図をクリックして座標を選んでください');
+          mapLog.textContent = '地図をクリックして座標を選んでください。';
+          return;
+        }
         if (!isLiveViewSourceConfigured()) {
           openBackendApiBasePanelAndFocus();
           return;
@@ -2488,10 +2508,13 @@
           setBackendApiBaseLog(`低視点マップ取得に失敗しました: ${error?.message || String(error)}`);
         }
       });
-      const localPhotoConfigured = isLiveViewSourceConfigured();
+      const hasCoordinate = state.selectedCoordinate && Number.isFinite(state.selectedCoordinate.latitude) && Number.isFinite(state.selectedCoordinate.longitude);
+      const localPhotoConfigured = isLiveViewSourceConfigured() && hasCoordinate;
       livePhotoButton.disabled = !localPhotoConfigured;
       fallbackPhotoButton.disabled = !localPhotoConfigured;
-      if (!localPhotoConfigured) {
+      if (!hasCoordinate) {
+        setBackendApiBaseLog('地図をクリックして座標を選んでください');
+      } else if (!localPhotoConfigured) {
         setBackendApiBaseLog('Street View/低視点マップ生成には「バックエンドURL」または「Google APIキー」の設定が必要です。');
       }
       localPhotoActions.append(livePhotoButton, fallbackPhotoButton);
@@ -4703,14 +4726,14 @@ if (firebaseConfigSaveButton) {
         dungeonMonsterDropItemImageName: 'TreasureImage.png'
       };
       state.savedCity = { loading: false, error: '', options: [] };
-      state.locationChoice = { mode: 'everywhere', name: '', detail: '' };
+      state.locationChoice = { mode: 'specificLocation', name: '', detail: '' };
       state.ui.backgroundLibraryCollapsed = false;
       state.ui.characterLibraryCollapsed = false;
       state.ui.coverLibraryCollapsed = false;
       youtubeOwnershipCache = new Set();
       latitudeInput.value = '';
       longitudeInput.value = '';
-      locationModeInputs.forEach(input => { input.checked = input.value === 'everywhere'; });
+      forceSpecificLocationMode();
       locationNameInput.value = '';
       locationDetailInput.value = '';
       if (state.map && state.marker && typeof mapkit !== 'undefined') {
@@ -4720,7 +4743,7 @@ if (firebaseConfigSaveButton) {
       state.selectedCoordinate = null;
       renderStage();
       uploadLog.textContent = 'すべてリセットしました。';
-      mapLog.textContent = '位置情報がリセットされました。';
+      mapLog.textContent = '位置情報がリセットされました。地図をクリックして座標を選んでください。';
     }
 
     document.getElementById('toggle-theme').addEventListener('click', () => {
@@ -4861,19 +4884,8 @@ if (firebaseConfigSaveButton) {
     locationModeInputs.forEach(input => {
       input.addEventListener('change', () => {
         if (!input.checked) return;
-        state.locationChoice.mode = input.value;
-        if (input.value === 'everywhere') {
-          state.selectedCoordinate = null;
-          if (state.marker && state.map && typeof mapkit !== 'undefined') {
-            state.map.removeAnnotation(state.marker);
-            state.marker = null;
-          }
-          mapLog.textContent = 'すべての場所モードに切り替えました。';
-        } else if (input.value === 'currentLocation') {
-          mapLog.textContent = '現在地モードです。緯度経度を入力するか、マップで指定してください。';
-        } else {
-          mapLog.textContent = 'マップをタップして設置場所を指定してください。';
-        }
+        forceSpecificLocationMode();
+        mapLog.textContent = 'マップをタップして設置場所を指定してください。';
         renderQuestPreview();
       });
     });
@@ -4902,6 +4914,7 @@ if (firebaseConfigSaveButton) {
     updateAuthUI();
     updateFirebaseConfigEditor();
     initializeFirebase();
+    forceSpecificLocationMode();
     setStage('askTitle');
     initTokenlessMap();
   </script>
