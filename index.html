@@ -590,6 +590,17 @@
         </div>
         <p class="log" id="firebase-config-log">Web用の Firebase 構成が設定されていない場合、Googleサインインを実行できません。</p>
       </details>
+      <details class="config-panel" id="backend-api-base-panel">
+        <summary>バックエンド設定（Street View / 低視点マップ）</summary>
+        <p>ライブビュー自動取得・低視点マップ生成はバックエンドAPI経由で実行されます。`/api/streetview` を提供しているURLを設定してください。</p>
+        <label for="backend-api-base-input">BACKEND API BASE URL</label>
+        <input id="backend-api-base-input" type="url" placeholder="https://your-backend.example.com">
+        <div class="button-row">
+          <button class="flat" type="button" id="save-backend-api-base">保存</button>
+          <button class="flat" type="button" id="clear-backend-api-base">設定を削除</button>
+        </div>
+        <p class="log" id="backend-api-base-log">未設定の場合、ライブビュー系ボタンは利用できません。</p>
+      </details>
       <div class="button-row">
         <button class="primary" type="button" id="upload-quest">アップロード</button>
         <button class="secondary" type="button" id="download-quest">JSONをダウンロード</button>
@@ -617,6 +628,11 @@
     const firebaseConfigSaveButton = document.getElementById('save-firebase-config');
     const firebaseConfigClearButton = document.getElementById('clear-firebase-config');
     const firebaseConfigTestButton = document.getElementById('test-firebase-config');
+    const backendApiBasePanel = document.getElementById('backend-api-base-panel');
+    const backendApiBaseInput = document.getElementById('backend-api-base-input');
+    const backendApiBaseSaveButton = document.getElementById('save-backend-api-base');
+    const backendApiBaseClearButton = document.getElementById('clear-backend-api-base');
+    const backendApiBaseLog = document.getElementById('backend-api-base-log');
     const authStatus = document.getElementById('auth-status');
     const googleSignInButton = document.getElementById('google-sign-in');
     const googleSwitchButton = document.getElementById('google-switch');
@@ -937,10 +953,35 @@
       return base.replace(/\/+$/, '');
     }
 
+    function setBackendApiBaseLog(message) {
+      if (backendApiBaseLog) {
+        backendApiBaseLog.textContent = message;
+      }
+    }
+
+    function isBackendApiBaseConfigured() {
+      return !!getBackendApiBase();
+    }
+
+    function openBackendApiBasePanelAndFocus(message) {
+      if (message) {
+        setBackendApiBaseLog(message);
+      } else {
+        setBackendApiBaseLog('Street View/低視点マップ生成にはバックエンドURLの設定が必要です。');
+      }
+      if (backendApiBasePanel) {
+        backendApiBasePanel.open = true;
+      }
+      if (backendApiBaseInput) {
+        backendApiBaseInput.focus();
+        backendApiBaseInput.select?.();
+      }
+    }
+
     function buildBackendStreetViewEndpoint(lat, lng, mode) {
       const base = getBackendApiBase();
       if (!base) {
-        throw new Error('バックエンドURLが未設定です。window.DBQ_BACKEND_API_BASE か localStorage(dbq-backend-api-base) を設定してください。');
+        return null;
       }
       const params = new URLSearchParams({
         lat: String(lat),
@@ -952,6 +993,9 @@
 
     async function fetchStreetViewUrl(lat, lng, mode = 'live') {
       const endpoint = buildBackendStreetViewEndpoint(lat, lng, mode);
+      if (!endpoint) {
+        return null;
+      }
       const response = await fetch(endpoint, { method: 'GET' });
       if (!response.ok) {
         throw new Error(`バックエンドのstreetview取得に失敗しました (${response.status})`);
@@ -1459,6 +1503,10 @@
       localPhotoActions.style.display = state.background.type === 'localPhoto' ? 'flex' : 'none';
       const livePhotoButton = createElement('button', { className: 'flat', type: 'button', textContent: 'ライブビュー自動取得' });
       livePhotoButton.addEventListener('click', async () => {
+        if (!isBackendApiBaseConfigured()) {
+          openBackendApiBasePanelAndFocus();
+          return;
+        }
         try {
           const coordinate = await ensureCoordinateForLocalPhoto();
           let remoteURL = '';
@@ -1467,29 +1515,47 @@
           } catch (_) {
             remoteURL = await generateLowAngleFallbackPhotoURL(coordinate);
           }
+          if (!remoteURL) {
+            openBackendApiBasePanelAndFocus('バックエンドURLが未設定です。設定後に再度お試しください。');
+            return;
+          }
           state.background.assetKey = null;
           state.background.assetURL = remoteURL;
           state.background.libraryPath = null;
           renderQuestPreview();
           renderStage();
         } catch (error) {
-          alert(error?.message || String(error));
+          setBackendApiBaseLog(`ライブビュー取得に失敗しました: ${error?.message || String(error)}`);
         }
       });
       const fallbackPhotoButton = createElement('button', { className: 'flat', type: 'button', textContent: '低視点マップを生成（代替）' });
       fallbackPhotoButton.addEventListener('click', async () => {
+        if (!isBackendApiBaseConfigured()) {
+          openBackendApiBasePanelAndFocus();
+          return;
+        }
         try {
           const coordinate = await ensureCoordinateForLocalPhoto();
           const remoteURL = await generateLowAngleFallbackPhotoURL(coordinate);
+          if (!remoteURL) {
+            openBackendApiBasePanelAndFocus('バックエンドURLが未設定です。設定後に再度お試しください。');
+            return;
+          }
           state.background.assetKey = null;
           state.background.assetURL = remoteURL;
           state.background.libraryPath = null;
           renderQuestPreview();
           renderStage();
         } catch (error) {
-          alert(error?.message || String(error));
+          setBackendApiBaseLog(`低視点マップ取得に失敗しました: ${error?.message || String(error)}`);
         }
       });
+      const localPhotoConfigured = isBackendApiBaseConfigured();
+      livePhotoButton.disabled = !localPhotoConfigured;
+      fallbackPhotoButton.disabled = !localPhotoConfigured;
+      if (!localPhotoConfigured) {
+        setBackendApiBaseLog('Street View/低視点マップ生成にはバックエンドURLの設定が必要です。下の「バックエンド設定」を開いて入力してください。');
+      }
       localPhotoActions.append(livePhotoButton, fallbackPhotoButton);
 
       let libraryContainer = null;
@@ -2323,6 +2389,10 @@
       localPhotoActions.style.display = state.pendingBackgroundChange.type === 'localPhoto' ? 'flex' : 'none';
       const livePhotoButton = createElement('button', { className: 'flat', type: 'button', textContent: 'ライブビュー自動取得' });
       livePhotoButton.addEventListener('click', async () => {
+        if (!isBackendApiBaseConfigured()) {
+          openBackendApiBasePanelAndFocus();
+          return;
+        }
         try {
           const coordinate = await ensureCoordinateForLocalPhoto();
           let remoteURL = '';
@@ -2331,27 +2401,45 @@
           } catch (_) {
             remoteURL = await generateLowAngleFallbackPhotoURL(coordinate);
           }
+          if (!remoteURL) {
+            openBackendApiBasePanelAndFocus('バックエンドURLが未設定です。設定後に再度お試しください。');
+            return;
+          }
           state.pendingBackgroundChange.assetKey = null;
           state.pendingBackgroundChange.assetURL = remoteURL;
           state.pendingBackgroundChange.libraryPath = null;
           renderStage();
         } catch (error) {
-          alert(error?.message || String(error));
+          setBackendApiBaseLog(`ライブビュー取得に失敗しました: ${error?.message || String(error)}`);
         }
       });
       const fallbackPhotoButton = createElement('button', { className: 'flat', type: 'button', textContent: '低視点マップを生成（代替）' });
       fallbackPhotoButton.addEventListener('click', async () => {
+        if (!isBackendApiBaseConfigured()) {
+          openBackendApiBasePanelAndFocus();
+          return;
+        }
         try {
           const coordinate = await ensureCoordinateForLocalPhoto();
           const remoteURL = await generateLowAngleFallbackPhotoURL(coordinate);
+          if (!remoteURL) {
+            openBackendApiBasePanelAndFocus('バックエンドURLが未設定です。設定後に再度お試しください。');
+            return;
+          }
           state.pendingBackgroundChange.assetKey = null;
           state.pendingBackgroundChange.assetURL = remoteURL;
           state.pendingBackgroundChange.libraryPath = null;
           renderStage();
         } catch (error) {
-          alert(error?.message || String(error));
+          setBackendApiBaseLog(`低視点マップ取得に失敗しました: ${error?.message || String(error)}`);
         }
       });
+      const localPhotoConfigured = isBackendApiBaseConfigured();
+      livePhotoButton.disabled = !localPhotoConfigured;
+      fallbackPhotoButton.disabled = !localPhotoConfigured;
+      if (!localPhotoConfigured) {
+        setBackendApiBaseLog('Street View/低視点マップ生成にはバックエンドURLの設定が必要です。下の「バックエンド設定」を開いて入力してください。');
+      }
       localPhotoActions.append(livePhotoButton, fallbackPhotoButton);
 
       let libraryContainer = null;
@@ -4426,6 +4514,42 @@ if (firebaseConfigSaveButton) {
           firebaseConfigLog.textContent = 'Firebaseへの接続を再試行しています…';
         }
         await reinitializeFirebase();
+      });
+    }
+
+    if (backendApiBaseInput) {
+      backendApiBaseInput.value = getBackendApiBase();
+    }
+    if (backendApiBaseSaveButton) {
+      backendApiBaseSaveButton.addEventListener('click', () => {
+        const raw = (backendApiBaseInput?.value || '').trim().replace(/\/+$/, '');
+        if (!raw) {
+          setBackendApiBaseLog('バックエンドURLを入力してください。');
+          openBackendApiBasePanelAndFocus();
+          return;
+        }
+        if ('localStorage' in window) {
+          window.localStorage.setItem(BACKEND_API_BASE_STORAGE_KEY, raw);
+        }
+        backendApiBase = raw;
+        if (backendApiBaseInput) {
+          backendApiBaseInput.value = raw;
+        }
+        setBackendApiBaseLog(`バックエンドURLを保存しました: ${raw}`);
+        renderStage();
+      });
+    }
+    if (backendApiBaseClearButton) {
+      backendApiBaseClearButton.addEventListener('click', () => {
+        if ('localStorage' in window) {
+          window.localStorage.removeItem(BACKEND_API_BASE_STORAGE_KEY);
+        }
+        backendApiBase = '';
+        if (backendApiBaseInput) {
+          backendApiBaseInput.value = '';
+        }
+        setBackendApiBaseLog('バックエンドURL設定を削除しました。');
+        renderStage();
       });
     }
 
