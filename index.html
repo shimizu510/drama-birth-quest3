@@ -638,7 +638,202 @@
     async function ensureMapKitInitialized() {
       if (typeof mapkit === 'undefined') {
         mapLog.textContent = 'MapKit JSが読み込まれていません。ネットワーク接続やスクリプトURLを確認してください。';
-        throw new Error('バックエンドの低視点マップ生成に失敗しました。');const state = {
+        return false;
+      }
+
+      if (!window.__mapkitInited) {
+        mapkit.init({
+          authorizationCallback: async done => {
+            try {
+              const token = await fetch('https://mapkit-token-api.vercel.app/api/mapkit-token', {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' },
+                mode: 'cors'
+              }).then(r => r.text());
+              done(token);
+            } catch (error) {
+              console.error('Failed to fetch MapKit token', error);
+              mapLog.textContent = 'MapKitトークンの取得に失敗しました。しばらくしてから再試行してください。';
+              done('');
+            }
+          }
+        });
+        window.__mapkitInited = true;
+      }
+
+      return true;
+    }
+
+
+    function setLatLng(lat, lng, note = '') {
+      const latNum = Number(lat), lngNum = Number(lng);
+      if (!Number.isFinite(latNum) || !Number.isFinite(lngNum)) {
+        alert('座標が不正です');
+        return;
+      }
+      latitudeInput.value = latNum.toFixed(6);
+      longitudeInput.value = lngNum.toFixed(6);
+
+
+      state.selectedCoordinate = { latitude: latNum, longitude: lngNum };
+      const modeRadio = document.querySelector('input[name="location-mode"][value="specificLocation"]');
+      if (modeRadio) modeRadio.checked = true;
+      state.locationChoice.mode = 'specificLocation';
+
+      mapLog.textContent = `座標を設定: ${latNum.toFixed(6)}, ${lngNum.toFixed(6)}${note ? '（' + note + '）' : ''}`;
+
+
+      if (window.__leafletMap && window.__leafletMarker) {
+        window.__leafletMarker.setLatLng([latNum, lngNum]).addTo(window.__leafletMap);
+        window.__leafletMap.setView([latNum, lngNum], 16);
+      }
+
+      renderQuestPreview();
+    }
+
+    function getBrowserGeolocation() {
+      if (!('geolocation' in navigator)) {
+        alert('このブラウザは現在地取得に対応していません');
+        return;
+      }
+      mapLog.textContent = '現在地の取得を要求しています…（ブラウザの許可が必要です）';
+      navigator.geolocation.getCurrentPosition(
+        pos => {
+          const { latitude, longitude } = pos.coords;
+          setLatLng(latitude, longitude, '現在地');
+        },
+        err => {
+          mapLog.textContent = `現在地の取得に失敗: ${err.message}`;
+          alert('現在地の取得に失敗しました。位置情報の権限や設定をご確認ください。');
+        },
+        { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 }
+      );
+    }
+
+    function tryParseGoogleMapsURL(input) {
+      try {
+        const url = new URL(input);
+
+        const at = url.href.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/);
+        if (at) return { lat: parseFloat(at[1]), lng: parseFloat(at[2]) };
+
+        const q = url.searchParams.get('q') || url.searchParams.get('query');
+        if (q) {
+          const m = q.match(/(-?\d+\.\d+),\s*(-?\d+\.\d+)/);
+          if (m) return { lat: parseFloat(m[1]), lng: parseFloat(m[2]) };
+        }
+
+      } catch (_) {
+        /* 入力がURLでない場合は無視 */
+      }
+      return null;
+    }
+
+
+    async function geocodeWithNominatim(query) {
+      const endpoint = 'https://nominatim.openstreetmap.org/search';
+      const url = `${endpoint}?format=jsonv2&limit=1&q=${encodeURIComponent(query)}`;
+      const res = await fetch(url, {
+        headers: { 'Accept-Language': 'ja' }
+      });
+      if (!res.ok) throw new Error(`Geocoding failed: ${res.status}`);
+      const json = await res.json();
+      if (!Array.isArray(json) || json.length === 0) return null;
+      const hit = json[0];
+      return { lat: parseFloat(hit.lat), lng: parseFloat(hit.lon), displayName: hit.display_name };
+    }
+
+    function initTokenlessMap() {
+      if (!window.L) {
+        alert('Leaflet の読み込みに失敗しました（ネットワークをご確認ください）');
+        return;
+      }
+
+      const container = document.getElementById('map-main');
+      if (!container) return;
+
+
+      if (window.__leafletMap) {
+        mapLog.textContent = '代替マップを表示中です。マップをクリックすると座標が入ります。';
+        return;
+      }
+
+      if (state.map && typeof state.map.destroy === 'function') {
+        state.map.destroy();
+      }
+      state.map = null;
+      state.marker = null;
+
+      const initLat = parseFloat(latitudeInput.value) || 35.681236;
+      const initLng = parseFloat(longitudeInput.value) || 139.767125;
+
+
+      container.innerHTML = '';
+
+      const map = L.map(container, { zoomControl: true }).setView([initLat, initLng], 14);
+      L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        { attribution: '&copy; OpenStreetMap contributors' }
+      ).addTo(map);
+
+      const marker = L.marker([initLat, initLng], { draggable: true }).addTo(map);
+      marker.on('dragend', () => {
+        const ll = marker.getLatLng();
+        setLatLng(ll.lat, ll.lng, 'ドラッグ');
+      });
+
+      map.on('click', (e) => {
+        marker.setLatLng(e.latlng);
+        setLatLng(e.latlng.lat, e.latlng.lng, 'クリック');
+      });
+
+      window.__leafletMap = map;
+      window.__leafletMarker = marker;
+
+      mapLog.textContent = '代替マップを表示しました。マップをクリック/ドラッグで座標を設定できます。';
+    }
+
+    async function ensureCoordinateForLocalPhoto() {
+      if (state.selectedCoordinate && Number.isFinite(state.selectedCoordinate.latitude) && Number.isFinite(state.selectedCoordinate.longitude)) {
+        return state.selectedCoordinate;
+      }
+      if (state.locationChoice.mode === 'currentLocation') {
+        if (!('geolocation' in navigator)) {
+          throw new Error('現在地を取得できません。位置情報対応ブラウザで実行してください。');
+        }
+        const pos = await new Promise((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(resolve, reject, { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 });
+        });
+        const coordinate = {
+          latitude: Number(pos.coords.latitude),
+          longitude: Number(pos.coords.longitude)
+        };
+        state.selectedCoordinate = coordinate;
+        return coordinate;
+      }
+      throw new Error('現地写真には座標が必要です。地図で場所を指定するか「現在地を使用」を選択してください。');
+    }
+
+    async function resolveNearbyLocalPhotoURL(coordinate) {
+      const lat = Number(coordinate.latitude);
+      const lng = Number(coordinate.longitude);
+      if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+        throw new Error('座標が不正です。');
+      }
+      return fetchStreetViewUrl(lat, lng, 'live');
+    }
+
+    async function generateLowAngleFallbackPhotoURL(coordinate) {
+      const lat = Number(coordinate.latitude);
+      const lng = Number(coordinate.longitude);
+      if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+        throw new Error('座標が不正です。');
+      }
+      return fetchStreetViewUrl(lat, lng, 'low_angle');
+    }
+
+
+    const state = {
       map: null,
       mapkitInitialized: false,
       marker: null,
@@ -753,6 +948,21 @@
         mode: mode || 'live'
       });
       return `${base}/api/streetview?${params.toString()}`;
+    }
+
+    async function fetchStreetViewUrl(lat, lng, mode = 'live') {
+      const endpoint = buildBackendStreetViewEndpoint(lat, lng, mode);
+      const response = await fetch(endpoint, { method: 'GET' });
+      if (!response.ok) {
+        throw new Error(`バックエンドのstreetview取得に失敗しました (${response.status})`);
+      }
+      const payload = await response.json();
+      const ok = payload?.ok === true;
+      const resolved = typeof payload?.url === 'string' ? payload.url.trim() : '';
+      if (!ok || !resolved) {
+        throw new Error('バックエンドから有効なstreetview URLが返されませんでした。');
+      }
+      return resolved;
     }
 
     function createEmptyBackgroundSelection() {
