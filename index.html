@@ -820,19 +820,7 @@
       if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
         throw new Error('座標が不正です。');
       }
-
-      const endpoint = `https://commons.wikimedia.org/w/api.php?action=query&generator=geosearch&ggscoord=${lat}|${lng}&ggsradius=10000&ggslimit=20&prop=pageimages&piprop=thumbnail&pithumbsize=1280&format=json&origin=*`;
-      const response = await fetch(endpoint);
-      if (!response.ok) {
-        throw new Error('現地写真の候補取得に失敗しました。');
-      }
-      const data = await response.json();
-      const pages = Object.values(data?.query?.pages || {});
-      const hit = pages.find(page => page?.thumbnail?.source);
-      if (!hit?.thumbnail?.source) {
-        throw new Error('この付近で現地写真が見つかりませんでした。代替の低視点マップを使ってください。');
-      }
-      return hit.thumbnail.source;
+      return `https://maps.googleapis.com/maps/api/streetview?size=1280x720&location=${lat},${lng}&radius=120&source=outdoor&fov=85&heading=0&pitch=0`;
     }
 
     function generateLowAngleFallbackPhotoURL(coordinate) {
@@ -841,7 +829,7 @@
       if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
         throw new Error('座標が不正です。');
       }
-      return `https://staticmap.openstreetmap.de/staticmap.php?center=${lat},${lng}&zoom=18&size=1280x720&markers=${lat},${lng},red-pushpin`;
+      return `https://static-maps.yandex.ru/1.x/?lang=ja_JP&ll=${lng},${lat}&z=17&size=650,450&l=map&pt=${lng},${lat},pm2rdm`;
     }
 
 
