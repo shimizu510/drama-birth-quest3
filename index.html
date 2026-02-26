@@ -793,6 +793,104 @@
       mapLog.textContent = '代替マップを表示しました。マップをクリック/ドラッグで座標を設定できます。';
     }
 
+    async function ensureCoordinateForLocalPhoto() {
+      if (state.selectedCoordinate && Number.isFinite(state.selectedCoordinate.latitude) && Number.isFinite(state.selectedCoordinate.longitude)) {
+        return state.selectedCoordinate;
+      }
+      if (state.locationChoice.mode === 'currentLocation') {
+        if (!('geolocation' in navigator)) {
+          throw new Error('現在地を取得できません。位置情報対応ブラウザで実行してください。');
+        }
+        const pos = await new Promise((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(resolve, reject, { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 });
+        });
+        const coordinate = {
+          latitude: Number(pos.coords.latitude),
+          longitude: Number(pos.coords.longitude)
+        };
+        state.selectedCoordinate = coordinate;
+        return coordinate;
+      }
+      throw new Error('現地写真には座標が必要です。地図で場所を指定するか「現在地を使用」を選択してください。');
+    }
+
+    function pickLivePhotoFromCamera() {
+      return new Promise((resolve, reject) => {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'image/*,.heic,.heif';
+        input.capture = 'environment';
+        input.style.display = 'none';
+        input.addEventListener('change', async () => {
+          try {
+            const file = input.files?.[0];
+            if (!file) {
+              reject(new Error('撮影画像が選択されませんでした。'));
+              return;
+            }
+            const prepared = await prepareAssetFromFile(file);
+            if (!prepared?.dataUrl) {
+              reject(new Error('撮影画像の読み込みに失敗しました。'));
+              return;
+            }
+            resolve({
+              dataUrl: prepared.dataUrl,
+              name: prepared.name || file.name || `live-${Date.now()}`
+            });
+          } catch (error) {
+            reject(error);
+          } finally {
+            input.remove();
+          }
+        }, { once: true });
+        document.body.appendChild(input);
+        input.click();
+      });
+    }
+
+    async function generateLowAngleFallbackPhoto(coordinate) {
+      const lat = Number(coordinate.latitude);
+      const lng = Number(coordinate.longitude);
+      if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+        throw new Error('座標が不正です。');
+      }
+      const mapURL = `https://staticmap.openstreetmap.de/staticmap.php?center=${lat},${lng}&zoom=18&size=1280x720&markers=${lat},${lng},red-pushpin`;
+      const response = await fetch(mapURL);
+      if (!response.ok) {
+        throw new Error('代替マップ画像の取得に失敗しました。');
+      }
+      const blob = await response.blob();
+      const image = await new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = () => reject(new Error('代替マップ画像を読み込めませんでした。'));
+        img.src = URL.createObjectURL(blob);
+      });
+
+      const canvas = document.createElement('canvas');
+      canvas.width = 1280;
+      canvas.height = 720;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) throw new Error('Canvas初期化に失敗しました。');
+
+      ctx.fillStyle = '#111';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.save();
+      ctx.translate(canvas.width / 2, canvas.height * 0.62);
+      ctx.scale(1.1, 0.72);
+      ctx.transform(1, -0.35, 0, 1, 0, 0);
+      ctx.drawImage(image, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
+      ctx.restore();
+
+      const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      gradient.addColorStop(0, 'rgba(0,0,0,0)');
+      gradient.addColorStop(1, 'rgba(0,0,0,0.45)');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      return canvas.toDataURL('image/jpeg', 0.9);
+    }
+
 
     const state = {
       map: null,
@@ -806,7 +904,7 @@
       authorDisplayName: '',
       seriesRootQuestID: '',
       episodeNumber: 1,
-      background: { type: '', youtubeId: '', assetKey: null, assetURL: '', libraryPath: null },
+      background: createEmptyBackgroundSelection(),
       flowOps: [],
       undoStack: [],
       redoStack: [],
@@ -878,6 +976,25 @@
     let youtubeOwnershipCheckInProgress = false;
     let youtubeOwnershipCache = new Set();
     let firebaseConfig = loadStoredFirebaseConfig();
+
+    function createEmptyBackgroundSelection() {
+      return { type: '', youtubeId: '', assetKey: null, assetURL: '', libraryPath: null };
+    }
+
+    function isImageBasedBackgroundType(type) {
+      return type === 'image' || type === 'localPhoto';
+    }
+
+    function normalizeBackgroundType(type) {
+      return type === 'localPhoto' ? 'image' : type;
+    }
+
+    function backgroundTypeLabel(type) {
+      if (type === 'youtube') return 'YouTube';
+      if (type === 'image') return '画像アップロード';
+      if (type === 'localPhoto') return '現地写真';
+      return '選択してください';
+    }
 
     const DEFAULT_FIREBASE_CONFIG = {
       apiKey: 'AIzaSyA7E1JxNHPcnl6Uw4PhQjQ9nxJ3JneA2ac',
@@ -1332,11 +1449,11 @@
       stageContainer.append(titleLabel, titleInput, titleEnLabel, titleEnInput, authorLabel, authorInput, seriesLabel, seriesInput, episodeLabel, episodeInput, actions);
     }
     function renderAskBackground() {
-      const info = createElement('p', { textContent: 'アプリと同様に、最初に表示する背景を選択します。YouTube動画か画像のどちらかを指定してください。' });
+      const info = createElement('p', { textContent: '最初に表示する背景を選択します。YouTube / 画像アップロード / 現地写真（ライブ撮影）を選べます。ストリートビューが使えない場所は低視点マップを代替生成できます。' });
       const typeLabel = createElement('label', { textContent: '背景タイプ' });
       const typeSelect = createElement('select');
-      ['', 'youtube', 'image'].forEach(value => {
-        const option = createElement('option', { value, textContent: value === '' ? '選択してください' : (value === 'youtube' ? 'YouTube' : '画像') });
+      ['', 'youtube', 'image', 'localPhoto'].forEach(value => {
+        const option = createElement('option', { value, textContent: backgroundTypeLabel(value) });
         if (state.background.type === value) option.selected = true;
         typeSelect.appendChild(option);
       });
@@ -1347,8 +1464,41 @@
 
       const imageLabel = createElement('label', { htmlFor: 'bg-image-input', textContent: '背景画像 (アップロード)' });
       const imageInput = createElement('input', { type: 'file', id: 'bg-image-input', accept: 'image/*,.heic,.heif' });
-      const showImageControls = state.background.type === 'image';
+      const showImageControls = isImageBasedBackgroundType(state.background.type);
       imageLabel.style.display = imageInput.style.display = showImageControls ? 'block' : 'none';
+
+      const localPhotoActions = createElement('div', { className: 'button-row' });
+      localPhotoActions.style.display = state.background.type === 'localPhoto' ? 'flex' : 'none';
+      const livePhotoButton = createElement('button', { className: 'flat', type: 'button', textContent: 'ライブビューで撮影' });
+      livePhotoButton.addEventListener('click', async () => {
+        try {
+          const picked = await pickLivePhotoFromCamera();
+          const key = storeAsset(picked.dataUrl, 'background', picked.name || `live-${Date.now()}.jpg`);
+          state.background.assetKey = key;
+          state.background.assetURL = '';
+          state.background.libraryPath = null;
+          renderQuestPreview();
+          renderStage();
+        } catch (error) {
+          alert(error?.message || String(error));
+        }
+      });
+      const fallbackPhotoButton = createElement('button', { className: 'flat', type: 'button', textContent: '低視点マップを生成（代替）' });
+      fallbackPhotoButton.addEventListener('click', async () => {
+        try {
+          const coordinate = await ensureCoordinateForLocalPhoto();
+          const dataUrl = await generateLowAngleFallbackPhoto(coordinate);
+          const key = storeAsset(dataUrl, 'background', `fallback-map-${Date.now()}.jpg`);
+          state.background.assetKey = key;
+          state.background.assetURL = '';
+          state.background.libraryPath = null;
+          renderQuestPreview();
+          renderStage();
+        } catch (error) {
+          alert(error?.message || String(error));
+        }
+      });
+      localPhotoActions.append(livePhotoButton, fallbackPhotoButton);
 
       let libraryContainer = null;
       if (state.background.type === 'image') {
@@ -1483,7 +1633,7 @@
       typeSelect.addEventListener('change', () => {
         state.background.type = typeSelect.value;
         if (typeSelect.value !== 'youtube') state.background.youtubeId = '';
-        if (typeSelect.value !== 'image') {
+        if (!isImageBasedBackgroundType(typeSelect.value)) {
           state.background.assetKey = null;
           state.background.assetURL = '';
           state.background.libraryPath = null;
@@ -1539,20 +1689,23 @@
 
       const currentStatus = createElement('p', {
         className: 'log',
-        textContent: state.background.type === 'image'
+        textContent: isImageBasedBackgroundType(state.background.type)
           ? (state.background.assetKey
               ? `選択済み: asset://${state.background.assetKey}`
               : (state.background.assetURL
                 ? `選択済み: ${state.background.libraryPath || state.background.assetURL}`
-                : '背景画像が未選択です。'))
+                : (state.background.type === 'localPhoto' ? 'まだ現地写真が未取得です。' : '背景画像が未選択です。')))
           : 'YouTubeリンクを指定してください。'
       });
 
       const children = [info, typeLabel, typeSelect, youtubeLabel, youtubeInput, imageLabel, imageInput];
+      if (state.background.type === 'localPhoto') {
+        children.push(localPhotoActions);
+      }
       if (libraryContainer) {
         children.push(libraryContainer);
       }
-      if (state.background.type === 'image') {
+      if (isImageBasedBackgroundType(state.background.type)) {
         children.push(currentStatus);
       }
       children.push(actions);
@@ -1564,7 +1717,7 @@
       if (bg.type === 'youtube') {
         return !!extractYouTubeID(bg.youtubeId);
       }
-      if (bg.type === 'image') {
+      if (isImageBasedBackgroundType(bg.type)) {
         return !!bg.assetKey || !!bg.assetURL;
       }
       return false;
@@ -1604,7 +1757,7 @@
 
       const bgButton = createElement('button', { className: 'flat', type: 'button', textContent: '背景を変える' });
       bgButton.addEventListener('click', () => {
-        state.pendingBackgroundChange = { type: '', youtubeId: '', assetKey: null, assetURL: '', libraryPath: null };
+        state.pendingBackgroundChange = createEmptyBackgroundSelection();
         setStage('changeBG');
       });
       actions.appendChild(bgButton);
@@ -1618,7 +1771,7 @@
         if (!confirm('現在の入力内容をクリアして次の話に進みますか？（シリーズIDは維持されます）')) return;
         ensureSeriesRootQuestID();
         state.episodeNumber = Math.max(1, Number(state.episodeNumber || 1)) + 1;
-        state.background = { type: '', youtubeId: '', assetKey: null, assetURL: '', libraryPath: null };
+        state.background = createEmptyBackgroundSelection();
         state.flowOps = [];
         state.undoStack = [];
         state.redoStack = [];
@@ -2154,13 +2307,13 @@
 
     function renderChangeBackground() {
       if (!state.pendingBackgroundChange) {
-        state.pendingBackgroundChange = { type: '', youtubeId: '', assetKey: null, assetURL: '', libraryPath: null };
+        state.pendingBackgroundChange = createEmptyBackgroundSelection();
       }
       const info = createElement('p', { textContent: '変更後の背景を選択します。' });
       const typeLabel = createElement('label', { textContent: '背景タイプ' });
       const typeSelect = createElement('select');
-      ['', 'youtube', 'image'].forEach(value => {
-        const option = createElement('option', { value, textContent: value === '' ? '選択してください' : (value === 'youtube' ? 'YouTube' : '画像') });
+      ['', 'youtube', 'image', 'localPhoto'].forEach(value => {
+        const option = createElement('option', { value, textContent: backgroundTypeLabel(value) });
         if (state.pendingBackgroundChange.type === value) option.selected = true;
         typeSelect.appendChild(option);
       });
@@ -2171,8 +2324,37 @@
 
       const imageLabel = createElement('label', { htmlFor: 'change-bg-image', textContent: '背景画像 (アップロード)' });
       const imageInput = createElement('input', { type: 'file', id: 'change-bg-image', accept: 'image/*,.heic,.heif' });
-      const showImageControls = state.pendingBackgroundChange.type === 'image';
+      const showImageControls = isImageBasedBackgroundType(state.pendingBackgroundChange.type);
       imageLabel.style.display = imageInput.style.display = showImageControls ? 'block' : 'none';
+
+      const localPhotoActions = createElement('div', { className: 'button-row' });
+      localPhotoActions.style.display = state.pendingBackgroundChange.type === 'localPhoto' ? 'flex' : 'none';
+      const livePhotoButton = createElement('button', { className: 'flat', type: 'button', textContent: 'ライブビューで撮影' });
+      livePhotoButton.addEventListener('click', async () => {
+        try {
+          const picked = await pickLivePhotoFromCamera();
+          state.pendingBackgroundChange.assetKey = storeAsset(picked.dataUrl, 'background', picked.name || `live-${Date.now()}.jpg`);
+          state.pendingBackgroundChange.assetURL = '';
+          state.pendingBackgroundChange.libraryPath = null;
+          renderStage();
+        } catch (error) {
+          alert(error?.message || String(error));
+        }
+      });
+      const fallbackPhotoButton = createElement('button', { className: 'flat', type: 'button', textContent: '低視点マップを生成（代替）' });
+      fallbackPhotoButton.addEventListener('click', async () => {
+        try {
+          const coordinate = await ensureCoordinateForLocalPhoto();
+          const dataUrl = await generateLowAngleFallbackPhoto(coordinate);
+          state.pendingBackgroundChange.assetKey = storeAsset(dataUrl, 'background', `fallback-map-${Date.now()}.jpg`);
+          state.pendingBackgroundChange.assetURL = '';
+          state.pendingBackgroundChange.libraryPath = null;
+          renderStage();
+        } catch (error) {
+          alert(error?.message || String(error));
+        }
+      });
+      localPhotoActions.append(livePhotoButton, fallbackPhotoButton);
 
       let libraryContainer = null;
       if (state.pendingBackgroundChange.type === 'image') {
@@ -2274,7 +2456,7 @@
       typeSelect.addEventListener('change', () => {
         state.pendingBackgroundChange.type = typeSelect.value;
         if (typeSelect.value !== 'youtube') state.pendingBackgroundChange.youtubeId = '';
-        if (typeSelect.value !== 'image') {
+        if (!isImageBasedBackgroundType(typeSelect.value)) {
           state.pendingBackgroundChange.assetKey = null;
           state.pendingBackgroundChange.assetURL = '';
           state.pendingBackgroundChange.libraryPath = null;
@@ -2316,7 +2498,7 @@
           alert('有効なYouTubeリンクまたはIDを入力してください。');
           return;
         }
-        if (type === 'image' && !state.pendingBackgroundChange.assetKey && !state.pendingBackgroundChange.assetURL) {
+        if (isImageBasedBackgroundType(type) && !state.pendingBackgroundChange.assetKey && !state.pendingBackgroundChange.assetURL) {
           alert('画像をアップロードするか、アップロード済みの背景から選択してください。');
           return;
         }
@@ -2336,20 +2518,23 @@
 
       const currentStatus = createElement('p', {
         className: 'log',
-        textContent: state.pendingBackgroundChange.type === 'image'
+        textContent: isImageBasedBackgroundType(state.pendingBackgroundChange.type)
           ? (state.pendingBackgroundChange.assetKey
               ? `選択済み: asset://${state.pendingBackgroundChange.assetKey}`
               : (state.pendingBackgroundChange.assetURL
                 ? `選択済み: ${state.pendingBackgroundChange.libraryPath || state.pendingBackgroundChange.assetURL}`
-                : '背景画像が未選択です。'))
+                : (state.pendingBackgroundChange.type === 'localPhoto' ? 'まだ現地写真が未取得です。' : '背景画像が未選択です。')))
           : 'YouTubeリンクを指定してください。'
       });
 
       const children = [info, typeLabel, typeSelect, youtubeLabel, youtubeInput, imageLabel, imageInput];
+      if (state.pendingBackgroundChange.type === 'localPhoto') {
+        children.push(localPhotoActions);
+      }
       if (libraryContainer) {
         children.push(libraryContainer);
       }
-      if (state.pendingBackgroundChange.type === 'image') {
+      if (isImageBasedBackgroundType(state.pendingBackgroundChange.type)) {
         children.push(currentStatus);
       }
       children.push(actions);
@@ -2801,7 +2986,7 @@
       summary.innerHTML = `
         <li>タイトル: ${state.title || '(未設定)'}</li>
         <li>シリーズ: ${(state.seriesRootQuestID || '未設定')} / 第${Math.max(1, Number(state.episodeNumber || 1))}話</li>
-        <li>背景: ${state.background.type || '(未設定)'}</li>
+        <li>背景: ${backgroundTypeLabel(state.background.type) || '(未設定)'}</li>
         <li>フロー数: ${state.flowOps.length}</li>
         <li>ルナー報酬: ${state.reward.enabled ? `あり (${state.reward.lunarAmount})` : 'なし'}</li>
         <li>クエスト後遷移: ${state.postQuest.scene || 'none'}</li>
@@ -2828,7 +3013,7 @@
           return;
         }
         appendFlowOp({ kind: 'bgYouTube', youtubeID: id, transition });
-      } else if (type === 'image') {
+      } else if (isImageBasedBackgroundType(type)) {
         appendFlowOp({ kind: 'bgImage', assetKey: pending.assetKey, assetURL: pending.assetURL, transition });
       }
       state.pendingBackgroundChange = null;
@@ -3229,7 +3414,7 @@
     function collectQuest() {
       if (!state.title.trim()) return null;
       if (!isBackgroundReady(state.background)) return null;
-      const bgType = state.background.type;
+      const bgType = normalizeBackgroundType(state.background.type);
       let bgURL = '';
       if (bgType === 'youtube') {
         const id = extractYouTubeID(state.background.youtubeId);
@@ -3323,7 +3508,7 @@
           authorDisplayName: state.authorDisplayName || null,
           seriesRootQuestID: state.seriesRootQuestID || null,
           episodeNumber: state.episodeNumber || 1,
-          bgType: state.background.type,
+          bgType: normalizeBackgroundType(state.background.type),
           bgURL: state.background.type === 'youtube' ? state.background.youtubeId : state.background.assetURL || state.background.assetKey,
           dialogLines: generateScriptLines(false),
           coverURL: state.cover.url || (state.cover.assetKey ? `asset://${state.cover.assetKey}` : ''),
@@ -3650,7 +3835,7 @@
 
     function getRequiredAssetKeys() {
       const keys = new Set();
-      if (state.background.type === 'image' && state.background.assetKey) {
+      if (isImageBasedBackgroundType(state.background.type) && state.background.assetKey) {
         keys.add(state.background.assetKey);
       }
       if (state.cover.assetKey) {
@@ -4039,7 +4224,7 @@
         const id = extractYouTubeID(state.background.youtubeId);
         return id || '';
       }
-      if (state.background.type === 'image') {
+      if (isImageBasedBackgroundType(state.background.type)) {
         if (state.background.assetURL) {
           return state.background.assetURL;
         }
@@ -4100,7 +4285,7 @@
         authorDisplayName: state.authorDisplayName || null,
         seriesRootQuestID: ensureSeriesRootQuestID(),
         episodeNumber: Math.max(1, Number(state.episodeNumber || 1)),
-        bgType: state.background.type,
+        bgType: normalizeBackgroundType(state.background.type),
         bgURL: backgroundURL,
         charPosition: 'center',
         charAnim: 'none',
@@ -4239,7 +4424,7 @@ if (firebaseConfigSaveButton) {
       state.authorDisplayName = '';
       state.seriesRootQuestID = '';
       state.episodeNumber = 1;
-      state.background = { type: '', youtubeId: '', assetKey: null, assetURL: '', libraryPath: null };
+      state.background = createEmptyBackgroundSelection();
       state.flowOps = [];
       state.undoStack = [];
       state.redoStack = [];
