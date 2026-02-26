@@ -820,16 +820,39 @@
       if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
         throw new Error('座標が不正です。');
       }
-      return `https://maps.googleapis.com/maps/api/streetview?size=1280x720&location=${lat},${lng}&radius=120&source=outdoor&fov=85&heading=0&pitch=0`;
+      const endpoint = buildBackendStreetViewEndpoint(lat, lng, 'live');
+      const response = await fetch(endpoint);
+      if (!response.ok) {
+        throw new Error('バックエンドのライブビュー取得に失敗しました。');
+      }
+      const payload = await response.json();
+      const resolved = (payload?.url || '').trim();
+      if (!resolved) {
+        throw new Error('バックエンドからライブビューURLが返されませんでした。');
+      }
+      return resolved;
     }
 
-    function generateLowAngleFallbackPhotoURL(coordinate) {
+    async function generateLowAngleFallbackPhotoURL(coordinate) {
       const lat = Number(coordinate.latitude);
       const lng = Number(coordinate.longitude);
       if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
         throw new Error('座標が不正です。');
       }
-      return `https://static-maps.yandex.ru/1.x/?lang=ja_JP&ll=${lng},${lat}&z=17&size=650,450&l=map&pt=${lng},${lat},pm2rdm`;
+      try {
+        const endpoint = buildBackendStreetViewEndpoint(lat, lng, 'low_angle');
+        const response = await fetch(endpoint);
+        if (response.ok) {
+          const payload = await response.json();
+          const resolved = (payload?.url || '').trim();
+          if (resolved) {
+            return resolved;
+          }
+        }
+      } catch (_) {
+        // バックエンドが未設定/失敗の場合は静的マップで代替
+      }
+      return `https://staticmap.openstreetmap.de/staticmap.php?center=${lat},${lng}&zoom=17&size=1280x720&markers=${lat},${lng},red-pushpin`;
     }
 
 
@@ -903,6 +926,7 @@
     let isTitleComposing = false;
 
     const FIREBASE_CONFIG_STORAGE_KEY = 'dbq-firebase-config';
+    const BACKEND_API_BASE_STORAGE_KEY = 'dbq-backend-api-base';
 
     let firebaseApp = null;
     let firebaseAuth = null;
@@ -917,6 +941,37 @@
     let youtubeOwnershipCheckInProgress = false;
     let youtubeOwnershipCache = new Set();
     let firebaseConfig = loadStoredFirebaseConfig();
+    let backendApiBase = loadStoredBackendApiBase();
+
+    function loadStoredBackendApiBase() {
+      if (!('localStorage' in window)) return '';
+      try {
+        const raw = window.localStorage.getItem(BACKEND_API_BASE_STORAGE_KEY);
+        return typeof raw === 'string' ? raw.trim() : '';
+      } catch {
+        return '';
+      }
+    }
+
+    function getBackendApiBase() {
+      const runtime = (window.DBQ_BACKEND_API_BASE || '').trim();
+      const stored = (backendApiBase || '').trim();
+      const base = runtime || stored;
+      return base.replace(/\/+$/, '');
+    }
+
+    function buildBackendStreetViewEndpoint(lat, lng, mode) {
+      const base = getBackendApiBase();
+      if (!base) {
+        throw new Error('バックエンドURLが未設定です。window.DBQ_BACKEND_API_BASE か localStorage(dbq-backend-api-base) を設定してください。');
+      }
+      const params = new URLSearchParams({
+        lat: String(lat),
+        lng: String(lng),
+        mode: mode || 'live'
+      });
+      return `${base}/api/streetview?${params.toString()}`;
+    }
 
     function createEmptyBackgroundSelection() {
       return { type: '', youtubeId: '', assetKey: null, assetURL: '', libraryPath: null };
@@ -1418,7 +1473,7 @@
           try {
             remoteURL = await resolveNearbyLocalPhotoURL(coordinate);
           } catch (_) {
-            remoteURL = generateLowAngleFallbackPhotoURL(coordinate);
+            remoteURL = await generateLowAngleFallbackPhotoURL(coordinate);
           }
           state.background.assetKey = null;
           state.background.assetURL = remoteURL;
@@ -1433,7 +1488,7 @@
       fallbackPhotoButton.addEventListener('click', async () => {
         try {
           const coordinate = await ensureCoordinateForLocalPhoto();
-          const remoteURL = generateLowAngleFallbackPhotoURL(coordinate);
+          const remoteURL = await generateLowAngleFallbackPhotoURL(coordinate);
           state.background.assetKey = null;
           state.background.assetURL = remoteURL;
           state.background.libraryPath = null;
@@ -2282,7 +2337,7 @@
           try {
             remoteURL = await resolveNearbyLocalPhotoURL(coordinate);
           } catch (_) {
-            remoteURL = generateLowAngleFallbackPhotoURL(coordinate);
+            remoteURL = await generateLowAngleFallbackPhotoURL(coordinate);
           }
           state.pendingBackgroundChange.assetKey = null;
           state.pendingBackgroundChange.assetURL = remoteURL;
@@ -2296,7 +2351,7 @@
       fallbackPhotoButton.addEventListener('click', async () => {
         try {
           const coordinate = await ensureCoordinateForLocalPhoto();
-          const remoteURL = generateLowAngleFallbackPhotoURL(coordinate);
+          const remoteURL = await generateLowAngleFallbackPhotoURL(coordinate);
           state.pendingBackgroundChange.assetKey = null;
           state.pendingBackgroundChange.assetURL = remoteURL;
           state.pendingBackgroundChange.libraryPath = null;
