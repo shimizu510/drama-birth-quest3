@@ -707,7 +707,9 @@
       }
 
       renderQuestPreview();
-      // Re-render stage to update button states for localPhoto
+      // Re-render stage to update button states for localPhoto when coordinates change
+      // This is necessary because localPhoto buttons' enabled/disabled state depends on coordinate availability
+      // Only re-renders when in relevant stages to avoid unnecessary updates
       if (state.stage === 'askBackground' || (state.stage === 'menu' && state.pendingBackgroundChange)) {
         renderStage();
       }
@@ -823,11 +825,13 @@
     }
 
     function simpleHash(str) {
+      // Simple string hash function using DJB2-like algorithm
+      // Formula: hash * 33 + char (expressed as (hash << 5) + hash + char for performance)
       let hash = 0;
       for (let i = 0; i < str.length; i++) {
         const char = str.charCodeAt(i);
-        hash = ((hash << 5) - hash) + char;
-        hash = hash & hash;
+        hash = ((hash << 5) - hash) + char; // hash * 31 + char
+        hash = hash & hash; // Convert to 32bit integer
       }
       return Math.abs(hash);
     }
@@ -835,6 +839,8 @@
     function generateProceduralBackground({ lat, lng, mode, questId = '' }) {
       console.log('[ProceduralBackground] Generating background', { lat, lng, mode, questId });
       
+      // Generate seed from coordinates, questId, and mode for consistent but unique backgrounds
+      // Note: Including questId ensures different quests at same location have distinct backgrounds
       const seedStr = `${lat.toFixed(6)},${lng.toFixed(6)},${questId},${mode}`;
       const seed = simpleHash(seedStr);
       
@@ -1114,6 +1120,7 @@
     }
 
     // DEPRECATED: No longer used for localPhoto - replaced with procedural generation
+    // TODO: Remove in future version after confirming no other features depend on these functions
     // Kept for backward compatibility only
     function buildBackendStreetViewEndpoint(lat, lng, mode) {
       const base = getBackendApiBase();
