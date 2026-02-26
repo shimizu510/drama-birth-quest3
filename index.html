@@ -818,13 +818,124 @@
       throw new Error('地図をクリックして座標を選んでください。');
     }
 
+    function simpleHash(str) {
+      let hash = 0;
+      for (let i = 0; i < str.length; i++) {
+        const char = str.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash;
+      }
+      return Math.abs(hash);
+    }
+
+    function generateProceduralBackground({ lat, lng, mode, questId = '' }) {
+      console.log('[ProceduralBackground] Generating background', { lat, lng, mode, questId });
+      
+      const seedStr = `${lat.toFixed(6)},${lng.toFixed(6)},${questId},${mode}`;
+      const seed = simpleHash(seedStr);
+      
+      const seededRandom = (function(s) {
+        let current = s;
+        return function() {
+          current = (current * 9301 + 49297) % 233280;
+          return current / 233280;
+        };
+      })(seed);
+      
+      const canvas = document.createElement('canvas');
+      canvas.width = 1280;
+      canvas.height = 720;
+      const ctx = canvas.getContext('2d');
+      
+      if (mode === 'live') {
+        const skyColorTop = `hsl(${200 + seededRandom() * 40}, ${60 + seededRandom() * 20}%, ${60 + seededRandom() * 20}%)`;
+        const skyColorBottom = `hsl(${180 + seededRandom() * 60}, ${50 + seededRandom() * 30}%, ${80 + seededRandom() * 10}%)`;
+        const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height * 0.6);
+        gradient.addColorStop(0, skyColorTop);
+        gradient.addColorStop(1, skyColorBottom);
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        const horizonY = canvas.height * (0.45 + seededRandom() * 0.1);
+        const groundGradient = ctx.createLinearGradient(0, horizonY, 0, canvas.height);
+        groundGradient.addColorStop(0, `hsl(${30 + seededRandom() * 40}, ${30 + seededRandom() * 20}%, ${40 + seededRandom() * 15}%)`);
+        groundGradient.addColorStop(1, `hsl(${20 + seededRandom() * 30}, ${25 + seededRandom() * 15}%, ${25 + seededRandom() * 10}%)`);
+        ctx.fillStyle = groundGradient;
+        ctx.fillRect(0, horizonY, canvas.width, canvas.height - horizonY);
+        
+        const buildingCount = 5 + Math.floor(seededRandom() * 8);
+        for (let i = 0; i < buildingCount; i++) {
+          const x = seededRandom() * canvas.width;
+          const width = 40 + seededRandom() * 120;
+          const height = 100 + seededRandom() * 300;
+          const opacity = 0.3 + seededRandom() * 0.4;
+          ctx.fillStyle = `rgba(0, 0, 0, ${opacity})`;
+          ctx.fillRect(x, horizonY - height, width, height);
+        }
+        
+        for (let i = 0; i < 200; i++) {
+          const x = seededRandom() * canvas.width;
+          const y = seededRandom() * canvas.height;
+          const size = seededRandom() * 2;
+          const opacity = seededRandom() * 0.3;
+          ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+          ctx.fillRect(x, y, size, size);
+        }
+      } else if (mode === 'low_angle') {
+        const skyColor = `hsl(${200 + seededRandom() * 30}, ${50 + seededRandom() * 20}%, ${70 + seededRandom() * 15}%)`;
+        ctx.fillStyle = skyColor;
+        ctx.fillRect(0, 0, canvas.width, canvas.height * 0.3);
+        
+        const roadGradient = ctx.createLinearGradient(0, canvas.height * 0.3, 0, canvas.height);
+        roadGradient.addColorStop(0, `hsl(${0 + seededRandom() * 20}, ${10 + seededRandom() * 10}%, ${60 + seededRandom() * 15}%)`);
+        roadGradient.addColorStop(1, `hsl(${0 + seededRandom() * 15}, ${5 + seededRandom() * 10}%, ${35 + seededRandom() * 10}%)`);
+        ctx.fillStyle = roadGradient;
+        ctx.fillRect(0, canvas.height * 0.3, canvas.width, canvas.height * 0.7);
+        
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+        ctx.lineWidth = 2;
+        const vanishingX = canvas.width * 0.5;
+        const vanishingY = canvas.height * 0.3;
+        for (let i = 0; i < 6; i++) {
+          const startX = (i - 3) * (canvas.width / 6) + canvas.width * 0.5;
+          ctx.beginPath();
+          ctx.moveTo(startX, canvas.height);
+          ctx.lineTo(vanishingX, vanishingY);
+          ctx.stroke();
+        }
+        
+        const shadowCount = 3 + Math.floor(seededRandom() * 4);
+        for (let i = 0; i < shadowCount; i++) {
+          const x = seededRandom() * canvas.width * 0.3;
+          const y = canvas.height * (0.5 + seededRandom() * 0.3);
+          const width = 80 + seededRandom() * 120;
+          const height = 150 + seededRandom() * 250;
+          const opacity = 0.4 + seededRandom() * 0.3;
+          ctx.fillStyle = `rgba(0, 0, 0, ${opacity})`;
+          ctx.fillRect(x, y, width, height);
+        }
+        
+        for (let i = 0; i < 150; i++) {
+          const x = seededRandom() * canvas.width;
+          const y = seededRandom() * canvas.height;
+          const size = seededRandom() * 2;
+          const opacity = seededRandom() * 0.2;
+          ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+          ctx.fillRect(x, y, size, size);
+        }
+      }
+      
+      return canvas.toDataURL('image/png');
+    }
+
     async function resolveNearbyLocalPhotoURL(coordinate) {
       const lat = Number(coordinate.latitude);
       const lng = Number(coordinate.longitude);
       if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
         throw new Error('座標が不正です。');
       }
-      return fetchStreetViewUrl(lat, lng, 'live');
+      const questId = state.title || '';
+      return generateProceduralBackground({ lat, lng, mode: 'live', questId });
     }
 
     async function generateLowAngleFallbackPhotoURL(coordinate) {
@@ -833,7 +944,8 @@
       if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
         throw new Error('座標が不正です。');
       }
-      return fetchStreetViewUrl(lat, lng, 'low_angle');
+      const questId = state.title || '';
+      return generateProceduralBackground({ lat, lng, mode: 'low_angle', questId });
     }
 
 
@@ -1558,38 +1670,26 @@
           backgroundType: state.background.type,
           locationMode: state.locationChoice.mode,
           selectedCoordinate: state.selectedCoordinate,
-          mapkitInitialized: state.mapkitInitialized,
-          hasBackendBase: isBackendApiBaseConfigured(),
-          hasGoogleMapsApiKey: isGoogleMapsApiKeyConfigured()
+          mapkitInitialized: state.mapkitInitialized
         });
         if (!(state.selectedCoordinate && Number.isFinite(state.selectedCoordinate.latitude) && Number.isFinite(state.selectedCoordinate.longitude))) {
-          setBackendApiBaseLog('地図をクリックして座標を選んでください');
-          mapLog.textContent = '地図をクリックして座標を選んでください。';
-          return;
-        }
-        if (!isLiveViewSourceConfigured()) {
-          openBackendApiBasePanelAndFocus('ライブビュー取得にはバックエンドURLまたはGoogle APIキーの設定が必要です。');
+          setBackendApiBaseLog('地図をクリック、または現在地を取得して座標を設定してください');
+          mapLog.textContent = '地図をクリック、または現在地を取得して座標を設定してください。';
           return;
         }
         try {
           const coordinate = await ensureCoordinateForLocalPhoto();
-          let remoteURL = '';
-          try {
-            remoteURL = await resolveNearbyLocalPhotoURL(coordinate);
-          } catch (_) {
-            remoteURL = await generateLowAngleFallbackPhotoURL(coordinate);
-          }
-          if (!remoteURL) {
-            openBackendApiBasePanelAndFocus('バックエンドURLまたはGoogle APIキーを設定してください。');
-            return;
-          }
+          const dataURL = await resolveNearbyLocalPhotoURL(coordinate);
+          console.log('[LocalPhoto][askBackground] Generated background (live mode)');
           state.background.assetKey = null;
-          state.background.assetURL = remoteURL;
+          state.background.assetURL = dataURL;
           state.background.libraryPath = null;
           renderQuestPreview();
           renderStage();
+          setBackendApiBaseLog('背景を生成しました');
         } catch (error) {
-          setBackendApiBaseLog(`ライブビュー取得に失敗しました: ${error?.message || String(error)}`);
+          console.error('[LocalPhoto][askBackground] Generation failed:', error);
+          setBackendApiBaseLog(`背景生成に失敗しました: ${error?.message || String(error)}`);
         }
       });
       const fallbackPhotoButton = createElement('button', { className: 'flat', type: 'button', textContent: '低視点マップを生成（代替）' });
@@ -1599,33 +1699,26 @@
           backgroundType: state.background.type,
           locationMode: state.locationChoice.mode,
           selectedCoordinate: state.selectedCoordinate,
-          mapkitInitialized: state.mapkitInitialized,
-          hasBackendBase: isBackendApiBaseConfigured(),
-          hasGoogleMapsApiKey: isGoogleMapsApiKeyConfigured()
+          mapkitInitialized: state.mapkitInitialized
         });
         if (!(state.selectedCoordinate && Number.isFinite(state.selectedCoordinate.latitude) && Number.isFinite(state.selectedCoordinate.longitude))) {
-          setBackendApiBaseLog('地図をクリックして座標を選んでください');
-          mapLog.textContent = '地図をクリックして座標を選んでください。';
-          return;
-        }
-        if (!isLiveViewSourceConfigured()) {
-          openBackendApiBasePanelAndFocus('低視点マップ生成にはバックエンドURLまたはGoogle APIキーの設定が必要です。');
+          setBackendApiBaseLog('地図をクリック、または現在地を取得して座標を設定してください');
+          mapLog.textContent = '地図をクリック、または現在地を取得して座標を設定してください。';
           return;
         }
         try {
           const coordinate = await ensureCoordinateForLocalPhoto();
-          const remoteURL = await generateLowAngleFallbackPhotoURL(coordinate);
-          if (!remoteURL) {
-            openBackendApiBasePanelAndFocus('バックエンドURLまたはGoogle APIキーを設定してください。');
-            return;
-          }
+          const dataURL = await generateLowAngleFallbackPhotoURL(coordinate);
+          console.log('[LocalPhoto][askBackground] Generated background (low_angle mode)');
           state.background.assetKey = null;
-          state.background.assetURL = remoteURL;
+          state.background.assetURL = dataURL;
           state.background.libraryPath = null;
           renderQuestPreview();
           renderStage();
+          setBackendApiBaseLog('低視点背景を生成しました');
         } catch (error) {
-          setBackendApiBaseLog(`低視点マップ取得に失敗しました: ${error?.message || String(error)}`);
+          console.error('[LocalPhoto][askBackground] Generation failed:', error);
+          setBackendApiBaseLog(`低視点背景生成に失敗しました: ${error?.message || String(error)}`);
         }
       });
       const hasCoordinate = state.selectedCoordinate && Number.isFinite(state.selectedCoordinate.latitude) && Number.isFinite(state.selectedCoordinate.longitude);
@@ -1633,9 +1726,7 @@
       livePhotoButton.disabled = !localPhotoConfigured;
       fallbackPhotoButton.disabled = !localPhotoConfigured;
       if (!hasCoordinate) {
-        setBackendApiBaseLog('地図をクリックして座標を選んでください');
-      } else if (!isLiveViewSourceConfigured()) {
-        setBackendApiBaseLog('Street View/低視点マップ生成には「バックエンドURL」または「Google APIキー」の設定が必要です。');
+        setBackendApiBaseLog('地図をクリック、または現在地を取得して座標を設定してください');
       }
       localPhotoActions.append(livePhotoButton, fallbackPhotoButton);
 
@@ -2475,37 +2566,25 @@
           pendingBackgroundType: state.pendingBackgroundChange?.type,
           locationMode: state.locationChoice.mode,
           selectedCoordinate: state.selectedCoordinate,
-          mapkitInitialized: state.mapkitInitialized,
-          hasBackendBase: isBackendApiBaseConfigured(),
-          hasGoogleMapsApiKey: isGoogleMapsApiKeyConfigured()
+          mapkitInitialized: state.mapkitInitialized
         });
         if (!(state.selectedCoordinate && Number.isFinite(state.selectedCoordinate.latitude) && Number.isFinite(state.selectedCoordinate.longitude))) {
-          setBackendApiBaseLog('地図をクリックして座標を選んでください');
-          mapLog.textContent = '地図をクリックして座標を選んでください。';
-          return;
-        }
-        if (!isLiveViewSourceConfigured()) {
-          openBackendApiBasePanelAndFocus('ライブビュー取得にはバックエンドURLまたはGoogle APIキーの設定が必要です。');
+          setBackendApiBaseLog('地図をクリック、または現在地を取得して座標を設定してください');
+          mapLog.textContent = '地図をクリック、または現在地を取得して座標を設定してください。';
           return;
         }
         try {
           const coordinate = await ensureCoordinateForLocalPhoto();
-          let remoteURL = '';
-          try {
-            remoteURL = await resolveNearbyLocalPhotoURL(coordinate);
-          } catch (_) {
-            remoteURL = await generateLowAngleFallbackPhotoURL(coordinate);
-          }
-          if (!remoteURL) {
-            openBackendApiBasePanelAndFocus('バックエンドURLまたはGoogle APIキーを設定してください。');
-            return;
-          }
+          const dataURL = await resolveNearbyLocalPhotoURL(coordinate);
+          console.log('[LocalPhoto][changeBackground] Generated background (live mode)');
           state.pendingBackgroundChange.assetKey = null;
-          state.pendingBackgroundChange.assetURL = remoteURL;
+          state.pendingBackgroundChange.assetURL = dataURL;
           state.pendingBackgroundChange.libraryPath = null;
           renderStage();
+          setBackendApiBaseLog('背景を生成しました');
         } catch (error) {
-          setBackendApiBaseLog(`ライブビュー取得に失敗しました: ${error?.message || String(error)}`);
+          console.error('[LocalPhoto][changeBackground] Generation failed:', error);
+          setBackendApiBaseLog(`背景生成に失敗しました: ${error?.message || String(error)}`);
         }
       });
       const fallbackPhotoButton = createElement('button', { className: 'flat', type: 'button', textContent: '低視点マップを生成（代替）' });
@@ -2515,32 +2594,25 @@
           pendingBackgroundType: state.pendingBackgroundChange?.type,
           locationMode: state.locationChoice.mode,
           selectedCoordinate: state.selectedCoordinate,
-          mapkitInitialized: state.mapkitInitialized,
-          hasBackendBase: isBackendApiBaseConfigured(),
-          hasGoogleMapsApiKey: isGoogleMapsApiKeyConfigured()
+          mapkitInitialized: state.mapkitInitialized
         });
         if (!(state.selectedCoordinate && Number.isFinite(state.selectedCoordinate.latitude) && Number.isFinite(state.selectedCoordinate.longitude))) {
-          setBackendApiBaseLog('地図をクリックして座標を選んでください');
-          mapLog.textContent = '地図をクリックして座標を選んでください。';
-          return;
-        }
-        if (!isLiveViewSourceConfigured()) {
-          openBackendApiBasePanelAndFocus('低視点マップ生成にはバックエンドURLまたはGoogle APIキーの設定が必要です。');
+          setBackendApiBaseLog('地図をクリック、または現在地を取得して座標を設定してください');
+          mapLog.textContent = '地図をクリック、または現在地を取得して座標を設定してください。';
           return;
         }
         try {
           const coordinate = await ensureCoordinateForLocalPhoto();
-          const remoteURL = await generateLowAngleFallbackPhotoURL(coordinate);
-          if (!remoteURL) {
-            openBackendApiBasePanelAndFocus('バックエンドURLまたはGoogle APIキーを設定してください。');
-            return;
-          }
+          const dataURL = await generateLowAngleFallbackPhotoURL(coordinate);
+          console.log('[LocalPhoto][changeBackground] Generated background (low_angle mode)');
           state.pendingBackgroundChange.assetKey = null;
-          state.pendingBackgroundChange.assetURL = remoteURL;
+          state.pendingBackgroundChange.assetURL = dataURL;
           state.pendingBackgroundChange.libraryPath = null;
           renderStage();
+          setBackendApiBaseLog('低視点背景を生成しました');
         } catch (error) {
-          setBackendApiBaseLog(`低視点マップ取得に失敗しました: ${error?.message || String(error)}`);
+          console.error('[LocalPhoto][changeBackground] Generation failed:', error);
+          setBackendApiBaseLog(`低視点背景生成に失敗しました: ${error?.message || String(error)}`);
         }
       });
       const hasCoordinate = state.selectedCoordinate && Number.isFinite(state.selectedCoordinate.latitude) && Number.isFinite(state.selectedCoordinate.longitude);
@@ -2548,9 +2620,7 @@
       livePhotoButton.disabled = !localPhotoConfigured;
       fallbackPhotoButton.disabled = !localPhotoConfigured;
       if (!hasCoordinate) {
-        setBackendApiBaseLog('地図をクリックして座標を選んでください');
-      } else if (!isLiveViewSourceConfigured()) {
-        setBackendApiBaseLog('Street View/低視点マップ生成には「バックエンドURL」または「Google APIキー」の設定が必要です。');
+        setBackendApiBaseLog('地図をクリック、または現在地を取得して座標を設定してください');
       }
       localPhotoActions.append(livePhotoButton, fallbackPhotoButton);
 
