@@ -707,6 +707,10 @@
       }
 
       renderQuestPreview();
+      // Re-render stage to update button states for localPhoto
+      if (state.stage === 'askBackground' || (state.stage === 'menu' && state.pendingBackgroundChange)) {
+        renderStage();
+      }
     }
 
     function getBrowserGeolocation() {
