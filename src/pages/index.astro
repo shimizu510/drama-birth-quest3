@@ -1,0 +1,37 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const questsDir = fileURLToPath(new URL('../data/quests/', import.meta.url));
+const questFiles = fs.readdirSync(questsDir).filter((f) => f.endsWith('.json'));
+const quests = questFiles.map((file) => {
+  const filePath = path.join(questsDir, file);
+  const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+  const questId = data.id || path.basename(file, '.json');
+  return {
+    id: questId,
+    title: data.title || data?.titles?.ja || data?.titles?.en || questId,
+  };
+});
+---
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quest Index</title>
+  </head>
+  <body>
+    <main>
+      <h1>Quest Index</h1>
+      <ul>
+        {quests.map((q) => (
+          <li>
+            <a href={`/quests/${q.id}/`}>{q.title}</a>
+          </li>
+        ))}
+      </ul>
+    </main>
+  </body>
+</html>
