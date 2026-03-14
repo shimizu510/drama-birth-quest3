@@ -9,7 +9,6 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "latest",
-    "@astrojs/adapter-static": "latest"
+    "astro": "5.18.0"
   }
 }
