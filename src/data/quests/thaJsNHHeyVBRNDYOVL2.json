@@ -1,0 +1,26 @@
+{
+  "id": "thaJsNHHeyVBRNDYOVL2",
+  "path": "src/data/quests/thaJsNHHeyVBRNDYOVL2.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/thaJsNHHeyVBRNDYOVL2/",
+  "title": "テストクエスト",
+  "titles": {
+    "ja": "テストクエスト"
+  },
+  "synopsis": "とりあえず、テストとして作成",
+  "synopses": {
+    "ja": "とりあえず、テストとして作成"
+  },
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "coverURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questCovers%2F8DA42BD7-298B-4DBB-B1B3-DFAA933F7D48.heic?alt=media&token=1c4f6808-131b-41a8-a838-25046770a1a7",
+  "authorUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
+  "authorDisplayName": "Yuji Shimizu",
+  "episodeNumber": 1,
+  "seriesRootQuestID": "FDDA818E-2D56-43E5-AF21-6D6D9EE50A57",
+  "placeType": "dungeon",
+  "locationName": null,
+  "createdAt": "2026-03-14T12:19:27.904Z",
+  "updatedAt": "2026-03-14T12:19:33.855Z",
+  "webPagePath": "/quests/thaJsNHHeyVBRNDYOVL2/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/thaJsNHHeyVBRNDYOVL2/"
+}
