@@ -1,17 +1,20 @@
 ---
-import fs from 'node:fs';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+const questModules = import.meta.glob('../data/quests/*.json', { eager: true });
 
-const questsDir = fileURLToPath(new URL('../data/quests/', import.meta.url));
-const questFiles = fs.readdirSync(questsDir).filter((f) => f.endsWith('.json'));
-const quests = questFiles.map((file) => {
-  const filePath = path.join(questsDir, file);
-  const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-  const questId = data.id || path.basename(file, '.json');
+const quests = Object.entries(questModules).map(([filePath, module]) => {
+  const data = (module as { default?: Record<string, unknown> }).default ?? module;
+  const match = filePath.match(/\/([^/]+)\.json$/);
+  const questId =
+    (typeof data.id === 'string' && data.id) ||
+    (match ? match[1] : 'unknown');
+
   return {
     id: questId,
-    title: data.title || data?.titles?.ja || data?.titles?.en || questId,
+    title:
+      (typeof data.title === 'string' && data.title) ||
+      (typeof data?.titles?.ja === 'string' && data.titles.ja) ||
+      (typeof data?.titles?.en === 'string' && data.titles.en) ||
+      questId,
   };
 });
 ---

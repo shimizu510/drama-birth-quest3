@@ -1,17 +1,14 @@
 ---
-import fs from 'node:fs';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-
 export async function getStaticPaths() {
-  const questsDirUrl = new URL('../../data/quests/', import.meta.url);
-  const questsDir = fileURLToPath(questsDirUrl);
-  const files = fs.readdirSync(questsDir).filter((f) => f.endsWith('.json'));
+  const questModules = import.meta.glob('../../data/quests/*.json', { eager: true });
 
-  return files.map((file) => {
-    const filePath = path.join(questsDir, file);
-    const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-    const questId = data.id || path.basename(file, '.json');
+  return Object.entries(questModules).map(([filePath, module]) => {
+    const data = (module as { default?: Record<string, unknown> }).default ?? module;
+    const match = filePath.match(/\/([^/]+)\.json$/);
+    const questId =
+      (typeof data.id === 'string' && data.id) ||
+      (match ? match[1] : 'unknown');
+
     return {
       params: { questId },
       props: { quest: { ...data, id: questId } },
