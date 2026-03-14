@@ -1,0 +1,49 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+export async function getStaticPaths() {
+  const questsDirUrl = new URL('../../data/quests/', import.meta.url);
+  const questsDir = fileURLToPath(questsDirUrl);
+  const files = fs.readdirSync(questsDir).filter((f) => f.endsWith('.json'));
+
+  return files.map((file) => {
+    const filePath = path.join(questsDir, file);
+    const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+    const questId = data.id || path.basename(file, '.json');
+    return {
+      params: { questId },
+      props: { quest: { ...data, id: questId } },
+    };
+  });
+}
+
+const { quest } = Astro.props;
+const title = quest.title || quest?.titles?.ja || quest?.titles?.en || quest.id;
+const synopsis = quest.synopsis || quest?.synopses?.ja || quest?.synopses?.en;
+---
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <main>
+      <h1>{title}</h1>
+      {synopsis ? <p>{synopsis}</p> : null}
+      <dl>
+        <dt>Quest ID</dt>
+        <dd>{quest.id}</dd>
+      </dl>
+      <pre style="overflow:auto; background:#f6f8fa; padding:12px; border-radius:6px;">
+        {JSON.stringify(quest, null, 2)}
+      </pre>
+      <p>
+        <a href="/">Home</a>
+      </p>
+    </main>
+  </body>
+</html>
