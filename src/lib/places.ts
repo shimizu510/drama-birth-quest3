@@ -12,6 +12,11 @@ export interface NormalizedPlace {
   openingHoursSummary: string | null;
   menuURL: string | null;
   roomSummary: string | null;
+  experienceTags: string[];
+  familyTags: string[];
+  accessibilityTags: string[];
+  budgetTags: string[];
+  onsiteTags: string[];
   status: string | null;
   webPagePath: string;
   webPageURL: string | null;
@@ -67,6 +72,11 @@ export function normalizePlace(filePath: string, module: unknown): NormalizedPla
     openingHoursSummary: asString(source.openingHoursSummary),
     menuURL: asString(source.menuURL),
     roomSummary: asString(source.roomSummary),
+    experienceTags: Array.isArray(source.experienceTags) ? source.experienceTags.flatMap((value) => asString(value) ? [asString(value)!] : []) : [],
+    familyTags: Array.isArray(source.familyTags) ? source.familyTags.flatMap((value) => asString(value) ? [asString(value)!] : []) : [],
+    accessibilityTags: Array.isArray(source.accessibilityTags) ? source.accessibilityTags.flatMap((value) => asString(value) ? [asString(value)!] : []) : [],
+    budgetTags: Array.isArray(source.budgetTags) ? source.budgetTags.flatMap((value) => asString(value) ? [asString(value)!] : []) : [],
+    onsiteTags: Array.isArray(source.onsiteTags) ? source.onsiteTags.flatMap((value) => asString(value) ? [asString(value)!] : []) : [],
     status: asString(source.status),
     webPagePath: withTrailingSlash(asString(source.webPagePath) ?? `/places/${slug}`),
     webPageURL: asString(source.webPageURL),
@@ -106,6 +116,7 @@ export function getPlaceDescription(place: NormalizedPlace): string {
     place.category ? `カテゴリは${place.category}` : null,
     place.priceRange ? `価格帯は${place.priceRange}` : null,
     place.openingHoursSummary ? `営業時間は${place.openingHoursSummary}` : null,
+    place.experienceTags.length > 0 ? `特徴は${place.experienceTags.join('・')}` : null,
   ].filter((value): value is string => !!value);
 
   return `${place.title} の場所ページです。${place.address}。${stats.join('、')}を掲載しています。${extras.join('。')}`;
@@ -117,4 +128,22 @@ export function formatPlaceRating(ratingAverage: number): string {
 
 export function shouldIndexPlace(place: NormalizedPlace): boolean {
   return place.questCount > 0 || place.photoCount > 0 || place.commentCount > 0;
+}
+
+export function tagLabel(tag: string): string {
+  const map: Record<string, string> = {
+    family: '子連れ',
+    barrier_free: 'バリアフリー',
+    budget: '低予算',
+    onsite_strategy: '現地攻略',
+    kids_friendly: 'キッズ向け',
+    step_light_possible: '段差少なめ候補',
+    rest_space_possible: '休憩しやすい候補',
+    free_or_public: '無料・公共寄り',
+    low_cost: '低コスト',
+    short_stay_ok: '短時間立ち寄り向き',
+    rainy_day_ok: '雨の日向き',
+    walkable: '歩いて回りやすい',
+  };
+  return map[tag] ?? tag;
 }

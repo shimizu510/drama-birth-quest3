@@ -1,7 +1,7 @@
 ---
 import { buildAbsoluteUrl, formatDateLabel } from '../../lib/quests';
 import { normalizeQuest } from '../../lib/quests';
-import { formatPlaceRating, getPlaceDescription, normalizePlace } from '../../lib/places';
+import { formatPlaceRating, getPlaceDescription, normalizePlace, tagLabel } from '../../lib/places';
 
 export async function getStaticPaths() {
   const placeModules = import.meta.glob('../../data/places/*.json', { eager: true });
@@ -61,6 +61,8 @@ const jsonLd = {
       .note { padding: 18px; border-radius: 18px; background: rgba(196, 93, 52, 0.08); }
       .comment-card { padding: 14px 0; border-top: 1px solid rgba(31,41,55,0.08); }
       .comment-card:first-child { border-top: none; padding-top: 0; }
+      .tag-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+      .tag { border-radius: 999px; padding: 7px 12px; font-size: 0.92rem; font-weight: 700; background: rgba(138,57,24,0.12); color: #8a3918; }
     </style>
   </head>
   <body>
@@ -93,6 +95,46 @@ const jsonLd = {
 
         <section class="section">
           <h2>場所情報</h2>
+          {place.experienceTags.length > 0 && (
+            <>
+              <p class="muted">この場所の特徴</p>
+              <div class="tag-row">
+                {place.experienceTags.map((tag) => <span class="tag">{tagLabel(tag)}</span>)}
+              </div>
+            </>
+          )}
+          {place.familyTags.length > 0 && (
+            <>
+              <p class="muted">子連れメモ</p>
+              <div class="tag-row">
+                {place.familyTags.map((tag) => <span class="tag">{tagLabel(tag)}</span>)}
+              </div>
+            </>
+          )}
+          {place.accessibilityTags.length > 0 && (
+            <>
+              <p class="muted">バリアフリー候補</p>
+              <div class="tag-row">
+                {place.accessibilityTags.map((tag) => <span class="tag">{tagLabel(tag)}</span>)}
+              </div>
+            </>
+          )}
+          {place.budgetTags.length > 0 && (
+            <>
+              <p class="muted">予算感の目安</p>
+              <div class="tag-row">
+                {place.budgetTags.map((tag) => <span class="tag">{tagLabel(tag)}</span>)}
+              </div>
+            </>
+          )}
+          {place.onsiteTags.length > 0 && (
+            <>
+              <p class="muted">現地攻略メモ</p>
+              <div class="tag-row">
+                {place.onsiteTags.map((tag) => <span class="tag">{tagLabel(tag)}</span>)}
+              </div>
+            </>
+          )}
           <p class="muted">住所: {place.address}</p>
           {place.category && <p class="muted">カテゴリ: {place.category}</p>}
           <p class="muted">電話番号: {place.phoneNumber ?? '未登録'}</p>
