@@ -35,6 +35,27 @@ const hasUnsupportedCoverImage = Boolean(quest.coverURL && !displayableCoverImag
 const subtitle = getQuestSubtitle(quest);
 const publishedAt = formatDateLabel(quest.createdAt);
 const updatedAt = formatDateLabel(quest.updatedAt);
+const storyPlayback = quest.storyPlayback;
+const storyPlaybackBackground =
+  storyPlayback && isBrowserDisplayableImage(storyPlayback.backgroundURL)
+    ? storyPlayback.backgroundURL
+    : displayableCoverImage;
+const storyPlaybackSteps = storyPlayback?.steps ?? [];
+const hasStoryPlayback = storyPlaybackSteps.length > 0;
+const initialStoryStep = hasStoryPlayback ? storyPlaybackSteps[0] : null;
+const initialStoryCharacters = new Map();
+
+if (initialStoryStep?.character) {
+  initialStoryCharacters.set(initialStoryStep.character.position, initialStoryStep.character);
+}
+
+const initialStoryCharacterEntries = Array.from(initialStoryCharacters.entries());
+const storyPlaybackPayload = hasStoryPlayback
+  ? JSON.stringify({
+      backgroundURL: storyPlaybackBackground,
+      steps: storyPlaybackSteps,
+    })
+  : '';
 const structuredData = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'CreativeWork',
@@ -262,6 +283,241 @@ const structuredData = JSON.stringify({
         gap: 14px;
       }
 
+      .story-player {
+        display: grid;
+        gap: 18px;
+      }
+
+      .story-player-header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .story-player-header p,
+      .story-player-meta,
+      .story-player-hint,
+      .story-progress {
+        color: var(--muted);
+      }
+
+      .story-player-header p,
+      .story-player-meta,
+      .story-player-hint {
+        margin: 0;
+      }
+
+      .story-player-meta {
+        font-size: 0.92rem;
+      }
+
+      .story-stage {
+        position: relative;
+        overflow: hidden;
+        min-height: min(68vw, 520px);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background:
+          linear-gradient(180deg, rgba(13, 23, 34, 0.12), rgba(13, 23, 34, 0.58)),
+          linear-gradient(135deg, rgba(34, 45, 59, 0.95), rgba(110, 74, 43, 0.82));
+      }
+
+      .story-stage-background {
+        position: absolute;
+        inset: 0;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        transform: scale(1.02);
+      }
+
+      .story-stage-background::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, rgba(10, 16, 24, 0.12) 0%, rgba(10, 16, 24, 0.48) 72%, rgba(10, 16, 24, 0.78) 100%),
+          linear-gradient(90deg, rgba(10, 16, 24, 0.18), transparent 38%, rgba(10, 16, 24, 0.18));
+      }
+
+      .story-character-layer {
+        position: absolute;
+        inset: 0;
+      }
+
+      .story-character {
+        position: absolute;
+        bottom: 76px;
+        z-index: 1;
+        width: clamp(160px, 25vw, 280px);
+        max-height: calc(100% - 112px);
+        object-fit: contain;
+        object-position: bottom center;
+        filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.34));
+      }
+
+      .story-character[data-position='left'] {
+        left: clamp(14px, 3vw, 28px);
+      }
+
+      .story-character[data-position='center'] {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .story-character[data-position='right'] {
+        right: clamp(14px, 3vw, 28px);
+      }
+
+      .story-character[data-entrance='fade'] {
+        animation: story-fade-in 480ms ease-out both, story-float 4.2s ease-in-out 520ms infinite;
+      }
+
+      .story-character[data-entrance='slide'] {
+        animation: story-slide-in 560ms cubic-bezier(0.22, 1, 0.36, 1) both, story-float 4.2s ease-in-out 600ms infinite;
+      }
+
+      .story-character[data-entrance='none'] {
+        animation: story-float 4.2s ease-in-out infinite;
+      }
+
+      .story-dialogue-box {
+        position: absolute;
+        right: 18px;
+        bottom: 18px;
+        left: 18px;
+        z-index: 2;
+        padding: 18px 18px 16px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 20px;
+        background: rgba(12, 18, 28, 0.76);
+        backdrop-filter: blur(8px);
+        color: #f6efe6;
+      }
+
+      .story-label-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+
+      .story-label {
+        display: inline-flex;
+        align-items: center;
+        min-height: 30px;
+        padding: 0 12px;
+        border-radius: 999px;
+        background: rgba(211, 92, 45, 0.92);
+        color: white;
+        font-size: 0.84rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+      }
+
+      .story-label[data-variant='narration'] {
+        background: rgba(255, 255, 255, 0.14);
+      }
+
+      .story-progress {
+        font-size: 0.84rem;
+      }
+
+      .story-text {
+        margin: 0;
+        font-size: clamp(1rem, 2vw, 1.12rem);
+        line-height: 1.9;
+        white-space: pre-wrap;
+      }
+
+      .story-player-controls {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .story-control-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .story-next-button {
+        min-width: 132px;
+        min-height: 46px;
+        padding: 0 18px;
+        border: 0;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+        color: white;
+        font: inherit;
+        font-weight: 800;
+        cursor: pointer;
+      }
+
+      .story-next-button:hover {
+        filter: brightness(1.04);
+      }
+
+      .story-next-button:focus-visible,
+      .story-player-link:focus-visible,
+      .cta-button:focus-visible,
+      .back-link:focus-visible {
+        outline: 3px solid rgba(211, 92, 45, 0.26);
+        outline-offset: 2px;
+      }
+
+      .story-player-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 42px;
+        padding: 0 16px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      @keyframes story-fade-in {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes story-slide-in {
+        from {
+          opacity: 0;
+          translate: 0 24px;
+        }
+
+        to {
+          opacity: 1;
+          translate: 0 0;
+        }
+      }
+
+      @keyframes story-float {
+        0%,
+        100% {
+          translate: 0 0;
+        }
+
+        50% {
+          translate: 0 -8px;
+        }
+      }
+
       .cover img {
         width: 100%;
         aspect-ratio: 16 / 9;
@@ -309,6 +565,42 @@ const structuredData = JSON.stringify({
         .hero-grid,
         .panel {
           padding: 18px;
+        }
+
+        .story-stage {
+          min-height: 460px;
+        }
+
+        .story-character {
+          width: clamp(140px, 38vw, 220px);
+          bottom: 104px;
+        }
+
+        .story-character[data-position='left'] {
+          left: 6px;
+        }
+
+        .story-character[data-position='right'] {
+          right: 6px;
+        }
+
+        .story-dialogue-box {
+          right: 12px;
+          bottom: 12px;
+          left: 12px;
+          padding: 15px 14px 14px;
+        }
+
+        .story-player-controls,
+        .story-player-header {
+          align-items: stretch;
+        }
+
+        .story-control-group,
+        .story-next-button,
+        .story-player-link {
+          width: 100%;
+          justify-content: center;
         }
       }
     </style>
@@ -371,6 +663,69 @@ const structuredData = JSON.stringify({
       </article>
 
       <section class="content">
+        {hasStoryPlayback ? (
+          <div class="panel story-player">
+            <div class="story-player-header">
+              <div>
+                <h2>ストーリー演出</h2>
+                <p>背景、登場人物、ナレーション、セリフを順番に再生できます。</p>
+              </div>
+              <p class="story-player-meta">全 {storyPlaybackSteps.length} ステップ</p>
+            </div>
+
+            <section data-story-player data-story-playback={storyPlaybackPayload}>
+              <div class="story-stage">
+                <div
+                  class="story-stage-background"
+                  data-story-background
+                  style={storyPlaybackBackground ? `background-image: url("${storyPlaybackBackground}")` : undefined}
+                ></div>
+
+                <div class="story-character-layer" data-story-characters>
+                  {initialStoryCharacterEntries.map(([position, character]) => (
+                    <img
+                      class="story-character"
+                      data-position={position}
+                      data-entrance={character.entrance}
+                      src={character.imageURL}
+                      alt=""
+                      loading="eager"
+                    />
+                  ))}
+                </div>
+
+                <div class="story-dialogue-box">
+                  <div class="story-label-row">
+                    <span
+                      class="story-label"
+                      data-story-label
+                      data-variant={initialStoryStep?.type === 'narration' ? 'narration' : 'dialogue'}
+                    >
+                      {initialStoryStep?.type === 'dialogue'
+                        ? initialStoryStep.speakerName || '登場人物'
+                        : 'Narration'}
+                    </span>
+                    <span class="story-progress" data-story-progress>
+                      1 / {storyPlaybackSteps.length}
+                    </span>
+                  </div>
+                  <p class="story-text" data-story-text>{initialStoryStep?.text}</p>
+                </div>
+              </div>
+
+              <div class="story-player-controls">
+                <p class="story-player-hint">数秒ごとに自動で進みます。必要ならボタンでも進められます。</p>
+                <div class="story-control-group">
+                  {quest.appDownloadURL ? (
+                    <a class="story-player-link" href={appDownloadURL}>アプリで続きも体験する</a>
+                  ) : null}
+                  <button class="story-next-button" type="button" data-story-next>次へ</button>
+                </div>
+              </div>
+            </section>
+          </div>
+        ) : null}
+
         <div class="panel">
           <h2>概要</h2>
           <p>{metaDescription}</p>
@@ -397,5 +752,140 @@ const structuredData = JSON.stringify({
         ) : null}
       </section>
     </main>
+    {hasStoryPlayback ? (
+      <script is:inline>
+        (() => {
+          const root = document.querySelector('[data-story-player]');
+
+          if (!(root instanceof HTMLElement)) {
+            return;
+          }
+
+          const payload = root.dataset.storyPlayback;
+
+          if (!payload) {
+            return;
+          }
+
+          let data;
+
+          try {
+            data = JSON.parse(payload);
+          } catch {
+            return;
+          }
+
+          const steps = Array.isArray(data.steps) ? data.steps : [];
+
+          if (steps.length === 0) {
+            return;
+          }
+
+          const background = root.querySelector('[data-story-background]');
+          const characters = root.querySelector('[data-story-characters]');
+          const label = root.querySelector('[data-story-label]');
+          const text = root.querySelector('[data-story-text]');
+          const progress = root.querySelector('[data-story-progress]');
+          const nextButton = root.querySelector('[data-story-next]');
+
+          if (
+            !(background instanceof HTMLElement) ||
+            !(characters instanceof HTMLElement) ||
+            !(label instanceof HTMLElement) ||
+            !(text instanceof HTMLElement) ||
+            !(progress instanceof HTMLElement) ||
+            !(nextButton instanceof HTMLButtonElement)
+          ) {
+            return;
+          }
+
+          const castByPosition = new Map();
+          let index = 0;
+          let timerId = 0;
+
+          if (typeof data.backgroundURL === 'string' && data.backgroundURL) {
+            background.style.backgroundImage = `url("${data.backgroundURL}")`;
+          }
+
+          const renderCharacters = (currentStep) => {
+            const activeCharacter = currentStep && currentStep.character && currentStep.character.position
+              ? currentStep.character
+              : null;
+
+            characters.innerHTML = '';
+
+            ['left', 'center', 'right'].forEach((position) => {
+              const character = castByPosition.get(position);
+
+              if (!character || !character.imageURL) {
+                return;
+              }
+
+              const image = document.createElement('img');
+              image.className = 'story-character';
+              image.dataset.position = position;
+              image.dataset.entrance =
+                activeCharacter && activeCharacter.position === position
+                  ? activeCharacter.entrance || 'slide'
+                  : 'none';
+              image.src = character.imageURL;
+              image.alt = '';
+              image.loading = 'eager';
+              characters.appendChild(image);
+            });
+          };
+
+          const scheduleNext = (currentStep) => {
+            window.clearTimeout(timerId);
+
+            if (!currentStep || typeof currentStep.durationMs !== 'number' || currentStep.durationMs <= 0) {
+              return;
+            }
+
+            if (index >= steps.length - 1) {
+              return;
+            }
+
+            timerId = window.setTimeout(() => {
+              index += 1;
+              render();
+            }, currentStep.durationMs);
+          };
+
+          const render = () => {
+            const step = steps[index];
+
+            if (!step) {
+              return;
+            }
+
+            if (step.character && step.character.position) {
+              castByPosition.set(step.character.position, step.character);
+            }
+
+            renderCharacters(step);
+            label.textContent = step.type === 'dialogue' ? step.speakerName || '登場人物' : 'Narration';
+            label.dataset.variant = step.type === 'narration' ? 'narration' : 'dialogue';
+            text.textContent = step.text || '';
+            progress.textContent = `${index + 1} / ${steps.length}`;
+            nextButton.textContent = index >= steps.length - 1 ? '最初から見る' : '次へ';
+            scheduleNext(step);
+          };
+
+          nextButton.addEventListener('click', () => {
+            window.clearTimeout(timerId);
+            index = index >= steps.length - 1 ? 0 : index + 1;
+
+            if (index === 0) {
+              castByPosition.clear();
+            }
+
+            render();
+          });
+
+          render();
+        })();
+      </script>
+    ) : null}
   </body>
 </html>

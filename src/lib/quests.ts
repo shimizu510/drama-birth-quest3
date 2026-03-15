@@ -13,7 +13,30 @@ export type QuestRecord = {
   updatedAt: string | null;
   webPagePath: string;
   webPageURL: string | null;
+  storyPlayback: StoryPlayback | null;
   raw: Record<string, unknown>;
+};
+
+export type StoryPlaybackPosition = 'left' | 'center' | 'right';
+export type StoryPlaybackEntrance = 'fade' | 'slide' | 'none';
+
+export type StoryPlaybackCharacter = {
+  imageURL: string;
+  position: StoryPlaybackPosition;
+  entrance: StoryPlaybackEntrance;
+};
+
+export type StoryPlaybackStep = {
+  type: 'narration' | 'dialogue';
+  text: string;
+  durationMs: number | null;
+  speakerName: string | null;
+  character: StoryPlaybackCharacter | null;
+};
+
+export type StoryPlayback = {
+  backgroundURL: string | null;
+  steps: StoryPlaybackStep[];
 };
 
 type QuestModule = {
@@ -62,8 +85,97 @@ export function normalizeQuest(filePath: string, module: QuestModule | Record<st
     updatedAt: typeof data.updatedAt === 'string' && data.updatedAt ? data.updatedAt : null,
     webPagePath,
     webPageURL: typeof data.webPageURL === 'string' && data.webPageURL ? data.webPageURL : null,
+    storyPlayback: normalizeStoryPlayback(data.storyPlayback),
     raw: data,
   };
+}
+
+export function normalizeStoryPlayback(value: unknown): StoryPlayback | null {
+  if (!value || typeof value !== 'object') {
+    return null;
+  }
+
+  const playback = value as Record<string, unknown>;
+  const steps = Array.isArray(playback.steps)
+    ? playback.steps
+        .map((step) => normalizeStoryPlaybackStep(step))
+        .filter((step): step is StoryPlaybackStep => Boolean(step))
+    : [];
+
+  if (steps.length === 0) {
+    return null;
+  }
+
+  return {
+    backgroundURL:
+      typeof playback.backgroundURL === 'string' && playback.backgroundURL
+        ? playback.backgroundURL
+        : null,
+    steps,
+  };
+}
+
+function normalizeStoryPlaybackStep(value: unknown): StoryPlaybackStep | null {
+  if (!value || typeof value !== 'object') {
+    return null;
+  }
+
+  const step = value as Record<string, unknown>;
+  const type = step.type === 'dialogue' ? 'dialogue' : step.type === 'narration' ? 'narration' : null;
+  const text = typeof step.text === 'string' ? step.text.trim() : '';
+
+  if (!type || !text) {
+    return null;
+  }
+
+  return {
+    type,
+    text,
+    durationMs:
+      typeof step.durationMs === 'number' && Number.isFinite(step.durationMs) && step.durationMs > 0
+        ? step.durationMs
+        : null,
+    speakerName:
+      typeof step.speakerName === 'string' && step.speakerName.trim()
+        ? step.speakerName.trim()
+        : null,
+    character: normalizeStoryPlaybackCharacter(step.character),
+  };
+}
+
+function normalizeStoryPlaybackCharacter(value: unknown): StoryPlaybackCharacter | null {
+  if (!value || typeof value !== 'object') {
+    return null;
+  }
+
+  const character = value as Record<string, unknown>;
+  const imageURL = typeof character.imageURL === 'string' ? character.imageURL.trim() : '';
+
+  if (!imageURL) {
+    return null;
+  }
+
+  return {
+    imageURL,
+    position: normalizeStoryPlaybackPosition(character.position),
+    entrance: normalizeStoryPlaybackEntrance(character.entrance),
+  };
+}
+
+function normalizeStoryPlaybackPosition(value: unknown): StoryPlaybackPosition {
+  if (value === 'center' || value === 'right') {
+    return value;
+  }
+
+  return 'left';
+}
+
+function normalizeStoryPlaybackEntrance(value: unknown): StoryPlaybackEntrance {
+  if (value === 'fade' || value === 'none') {
+    return value;
+  }
+
+  return 'slide';
 }
 
 export function getLocalizedText(value: unknown): string | null {

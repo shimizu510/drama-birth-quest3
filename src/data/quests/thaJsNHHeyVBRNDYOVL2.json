@@ -13,6 +13,38 @@
   "sourceLanguageCode": "ja",
   "appDownloadURL": null,
   "coverURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questCovers%2F8DA42BD7-298B-4DBB-B1B3-DFAA933F7D48.heic?alt=media&token=1c4f6808-131b-41a8-a838-25046770a1a7",
+  "storyPlayback": {
+    "backgroundURL": "https://placehold.co/1280x720/png?text=Moonlit+Town",
+    "steps": [
+      {
+        "type": "narration",
+        "text": "静かな夜、冒険の幕がゆっくりと上がる。",
+        "durationMs": 1800
+      },
+      {
+        "type": "dialogue",
+        "speakerName": "勇者",
+        "text": "ここが最初の場所か。思ったより静かだな。",
+        "character": {
+          "imageURL": "https://placehold.co/420x860/png?text=Hero",
+          "position": "left",
+          "entrance": "fade"
+        },
+        "durationMs": 2200
+      },
+      {
+        "type": "dialogue",
+        "speakerName": "案内人",
+        "text": "準備はできていますか？ 今夜の選択が、これからの物語を変えます。",
+        "character": {
+          "imageURL": "https://placehold.co/420x860/png?text=Guide",
+          "position": "right",
+          "entrance": "slide"
+        },
+        "durationMs": 2200
+      }
+    ]
+  },
   "authorUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
   "authorDisplayName": "Yuji Shimizu",
   "episodeNumber": 1,
