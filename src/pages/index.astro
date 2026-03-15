@@ -6,11 +6,13 @@ import {
   getQuestSubtitle,
   normalizeQuest,
 } from '../lib/quests';
+import { getPlaceDescription, normalizePlace } from '../lib/places';
 
 const site = Astro.site;
 const canonical = buildAbsoluteUrl('/', site);
 const appDownloadURL = '#download-app';
 const questModules = import.meta.glob('../data/quests/*.json', { eager: true });
+const placeModules = import.meta.glob('../data/places/*.json', { eager: true });
 
 const quests = Object.entries(questModules)
   .map(([filePath, module]) => normalizeQuest(filePath, module))
@@ -20,9 +22,17 @@ const quests = Object.entries(questModules)
     return rightTime - leftTime;
   });
 
+const places = Object.entries(placeModules)
+  .map(([filePath, module]) => normalizePlace(filePath, module))
+  .sort((left, right) => {
+    const leftTime = left.updatedAt ? new Date(left.updatedAt).getTime() : 0;
+    const rightTime = right.updatedAt ? new Date(right.updatedAt).getTime() : 0;
+    return rightTime - leftTime;
+  });
+
 const pageTitle = 'Drama Birth Quest Archive';
 const pageDescription =
-  '公開中のクエスト一覧です。各クエストの固定ページからあらすじを確認し、アプリ公開後はそのままダウンロード導線へ進めます。';
+  'クエスト一覧と場所ページをまとめた公開アーカイブです。アプリで登録された場所、関連クエスト、今後追加される写真やコメントの入口になります。';
 ---
 <!doctype html>
 <html lang="ja">
@@ -186,13 +196,13 @@ const pageDescription =
         color: var(--muted);
       }
 
-      .quest-grid {
+      .card-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
         gap: 16px;
       }
 
-      .quest-card {
+      .content-card {
         display: flex;
         flex-direction: column;
         gap: 14px;
@@ -204,7 +214,7 @@ const pageDescription =
         text-decoration: none;
       }
 
-      .quest-card h3 {
+      .content-card h3 {
         margin: 0;
         font-size: 1.2rem;
       }
@@ -222,7 +232,7 @@ const pageDescription =
         line-height: 1.8;
       }
 
-      .quest-link {
+      .content-link {
         margin-top: auto;
         color: var(--accent-strong);
         font-weight: 700;
@@ -254,7 +264,7 @@ const pageDescription =
         }
 
         .hero,
-        .quest-card,
+        .content-card,
         .download {
           border-radius: 20px;
         }
@@ -265,12 +275,13 @@ const pageDescription =
     <main class="shell">
       <section class="hero">
         <p class="eyebrow">Quest Discovery</p>
-        <h1>物語クエストを、検索から見つけやすく。</h1>
+        <h1>クエストと場所の公開アーカイブ</h1>
         <p class="lead">
-          Drama Birth の公開クエスト一覧です。各ページではあらすじや作者情報を確認でき、アプリ公開後はそのまま体験導線につながる構成にしています。
+          アプリ内で公開されたクエストと、MapKit から登録された場所ページをまとめています。
+          これから写真、コメント、評価が場所ごとに集約されていく入口です。
         </p>
         <div class="hero-actions">
-          <a class="button button-primary" href={appDownloadURL}>アプリ案内を見る</a>
+          <a class="button button-primary" href="#places">場所ページを見る</a>
           <a class="button button-secondary" href="#quest-list">公開クエスト一覧へ</a>
         </div>
         <div class="stats">
@@ -279,13 +290,34 @@ const pageDescription =
             <strong class="stat-value">{quests.length}</strong>
           </div>
           <div class="stat">
-            <span class="stat-label">主な用途</span>
-            <strong class="stat-value">検索流入</strong>
+            <span class="stat-label">登録済みの場所</span>
+            <strong class="stat-value">{places.length}</strong>
           </div>
-          <div class="stat">
-            <span class="stat-label">公開形式</span>
-            <strong class="stat-value">固定URL</strong>
+        </div>
+      </section>
+
+      <section class="section" id="places">
+        <div class="section-header">
+          <div>
+            <h2>場所ページ</h2>
+            <p>MapKit から登録された場所を、アプリ独自データベースとして公開する一覧です。</p>
           </div>
+          <a class="button button-secondary" href="/places/">場所一覧へ</a>
+        </div>
+        <div class="card-grid">
+          {places.slice(0, 6).map((place) => (
+            <a class="content-card" href={place.webPagePath}>
+              <div>
+                <h3>{place.title}</h3>
+                <p class="quest-meta">{place.address}</p>
+                <p class="quest-meta">
+                  クエスト {place.questCount}件 / 写真 {place.photoCount}件 / コメント {place.commentCount}件
+                </p>
+              </div>
+              <p class="quest-summary">{getPlaceDescription(place)}</p>
+              <span class="content-link">場所ページを見る</span>
+            </a>
+          ))}
         </div>
       </section>
 
@@ -293,12 +325,12 @@ const pageDescription =
         <div class="section-header">
           <div>
             <h2>公開クエスト一覧</h2>
-            <p>各クエストページは個別URLで公開され、検索エンジンから直接参照できます。</p>
+            <p>各クエストページは個別URLで公開され、場所ページと並行して運用されます。</p>
           </div>
         </div>
-        <div class="quest-grid">
+        <div class="card-grid">
           {quests.map((quest) => (
-            <a class="quest-card" href={quest.webPagePath}>
+            <a class="content-card" href={quest.webPagePath}>
               <div>
                 <h3>{quest.title}</h3>
                 {getQuestSubtitle(quest) ? <p class="quest-meta">{getQuestSubtitle(quest)}</p> : null}
@@ -307,16 +339,17 @@ const pageDescription =
               {formatDateLabel(quest.updatedAt) ? (
                 <p class="quest-date">最終更新: {formatDateLabel(quest.updatedAt)}</p>
               ) : null}
-              <span class="quest-link">詳細ページを見る</span>
+              <span class="content-link">詳細ページを見る</span>
             </a>
           ))}
         </div>
       </section>
 
       <section class="download" id="download-app">
-        <h2>アプリ案内</h2>
+        <h2>場所ページの拡張予定</h2>
         <p>
-          App Store 公開前のため、現在はクエスト紹介ページを先行公開しています。ストアURLが確定したら、この導線を各ページ上部とトップページから直接案内できる状態にしています。
+          場所ページには今後、ユーザー写真、コメント、評価、関連クエストが段階的に追加されます。
+          現時点では場所登録と公開URLの基盤まで反映しています。
         </p>
       </section>
     </main>

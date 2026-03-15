@@ -1,0 +1,104 @@
+---
+import { buildAbsoluteUrl, formatDateLabel } from '../../lib/quests';
+import { formatPlaceRating, getPlaceDescription, normalizePlace } from '../../lib/places';
+
+export async function getStaticPaths() {
+  const placeModules = import.meta.glob('../../data/places/*.json', { eager: true });
+  return Object.entries(placeModules).map(([filePath, module]) => {
+    const place = normalizePlace(filePath, module);
+    return {
+      params: { slug: place.slug },
+      props: { place },
+    };
+  });
+}
+
+const { place } = Astro.props;
+const canonical = buildAbsoluteUrl(place.webPagePath, Astro.site);
+const pageTitle = `${place.title} | Drama Birth Quest Place`;
+const pageDescription = getPlaceDescription(place);
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Place',
+  name: place.title,
+  address: place.address,
+  url: canonical,
+  geo: place.latitude != null && place.longitude != null
+    ? { '@type': 'GeoCoordinates', latitude: place.latitude, longitude: place.longitude }
+    : undefined,
+};
+---
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={canonical} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <style>
+      body { margin: 0; font-family: "Hiragino Sans", "Noto Sans JP", sans-serif; background: #f7f3ec; color: #1f2937; }
+      .shell { width: min(920px, calc(100% - 32px)); margin: 0 auto; padding: 24px 0 72px; }
+      .panel { background: rgba(255,255,255,0.92); border: 1px solid rgba(31,41,55,0.12); border-radius: 28px; padding: 28px; box-shadow: 0 18px 48px rgba(43,34,19,0.08); }
+      .muted { color: #627181; line-height: 1.8; }
+      .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 14px; margin-top: 20px; }
+      .stat { border: 1px solid rgba(31,41,55,0.1); border-radius: 20px; padding: 16px; background: rgba(250,247,241,0.9); }
+      h1 { margin: 0; font-size: clamp(2rem, 5vw, 3.2rem); }
+      .back { display: inline-flex; margin-bottom: 18px; color: #8a3918; font-weight: 700; text-decoration: none; }
+      .section { margin-top: 24px; }
+      .note { padding: 18px; border-radius: 18px; background: rgba(196, 93, 52, 0.08); }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <a class="back" href="/places/">← 場所一覧へ戻る</a>
+      <article class="panel">
+        <p class="muted">Place Hub</p>
+        <h1>{place.title}</h1>
+        <p class="muted">{place.address}</p>
+        <p>{pageDescription}</p>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="muted">評価</div>
+            <strong>{formatPlaceRating(place.ratingAverage)}</strong>
+          </div>
+          <div class="stat">
+            <div class="muted">関連クエスト</div>
+            <strong>{place.questCount}件</strong>
+          </div>
+          <div class="stat">
+            <div class="muted">写真</div>
+            <strong>{place.photoCount}件</strong>
+          </div>
+          <div class="stat">
+            <div class="muted">コメント</div>
+            <strong>{place.commentCount}件</strong>
+          </div>
+        </div>
+
+        <section class="section">
+          <h2>場所情報</h2>
+          <p class="muted">住所: {place.address}</p>
+          {place.latitude != null && place.longitude != null && (
+            <p class="muted">座標: {place.latitude.toFixed(6)}, {place.longitude.toFixed(6)}</p>
+          )}
+          <p class="muted">更新日: {formatDateLabel(place.updatedAt ?? place.createdAt)}</p>
+        </section>
+
+        <section class="section note">
+          <h2>これから追加される情報</h2>
+          <p class="muted">
+            この場所ページには、アプリからアップロードされる写真、コメント、評価、関連クエストが今後追加されます。
+            現時点では場所登録と公開URLの基盤まで整えています。
+          </p>
+        </section>
+      </article>
+    </main>
+  </body>
+</html>
