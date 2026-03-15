@@ -116,12 +116,16 @@ export function getQuestSubtitle(quest: QuestRecord): string {
   return parts.join(' / ');
 }
 
-export function isOgImageSupported(url: string | null): boolean {
+export function isBrowserDisplayableImage(url: string | null): boolean {
   if (!url) {
     return false;
   }
 
-  return !/\.heic(\?|$)/i.test(url);
+  return !/\.hei[cf](\?|$)/i.test(url);
+}
+
+export function isOgImageSupported(url: string | null): boolean {
+  return isBrowserDisplayableImage(url);
 }
 
 export function formatDateLabel(value: string | null): string | null {

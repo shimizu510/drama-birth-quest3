@@ -4,6 +4,7 @@ import {
   formatDateLabel,
   getQuestDescription,
   getQuestSubtitle,
+  isBrowserDisplayableImage,
   isOgImageSupported,
   normalizeQuest,
 } from '../../lib/quests';
@@ -28,7 +29,9 @@ const synopsis = quest.synopsis;
 const metaDescription = getQuestDescription(quest);
 const canonical = buildAbsoluteUrl(quest.webPagePath, site);
 const appDownloadURL = quest.appDownloadURL || buildAbsoluteUrl('/#download-app', site);
+const displayableCoverImage = isBrowserDisplayableImage(quest.coverURL) ? quest.coverURL : null;
 const ogImage = isOgImageSupported(quest.coverURL) ? quest.coverURL : null;
+const hasUnsupportedCoverImage = Boolean(quest.coverURL && !displayableCoverImage);
 const subtitle = getQuestSubtitle(quest);
 const publishedAt = formatDateLabel(quest.createdAt);
 const updatedAt = formatDateLabel(quest.updatedAt);
@@ -185,6 +188,7 @@ const structuredData = JSON.stringify({
       .synopsis,
       .meta-card dd,
       .cover-note,
+      .cover-warning,
       .back-link {
         color: var(--muted);
       }
@@ -269,6 +273,11 @@ const structuredData = JSON.stringify({
 
       .cover-note {
         font-size: 0.92rem;
+      }
+
+      .cover-warning {
+        margin: 0;
+        line-height: 1.8;
       }
 
       .back-link {
@@ -367,12 +376,22 @@ const structuredData = JSON.stringify({
           <p>{metaDescription}</p>
         </div>
 
-        {quest.coverURL ? (
+        {displayableCoverImage ? (
           <div class="panel cover">
             <h2>クエストイメージ</h2>
-            <img src={quest.coverURL} alt={`${quest.title} のカバー画像`} loading="eager" />
+            <img src={displayableCoverImage} alt={`${quest.title} のカバー画像`} loading="eager" />
             <p class="cover-note">
               クエストの世界観を表すカバー画像です。検索結果や共有時の見え方はメタデータと連動して整備しています。
+            </p>
+          </div>
+        ) : null}
+
+        {hasUnsupportedCoverImage ? (
+          <div class="panel">
+            <h2>クエストイメージ</h2>
+            <p class="cover-warning">
+              カバー画像は登録されていますが、このページでは表示できない画像形式です。Web で表示するには
+              JPEG、PNG、WebP などの形式で `coverURL` を保存してください。
             </p>
           </div>
         ) : null}
