@@ -1,46 +1,382 @@
 ---
+import {
+  buildAbsoluteUrl,
+  formatDateLabel,
+  getQuestDescription,
+  getQuestSubtitle,
+  isOgImageSupported,
+  normalizeQuest,
+} from '../../lib/quests';
+
 export async function getStaticPaths() {
   const questModules = import.meta.glob('../../data/quests/*.json', { eager: true });
 
   return Object.entries(questModules).map(([filePath, module]) => {
-    const data = (module as { default?: Record<string, unknown> }).default ?? module;
-    const match = filePath.match(/\/([^/]+)\.json$/);
-    const questId =
-      (typeof data.id === 'string' && data.id) ||
-      (match ? match[1] : 'unknown');
+    const quest = normalizeQuest(filePath, module);
 
     return {
-      params: { questId },
-      props: { quest: { ...data, id: questId } },
+      params: { questId: quest.id },
+      props: { quest },
     };
   });
 }
 
 const { quest } = Astro.props;
-const title = quest.title || quest?.titles?.ja || quest?.titles?.en || quest.id;
-const synopsis = quest.synopsis || quest?.synopses?.ja || quest?.synopses?.en;
+const site = Astro.site;
+const pageTitle = `${quest.title} | Drama Birth Quest`;
+const synopsis = quest.synopsis;
+const metaDescription = getQuestDescription(quest);
+const canonical = buildAbsoluteUrl(quest.webPagePath, site);
+const appDownloadURL = quest.appDownloadURL || buildAbsoluteUrl('/#download-app', site);
+const ogImage = isOgImageSupported(quest.coverURL) ? quest.coverURL : null;
+const subtitle = getQuestSubtitle(quest);
+const publishedAt = formatDateLabel(quest.createdAt);
+const updatedAt = formatDateLabel(quest.updatedAt);
+const structuredData = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: quest.title,
+  description: metaDescription,
+  inLanguage: quest.sourceLanguageCode || 'ja',
+  url: canonical,
+  image: ogImage || undefined,
+  author: quest.authorDisplayName
+    ? {
+        '@type': 'Person',
+        name: quest.authorDisplayName,
+      }
+    : undefined,
+  datePublished: quest.createdAt || undefined,
+  dateModified: quest.updatedAt || quest.createdAt || undefined,
+});
 ---
 <!doctype html>
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
+    <title>{pageTitle}</title>
+    <meta name="description" content={metaDescription} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={canonical} />
+    {ogImage ? <meta property="og:image" content={ogImage} /> : null}
+    <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={metaDescription} />
+    {ogImage ? <meta name="twitter:image" content={ogImage} /> : null}
+    <script type="application/ld+json" set:html={structuredData}></script>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5efe5;
+        --surface: rgba(255, 255, 255, 0.9);
+        --surface-strong: #fffdf9;
+        --text: #1d2733;
+        --muted: #5d6775;
+        --line: rgba(29, 39, 51, 0.12);
+        --accent: #d35c2d;
+        --accent-strong: #8e3413;
+        --hero: linear-gradient(160deg, rgba(255, 243, 230, 0.92), rgba(255, 255, 255, 0.88));
+        --shadow: 0 24px 60px rgba(65, 41, 10, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Hiragino Sans", "Noto Sans JP", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top right, rgba(211, 92, 45, 0.16), transparent 24%),
+          linear-gradient(180deg, #efe7d8 0%, var(--bg) 46%, #f8f6f1 100%);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .shell {
+        width: min(980px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 22px 0 60px;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+
+      .brand {
+        color: var(--accent-strong);
+        font-weight: 800;
+        text-decoration: none;
+        letter-spacing: 0.04em;
+      }
+
+      .hero {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 30px;
+        background: var(--hero);
+        box-shadow: var(--shadow);
+      }
+
+      .cta-banner {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 22px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(211, 92, 45, 0.08);
+      }
+
+      .cta-banner p {
+        margin: 0;
+        color: var(--accent-strong);
+        font-weight: 700;
+      }
+
+      .cta-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 18px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+        color: white;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.8fr);
+        gap: 24px;
+        padding: 28px;
+      }
+
+      .eyebrow {
+        margin: 0 0 10px;
+        color: var(--accent-strong);
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2.2rem, 5vw, 3.8rem);
+        line-height: 1.05;
+      }
+
+      .subtitle,
+      .synopsis,
+      .meta-card dd,
+      .cover-note,
+      .back-link {
+        color: var(--muted);
+      }
+
+      .subtitle {
+        margin: 14px 0 0;
+        line-height: 1.7;
+      }
+
+      .synopsis {
+        margin: 18px 0 0;
+        font-size: 1.02rem;
+        line-height: 1.9;
+      }
+
+      .meta-card {
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .meta-card h2 {
+        margin: 0 0 12px;
+        font-size: 1rem;
+      }
+
+      .meta-card dl {
+        margin: 0;
+      }
+
+      .meta-card dt {
+        margin-top: 12px;
+        font-size: 0.84rem;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .meta-card dd {
+        margin: 4px 0 0;
+        line-height: 1.7;
+      }
+
+      .content {
+        display: grid;
+        gap: 18px;
+        margin-top: 24px;
+      }
+
+      .panel {
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: var(--surface);
+        box-shadow: 0 16px 42px rgba(55, 35, 12, 0.08);
+      }
+
+      .panel h2 {
+        margin: 0 0 14px;
+        font-size: 1.15rem;
+      }
+
+      .panel p {
+        margin: 0;
+        line-height: 1.9;
+      }
+
+      .cover {
+        display: grid;
+        gap: 14px;
+      }
+
+      .cover img {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        border-radius: 18px;
+        border: 1px solid var(--line);
+        background: #f4ede2;
+      }
+
+      .cover-note {
+        font-size: 0.92rem;
+      }
+
+      .back-link {
+        display: inline-flex;
+        margin-top: 18px;
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      @media (max-width: 820px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .shell {
+          width: min(100% - 20px, 980px);
+          padding-top: 14px;
+        }
+
+        .hero,
+        .panel,
+        .meta-card {
+          border-radius: 22px;
+        }
+
+        .cta-banner,
+        .hero-grid,
+        .panel {
+          padding: 18px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <main>
-      <h1>{title}</h1>
-      {synopsis ? <p>{synopsis}</p> : null}
-      <dl>
-        <dt>Quest ID</dt>
-        <dd>{quest.id}</dd>
-      </dl>
-      <pre style="overflow:auto; background:#f6f8fa; padding:12px; border-radius:6px;">
-        {JSON.stringify(quest, null, 2)}
-      </pre>
-      <p>
-        <a href="/">Home</a>
-      </p>
+    <main class="shell">
+      <div class="topbar">
+        <a class="brand" href="/">Drama Birth Quest</a>
+      </div>
+
+      <article class="hero">
+        <div class="cta-banner">
+          <p>{quest.appDownloadURL ? 'このクエストをアプリで体験できます。' : 'アプリ公開後、このクエストを直接体験できる導線をここに表示します。'}</p>
+          <a class="cta-button" href={appDownloadURL}>
+            {quest.appDownloadURL ? 'アプリで体験する' : 'アプリ案内を見る'}
+          </a>
+        </div>
+
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow">Quest Page</p>
+            <h1>{quest.title}</h1>
+            {subtitle ? <p class="subtitle">{subtitle}</p> : null}
+            <p class="synopsis">{synopsis || 'あらすじは準備中です。'}</p>
+            <a class="back-link" href="/">公開クエスト一覧に戻る</a>
+          </div>
+
+          <aside class="meta-card">
+            <h2>クエスト情報</h2>
+            <dl>
+              <dt>Quest ID</dt>
+              <dd>{quest.id}</dd>
+              {quest.authorDisplayName ? (
+                <>
+                  <dt>作者</dt>
+                  <dd>{quest.authorDisplayName}</dd>
+                </>
+              ) : null}
+              {publishedAt ? (
+                <>
+                  <dt>公開日</dt>
+                  <dd>{publishedAt}</dd>
+                </>
+              ) : null}
+              {updatedAt ? (
+                <>
+                  <dt>最終更新</dt>
+                  <dd>{updatedAt}</dd>
+                </>
+              ) : null}
+              {quest.locationName || quest.placeType ? (
+                <>
+                  <dt>舞台</dt>
+                  <dd>{quest.locationName || quest.placeType}</dd>
+                </>
+              ) : null}
+            </dl>
+          </aside>
+        </div>
+      </article>
+
+      <section class="content">
+        <div class="panel">
+          <h2>概要</h2>
+          <p>{metaDescription}</p>
+        </div>
+
+        {quest.coverURL ? (
+          <div class="panel cover">
+            <h2>クエストイメージ</h2>
+            <img src={quest.coverURL} alt={`${quest.title} のカバー画像`} loading="eager" />
+            <p class="cover-note">
+              クエストの世界観を表すカバー画像です。検索結果や共有時の見え方はメタデータと連動して整備しています。
+            </p>
+          </div>
+        ) : null}
+      </section>
     </main>
   </body>
 </html>
