@@ -1,5 +1,6 @@
 export type QuestRecord = {
   id: string;
+  placeID: string | null;
   title: string;
   synopsis: string;
   sourceLanguageCode: string;
@@ -66,6 +67,7 @@ export function normalizeQuest(filePath: string, module: QuestModule | Record<st
 
   return {
     id: questId,
+    placeID: typeof data.placeID === 'string' && data.placeID ? data.placeID : null,
     title,
     synopsis,
     sourceLanguageCode:

@@ -13,6 +13,12 @@ export interface NormalizedPlace {
   photoCount: number;
   commentCount: number;
   ratingAverage: number;
+  recentComments: {
+    text: string;
+    authorDisplayName: string | null;
+    rating: number;
+    createdAt: string | null;
+  }[];
   createdAt: string | null;
   updatedAt: string | null;
   createdByName: string | null;
@@ -55,6 +61,21 @@ export function normalizePlace(filePath: string, module: unknown): NormalizedPla
     photoCount: asNumber(source.photoCount) ?? 0,
     commentCount: asNumber(source.commentCount) ?? 0,
     ratingAverage: asNumber(source.ratingAverage) ?? 0,
+    recentComments: Array.isArray(source.recentComments)
+      ? source.recentComments.flatMap((value) => {
+          const item = asRecord(value);
+          const text = asString(item.text);
+          if (!text) {
+            return [];
+          }
+          return [{
+            text,
+            authorDisplayName: asString(item.authorDisplayName),
+            rating: asNumber(item.rating) ?? 0,
+            createdAt: asString(item.createdAt),
+          }];
+        })
+      : [],
     createdAt: asString(source.createdAt),
     updatedAt: asString(source.updatedAt),
     createdByName: asString(source.createdByName),
