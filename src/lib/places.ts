@@ -5,6 +5,13 @@ export interface NormalizedPlace {
   address: string;
   latitude: number | null;
   longitude: number | null;
+  category: string | null;
+  phoneNumber: string | null;
+  websiteURL: string | null;
+  priceRange: string | null;
+  openingHoursSummary: string | null;
+  menuURL: string | null;
+  roomSummary: string | null;
   status: string | null;
   webPagePath: string;
   webPageURL: string | null;
@@ -53,6 +60,13 @@ export function normalizePlace(filePath: string, module: unknown): NormalizedPla
     address: asString(source.address) ?? '住所情報なし',
     latitude: asNumber(source.latitude),
     longitude: asNumber(source.longitude),
+    category: asString(source.category),
+    phoneNumber: asString(source.phoneNumber),
+    websiteURL: asString(source.websiteURL),
+    priceRange: asString(source.priceRange),
+    openingHoursSummary: asString(source.openingHoursSummary),
+    menuURL: asString(source.menuURL),
+    roomSummary: asString(source.roomSummary),
     status: asString(source.status),
     webPagePath: withTrailingSlash(asString(source.webPagePath) ?? `/places/${slug}`),
     webPageURL: asString(source.webPageURL),
@@ -88,10 +102,19 @@ export function getPlaceDescription(place: NormalizedPlace): string {
     `${place.photoCount}件の写真`,
     `${place.commentCount}件のコメント`,
   ];
+  const extras = [
+    place.category ? `カテゴリは${place.category}` : null,
+    place.priceRange ? `価格帯は${place.priceRange}` : null,
+    place.openingHoursSummary ? `営業時間は${place.openingHoursSummary}` : null,
+  ].filter((value): value is string => !!value);
 
-  return `${place.title} の場所ページです。${place.address}。${stats.join('、')}を掲載しています。`;
+  return `${place.title} の場所ページです。${place.address}。${stats.join('、')}を掲載しています。${extras.join('。')}`;
 }
 
 export function formatPlaceRating(ratingAverage: number): string {
   return ratingAverage > 0 ? ratingAverage.toFixed(1) : '未評価';
+}
+
+export function shouldIndexPlace(place: NormalizedPlace): boolean {
+  return place.questCount > 0 || place.photoCount > 0 || place.commentCount > 0;
 }
