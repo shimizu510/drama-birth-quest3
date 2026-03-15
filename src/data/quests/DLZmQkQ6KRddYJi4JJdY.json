@@ -1,0 +1,99 @@
+{
+  "id": "DLZmQkQ6KRddYJi4JJdY",
+  "path": "src/data/quests/DLZmQkQ6KRddYJi4JJdY.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/DLZmQkQ6KRddYJi4JJdY/",
+  "placeID": "S4epDYWuRm1CIbXnrNwa",
+  "title": "マウンテンのカレー",
+  "titles": {
+    "ja": "マウンテンのカレー"
+  },
+  "synopsis": null,
+  "synopses": {},
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": "image",
+  "bgURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F42566457-13C0-4C84-B53D-2612F6E3C558.png?alt=media&token=d616886f-a0e3-4781-9419-f69b75c3662c",
+  "coverURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questCovers%2FFFA75892-DD51-42B1-B7DE-1BF57FB2A757.jpg?alt=media&token=a3321ea8-f904-461c-aa41-9a8775be694c",
+  "charURL": null,
+  "charPosition": "center",
+  "charAnim": "none",
+  "dialogLines": [
+    ":::charAdd(center,monsterAllFightingtiger,none,1.00)",
+    ":::textType(dialog)",
+    ":::speaker(center)",
+    "ここのカレーは美味いぞ！",
+    ":::textType(dialog)",
+    ":::speaker(center)",
+    "食べてみろ♪"
+  ],
+  "localizedDialogLines": {},
+  "storyPlayback": {
+    "backgroundType": "image",
+    "backgroundURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F42566457-13C0-4C84-B53D-2612F6E3C558.png?alt=media&token=d616886f-a0e3-4781-9419-f69b75c3662c",
+    "backgroundVideoID": null,
+    "steps": [
+      {
+        "type": "dialogue",
+        "text": "ここのカレーは美味いぞ！",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F42566457-13C0-4C84-B53D-2612F6E3C558.png?alt=media&token=d616886f-a0e3-4781-9419-f69b75c3662c",
+        "character": {
+          "imageURL": "monsterAllFightingtiger",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "monsterAllFightingtiger",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "食べてみろ♪",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F42566457-13C0-4C84-B53D-2612F6E3C558.png?alt=media&token=d616886f-a0e3-4781-9419-f69b75c3662c",
+        "character": {
+          "imageURL": "monsterAllFightingtiger",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "monsterAllFightingtiger",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1,
+            "flipped": false
+          }
+        ]
+      }
+    ]
+  },
+  "authorUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
+  "authorDisplayName": "Yuji Shimizu",
+  "episodeNumber": 1,
+  "seriesRootQuestID": "1352DB77-B23C-4CAE-AB9E-BB8C4B16E1FC",
+  "placeType": "dungeon",
+  "locationName": "マウンテン",
+  "createdAt": "2026-03-15T08:34:02.514Z",
+  "updatedAt": "2026-03-15T08:34:09.379Z",
+  "webPagePath": "/quests/DLZmQkQ6KRddYJi4JJdY/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/DLZmQkQ6KRddYJi4JJdY/"
+}
