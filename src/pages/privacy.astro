@@ -1,0 +1,237 @@
+---
+import { buildAbsoluteUrl } from '../lib/quests';
+
+const canonical = buildAbsoluteUrl('/privacy/', Astro.site);
+const pageTitle = 'プライバシーポリシー | Drama Birth Quest';
+const pageDescription =
+  'Drama Birth Quest のプライバシーポリシーです。位置情報、アカウント情報、投稿データ、解析情報の取扱いを説明します。';
+const updatedAt = '2026年3月26日';
+---
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #eef3ef;
+        --panel: rgba(255, 255, 255, 0.92);
+        --text: #17322a;
+        --muted: #50655f;
+        --line: rgba(23, 50, 42, 0.12);
+        --accent: #2f7c61;
+        --accent-strong: #16523f;
+        --shadow: 0 24px 60px rgba(29, 73, 56, 0.12);
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: "Hiragino Sans", "Noto Sans JP", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(47, 124, 97, 0.16), transparent 24%),
+          linear-gradient(180deg, #e6efe9 0%, var(--bg) 44%, #f7faf8 100%);
+      }
+
+      a { color: inherit; }
+
+      .shell {
+        width: min(980px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 24px 0 64px;
+      }
+
+      .back {
+        display: inline-flex;
+        margin-bottom: 16px;
+        color: var(--accent-strong);
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .hero,
+      .section {
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+      }
+
+      .hero { padding: 28px; }
+      .section { margin-top: 18px; padding: 24px 28px; }
+
+      .eyebrow {
+        margin: 0 0 10px;
+        color: var(--accent-strong);
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2.1rem, 5vw, 3.4rem);
+        line-height: 1.08;
+      }
+
+      h2 {
+        margin: 0 0 12px;
+        font-size: 1.25rem;
+      }
+
+      p,
+      li {
+        color: var(--muted);
+        line-height: 1.9;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 1.2rem;
+      }
+
+      .summary {
+        margin: 16px 0 0;
+        font-size: 1.02rem;
+      }
+
+      .meta {
+        margin-top: 18px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .pill {
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(47, 124, 97, 0.08);
+        color: var(--accent-strong);
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <a class="back" href="/">← トップへ戻る</a>
+
+      <section class="hero">
+        <p class="eyebrow">Privacy Policy</p>
+        <h1>Drama Birth Quest プライバシーポリシー</h1>
+        <p class="summary">
+          本ポリシーは、Drama Birth Quest のアプリ、公開クエストページ、場所ページ、外部ログイン連携を含む関連サービスにおける
+          ユーザー情報の取得、利用、共有、管理方法を説明するものです。
+        </p>
+        <div class="meta">
+          <span class="pill">対象: アカウント / 位置情報 / 投稿データ</span>
+          <span class="pill">最終更新: {updatedAt}</span>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>1. 取得する情報</h2>
+        <ul>
+          <li>アカウント情報: 表示名、ユーザー ID、プロフィール画像、連携先サービスから提供される公開情報</li>
+          <li>利用情報: アプリの操作履歴、閲覧したクエストや場所ページ、エラー情報、端末種別、OS などの技術情報</li>
+          <li>位置情報: クエスト体験や場所情報表示に必要な範囲で取得される現在地または位置関連情報</li>
+          <li>投稿情報: 写真、コメント、評価、公開ページに表示されるテキストや画像</li>
+          <li>問い合わせ情報: サポート窓口に送信された内容と返信に必要な連絡先情報</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>2. 利用目的</h2>
+        <ul>
+          <li>クエスト、場所ページ、物語体験、投稿機能などサービス本来の提供のため</li>
+          <li>ユーザー本人確認、ログイン維持、不正利用防止、審査対応のため</li>
+          <li>おすすめ表示、公開ページ改善、機能改善、障害解析、品質向上のため</li>
+          <li>利用規約違反、権利侵害、危険行為、スパム等への対策のため</li>
+          <li>法令対応、問い合わせ対応、重要なお知らせ送信のため</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>3. 位置情報の利用</h2>
+        <p>
+          位置情報は、現実の場所を舞台としたクエスト表示、周辺スポットの提示、場所ページとの関連付けのために利用されます。
+          位置情報の提供を停止した場合、一部機能が利用できなくなることがあります。正確な位置判定や現地案内を常に保証するものではありません。
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>4. 投稿コンテンツの公開範囲</h2>
+        <p>
+          ユーザーが投稿した写真、コメント、評価、場所に関する記述は、アプリ内または公開ウェブページ上に表示される場合があります。
+          公開設定のあるコンテンツは、検索エンジンや外部サービスから参照されることがあります。個人情報、第三者の秘密情報、無断撮影画像などの投稿は行わないでください。
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>5. 第三者提供と外部委託</h2>
+        <p>
+          運営者は、法令に基づく場合、本人の同意がある場合、またはサービス提供に必要な範囲で業務委託先や外部サービス事業者に情報を共有することがあります。
+          たとえば、ホスティング、認証、分析、クラッシュ解析、外部ログイン連携などのために必要な範囲で情報が取り扱われる場合があります。
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>6. Cookie 等の利用</h2>
+        <p>
+          ウェブページでは、ログイン状態の維持、表示最適化、アクセス解析、不正対策のために Cookie またはこれに類する技術を利用する場合があります。
+          ブラウザ設定により無効化できますが、一部機能に影響する場合があります。
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>7. 保管期間と削除</h2>
+        <p>
+          取得した情報は、利用目的の達成に必要な期間、法令上必要な期間、または紛争・不正調査に必要な期間保管されることがあります。
+          ユーザーは、法令および運営上の制約の範囲で、自己の情報の開示、訂正、削除等を求めることができます。
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>8. 未成年者の利用</h2>
+        <p>
+          未成年者が本サービスを利用する場合は、保護者等の同意のもとで利用してください。位置情報や写真投稿を伴う機能については、
+          個人の安全やプライバシーに配慮した利用が必要です。
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>9. セキュリティ</h2>
+        <p>
+          運営者は、取得情報の漏えい、滅失、改ざん等を防止するために合理的な安全管理措置を講じます。ただし、
+          インターネット通信や外部サービス連携に内在するリスクを完全に排除することはできません。
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>10. ポリシーの変更</h2>
+        <p>
+          本ポリシーは、法令、サービス内容、運営体制の変更に応じて更新されることがあります。重要な変更は、アプリ内または公開サイト上で周知します。
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>11. お問い合わせ</h2>
+        <p>
+          個人情報の取扱いに関する問い合わせは、運営者が別途案内する窓口にご連絡ください。専用窓口の詳細が未掲載の期間は、
+          アプリ内または公開サイトで案内される連絡手段をご利用ください。
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

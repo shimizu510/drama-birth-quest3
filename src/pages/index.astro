@@ -257,6 +257,19 @@ const pageDescription =
         line-height: 1.8;
       }
 
+      .legal-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .legal-links a {
+        color: var(--accent-strong);
+        font-weight: 700;
+        text-decoration: none;
+      }
+
       @media (max-width: 720px) {
         .shell {
           width: min(100% - 20px, 1100px);
@@ -351,6 +364,10 @@ const pageDescription =
           場所ページには今後、ユーザー写真、コメント、評価、関連クエストが段階的に追加されます。
           現時点では場所登録と公開URLの基盤まで反映しています。
         </p>
+        <div class="legal-links">
+          <a href="/terms/">利用規約</a>
+          <a href="/privacy/">プライバシーポリシー</a>
+        </div>
       </section>
     </main>
   </body>
