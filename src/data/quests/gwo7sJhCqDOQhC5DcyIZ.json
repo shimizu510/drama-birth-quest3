@@ -1,0 +1,49 @@
+{
+  "id": "gwo7sJhCqDOQhC5DcyIZ",
+  "path": "src/data/quests/gwo7sJhCqDOQhC5DcyIZ.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/gwo7sJhCqDOQhC5DcyIZ/",
+  "placeID": null,
+  "title": "TikTok",
+  "titles": {
+    "ja": "TikTok"
+  },
+  "synopsis": null,
+  "synopses": {},
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": "tiktok",
+  "bgURL": "https://vt.tiktok.com/ZSuwewFaC/",
+  "coverURL": null,
+  "charURL": null,
+  "charPosition": "center",
+  "charAnim": "none",
+  "dialogLines": [
+    ":::textType(narration)",
+    "TikTok の背景が入るか実験"
+  ],
+  "localizedDialogLines": {},
+  "storyPlayback": {
+    "backgroundType": "image",
+    "backgroundURL": "https://vt.tiktok.com/ZSuwewFaC/",
+    "backgroundVideoID": null,
+    "steps": [
+      {
+        "type": "narration",
+        "text": "TikTok の背景が入るか実験",
+        "durationMs": 2200,
+        "backgroundURL": "https://vt.tiktok.com/ZSuwewFaC/",
+        "visibleCharacters": []
+      }
+    ]
+  },
+  "authorUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
+  "authorDisplayName": "Yuji Shimizu",
+  "episodeNumber": 1,
+  "seriesRootQuestID": "3CCE257F-1635-476B-82EC-D91E8E08202F",
+  "placeType": "dungeon",
+  "locationName": null,
+  "createdAt": "2026-03-26T04:00:27.514Z",
+  "updatedAt": "2026-03-26T04:00:31.750Z",
+  "webPagePath": "/quests/gwo7sJhCqDOQhC5DcyIZ/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/gwo7sJhCqDOQhC5DcyIZ/"
+}
