@@ -5,3 +5,8 @@
 /apple-app-site-association
   Content-Type: application/json
   Cache-Control: public, max-age=300
+
+/tiktokZk7IR9cqiNIblCJiC2zDp2IEtkCkwdgt.txt
+  Content-Type: text/plain
+  Cache-Control: public, max-age=300
+  X-Robots-Tag: noindex, nofollow
