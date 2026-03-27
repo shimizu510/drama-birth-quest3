@@ -1,4 +1,4 @@
-const verificationBody = 'tiktokZk7IR9cqiNIblCJiC2zDp2IEtkCkwdgt';
+const verificationBody = 'tiktok-developers-site-verification=Zk7IR9cqiNIblCJiC2zDp2lEtkCkwdgt';
 
 function buildResponse() {
   return new Response(verificationBody, {
