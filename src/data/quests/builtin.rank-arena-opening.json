@@ -1,0 +1,33 @@
+{
+  "id": "builtin.rank-arena-opening",
+  "path": "src/data/quests/builtin.rank-arena-opening.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/builtin.rank-arena-opening/",
+  "placeID": null,
+  "title": "builtin.rank-arena-opening",
+  "titles": {
+    "ja": "builtin.rank-arena-opening"
+  },
+  "synopsis": null,
+  "synopses": {},
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": null,
+  "bgURL": null,
+  "coverURL": null,
+  "charURL": null,
+  "charPosition": null,
+  "charAnim": null,
+  "dialogLines": [],
+  "localizedDialogLines": {},
+  "storyPlayback": null,
+  "authorUID": "guest",
+  "authorDisplayName": null,
+  "episodeNumber": null,
+  "seriesRootQuestID": null,
+  "placeType": null,
+  "locationName": null,
+  "createdAt": null,
+  "updatedAt": "2026-05-05T13:13:13.094Z",
+  "webPagePath": "/quests/builtin.rank-arena-opening/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/builtin.rank-arena-opening/"
+}
