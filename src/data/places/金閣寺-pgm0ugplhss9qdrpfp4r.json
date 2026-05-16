@@ -1,0 +1,43 @@
+{
+  "id": "pGm0ugpLHSs9QdrpFp4r",
+  "slug": "金閣寺-pgm0ugplhss9qdrpfp4r",
+  "path": "src/data/places/金閣寺-pgm0ugplhss9qdrpfp4r.json",
+  "url": "https://drama-birth-quest3.pages.dev/places/金閣寺-pgm0ugplhss9qdrpfp4r/",
+  "title": "金閣寺",
+  "normalizedTitle": "金閣寺",
+  "address": "1, Kinkakujicho, Kita-Ku, Kyoto, Kyoto, Japan 603-8361",
+  "normalizedAddress": "1kinkakujichokitakukyotokyotojapan6038361",
+  "latitude": 35.0395125,
+  "longitude": 135.7284424,
+  "category": "Mkpoicategorylandmark",
+  "phoneNumber": "+81 75 461 0013",
+  "websiteURL": "https://www.shokoku-ji.jp/kinkakuji/",
+  "priceRange": null,
+  "openingHoursSummary": null,
+  "menuURL": null,
+  "roomSummary": null,
+  "experienceTags": [
+    "onsite_strategy"
+  ],
+  "familyTags": [],
+  "accessibilityTags": [],
+  "budgetTags": [],
+  "onsiteTags": [
+    "short_stay_ok",
+    "walkable"
+  ],
+  "source": "mapkit_user_registered",
+  "status": "active",
+  "coverImageURL": null,
+  "questCount": 0,
+  "photoCount": 0,
+  "commentCount": 0,
+  "ratingAverage": 0,
+  "recentComments": [],
+  "createdByUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
+  "createdByName": "Yuji Shimizu",
+  "createdAt": "2026-05-16T11:20:52.020Z",
+  "updatedAt": "2026-05-16T11:20:56.279Z",
+  "webPagePath": "/places/金閣寺-pgm0ugplhss9qdrpfp4r/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/places/金閣寺-pgm0ugplhss9qdrpfp4r/"
+}
