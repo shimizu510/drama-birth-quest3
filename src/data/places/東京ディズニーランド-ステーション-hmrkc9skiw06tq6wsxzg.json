@@ -1,0 +1,43 @@
+{
+  "id": "HmRKc9SkIW06Tq6wSxzG",
+  "slug": "東京ディズニーランド-ステーション-hmrkc9skiw06tq6wsxzg",
+  "path": "src/data/places/東京ディズニーランド-ステーション-hmrkc9skiw06tq6wsxzg.json",
+  "url": "https://drama-birth-quest3.pages.dev/places/東京ディズニーランド-ステーション-hmrkc9skiw06tq6wsxzg/",
+  "title": "東京ディズニーランド・ステーション",
+  "normalizedTitle": "東京ディズニーランドステーション",
+  "address": "千葉県浦安市, 舞浜",
+  "normalizedAddress": "千葉県浦安市舞浜",
+  "latitude": 35.6359363,
+  "longitude": 139.8785493,
+  "category": "Mkpoicategorypublictransport",
+  "phoneNumber": null,
+  "websiteURL": null,
+  "priceRange": null,
+  "openingHoursSummary": null,
+  "menuURL": null,
+  "roomSummary": null,
+  "experienceTags": [
+    "budget"
+  ],
+  "familyTags": [],
+  "accessibilityTags": [],
+  "budgetTags": [
+    "free_or_public",
+    "low_cost"
+  ],
+  "onsiteTags": [],
+  "source": "mapkit_user_registered",
+  "status": "active",
+  "coverImageURL": null,
+  "questCount": 0,
+  "photoCount": 0,
+  "commentCount": 0,
+  "ratingAverage": 0,
+  "recentComments": [],
+  "createdByUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
+  "createdByName": "Yuji Shimizu",
+  "createdAt": "2026-05-16T23:59:25.005Z",
+  "updatedAt": "2026-05-16T23:59:28.595Z",
+  "webPagePath": "/places/東京ディズニーランド-ステーション-hmrkc9skiw06tq6wsxzg/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/places/東京ディズニーランド-ステーション-hmrkc9skiw06tq6wsxzg/"
+}
