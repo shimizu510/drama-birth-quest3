@@ -31,13 +31,20 @@
   "coverImageURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/placePhotos%2FpGm0ugpLHSs9QdrpFp4r%2Fthumb_ZhkL6q3aiy1B9mnwYi95.jpg?alt=media&token=0102a6cc-a8d7-46db-9c68-147075efaeb3",
   "questCount": 0,
   "photoCount": 1,
-  "commentCount": 0,
-  "ratingAverage": 0,
-  "recentComments": [],
+  "commentCount": 1,
+  "ratingAverage": 5,
+  "recentComments": [
+    {
+      "text": "一度訪れたのですが、やはり非常に綺麗でした。日常を忘れられます。",
+      "authorDisplayName": "Yuji Shimizu",
+      "rating": 5,
+      "createdAt": "2026-05-16T23:35:18.813Z"
+    }
+  ],
   "createdByUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
   "createdByName": "Yuji Shimizu",
   "createdAt": "2026-05-16T11:20:52.020Z",
-  "updatedAt": "2026-05-16T11:21:04.723Z",
+  "updatedAt": "2026-05-16T23:35:22.907Z",
   "webPagePath": "/places/金閣寺-pgm0ugplhss9qdrpfp4r/",
   "webPageURL": "https://drama-birth-quest3.pages.dev/places/金閣寺-pgm0ugplhss9qdrpfp4r/"
 }
