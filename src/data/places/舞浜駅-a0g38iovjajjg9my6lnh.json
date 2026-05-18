@@ -1,0 +1,51 @@
+{
+  "id": "A0g38IoVjAJjG9My6lNH",
+  "slug": "舞浜駅-a0g38iovjajjg9my6lnh",
+  "path": "src/data/places/舞浜駅-a0g38iovjajjg9my6lnh.json",
+  "url": "https://drama-birth-quest3.pages.dev/places/舞浜駅-a0g38iovjajjg9my6lnh/",
+  "title": "舞浜駅",
+  "normalizedTitle": "舞浜駅",
+  "address": "千葉県浦安市, 舞浜",
+  "normalizedAddress": "千葉県浦安市舞浜",
+  "latitude": 35.6360409,
+  "longitude": 139.8830948,
+  "category": "Mkpoicategorypublictransport",
+  "phoneNumber": null,
+  "websiteURL": null,
+  "priceRange": null,
+  "openingHoursSummary": null,
+  "menuURL": null,
+  "roomSummary": null,
+  "experienceTags": [
+    "barrier_free",
+    "budget",
+    "onsite_strategy"
+  ],
+  "familyTags": [],
+  "accessibilityTags": [
+    "rest_space_possible",
+    "step_light_possible"
+  ],
+  "budgetTags": [
+    "free_or_public",
+    "low_cost"
+  ],
+  "onsiteTags": [
+    "short_stay_ok",
+    "walkable"
+  ],
+  "source": "mapkit_user_registered",
+  "status": "active",
+  "coverImageURL": null,
+  "questCount": 0,
+  "photoCount": 0,
+  "commentCount": 0,
+  "ratingAverage": 0,
+  "recentComments": [],
+  "createdByUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
+  "createdByName": "Yuji Shimizu",
+  "createdAt": "2026-05-18T02:24:16.895Z",
+  "updatedAt": "2026-05-18T02:24:20.876Z",
+  "webPagePath": "/places/舞浜駅-a0g38iovjajjg9my6lnh/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/places/舞浜駅-a0g38iovjajjg9my6lnh/"
+}
