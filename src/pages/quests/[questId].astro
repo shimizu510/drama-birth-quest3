@@ -35,6 +35,21 @@ const hasUnsupportedCoverImage = Boolean(quest.coverURL && !displayableCoverImag
 const subtitle = getQuestSubtitle(quest);
 const publishedAt = formatDateLabel(quest.createdAt);
 const updatedAt = formatDateLabel(quest.updatedAt);
+const engagementCards = [
+  { label: '流入', value: quest.appOpenClickCount },
+  { label: '到達', value: quest.appArrivalCount },
+  { label: '閲覧', value: quest.siteViewCount },
+  { label: '再生', value: quest.playCount },
+  { label: '完走', value: quest.completionCount },
+  { label: 'いいね', value: quest.likeCount },
+];
+const questSiteViewTrackerURL = quest.siteViewTrackerURL || 'https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestSiteView';
+const questAppOpenTrackerURL = quest.siteAppOpenTrackerURL || 'https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestAppOpenClick';
+const questAppOpenURL = quest.appOpenURL;
+const questSiteViewStorageKey = `quest-site-view:${quest.id}:${new Date().toISOString().slice(0, 10)}`;
+const questAppOpenStorageKey = `quest-app-open:${quest.id}:${new Date().toISOString().slice(0, 10)}`;
+const completionRateLabel =
+  quest.completionRate !== null ? `${Math.round(quest.completionRate * 100)}%` : 'まだ集計中';
 const storyPlayback = quest.storyPlayback;
 const storyPlaybackBackground =
   storyPlayback && isBrowserDisplayableImage(storyPlayback.backgroundURL)
@@ -92,6 +107,121 @@ const structuredData = JSON.stringify({
     <meta name="twitter:description" content={metaDescription} />
     {ogImage ? <meta name="twitter:image" content={ogImage} /> : null}
     <script type="application/ld+json" set:html={structuredData}></script>
+    <script is:inline define:vars={{ questId: quest.id, trackerURL: questSiteViewTrackerURL, storageKey: questSiteViewStorageKey, appOpenTrackerURL: questAppOpenTrackerURL, appOpenStorageKey: questAppOpenStorageKey, appOpenURL: questAppOpenURL, fallbackDownloadURL: appDownloadURL }}>
+      const alreadyTrackedQuestSiteView = (() => {
+        try {
+          return window.localStorage.getItem(storageKey) === "1";
+        } catch {
+          return false;
+        }
+      })();
+
+      if (!alreadyTrackedQuestSiteView) {
+        const payload = JSON.stringify({ questId });
+        const markQuestSiteViewTracked = () => {
+          try {
+            window.localStorage.setItem(storageKey, "1");
+          } catch {}
+        };
+
+        let trackedByBeacon = false;
+        if (navigator.sendBeacon) {
+          const beaconPayload = new Blob([payload], { type: "application/json" });
+          trackedByBeacon = navigator.sendBeacon(trackerURL, beaconPayload);
+          if (trackedByBeacon) {
+            markQuestSiteViewTracked();
+          }
+        }
+
+        if (!trackedByBeacon) {
+          fetch(trackerURL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: payload,
+            keepalive: true,
+          })
+            .then((response) => {
+              if (response.ok) {
+                markQuestSiteViewTracked();
+              }
+            })
+            .catch(() => {});
+        }
+      }
+
+      const trackQuestAppOpenClick = () => {
+        try {
+          if (window.localStorage.getItem(appOpenStorageKey) === "1") {
+            return;
+          }
+        } catch {}
+
+        const payload = JSON.stringify({ questId });
+        const markQuestAppOpenTracked = () => {
+          try {
+            window.localStorage.setItem(appOpenStorageKey, "1");
+          } catch {}
+        };
+
+        if (navigator.sendBeacon) {
+          const beaconPayload = new Blob([payload], { type: "application/json" });
+          const sent = navigator.sendBeacon(appOpenTrackerURL, beaconPayload);
+          if (sent) {
+            markQuestAppOpenTracked();
+            return;
+          }
+        }
+
+        fetch(appOpenTrackerURL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: payload,
+          keepalive: true,
+        })
+          .then((response) => {
+            if (response.ok) {
+              markQuestAppOpenTracked();
+            }
+          })
+          .catch(() => {});
+      };
+
+      window.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll("[data-track-quest-app-open='1']").forEach((element) => {
+          element.addEventListener("click", (event) => {
+            event.preventDefault();
+            trackQuestAppOpenClick();
+            if (!appOpenURL) {
+              window.location.href = fallbackDownloadURL;
+              return;
+            }
+
+            let didFallback = false;
+            const fallbackToDownload = () => {
+              if (didFallback) return;
+              didFallback = true;
+              window.location.href = fallbackDownloadURL;
+            };
+
+            const timer = window.setTimeout(() => {
+              fallbackToDownload();
+            }, 900);
+
+            const handleVisibilityChange = () => {
+              if (document.hidden) {
+                window.clearTimeout(timer);
+              }
+            };
+
+            document.addEventListener("visibilitychange", handleVisibilityChange, { once: true });
+            window.location.href = appOpenURL;
+            window.setTimeout(() => {
+              document.removeEventListener("visibilitychange", handleVisibilityChange);
+            }, 1200);
+          });
+        });
+      });
+    </script>
     <style>
       :root {
         color-scheme: light;
@@ -251,6 +381,44 @@ const structuredData = JSON.stringify({
 
       .meta-card dd {
         margin: 4px 0 0;
+        line-height: 1.7;
+      }
+
+      .engagement-strip {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .engagement-pill {
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .engagement-pill strong {
+        display: block;
+        font-size: 1.1rem;
+        color: var(--accent-strong);
+      }
+
+      .engagement-pill span {
+        display: block;
+        margin-top: 4px;
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
+
+      .play-reason {
+        margin-top: 16px;
+        padding: 14px 16px;
+        border: 1px solid rgba(211, 92, 45, 0.16);
+        border-radius: 18px;
+        background: rgba(211, 92, 45, 0.08);
+        color: var(--accent-strong);
+        font-weight: 700;
         line-height: 1.7;
       }
 
@@ -547,6 +715,10 @@ const structuredData = JSON.stringify({
         .hero-grid {
           grid-template-columns: 1fr;
         }
+
+        .engagement-strip {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
       }
 
       @media (max-width: 640px) {
@@ -614,7 +786,7 @@ const structuredData = JSON.stringify({
       <article class="hero">
         <div class="cta-banner">
           <p>{quest.appDownloadURL ? 'このクエストをアプリで体験できます。' : 'アプリ公開後、このクエストを直接体験できる導線をここに表示します。'}</p>
-          <a class="cta-button" href={appDownloadURL}>
+          <a class="cta-button" href={appDownloadURL} data-track-quest-app-open="1">
             {quest.appDownloadURL ? 'アプリで体験する' : 'アプリ案内を見る'}
           </a>
         </div>
@@ -625,6 +797,15 @@ const structuredData = JSON.stringify({
             <h1>{quest.title}</h1>
             {subtitle ? <p class="subtitle">{subtitle}</p> : null}
             <p class="synopsis">{synopsis || 'あらすじは準備中です。'}</p>
+            <div class="engagement-strip">
+              {engagementCards.map((card) => (
+                <div class="engagement-pill">
+                  <strong>{card.value}</strong>
+                  <span>{card.label}</span>
+                </div>
+              ))}
+            </div>
+            {quest.appPlayReason ? <p class="play-reason">{quest.appPlayReason}</p> : null}
             <a class="back-link" href="/">公開クエスト一覧に戻る</a>
           </div>
 
@@ -657,6 +838,20 @@ const structuredData = JSON.stringify({
                   <dd>{quest.locationName || quest.placeType}</dd>
                 </>
               ) : null}
+              {quest.difficultyLabel ? (
+                <>
+                  <dt>難易度</dt>
+                  <dd>{quest.difficultyLabel}</dd>
+                </>
+              ) : null}
+              {quest.recommendedPowerText ? (
+                <>
+                  <dt>おすすめ編成</dt>
+                  <dd>{quest.recommendedPowerText}</dd>
+                </>
+              ) : null}
+              <dt>完走率</dt>
+              <dd>{completionRateLabel}</dd>
             </dl>
           </aside>
         </div>
@@ -717,7 +912,7 @@ const structuredData = JSON.stringify({
                 <p class="story-player-hint">数秒ごとに自動で進みます。必要ならボタンでも進められます。</p>
                 <div class="story-control-group">
                   {quest.appDownloadURL ? (
-                    <a class="story-player-link" href={appDownloadURL}>アプリで続きも体験する</a>
+                    <a class="story-player-link" href={appDownloadURL} data-track-quest-app-open="1">アプリで続きも体験する</a>
                   ) : null}
                   <button class="story-next-button" type="button" data-story-next>次へ</button>
                 </div>

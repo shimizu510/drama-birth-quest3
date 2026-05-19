@@ -10,6 +10,20 @@ export type QuestRecord = {
   episodeNumber: number | null;
   locationName: string | null;
   placeType: string | null;
+  likeCount: number;
+  playCount: number;
+  completionCount: number;
+  siteViewCount: number;
+  appOpenClickCount: number;
+  appArrivalCount: number;
+  subscriberCount: number;
+  completionRate: number | null;
+  difficultyLabel: string | null;
+  recommendedPowerText: string | null;
+  appPlayReason: string | null;
+  siteViewTrackerURL: string | null;
+  siteAppOpenTrackerURL: string | null;
+  appOpenURL: string | null;
   createdAt: string | null;
   updatedAt: string | null;
   webPagePath: string;
@@ -83,6 +97,50 @@ export function normalizeQuest(filePath: string, module: QuestModule | Record<st
     locationName:
       typeof data.locationName === 'string' && data.locationName ? data.locationName : null,
     placeType: typeof data.placeType === 'string' && data.placeType ? data.placeType : null,
+    likeCount: typeof data.likeCount === 'number' && Number.isFinite(data.likeCount) ? Math.max(0, data.likeCount) : 0,
+    playCount: typeof data.playCount === 'number' && Number.isFinite(data.playCount) ? Math.max(0, data.playCount) : 0,
+    completionCount:
+      typeof data.completionCount === 'number' && Number.isFinite(data.completionCount)
+        ? Math.max(0, data.completionCount)
+        : 0,
+    siteViewCount:
+      typeof data.siteViewCount === 'number' && Number.isFinite(data.siteViewCount)
+        ? Math.max(0, data.siteViewCount)
+        : 0,
+    appOpenClickCount:
+      typeof data.appOpenClickCount === 'number' && Number.isFinite(data.appOpenClickCount)
+        ? Math.max(0, data.appOpenClickCount)
+        : 0,
+    appArrivalCount:
+      typeof data.appArrivalCount === 'number' && Number.isFinite(data.appArrivalCount)
+        ? Math.max(0, data.appArrivalCount)
+        : 0,
+    subscriberCount:
+      typeof data.subscriberCount === 'number' && Number.isFinite(data.subscriberCount)
+        ? Math.max(0, data.subscriberCount)
+        : 0,
+    completionRate:
+      typeof data.completionRate === 'number' && Number.isFinite(data.completionRate)
+        ? Math.max(0, Math.min(1, data.completionRate))
+        : null,
+    difficultyLabel:
+      typeof data.difficultyLabel === 'string' && data.difficultyLabel ? data.difficultyLabel : null,
+    recommendedPowerText:
+      typeof data.recommendedPowerText === 'string' && data.recommendedPowerText
+        ? data.recommendedPowerText
+        : null,
+    appPlayReason:
+      typeof data.appPlayReason === 'string' && data.appPlayReason ? data.appPlayReason : null,
+    siteViewTrackerURL:
+      typeof data.siteViewTrackerURL === 'string' && data.siteViewTrackerURL
+        ? data.siteViewTrackerURL
+        : null,
+    siteAppOpenTrackerURL:
+      typeof data.siteAppOpenTrackerURL === 'string' && data.siteAppOpenTrackerURL
+        ? data.siteAppOpenTrackerURL
+        : null,
+    appOpenURL:
+      typeof data.appOpenURL === 'string' && data.appOpenURL ? data.appOpenURL : null,
     createdAt: typeof data.createdAt === 'string' && data.createdAt ? data.createdAt : null,
     updatedAt: typeof data.updatedAt === 'string' && data.updatedAt ? data.updatedAt : null,
     webPagePath,
