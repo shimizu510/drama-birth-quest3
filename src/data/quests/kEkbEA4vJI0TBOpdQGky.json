@@ -1,0 +1,106 @@
+{
+  "id": "kEkbEA4vJI0TBOpdQGky",
+  "path": "src/data/quests/kEkbEA4vJI0TBOpdQGky.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/kEkbEA4vJI0TBOpdQGky/",
+  "placeID": null,
+  "title": "メインクエスト",
+  "titles": {
+    "en": "Main Quest",
+    "ja": "メインクエスト"
+  },
+  "synopsis": null,
+  "synopses": {},
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": "image",
+  "bgURL": "firestore://questImageBlobs/Kgw8gNMkm0jwbSwWPrRS/imageBlob",
+  "coverURL": "firestore://questImageBlobs/4gUw81dRI8omd8AD6YrU/imageBlob",
+  "charURL": "firestore://questImageBlobs/eWNZKc5GmRWLu3kqAHhA/imageBlob",
+  "charPosition": "center",
+  "charAnim": "upDown",
+  "dialogLines": [
+    ":::charAdd(center,monsterImage,upDown,1.0)",
+    ":::textType(narration)",
+    ":::speaker(narration)",
+    "ようこそ、\"\"現在地\"\"へ",
+    ":::textType(dialog)",
+    ":::speaker(center)",
+    "メインクエストへようこそ。ここから冒険を始めましょう。"
+  ],
+  "localizedDialogLines": {
+    "en": [
+      ":::charAdd(center,monsterImage,upDown,1.0)",
+      ":::textType(narration)",
+      ":::speaker(narration)",
+      "Welcome",
+      ":::textType(dialog)",
+      ":::speaker(center)",
+      "Welcome to the main quest. Let's begin the adventure."
+    ]
+  },
+  "storyPlayback": {
+    "backgroundType": "image",
+    "backgroundURL": "firestore://questImageBlobs/Kgw8gNMkm0jwbSwWPrRS/imageBlob",
+    "backgroundVideoID": null,
+    "steps": [
+      {
+        "type": "narration",
+        "text": "ようこそ、\"\"現在地\"\"へ",
+        "localizedTexts": {
+          "en": "Welcome"
+        },
+        "durationMs": 2200,
+        "backgroundURL": "firestore://questImageBlobs/Kgw8gNMkm0jwbSwWPrRS/imageBlob",
+        "visibleCharacters": [
+          {
+            "imageURL": "monsterImage",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "upDown",
+            "scale": 1,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "メインクエストへようこそ。ここから冒険を始めましょう。",
+        "localizedTexts": {
+          "en": "Welcome to the main quest. Let's begin the adventure."
+        },
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "firestore://questImageBlobs/Kgw8gNMkm0jwbSwWPrRS/imageBlob",
+        "character": {
+          "imageURL": "monsterImage",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "upDown",
+          "scale": 1,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "monsterImage",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "upDown",
+            "scale": 1,
+            "flipped": false
+          }
+        ]
+      }
+    ]
+  },
+  "authorUID": "9AOdhUfXPLPDNkAdMLsvplnKc5C3",
+  "authorDisplayName": "冒険者",
+  "episodeNumber": 1,
+  "seriesRootQuestID": "main-9AOdhUfXPLPDNkAdMLsvplnKc5C3",
+  "placeType": "city",
+  "locationName": "現在地",
+  "createdAt": "2026-05-24T05:44:05.719Z",
+  "updatedAt": "2026-05-24T05:44:26.722Z",
+  "webPagePath": "/quests/kEkbEA4vJI0TBOpdQGky/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/kEkbEA4vJI0TBOpdQGky/"
+}
