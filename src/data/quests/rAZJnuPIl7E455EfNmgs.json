@@ -1,0 +1,207 @@
+{
+  "id": "rAZJnuPIl7E455EfNmgs",
+  "path": "src/data/quests/rAZJnuPIl7E455EfNmgs.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/rAZJnuPIl7E455EfNmgs/",
+  "placeID": null,
+  "title": "テスト",
+  "titles": {
+    "ja": "テスト"
+  },
+  "synopsis": null,
+  "synopses": {},
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": "image",
+  "bgURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F09491FEE-E995-4CFE-80CF-CF42CFAD514E.heic?alt=media&token=8308b2bb-2c77-4b93-957a-2d968cd765dd",
+  "coverURL": "firestore://questImageBlobs/HOKc9qbawCmhKBcJ3KRz/imageBlob",
+  "charURL": null,
+  "charPosition": "left",
+  "charAnim": "none",
+  "dialogLines": [
+    ":::bgImage(https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F09491FEE-E995-4CFE-80CF-CF42CFAD514E.heic?alt=media&token=8308b2bb-2c77-4b93-957a-2d968cd765dd,switch,true)",
+    ":::charAdd(center,CuteMonster.png,none,1.00)",
+    ":::textType(narration)",
+    "テスト",
+    ":::charAnim(center,upDown)",
+    ":::worldShift(warp)",
+    ":::textType(dialog)",
+    ":::speaker(center)",
+    "ちょっと浮いてみるよ〜",
+    ":::worldShift(none)",
+    ":::charRemove(center)",
+    ":::charAdd(right,monsterAllWater.png,none,1.00)",
+    ":::charAdd(left,monsterAllFightingtiger.png,none,1.00)",
+    ":::textType(dialog)",
+    ":::speaker(right)",
+    "楽しかったね！",
+    ":::textType(dialog)",
+    ":::speaker(left)",
+    "ほんとほんと",
+    ":::charRemove(right)",
+    ":::charRemove(left)",
+    ":::charAdd(center,monsterAllFightingtiger.png,none,1.00)",
+    ":::textType(dialog)",
+    ":::speaker(center)",
+    "いやー、またね！"
+  ],
+  "localizedDialogLines": {},
+  "storyPlayback": {
+    "backgroundType": "image",
+    "backgroundURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F09491FEE-E995-4CFE-80CF-CF42CFAD514E.heic?alt=media&token=8308b2bb-2c77-4b93-957a-2d968cd765dd",
+    "backgroundVideoID": null,
+    "steps": [
+      {
+        "type": "background",
+        "backgroundURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F09491FEE-E995-4CFE-80CF-CF42CFAD514E.heic?alt=media&token=8308b2bb-2c77-4b93-957a-2d968cd765dd",
+        "transition": "switch",
+        "visibleCharacters": []
+      },
+      {
+        "type": "narration",
+        "text": "テスト",
+        "durationMs": 2200,
+        "backgroundURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F09491FEE-E995-4CFE-80CF-CF42CFAD514E.heic?alt=media&token=8308b2bb-2c77-4b93-957a-2d968cd765dd",
+        "visibleCharacters": [
+          {
+            "imageURL": "CuteMonster.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "ちょっと浮いてみるよ〜",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F09491FEE-E995-4CFE-80CF-CF42CFAD514E.heic?alt=media&token=8308b2bb-2c77-4b93-957a-2d968cd765dd",
+        "character": {
+          "imageURL": "CuteMonster.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "upDown",
+          "scale": 1,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "CuteMonster.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "upDown",
+            "scale": 1,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "楽しかったね！",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F09491FEE-E995-4CFE-80CF-CF42CFAD514E.heic?alt=media&token=8308b2bb-2c77-4b93-957a-2d968cd765dd",
+        "character": {
+          "imageURL": "monsterAllWater.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "monsterAllWater.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1,
+            "flipped": false
+          },
+          {
+            "imageURL": "monsterAllFightingtiger.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "ほんとほんと",
+        "speakerName": "left",
+        "speakerPosition": "left",
+        "durationMs": 2400,
+        "backgroundURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F09491FEE-E995-4CFE-80CF-CF42CFAD514E.heic?alt=media&token=8308b2bb-2c77-4b93-957a-2d968cd765dd",
+        "character": {
+          "imageURL": "monsterAllFightingtiger.png",
+          "position": "left",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "monsterAllWater.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1,
+            "flipped": false
+          },
+          {
+            "imageURL": "monsterAllFightingtiger.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "いやー、またね！",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F09491FEE-E995-4CFE-80CF-CF42CFAD514E.heic?alt=media&token=8308b2bb-2c77-4b93-957a-2d968cd765dd",
+        "character": {
+          "imageURL": "monsterAllFightingtiger.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "monsterAllFightingtiger.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1,
+            "flipped": false
+          }
+        ]
+      }
+    ]
+  },
+  "authorUID": "9AOdhUfXPLPDNkAdMLsvplnKc5C3",
+  "authorDisplayName": null,
+  "episodeNumber": 1,
+  "seriesRootQuestID": "0C7747E4-A14A-4809-8BD9-54E983CDA6B9",
+  "placeType": "dungeon",
+  "locationName": "現在地",
+  "createdAt": "2026-05-24T06:39:15.470Z",
+  "updatedAt": "2026-05-24T06:39:20.006Z",
+  "webPagePath": "/quests/rAZJnuPIl7E455EfNmgs/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/rAZJnuPIl7E455EfNmgs/"
+}
