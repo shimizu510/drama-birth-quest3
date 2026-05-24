@@ -1,0 +1,77 @@
+{
+  "id": "K1EPQv654ATBqACVdjzY",
+  "path": "src/data/quests/K1EPQv654ATBqACVdjzY.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/K1EPQv654ATBqACVdjzY/",
+  "placeID": null,
+  "title": "成功",
+  "titles": {
+    "ja": "成功"
+  },
+  "synopsis": null,
+  "synopses": {},
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": "image",
+  "bgURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F1887AB45-CB62-44B8-B041-1298CDC6CEF3.heic?alt=media&token=23cf0730-defe-408b-8d5e-e2393dbf6aa1",
+  "coverURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F1887AB45-CB62-44B8-B041-1298CDC6CEF3.heic?alt=media&token=23cf0730-defe-408b-8d5e-e2393dbf6aa1",
+  "charURL": null,
+  "charPosition": "center",
+  "charAnim": "none",
+  "dialogLines": [
+    ":::bgImage(https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F1887AB45-CB62-44B8-B041-1298CDC6CEF3.heic?alt=media&token=23cf0730-defe-408b-8d5e-e2393dbf6aa1,switch,true)",
+    ":::charAdd(center,monsterAllWater.png,none,1.00)",
+    ":::textType(dialog)",
+    ":::speaker(center)",
+    "成功"
+  ],
+  "localizedDialogLines": {},
+  "storyPlayback": {
+    "backgroundType": "image",
+    "backgroundURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F1887AB45-CB62-44B8-B041-1298CDC6CEF3.heic?alt=media&token=23cf0730-defe-408b-8d5e-e2393dbf6aa1",
+    "backgroundVideoID": null,
+    "steps": [
+      {
+        "type": "background",
+        "backgroundURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F1887AB45-CB62-44B8-B041-1298CDC6CEF3.heic?alt=media&token=23cf0730-defe-408b-8d5e-e2393dbf6aa1",
+        "transition": "switch",
+        "visibleCharacters": []
+      },
+      {
+        "type": "dialogue",
+        "text": "成功",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F1887AB45-CB62-44B8-B041-1298CDC6CEF3.heic?alt=media&token=23cf0730-defe-408b-8d5e-e2393dbf6aa1",
+        "character": {
+          "imageURL": "monsterAllWater.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "monsterAllWater.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1,
+            "flipped": false
+          }
+        ]
+      }
+    ]
+  },
+  "authorUID": "9AOdhUfXPLPDNkAdMLsvplnKc5C3",
+  "authorDisplayName": null,
+  "episodeNumber": 1,
+  "seriesRootQuestID": "A0468D26-10E0-4D68-B9F2-27018D1D97DD",
+  "placeType": "dungeon",
+  "locationName": null,
+  "createdAt": "2026-05-24T10:25:32.180Z",
+  "updatedAt": "2026-05-24T10:25:34.531Z",
+  "webPagePath": "/quests/K1EPQv654ATBqACVdjzY/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/K1EPQv654ATBqACVdjzY/"
+}
