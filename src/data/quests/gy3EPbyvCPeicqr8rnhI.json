@@ -1,0 +1,89 @@
+{
+  "id": "gy3EPbyvCPeicqr8rnhI",
+  "path": "src/data/quests/gy3EPbyvCPeicqr8rnhI.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/gy3EPbyvCPeicqr8rnhI/",
+  "placeID": null,
+  "title": "横揺れ",
+  "titles": {
+    "ja": "横揺れ"
+  },
+  "synopsis": null,
+  "synopses": {},
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": "image",
+  "bgURL": null,
+  "coverURL": "firestore://questImageBlobs/4716uuABdav0UgplwSqi/imageBlob",
+  "charURL": null,
+  "charPosition": "center",
+  "charAnim": "none",
+  "dialogLines": [
+    ":::charAdd(center,CuteMonster.png,none,1.00)",
+    ":::charAnim(center,shake)",
+    ":::textType(narration)",
+    "横揺れ",
+    ":::textType(dialog)",
+    ":::speaker(center)",
+    "横揺れ"
+  ],
+  "localizedDialogLines": {},
+  "storyPlayback": {
+    "backgroundType": "image",
+    "backgroundURL": "firestore://questImageBlobs/4716uuABdav0UgplwSqi/imageBlob",
+    "backgroundVideoID": null,
+    "steps": [
+      {
+        "type": "narration",
+        "text": "横揺れ",
+        "durationMs": 2200,
+        "backgroundURL": "firestore://questImageBlobs/4716uuABdav0UgplwSqi/imageBlob",
+        "visibleCharacters": [
+          {
+            "imageURL": "CuteMonster.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "shake",
+            "scale": 1,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "横揺れ",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "firestore://questImageBlobs/4716uuABdav0UgplwSqi/imageBlob",
+        "character": {
+          "imageURL": "CuteMonster.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "shake",
+          "scale": 1,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "CuteMonster.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "shake",
+            "scale": 1,
+            "flipped": false
+          }
+        ]
+      }
+    ]
+  },
+  "authorUID": "9AOdhUfXPLPDNkAdMLsvplnKc5C3",
+  "authorDisplayName": null,
+  "episodeNumber": 1,
+  "seriesRootQuestID": "BB0C45D4-F172-49CC-9709-1C0C6C5DE80B",
+  "placeType": "dungeon",
+  "locationName": null,
+  "createdAt": "2026-05-24T08:04:05.004Z",
+  "updatedAt": "2026-05-24T08:04:07.162Z",
+  "webPagePath": "/quests/gy3EPbyvCPeicqr8rnhI/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/gy3EPbyvCPeicqr8rnhI/"
+}
