@@ -1,0 +1,71 @@
+{
+  "id": "8jpCXitFSoFPu38BHHvx",
+  "path": "src/data/quests/8jpCXitFSoFPu38BHHvx.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/8jpCXitFSoFPu38BHHvx/",
+  "placeID": null,
+  "title": "ジャンプ",
+  "titles": {
+    "ja": "ジャンプ"
+  },
+  "synopsis": null,
+  "synopses": {},
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": "image",
+  "bgURL": null,
+  "coverURL": "firestore://questImageBlobs/3wLiEzUKtoDKZI9NRT18/imageBlob",
+  "charURL": null,
+  "charPosition": "center",
+  "charAnim": "none",
+  "dialogLines": [
+    ":::charAdd(center,monsterAllWater.png,none,1.00)",
+    ":::charAnim(center,hop)",
+    ":::textType(dialog)",
+    ":::speaker(center)",
+    "ジャンプ"
+  ],
+  "localizedDialogLines": {},
+  "storyPlayback": {
+    "backgroundType": "image",
+    "backgroundURL": "firestore://questImageBlobs/3wLiEzUKtoDKZI9NRT18/imageBlob",
+    "backgroundVideoID": null,
+    "steps": [
+      {
+        "type": "dialogue",
+        "text": "ジャンプ",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "firestore://questImageBlobs/3wLiEzUKtoDKZI9NRT18/imageBlob",
+        "character": {
+          "imageURL": "monsterAllWater.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "monsterAllWater.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1,
+            "flipped": false
+          }
+        ]
+      }
+    ]
+  },
+  "authorUID": "9AOdhUfXPLPDNkAdMLsvplnKc5C3",
+  "authorDisplayName": null,
+  "episodeNumber": 1,
+  "seriesRootQuestID": "088C65AD-8642-412D-BAB6-B4B3AAC9C707",
+  "placeType": "dungeon",
+  "locationName": null,
+  "createdAt": "2026-05-24T08:19:36.513Z",
+  "updatedAt": "2026-05-24T08:19:39.521Z",
+  "webPagePath": "/quests/8jpCXitFSoFPu38BHHvx/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/8jpCXitFSoFPu38BHHvx/"
+}
