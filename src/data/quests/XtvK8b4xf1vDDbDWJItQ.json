@@ -1,0 +1,77 @@
+{
+  "id": "XtvK8b4xf1vDDbDWJItQ",
+  "path": "src/data/quests/XtvK8b4xf1vDDbDWJItQ.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/XtvK8b4xf1vDDbDWJItQ/",
+  "placeID": null,
+  "title": "さぁセリフだ",
+  "titles": {
+    "ja": "さぁセリフだ"
+  },
+  "synopsis": null,
+  "synopses": {},
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": "image",
+  "bgURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F20CD9435-C387-4A57-A7AE-6D9617F56D5F.heic?alt=media&token=16cb8eb3-b897-4098-96e2-914d69ba8abc",
+  "coverURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F20CD9435-C387-4A57-A7AE-6D9617F56D5F.heic?alt=media&token=16cb8eb3-b897-4098-96e2-914d69ba8abc",
+  "charURL": null,
+  "charPosition": "center",
+  "charAnim": "none",
+  "dialogLines": [
+    ":::bgImage(https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F20CD9435-C387-4A57-A7AE-6D9617F56D5F.heic?alt=media&token=16cb8eb3-b897-4098-96e2-914d69ba8abc,switch,true)",
+    ":::charAdd(center,monsterAllFightingtiger.png,none,1.00)",
+    ":::textType(dialog)",
+    ":::speaker(center)",
+    "さぁセリフだ"
+  ],
+  "localizedDialogLines": {},
+  "storyPlayback": {
+    "backgroundType": "image",
+    "backgroundURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F20CD9435-C387-4A57-A7AE-6D9617F56D5F.heic?alt=media&token=16cb8eb3-b897-4098-96e2-914d69ba8abc",
+    "backgroundVideoID": null,
+    "steps": [
+      {
+        "type": "background",
+        "backgroundURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F20CD9435-C387-4A57-A7AE-6D9617F56D5F.heic?alt=media&token=16cb8eb3-b897-4098-96e2-914d69ba8abc",
+        "transition": "switch",
+        "visibleCharacters": []
+      },
+      {
+        "type": "dialogue",
+        "text": "さぁセリフだ",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F20CD9435-C387-4A57-A7AE-6D9617F56D5F.heic?alt=media&token=16cb8eb3-b897-4098-96e2-914d69ba8abc",
+        "character": {
+          "imageURL": "monsterAllFightingtiger.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "monsterAllFightingtiger.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1,
+            "flipped": false
+          }
+        ]
+      }
+    ]
+  },
+  "authorUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
+  "authorDisplayName": "Yuji Shimizu",
+  "episodeNumber": 1,
+  "seriesRootQuestID": "B33C9BC9-1E94-436F-8E16-4B42E1A4A695",
+  "placeType": "dungeon",
+  "locationName": null,
+  "createdAt": "2026-05-30T07:24:24.268Z",
+  "updatedAt": "2026-05-30T07:24:25.415Z",
+  "webPagePath": "/quests/XtvK8b4xf1vDDbDWJItQ/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/XtvK8b4xf1vDDbDWJItQ/"
+}
