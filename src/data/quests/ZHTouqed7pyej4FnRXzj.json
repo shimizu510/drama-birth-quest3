@@ -1,0 +1,49 @@
+{
+  "id": "ZHTouqed7pyej4FnRXzj",
+  "path": "src/data/quests/ZHTouqed7pyej4FnRXzj.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/ZHTouqed7pyej4FnRXzj/",
+  "placeID": null,
+  "title": "ひとこと",
+  "titles": {
+    "ja": "ひとこと"
+  },
+  "synopsis": null,
+  "synopses": {},
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": "image",
+  "bgURL": null,
+  "coverURL": "firestore://questImageBlobs/Qu0F3ZRaYhDTJ7AuzN3P/imageBlob",
+  "charURL": null,
+  "charPosition": "center",
+  "charAnim": "none",
+  "dialogLines": [
+    ":::textType(narration)",
+    "ひとこと"
+  ],
+  "localizedDialogLines": {},
+  "storyPlayback": {
+    "backgroundType": "image",
+    "backgroundURL": "firestore://questImageBlobs/Qu0F3ZRaYhDTJ7AuzN3P/imageBlob",
+    "backgroundVideoID": null,
+    "steps": [
+      {
+        "type": "narration",
+        "text": "ひとこと",
+        "durationMs": 2200,
+        "backgroundURL": "firestore://questImageBlobs/Qu0F3ZRaYhDTJ7AuzN3P/imageBlob",
+        "visibleCharacters": []
+      }
+    ]
+  },
+  "authorUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
+  "authorDisplayName": "Yuji Shimizu",
+  "episodeNumber": 1,
+  "seriesRootQuestID": "EFD175D0-EBA2-4A8C-8CEB-E382AD043590",
+  "placeType": "dungeon",
+  "locationName": null,
+  "createdAt": "2026-05-30T06:23:12.651Z",
+  "updatedAt": "2026-05-30T06:23:15.026Z",
+  "webPagePath": "/quests/ZHTouqed7pyej4FnRXzj/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/ZHTouqed7pyej4FnRXzj/"
+}
