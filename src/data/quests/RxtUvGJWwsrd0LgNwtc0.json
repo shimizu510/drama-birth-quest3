@@ -1,0 +1,49 @@
+{
+  "id": "RxtUvGJWwsrd0LgNwtc0",
+  "path": "src/data/quests/RxtUvGJWwsrd0LgNwtc0.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/RxtUvGJWwsrd0LgNwtc0/",
+  "placeID": null,
+  "title": "とりあえず",
+  "titles": {
+    "ja": "とりあえず"
+  },
+  "synopsis": null,
+  "synopses": {},
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": "image",
+  "bgURL": null,
+  "coverURL": "firestore://questImageBlobs/bUnIbqjbJTqND4Ttt9eV/imageBlob",
+  "charURL": null,
+  "charPosition": "center",
+  "charAnim": "none",
+  "dialogLines": [
+    ":::textType(narration)",
+    "とりあえず"
+  ],
+  "localizedDialogLines": {},
+  "storyPlayback": {
+    "backgroundType": "image",
+    "backgroundURL": "firestore://questImageBlobs/bUnIbqjbJTqND4Ttt9eV/imageBlob",
+    "backgroundVideoID": null,
+    "steps": [
+      {
+        "type": "narration",
+        "text": "とりあえず",
+        "durationMs": 2200,
+        "backgroundURL": "firestore://questImageBlobs/bUnIbqjbJTqND4Ttt9eV/imageBlob",
+        "visibleCharacters": []
+      }
+    ]
+  },
+  "authorUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
+  "authorDisplayName": "Yuji Shimizu",
+  "episodeNumber": 1,
+  "seriesRootQuestID": "C2AEBC94-4A2C-44B1-9676-A99DA474441B",
+  "placeType": "dungeon",
+  "locationName": null,
+  "createdAt": "2026-05-30T07:22:27.582Z",
+  "updatedAt": "2026-05-30T07:22:30.740Z",
+  "webPagePath": "/quests/RxtUvGJWwsrd0LgNwtc0/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/RxtUvGJWwsrd0LgNwtc0/"
+}
