@@ -1,0 +1,49 @@
+{
+  "id": "m9JCU7ohbinpXUZdSo1a",
+  "path": "src/data/quests/m9JCU7ohbinpXUZdSo1a.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/m9JCU7ohbinpXUZdSo1a/",
+  "placeID": null,
+  "title": "あさねぼう",
+  "titles": {
+    "ja": "あさねぼう"
+  },
+  "synopsis": null,
+  "synopses": {},
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": "image",
+  "bgURL": null,
+  "coverURL": "firestore://questImageBlobs/fwY7W3Yeha8gV0onNNkE/imageBlob",
+  "charURL": null,
+  "charPosition": "center",
+  "charAnim": "none",
+  "dialogLines": [
+    ":::textType(narration)",
+    "あさねぼう"
+  ],
+  "localizedDialogLines": {},
+  "storyPlayback": {
+    "backgroundType": "image",
+    "backgroundURL": "firestore://questImageBlobs/fwY7W3Yeha8gV0onNNkE/imageBlob",
+    "backgroundVideoID": null,
+    "steps": [
+      {
+        "type": "narration",
+        "text": "あさねぼう",
+        "durationMs": 2200,
+        "backgroundURL": "firestore://questImageBlobs/fwY7W3Yeha8gV0onNNkE/imageBlob",
+        "visibleCharacters": []
+      }
+    ]
+  },
+  "authorUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
+  "authorDisplayName": "Yuji Shimizu",
+  "episodeNumber": 1,
+  "seriesRootQuestID": "F4FEE5EC-56B6-473E-9020-69A2FAFC155C",
+  "placeType": "dungeon",
+  "locationName": null,
+  "createdAt": "2026-05-30T08:11:47.883Z",
+  "updatedAt": "2026-05-30T08:11:50.227Z",
+  "webPagePath": "/quests/m9JCU7ohbinpXUZdSo1a/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/m9JCU7ohbinpXUZdSo1a/"
+}
