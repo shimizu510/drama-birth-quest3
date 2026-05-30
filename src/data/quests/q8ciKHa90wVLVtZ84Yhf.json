@@ -1,0 +1,49 @@
+{
+  "id": "q8ciKHa90wVLVtZ84Yhf",
+  "path": "src/data/quests/q8ciKHa90wVLVtZ84Yhf.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/q8ciKHa90wVLVtZ84Yhf/",
+  "placeID": null,
+  "title": "Hi",
+  "titles": {
+    "ja": "Hi"
+  },
+  "synopsis": null,
+  "synopses": {},
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": "image",
+  "bgURL": null,
+  "coverURL": "firestore://questImageBlobs/dJuRLoB6RiKv4qiGpAGE/imageBlob",
+  "charURL": null,
+  "charPosition": "center",
+  "charAnim": "none",
+  "dialogLines": [
+    ":::textType(narration)",
+    "Hi"
+  ],
+  "localizedDialogLines": {},
+  "storyPlayback": {
+    "backgroundType": "image",
+    "backgroundURL": "firestore://questImageBlobs/dJuRLoB6RiKv4qiGpAGE/imageBlob",
+    "backgroundVideoID": null,
+    "steps": [
+      {
+        "type": "narration",
+        "text": "Hi",
+        "durationMs": 2200,
+        "backgroundURL": "firestore://questImageBlobs/dJuRLoB6RiKv4qiGpAGE/imageBlob",
+        "visibleCharacters": []
+      }
+    ]
+  },
+  "authorUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
+  "authorDisplayName": "Yuji Shimizu",
+  "episodeNumber": 1,
+  "seriesRootQuestID": "35DECC69-E8EA-4E84-9667-69EFE80634EE",
+  "placeType": "dungeon",
+  "locationName": null,
+  "createdAt": "2026-05-30T05:10:03.479Z",
+  "updatedAt": "2026-05-30T05:10:06.168Z",
+  "webPagePath": "/quests/q8ciKHa90wVLVtZ84Yhf/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/q8ciKHa90wVLVtZ84Yhf/"
+}
