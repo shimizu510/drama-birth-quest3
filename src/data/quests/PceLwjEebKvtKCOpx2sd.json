@@ -1,0 +1,49 @@
+{
+  "id": "PceLwjEebKvtKCOpx2sd",
+  "path": "src/data/quests/PceLwjEebKvtKCOpx2sd.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/PceLwjEebKvtKCOpx2sd/",
+  "placeID": null,
+  "title": "疲れた〜",
+  "titles": {
+    "ja": "疲れた〜"
+  },
+  "synopsis": null,
+  "synopses": {},
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": "image",
+  "bgURL": null,
+  "coverURL": "firestore://questImageBlobs/4MXetcvphOWGpQkn1YJZ/imageBlob",
+  "charURL": null,
+  "charPosition": "center",
+  "charAnim": "none",
+  "dialogLines": [
+    ":::textType(narration)",
+    "疲れた〜"
+  ],
+  "localizedDialogLines": {},
+  "storyPlayback": {
+    "backgroundType": "image",
+    "backgroundURL": "firestore://questImageBlobs/4MXetcvphOWGpQkn1YJZ/imageBlob",
+    "backgroundVideoID": null,
+    "steps": [
+      {
+        "type": "narration",
+        "text": "疲れた〜",
+        "durationMs": 2200,
+        "backgroundURL": "firestore://questImageBlobs/4MXetcvphOWGpQkn1YJZ/imageBlob",
+        "visibleCharacters": []
+      }
+    ]
+  },
+  "authorUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
+  "authorDisplayName": "Yuji Shimizu",
+  "episodeNumber": 1,
+  "seriesRootQuestID": "14C89201-7B3B-46EF-B3D4-400A4B09DC48",
+  "placeType": "dungeon",
+  "locationName": null,
+  "createdAt": "2026-05-30T05:50:59.058Z",
+  "updatedAt": "2026-05-30T05:51:02.456Z",
+  "webPagePath": "/quests/PceLwjEebKvtKCOpx2sd/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/PceLwjEebKvtKCOpx2sd/"
+}
