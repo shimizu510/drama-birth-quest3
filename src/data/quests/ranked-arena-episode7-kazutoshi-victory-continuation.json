@@ -1,0 +1,33 @@
+{
+  "id": "ranked-arena-episode7-kazutoshi-victory-continuation",
+  "path": "src/data/quests/ranked-arena-episode7-kazutoshi-victory-continuation.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/ranked-arena-episode7-kazutoshi-victory-continuation/",
+  "placeID": null,
+  "title": "ranked-arena-episode7-kazutoshi-victory-continuation",
+  "titles": {
+    "ja": "ranked-arena-episode7-kazutoshi-victory-continuation"
+  },
+  "synopsis": null,
+  "synopses": {},
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": null,
+  "bgURL": null,
+  "coverURL": null,
+  "charURL": null,
+  "charPosition": null,
+  "charAnim": null,
+  "dialogLines": [],
+  "localizedDialogLines": {},
+  "storyPlayback": null,
+  "authorUID": "guest",
+  "authorDisplayName": null,
+  "episodeNumber": null,
+  "seriesRootQuestID": null,
+  "placeType": null,
+  "locationName": null,
+  "createdAt": null,
+  "updatedAt": "2026-06-07T07:21:01.724Z",
+  "webPagePath": "/quests/ranked-arena-episode7-kazutoshi-victory-continuation/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/ranked-arena-episode7-kazutoshi-victory-continuation/"
+}
