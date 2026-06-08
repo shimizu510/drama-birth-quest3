@@ -1,0 +1,48 @@
+{
+  "id": "jxu0PdpXSezYunSgt8Rd",
+  "slug": "tokyo-disneysea-jxu0pdpxsezyunsgt8rd",
+  "path": "src/data/places/tokyo-disneysea-jxu0pdpxsezyunsgt8rd.json",
+  "url": "https://drama-birth-quest3.pages.dev/places/tokyo-disneysea-jxu0pdpxsezyunsgt8rd/",
+  "title": "Tokyo DisneySea",
+  "normalizedTitle": "tokyodisneysea",
+  "address": "〒279-8511\n千葉県浦安市\n舞浜1-1",
+  "normalizedAddress": "2798511千葉県浦安市舞浜11",
+  "latitude": 35.6257549,
+  "longitude": 139.8843348,
+  "category": "Mkpoicategoryamusementpark",
+  "phoneNumber": "+81 50 3090 2613",
+  "websiteURL": "https://www.tokyodisneyresort.jp/tds/",
+  "priceRange": null,
+  "openingHoursSummary": null,
+  "menuURL": null,
+  "roomSummary": null,
+  "experienceTags": [
+    "budget",
+    "family"
+  ],
+  "familyTags": [
+    "kids_friendly"
+  ],
+  "accessibilityTags": [],
+  "budgetTags": [
+    "free_or_public",
+    "low_cost"
+  ],
+  "onsiteTags": [
+    "short_stay_ok"
+  ],
+  "source": "mapkit_user_registered",
+  "status": "active",
+  "coverImageURL": null,
+  "questCount": 0,
+  "photoCount": 0,
+  "commentCount": 0,
+  "ratingAverage": 0,
+  "recentComments": [],
+  "createdByUID": "RDkxTMaNhESgAfBGF3ZKyquzJGW2",
+  "createdByName": "アメポン",
+  "createdAt": "2026-06-08T10:50:40.404Z",
+  "updatedAt": "2026-06-08T10:50:41.672Z",
+  "webPagePath": "/places/tokyo-disneysea-jxu0pdpxsezyunsgt8rd/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/places/tokyo-disneysea-jxu0pdpxsezyunsgt8rd/"
+}
