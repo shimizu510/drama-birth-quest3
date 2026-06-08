@@ -36,13 +36,20 @@
   "coverImageURL": null,
   "questCount": 0,
   "photoCount": 0,
-  "commentCount": 0,
-  "ratingAverage": 0,
-  "recentComments": [],
+  "commentCount": 1,
+  "ratingAverage": 5,
+  "recentComments": [
+    {
+      "text": "アクアトピアがなくなっちゃうのが泣ける😭",
+      "authorDisplayName": "アメポン",
+      "rating": 5,
+      "createdAt": "2026-06-08T10:50:40.407Z"
+    }
+  ],
   "createdByUID": "RDkxTMaNhESgAfBGF3ZKyquzJGW2",
   "createdByName": "アメポン",
   "createdAt": "2026-06-08T10:50:40.404Z",
-  "updatedAt": "2026-06-08T10:50:41.672Z",
+  "updatedAt": "2026-06-08T10:50:42.777Z",
   "webPagePath": "/places/tokyo-disneysea-jxu0pdpxsezyunsgt8rd/",
   "webPageURL": "https://drama-birth-quest3.pages.dev/places/tokyo-disneysea-jxu0pdpxsezyunsgt8rd/"
 }
