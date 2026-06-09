@@ -21,6 +21,14 @@ export function GET() {
       loc: buildAbsoluteUrl('/places/', site),
       lastmod: new Date().toISOString(),
     },
+    {
+      loc: buildAbsoluteUrl('/privacy/', site),
+      lastmod: new Date().toISOString(),
+    },
+    {
+      loc: buildAbsoluteUrl('/terms/', site),
+      lastmod: new Date().toISOString(),
+    },
     ...quests.map((quest) => ({
       loc: buildAbsoluteUrl(quest.webPagePath, site),
       lastmod: quest.updatedAt || quest.createdAt || undefined,
