@@ -1,0 +1,49 @@
+{
+  "id": "V3TqPJDWqWMwKbykrclE",
+  "path": "src/data/quests/V3TqPJDWqWMwKbykrclE.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/V3TqPJDWqWMwKbykrclE/",
+  "placeID": null,
+  "title": "今日は大変💦",
+  "titles": {
+    "ja": "今日は大変💦"
+  },
+  "synopsis": null,
+  "synopses": {},
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": "image",
+  "bgURL": null,
+  "coverURL": "firestore://questImageBlobs/o9ouBu7ux0hJj1PAnk3Z/imageBlob",
+  "charURL": null,
+  "charPosition": "center",
+  "charAnim": "none",
+  "dialogLines": [
+    ":::textType(narration)",
+    "今日は大変💦"
+  ],
+  "localizedDialogLines": {},
+  "storyPlayback": {
+    "backgroundType": "image",
+    "backgroundURL": "firestore://questImageBlobs/o9ouBu7ux0hJj1PAnk3Z/imageBlob",
+    "backgroundVideoID": null,
+    "steps": [
+      {
+        "type": "narration",
+        "text": "今日は大変💦",
+        "durationMs": 2200,
+        "backgroundURL": "firestore://questImageBlobs/o9ouBu7ux0hJj1PAnk3Z/imageBlob",
+        "visibleCharacters": []
+      }
+    ]
+  },
+  "authorUID": "RDkxTMaNhESgAfBGF3ZKyquzJGW2",
+  "authorDisplayName": "アメポン",
+  "episodeNumber": 1,
+  "seriesRootQuestID": "63935674-37CC-48C0-8725-CB384C4A1B95",
+  "placeType": "dungeon",
+  "locationName": null,
+  "createdAt": "2026-06-10T02:36:38.007Z",
+  "updatedAt": "2026-06-10T02:36:42.055Z",
+  "webPagePath": "/quests/V3TqPJDWqWMwKbykrclE/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/V3TqPJDWqWMwKbykrclE/"
+}
