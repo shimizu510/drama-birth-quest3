@@ -1,0 +1,70 @@
+{
+  "id": "NyAV56fBbqlk5husxAb2",
+  "path": "src/data/quests/NyAV56fBbqlk5husxAb2.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/NyAV56fBbqlk5husxAb2/",
+  "placeID": null,
+  "title": "今日もがんばろ🎵",
+  "titles": {
+    "ja": "今日もがんばろ🎵"
+  },
+  "synopsis": null,
+  "synopses": {},
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": "image",
+  "bgURL": null,
+  "coverURL": "firestore://questImageBlobs/CkEi4hARUEDcVRVU0qz1/imageBlob",
+  "charURL": null,
+  "charPosition": "center",
+  "charAnim": "none",
+  "dialogLines": [
+    ":::charAdd(center,DrabirMouse.png,none,1.00)",
+    ":::textType(dialog)",
+    ":::speaker(center)",
+    "今日もがんばろ🎵"
+  ],
+  "localizedDialogLines": {},
+  "storyPlayback": {
+    "backgroundType": "image",
+    "backgroundURL": "firestore://questImageBlobs/CkEi4hARUEDcVRVU0qz1/imageBlob",
+    "backgroundVideoID": null,
+    "steps": [
+      {
+        "type": "dialogue",
+        "text": "今日もがんばろ🎵",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "firestore://questImageBlobs/CkEi4hARUEDcVRVU0qz1/imageBlob",
+        "character": {
+          "imageURL": "DrabirMouse.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "DrabirMouse.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1,
+            "flipped": false
+          }
+        ]
+      }
+    ]
+  },
+  "authorUID": "RDkxTMaNhESgAfBGF3ZKyquzJGW2",
+  "authorDisplayName": "アメポン",
+  "episodeNumber": 1,
+  "seriesRootQuestID": "959C5F60-7952-4ECB-A161-C4F04511278F",
+  "placeType": "dungeon",
+  "locationName": null,
+  "createdAt": "2026-06-10T02:38:37.904Z",
+  "updatedAt": "2026-06-10T02:38:47.132Z",
+  "webPagePath": "/quests/NyAV56fBbqlk5husxAb2/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/NyAV56fBbqlk5husxAb2/"
+}
