@@ -26,13 +26,20 @@
   "coverImageURL": "firestore://places/oQ0G1cIQYVSy5Dp94C48/photos/YxyFilqf1Xb5mfpHSgjU/imageBlob",
   "questCount": 0,
   "photoCount": 1,
-  "commentCount": 0,
-  "ratingAverage": 0,
-  "recentComments": [],
+  "commentCount": 1,
+  "ratingAverage": 5,
+  "recentComments": [
+    {
+      "text": "本当に金閣寺まで冒険に来たみたい🎵",
+      "authorDisplayName": "アメポン",
+      "rating": 5,
+      "createdAt": "2026-06-12T06:22:07.471Z"
+    }
+  ],
   "createdByUID": "RDkxTMaNhESgAfBGF3ZKyquzJGW2",
   "createdByName": "アメポン",
   "createdAt": "2026-06-08T10:49:39.987Z",
-  "updatedAt": "2026-06-12T06:21:37.728Z",
+  "updatedAt": "2026-06-12T06:22:10.358Z",
   "webPagePath": "/places/kinkaku-ji-oq0g1ciqyvsy5dp94c48/",
   "webPageURL": "https://drama-birth-quest3.pages.dev/places/kinkaku-ji-oq0g1ciqyvsy5dp94c48/"
 }
