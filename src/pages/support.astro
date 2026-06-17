@@ -1,0 +1,570 @@
+---
+import { buildAbsoluteUrl } from '../lib/quests';
+
+const canonical = buildAbsoluteUrl('/support/', Astro.site);
+const pageTitle = 'サポート | DraMap';
+const pageDescription =
+  'DraMap / Drama Birth Quest の公式サポートページです。問い合わせ、アカウント削除、投稿削除、通報、位置情報、写真、ログインに関する案内を掲載しています。';
+const updatedAt = '2026年6月17日';
+---
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={buildAbsoluteUrl('/app-images/place-memories.png', Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f8fb;
+        --ink: #111827;
+        --muted: #5d6675;
+        --panel: rgba(255, 255, 255, 0.94);
+        --line: rgba(17, 24, 39, 0.12);
+        --blue: #1f65d6;
+        --blue-strong: #174aa0;
+        --green: #1f7a5c;
+        --warning: #9a6700;
+        --soft-blue: rgba(31, 101, 214, 0.09);
+        --soft-green: rgba(31, 122, 92, 0.10);
+        --shadow: 0 24px 70px rgba(31, 45, 72, 0.13);
+      }
+
+      * { box-sizing: border-box; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        margin: 0;
+        font-family: "Hiragino Sans", "Noto Sans JP", system-ui, sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(31, 101, 214, 0.13), transparent 28%),
+          radial-gradient(circle at 84% 0%, rgba(31, 122, 92, 0.12), transparent 24%),
+          linear-gradient(180deg, #f5f8fc 0%, var(--bg) 48%, #fff 100%);
+      }
+
+      a { color: inherit; }
+
+      .shell {
+        width: min(1080px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 24px 0 68px;
+      }
+
+      .back {
+        display: inline-flex;
+        margin-bottom: 16px;
+        color: var(--blue-strong);
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 0.54fr);
+        gap: 24px;
+        align-items: stretch;
+        padding: 28px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-image {
+        min-height: 420px;
+        border-radius: 16px;
+        background: url("/app-images/place-memories.png") center / cover;
+      }
+
+      .eyebrow {
+        margin: 0 0 10px;
+        color: var(--blue-strong);
+        font-size: 0.84rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p,
+      li {
+        overflow-wrap: anywhere;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2.2rem, 5vw, 4rem);
+        line-height: 1.07;
+        letter-spacing: 0;
+      }
+
+      h2 {
+        margin: 0 0 12px;
+        font-size: 1.45rem;
+      }
+
+      h3 {
+        margin: 0 0 8px;
+        font-size: 1.06rem;
+      }
+
+      p,
+      li {
+        color: var(--muted);
+        line-height: 1.9;
+      }
+
+      p { margin: 0; }
+      p + p { margin-top: 12px; }
+
+      ul,
+      ol {
+        margin: 0;
+        padding-left: 1.2rem;
+      }
+
+      li + li { margin-top: 6px; }
+
+      .summary {
+        max-width: 700px;
+        margin-top: 18px;
+        font-size: 1.04rem;
+      }
+
+      .meta,
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 20px;
+      }
+
+      .pill,
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 10px 14px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: #fff;
+        color: var(--ink);
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .pill {
+        background: var(--soft-blue);
+        color: var(--blue-strong);
+      }
+
+      .button-primary {
+        border-color: transparent;
+        background: var(--blue);
+        color: #fff;
+      }
+
+      .notice,
+      .section,
+      .contact-card {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: var(--panel);
+      }
+
+      .notice {
+        margin-top: 18px;
+        padding: 18px 20px;
+        background: #fffaf0;
+      }
+
+      .notice strong {
+        color: var(--warning);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 18px;
+      }
+
+      .section {
+        padding: 24px;
+      }
+
+      .section.full {
+        margin-top: 18px;
+      }
+
+      .contact-card {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 18px;
+        align-items: center;
+        margin-top: 18px;
+        padding: 24px;
+        background: linear-gradient(135deg, #fff, rgba(31, 122, 92, 0.08));
+      }
+
+      .steps {
+        display: grid;
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .step {
+        padding: 14px 16px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: #fff;
+      }
+
+      .step strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .link-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      .link-list a {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: #fff;
+        color: var(--blue-strong);
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .support-form {
+        display: grid;
+        gap: 14px;
+        margin-top: 16px;
+      }
+
+      .field {
+        display: grid;
+        gap: 7px;
+      }
+
+      .field label {
+        font-weight: 800;
+      }
+
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: #fff;
+        color: var(--ink);
+        font: inherit;
+        padding: 12px 13px;
+      }
+
+      .field textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      .form-note {
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.7;
+      }
+
+      footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 14px;
+        margin-top: 28px;
+        padding-top: 22px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+      }
+
+      footer a {
+        color: var(--ink);
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      @media (max-width: 840px) {
+        .hero,
+        .grid,
+        .contact-card {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-image {
+          min-height: 360px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .shell {
+          width: min(100% - 20px, 1080px);
+          padding-top: 14px;
+        }
+
+        .hero,
+        .section,
+        .contact-card {
+          padding: 18px;
+          border-radius: 14px;
+        }
+
+        .button,
+        .pill {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <a class="back" href="/">トップへ戻る</a>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Official Support</p>
+          <h1>DraMap サポート</h1>
+          <p class="summary">
+            DraMap / Drama Birth Quest は、現実の場所を舞台にクエスト、投稿、写真、コメント、街づくりを楽しむアプリです。
+            困ったとき、削除したい情報があるとき、安全上の問題を見つけたときは、このページの案内をご確認ください。
+          </p>
+          <div class="meta">
+            <span class="pill">対象: iOS アプリ / 公開サイト</span>
+            <span class="pill">最終更新: {updatedAt}</span>
+          </div>
+          <div class="actions">
+            <a class="button button-primary" href="#contact">問い合わせ方法</a>
+            <a class="button" href="#account">アカウント削除</a>
+            <a class="button" href="#safety">通報と安全</a>
+          </div>
+        </div>
+        <div class="hero-image" role="img" aria-label="場所ページに写真やコメントを残すDraMapの画面"></div>
+      </section>
+
+      <div class="notice">
+        <p>
+          <strong>緊急時のお願い:</strong>
+          現地で危険、事故、迷惑行為、施設トラブルが発生している場合は、アプリ操作よりも安全確保を優先し、必要に応じて警察、消防、施設管理者など公的な窓口へ連絡してください。
+        </p>
+      </div>
+
+      <section class="contact-card" id="contact">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>問い合わせ方法</h2>
+          <p>
+            現在、個別サポートはアプリ内の「お問い合わせ」と、このページの問い合わせフォームから受け付けています。アカウント、投稿、クエスト、場所ページ、権限、ログイン、削除依頼について連絡できます。
+          </p>
+          <p>
+            早く確認するため、問い合わせ時にはユーザー名、対象のクエスト名または場所名、発生日時、端末の種類、問題の内容を可能な範囲で記載してください。
+          </p>
+        </div>
+        <a class="button button-primary" href="/privacy/">プライバシーの取扱いを見る</a>
+      </section>
+
+      <section class="section full">
+        <h2>問い合わせフォーム</h2>
+        <p>
+          入力内容をもとにメール作成画面を開きます。送信前に内容を確認し、必要であればスクリーンショットなどを添付してください。
+        </p>
+        <form class="support-form" id="support-form">
+          <div class="field">
+            <label for="support-category">問い合わせ内容</label>
+            <select id="support-category" name="category" required>
+              <option value="アカウント・ログイン">アカウント・ログイン</option>
+              <option value="投稿・写真・コメント">投稿・写真・コメント</option>
+              <option value="クエスト・場所ページ">クエスト・場所ページ</option>
+              <option value="通報・安全上の問題">通報・安全上の問題</option>
+              <option value="アカウント削除">アカウント削除</option>
+              <option value="その他">その他</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="support-name">お名前またはユーザー名</label>
+            <input id="support-name" name="name" autocomplete="name" placeholder="アプリ内の表示名など" />
+          </div>
+          <div class="field">
+            <label for="support-reply">返信先メールアドレス</label>
+            <input id="support-reply" name="reply" type="email" autocomplete="email" placeholder="返信を希望するメールアドレス" />
+          </div>
+          <div class="field">
+            <label for="support-target">対象のクエスト・場所・投稿</label>
+            <input id="support-target" name="target" placeholder="分かる範囲でURL、名称、発生日時など" />
+          </div>
+          <div class="field">
+            <label for="support-message">お問い合わせ本文</label>
+            <textarea id="support-message" name="message" required placeholder="問題の内容、再現手順、削除したい情報、通報理由などを入力してください。"></textarea>
+          </div>
+          <button class="button button-primary" type="submit">メールを作成する</button>
+          <p class="form-note">
+            このフォームはブラウザ上でメール本文を作成します。送信は、お使いのメールアプリまたはメールサービス上で行われます。
+          </p>
+        </form>
+      </section>
+
+      <div class="grid">
+        <section class="section" id="account">
+          <h2>アカウント削除</h2>
+          <p>
+            アカウント削除は、アプリ内のアカウントメニューから行えます。削除後、主要なアカウント情報は削除または匿名化されます。
+          </p>
+          <div class="steps">
+            <div class="step">
+              <strong>1. アプリを開く</strong>
+              <p>ログイン中のアカウントで DraMap を開きます。</p>
+            </div>
+            <div class="step">
+              <strong>2. アカウントメニューを確認</strong>
+              <p>設定またはアカウント関連メニューから、アカウント削除の項目へ進みます。</p>
+            </div>
+            <div class="step">
+              <strong>3. 注意事項を確認して削除</strong>
+              <p>公開投稿や不正利用調査に必要な記録など、一部情報は法令・安全管理上必要な範囲で保持される場合があります。</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="content">
+          <h2>投稿・写真・コメントの削除</h2>
+          <p>
+            自分が投稿したクエスト、写真、コメント、プロフィール情報について、削除や修正が必要な場合はアプリ内の該当画面またはお問い合わせから依頼してください。
+          </p>
+          <ul>
+            <li>対象の投稿URL、クエスト名、場所名が分かると確認が早くなります。</li>
+            <li>他者の権利侵害、個人情報、危険行為を含む投稿は、運営判断で非表示または削除する場合があります。</li>
+            <li>公開ページに反映済みの内容は、キャッシュ等の都合で反映に時間がかかる場合があります。</li>
+          </ul>
+        </section>
+
+        <section class="section" id="login">
+          <h2>ログインと外部サービス連携</h2>
+          <p>
+            Google ログイン、Apple の機能、TikTok や YouTube などの外部サービス連携は、各サービス側の状態や設定により利用できない場合があります。
+          </p>
+          <ul>
+            <li>ログインできない場合は通信状態、端末時刻、外部サービス側のログイン状態を確認してください。</li>
+            <li>外部サービスの連携解除は、アプリ内機能または各外部サービス側の設定から行える場合があります。</li>
+            <li>同じアカウントで再ログインしても情報が見つからない場合は、お問い合わせから状況をお知らせください。</li>
+          </ul>
+        </section>
+
+        <section class="section" id="permissions">
+          <h2>位置情報・写真・カメラ・マイク</h2>
+          <p>
+            DraMap は、現地体験、投稿、写真、音声コメントなどの機能で端末権限を使用します。不要な権限は、iOS の設定アプリからいつでも変更できます。
+          </p>
+          <ul>
+            <li>位置情報: 地図、近くのクエスト、場所ページの体験に使用します。</li>
+            <li>写真・カメラ: 投稿、キャラクター作成、場所ページの写真に使用します。</li>
+            <li>マイク・音声認識: 音声コメントや文字起こしに使用する場合があります。</li>
+          </ul>
+        </section>
+      </div>
+
+      <section class="section full" id="safety">
+        <h2>通報と安全に関するお願い</h2>
+        <p>
+          DraMap は現実の場所を扱うため、ユーザー自身と周囲の安全、施設ルール、交通ルール、私有地への立ち入り制限を守って利用してください。
+          不適切な投稿、権利侵害、危険行為、迷惑行為、なりすまし、個人情報の掲載を見つけた場合は、アプリ内の通報またはお問い合わせからご連絡ください。
+        </p>
+        <div class="steps">
+          <div class="step">
+            <strong>通報時にあると助かる情報</strong>
+            <p>対象の投稿、場所、クエスト、ユーザー名、スクリーンショット、発生日時、問題の理由を可能な範囲でお知らせください。</p>
+          </div>
+          <div class="step">
+            <strong>運営側の対応</strong>
+            <p>内容確認後、非表示、削除、利用制限、再発防止のための調査など、必要な範囲で対応します。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section full">
+        <h2>よくある確認先</h2>
+        <div class="link-list">
+          <a href="/privacy/"><span>プライバシーポリシー</span><span>位置情報・投稿・外部連携の取扱い</span></a>
+          <a href="/terms/"><span>利用規約</span><span>投稿、現地利用、禁止事項</span></a>
+          <a href="/places/"><span>場所一覧</span><span>公開されている場所ページ</span></a>
+          <a href="/"><span>公式トップ</span><span>アプリ概要と公開クエスト</span></a>
+        </div>
+      </section>
+
+      <footer>
+        <span>© 2026 Yuji Shimizu. All Rights Reserved.</span>
+        <span>
+          <a href="/">Marketing</a> / <a href="/privacy/">Privacy</a> / <a href="/terms/">Terms</a>
+        </span>
+      </footer>
+    </main>
+    <script>
+      const supportForm = document.querySelector('#support-form');
+
+      supportForm?.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const form = event.currentTarget;
+        if (!(form instanceof HTMLFormElement)) {
+          return;
+        }
+
+        const data = new FormData(form);
+        const category = String(data.get('category') || '問い合わせ');
+        const name = String(data.get('name') || '').trim() || '未入力';
+        const reply = String(data.get('reply') || '').trim() || '未入力';
+        const target = String(data.get('target') || '').trim() || '未入力';
+        const message = String(data.get('message') || '').trim();
+
+        if (!message) {
+          return;
+        }
+
+        const recipient = [
+          ['shi', 'mizu', '510'].join(''),
+          ['g', 'mail'].join('') + '.com',
+        ].join('@');
+        const subject = `DraMapサポート: ${category}`;
+        const body = [
+          'DraMap サポート問い合わせ',
+          '',
+          `問い合わせ内容: ${category}`,
+          `お名前またはユーザー名: ${name}`,
+          `返信先メールアドレス: ${reply}`,
+          `対象のクエスト・場所・投稿: ${target}`,
+          '',
+          '本文:',
+          message,
+        ].join('\n');
+
+        window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      });
+    </script>
+  </body>
+</html>

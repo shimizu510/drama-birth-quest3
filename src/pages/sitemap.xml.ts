@@ -22,6 +22,10 @@ export function GET() {
       lastmod: new Date().toISOString(),
     },
     {
+      loc: buildAbsoluteUrl('/support/', site),
+      lastmod: new Date().toISOString(),
+    },
+    {
       loc: buildAbsoluteUrl('/privacy/', site),
       lastmod: new Date().toISOString(),
     },
