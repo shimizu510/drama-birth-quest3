@@ -24,7 +24,7 @@ export async function getStaticPaths() {
 
 const { quest } = Astro.props;
 const site = Astro.site;
-const pageTitle = `${quest.title} | Drama Birth Quest`;
+const pageTitle = `${quest.title} | DraMap`;
 const synopsis = quest.synopsis;
 const metaDescription = getQuestDescription(quest);
 const canonical = buildAbsoluteUrl(quest.webPagePath, site);
@@ -780,7 +780,7 @@ const structuredData = JSON.stringify({
   <body>
     <main class="shell">
       <div class="topbar">
-        <a class="brand" href="/">Drama Birth Quest</a>
+        <a class="brand" href="/">DraMap</a>
       </div>
 
       <article class="hero">

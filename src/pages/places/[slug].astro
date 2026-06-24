@@ -20,7 +20,7 @@ const relatedQuests = Object.entries(questModules)
   .map(([filePath, module]) => normalizeQuest(filePath, module))
   .filter((quest) => quest.placeID === place.id);
 const canonical = buildAbsoluteUrl(place.webPagePath, Astro.site);
-const pageTitle = `${place.title} | Drama Birth Quest Place`;
+const pageTitle = `${place.title} | DraMap Place`;
 const pageDescription = getPlaceDescription(place);
 const jsonLd = {
   '@context': 'https://schema.org',
