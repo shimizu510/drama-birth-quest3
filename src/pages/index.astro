@@ -50,7 +50,7 @@ const pageDescription =
     <meta property="og:description" content={pageDescription} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={buildAbsoluteUrl('/app-images/adventure-hero.png', site)} />
+    <meta property="og:image" content={buildAbsoluteUrl('/app-icon.png', site)} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
@@ -110,13 +110,12 @@ const pageDescription =
       }
 
       .brand-mark {
-        display: grid;
-        width: 36px;
-        height: 36px;
-        place-items: center;
-        border-radius: 10px;
-        color: #fff;
-        background: linear-gradient(135deg, var(--blue), var(--green));
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+        box-shadow: 0 14px 34px rgba(31, 45, 72, 0.18);
+        object-fit: cover;
+        flex: 0 0 auto;
       }
 
       .nav {
@@ -482,7 +481,7 @@ const pageDescription =
     <main class="shell">
       <header class="topbar">
         <a class="brand" href="/">
-          <span class="brand-mark">D</span>
+          <img class="brand-mark" src="/app-icon.png" alt="DraMap app icon" />
           <span>DraMap</span>
         </a>
         <nav class="nav" aria-label="主要ナビゲーション">
