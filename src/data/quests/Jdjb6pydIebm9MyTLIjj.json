@@ -1,0 +1,68 @@
+{
+  "id": "Jdjb6pydIebm9MyTLIjj",
+  "path": "src/data/quests/Jdjb6pydIebm9MyTLIjj.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/Jdjb6pydIebm9MyTLIjj/",
+  "placeID": null,
+  "title": "テストもう一度",
+  "titles": {
+    "ja": "テストもう一度"
+  },
+  "synopsis": null,
+  "synopses": {},
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": "tiktok",
+  "bgURL": "https://7640652623867071758",
+  "coverURL": null,
+  "charURL": null,
+  "charPosition": "center",
+  "charAnim": "none",
+  "dialogLines": [
+    ":::bgTikTok(7640652623867071758,switch)",
+    ":::textType(narration)",
+    "テストもう一度"
+  ],
+  "localizedDialogLines": {},
+  "storyPlayback": {
+    "backgroundType": "tiktok",
+    "backgroundURL": null,
+    "backgroundVideoID": "https://7640652623867071758",
+    "steps": [
+      {
+        "type": "background",
+        "transition": "switch",
+        "visibleCharacters": []
+      },
+      {
+        "type": "narration",
+        "text": "テストもう一度",
+        "durationMs": 2200,
+        "visibleCharacters": []
+      }
+    ]
+  },
+  "authorUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
+  "authorDisplayName": "Yuji Shimizu",
+  "episodeNumber": 1,
+  "seriesRootQuestID": "8C5DFFB1-14A7-423A-A642-FEFBD62539F3",
+  "placeType": "dungeon",
+  "locationName": null,
+  "likeCount": 0,
+  "playCount": 0,
+  "completionCount": 0,
+  "siteViewCount": 0,
+  "appOpenClickCount": 0,
+  "appArrivalCount": 0,
+  "subscriberCount": 0,
+  "completionRate": null,
+  "difficultyLabel": "初級",
+  "recommendedPowerText": "バランス編成で、序盤パーティでも挑みやすい",
+  "appPlayReason": "アプリで遊ぶとルナー報酬や続きの冒険導線まで受け取れます。",
+  "siteViewTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestSiteView",
+  "siteAppOpenTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestAppOpenClick",
+  "appOpenURL": "adventure3d2://q?i=Jdjb6pydIebm9MyTLIjj",
+  "createdAt": "2026-07-24T04:59:58.429Z",
+  "updatedAt": "2026-07-24T05:00:02.308Z",
+  "webPagePath": "/quests/Jdjb6pydIebm9MyTLIjj/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/Jdjb6pydIebm9MyTLIjj/"
+}
