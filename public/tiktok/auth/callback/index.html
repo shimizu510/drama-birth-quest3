@@ -77,13 +77,11 @@
   <body>
     <main>
       <p class="eyebrow">TikTok Callback</p>
-      <h1 id="callback-status">Callback Ready</h1>
+      <h1>Callback Ready</h1>
       <p>
         Returning to DraMap to finish TikTok authentication…
       </p>
-      <a id="open-dramap-link" href="adventure3d2://tiktok/auth/callback" style="display:none;">
-        Open DraMap
-      </a>
+      <a id="return-to-app" href="adventure3d2://tiktok/auth/callback">Return to DraMap</a>
     </main>
     <script>
       (() => {
@@ -93,20 +91,8 @@
           target.searchParams.append(key, value);
         });
         const targetURL = target.toString();
-        const status = document.getElementById("callback-status");
-        if (status) {
-          status.textContent = "Returning to DraMap...";
-        }
-
-        window.location.href = targetURL;
-
-        setTimeout(() => {
-          const manualLink = document.getElementById("open-dramap-link");
-          if (manualLink) {
-            manualLink.href = targetURL;
-            manualLink.style.display = "inline-flex";
-          }
-        }, 1200);
+        document.getElementById("return-to-app").href = targetURL;
+        window.location.replace(targetURL);
       })();
     </script>
   </body>

@@ -10,3 +10,7 @@
   Content-Type: text/plain
   Cache-Control: public, max-age=300
   X-Robots-Tag: noindex, nofollow
+
+/app-ads.txt
+  Content-Type: text/plain
+  Cache-Control: public, max-age=300
