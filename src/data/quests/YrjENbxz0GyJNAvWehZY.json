@@ -1,0 +1,68 @@
+{
+  "id": "YrjENbxz0GyJNAvWehZY",
+  "path": "src/data/quests/YrjENbxz0GyJNAvWehZY.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/YrjENbxz0GyJNAvWehZY/",
+  "placeID": null,
+  "title": "TikTok背景テスト",
+  "titles": {
+    "ja": "TikTok背景テスト"
+  },
+  "synopsis": null,
+  "synopses": {},
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": "image",
+  "bgURL": null,
+  "coverURL": null,
+  "charURL": null,
+  "charPosition": "center",
+  "charAnim": "none",
+  "dialogLines": [
+    ":::bgTikTok(7624067921374989581,switch)",
+    ":::textType(narration)",
+    "まずはテスト"
+  ],
+  "localizedDialogLines": {},
+  "storyPlayback": {
+    "backgroundType": "image",
+    "backgroundURL": null,
+    "backgroundVideoID": null,
+    "steps": [
+      {
+        "type": "background",
+        "transition": "switch",
+        "visibleCharacters": []
+      },
+      {
+        "type": "narration",
+        "text": "まずはテスト",
+        "durationMs": 2200,
+        "visibleCharacters": []
+      }
+    ]
+  },
+  "authorUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
+  "authorDisplayName": "Yuji Shimizu",
+  "episodeNumber": 1,
+  "seriesRootQuestID": "8DF293DB-558C-49D1-99B5-78A08947407B",
+  "placeType": "dungeon",
+  "locationName": null,
+  "likeCount": 0,
+  "playCount": 0,
+  "completionCount": 0,
+  "siteViewCount": 0,
+  "appOpenClickCount": 0,
+  "appArrivalCount": 0,
+  "subscriberCount": 0,
+  "completionRate": null,
+  "difficultyLabel": "初級",
+  "recommendedPowerText": "バランス編成で、序盤パーティでも挑みやすい",
+  "appPlayReason": "アプリで遊ぶとルナー報酬や続きの冒険導線まで受け取れます。",
+  "siteViewTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestSiteView",
+  "siteAppOpenTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestAppOpenClick",
+  "appOpenURL": "adventure3d2://q?i=YrjENbxz0GyJNAvWehZY",
+  "createdAt": "2026-07-24T04:18:26.504Z",
+  "updatedAt": "2026-07-24T04:18:28.565Z",
+  "webPagePath": "/quests/YrjENbxz0GyJNAvWehZY/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/YrjENbxz0GyJNAvWehZY/"
+}
