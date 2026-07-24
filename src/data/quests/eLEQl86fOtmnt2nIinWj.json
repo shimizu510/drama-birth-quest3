@@ -1,0 +1,68 @@
+{
+  "id": "eLEQl86fOtmnt2nIinWj",
+  "path": "src/data/quests/eLEQl86fOtmnt2nIinWj.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/eLEQl86fOtmnt2nIinWj/",
+  "placeID": null,
+  "title": "TikTok背景",
+  "titles": {
+    "ja": "TikTok背景"
+  },
+  "synopsis": null,
+  "synopses": {},
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": "image",
+  "bgURL": null,
+  "coverURL": null,
+  "charURL": null,
+  "charPosition": "center",
+  "charAnim": "none",
+  "dialogLines": [
+    ":::bgTikTok(7640652623867071758,switch)",
+    ":::textType(narration)",
+    "表示される？"
+  ],
+  "localizedDialogLines": {},
+  "storyPlayback": {
+    "backgroundType": "image",
+    "backgroundURL": null,
+    "backgroundVideoID": null,
+    "steps": [
+      {
+        "type": "background",
+        "transition": "switch",
+        "visibleCharacters": []
+      },
+      {
+        "type": "narration",
+        "text": "表示される？",
+        "durationMs": 2200,
+        "visibleCharacters": []
+      }
+    ]
+  },
+  "authorUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
+  "authorDisplayName": "Yuji Shimizu",
+  "episodeNumber": 1,
+  "seriesRootQuestID": "A5D462C8-9719-43A4-AD7A-CD92B4078C32",
+  "placeType": "dungeon",
+  "locationName": null,
+  "likeCount": 0,
+  "playCount": 0,
+  "completionCount": 0,
+  "siteViewCount": 0,
+  "appOpenClickCount": 0,
+  "appArrivalCount": 0,
+  "subscriberCount": 0,
+  "completionRate": null,
+  "difficultyLabel": "初級",
+  "recommendedPowerText": "バランス編成で、序盤パーティでも挑みやすい",
+  "appPlayReason": "アプリで遊ぶとルナー報酬や続きの冒険導線まで受け取れます。",
+  "siteViewTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestSiteView",
+  "siteAppOpenTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestAppOpenClick",
+  "appOpenURL": "adventure3d2://q?i=eLEQl86fOtmnt2nIinWj",
+  "createdAt": "2026-07-24T04:16:20.039Z",
+  "updatedAt": "2026-07-24T04:16:25.741Z",
+  "webPagePath": "/quests/eLEQl86fOtmnt2nIinWj/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/eLEQl86fOtmnt2nIinWj/"
+}
