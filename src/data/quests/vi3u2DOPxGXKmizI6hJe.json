@@ -1,0 +1,70 @@
+{
+  "id": "vi3u2DOPxGXKmizI6hJe",
+  "path": "src/data/quests/vi3u2DOPxGXKmizI6hJe.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/vi3u2DOPxGXKmizI6hJe/",
+  "placeID": null,
+  "title": "TikTokサムネ",
+  "titles": {
+    "ja": "TikTokサムネ"
+  },
+  "synopsis": null,
+  "synopses": {},
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": "tiktok",
+  "bgURL": "7618134252944674062",
+  "coverURL": "firestore://questImageBlobs/2JhZXWqwIw8cPFHhzmWx/imageBlob",
+  "charURL": null,
+  "charPosition": "center",
+  "charAnim": "none",
+  "dialogLines": [
+    ":::bgTikTok(7618134252944674062,switch)",
+    ":::textType(narration)",
+    "TikTokサムネ"
+  ],
+  "localizedDialogLines": {},
+  "storyPlayback": {
+    "backgroundType": "tiktok",
+    "backgroundURL": "firestore://questImageBlobs/2JhZXWqwIw8cPFHhzmWx/imageBlob",
+    "backgroundVideoID": "7618134252944674062",
+    "steps": [
+      {
+        "type": "background",
+        "backgroundURL": "firestore://questImageBlobs/2JhZXWqwIw8cPFHhzmWx/imageBlob",
+        "transition": "switch",
+        "visibleCharacters": []
+      },
+      {
+        "type": "narration",
+        "text": "TikTokサムネ",
+        "durationMs": 2200,
+        "backgroundURL": "firestore://questImageBlobs/2JhZXWqwIw8cPFHhzmWx/imageBlob",
+        "visibleCharacters": []
+      }
+    ]
+  },
+  "authorUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
+  "authorDisplayName": "Yuji Shimizu",
+  "episodeNumber": 1,
+  "seriesRootQuestID": "4FA1D812-3A6B-4A5D-BEF4-3AD5B35DB8C8",
+  "placeType": "dungeon",
+  "locationName": null,
+  "likeCount": 0,
+  "playCount": 0,
+  "completionCount": 0,
+  "siteViewCount": 0,
+  "appOpenClickCount": 0,
+  "appArrivalCount": 0,
+  "subscriberCount": 0,
+  "completionRate": null,
+  "difficultyLabel": "初級",
+  "recommendedPowerText": "バランス編成で、序盤パーティでも挑みやすい",
+  "appPlayReason": "アプリで遊ぶとルナー報酬や続きの冒険導線まで受け取れます。",
+  "siteViewTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestSiteView",
+  "siteAppOpenTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestAppOpenClick",
+  "appOpenURL": "adventure3d2://q?i=vi3u2DOPxGXKmizI6hJe",
+  "createdAt": "2026-07-24T05:29:44.418Z",
+  "updatedAt": "2026-07-24T05:29:48.216Z",
+  "webPagePath": "/quests/vi3u2DOPxGXKmizI6hJe/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/vi3u2DOPxGXKmizI6hJe/"
+}
