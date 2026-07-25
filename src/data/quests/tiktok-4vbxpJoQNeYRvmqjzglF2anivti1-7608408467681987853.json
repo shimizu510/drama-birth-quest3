@@ -32,7 +32,7 @@
   "episodeNumber": 1,
   "seriesRootQuestID": "tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7608408467681987853",
   "placeType": "city",
-  "locationName": "YOU",
+  "locationName": null,
   "likeCount": 0,
   "playCount": 0,
   "completionCount": 0,
@@ -48,7 +48,7 @@
   "siteAppOpenTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestAppOpenClick",
   "appOpenURL": "adventure3d2://q?i=tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7608408467681987853",
   "createdAt": "2026-07-24T11:06:18.701Z",
-  "updatedAt": "2026-07-25T01:42:16.098Z",
+  "updatedAt": "2026-07-25T01:48:21.164Z",
   "webPagePath": "/quests/tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7608408467681987853/",
   "webPageURL": "https://drama-birth-quest3.pages.dev/quests/tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7608408467681987853/"
 }
