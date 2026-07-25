@@ -15,7 +15,7 @@
   "appDownloadURL": null,
   "bgType": "tiktok",
   "bgURL": "7611122734344441102",
-  "coverURL": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/oQ7R7EbIptDX5NrABoFEgIDgEoARSfZQQsf3SC~tplv-tiktokx-cropcenter-q:300:400:q70.jpeg?dr=8596&refresh_token=f5537aba&x-expires=1785024000&x-signature=l%2BPuqgy%2FsO%2FkSjWrEoiJgJJrr0M%3D&t=bacd0480&ps=933b5bde&shp=d05b14bd&shcp=8aecc5ac&idc=useast5&s=TIKTOK_FOR_DEVELOPER&sc=cover&biz_tag=tt_video",
+  "coverURL": "https://p16-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/oQ7R7EbIptDX5NrABoFEgIDgEoARSfZQQsf3SC~tplv-tiktokx-cropcenter-q:300:400:q70.jpeg?dr=8596&refresh_token=e77e7653&x-expires=1785027600&x-signature=Vqx%2FwrfSjCfOtSKZJRqGY8uQxzw%3D&t=bacd0480&ps=933b5bde&shp=d05b14bd&shcp=8aecc5ac&idc=useast5&biz_tag=tt_video&s=TIKTOK_FOR_DEVELOPER&sc=cover",
   "charURL": null,
   "charPosition": "center",
   "charAnim": "none",
@@ -23,7 +23,7 @@
   "localizedDialogLines": {},
   "storyPlayback": {
     "backgroundType": "tiktok",
-    "backgroundURL": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/oQ7R7EbIptDX5NrABoFEgIDgEoARSfZQQsf3SC~tplv-tiktokx-cropcenter-q:300:400:q70.jpeg?dr=8596&refresh_token=f5537aba&x-expires=1785024000&x-signature=l%2BPuqgy%2FsO%2FkSjWrEoiJgJJrr0M%3D&t=bacd0480&ps=933b5bde&shp=d05b14bd&shcp=8aecc5ac&idc=useast5&s=TIKTOK_FOR_DEVELOPER&sc=cover&biz_tag=tt_video",
+    "backgroundURL": "https://p16-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/oQ7R7EbIptDX5NrABoFEgIDgEoARSfZQQsf3SC~tplv-tiktokx-cropcenter-q:300:400:q70.jpeg?dr=8596&refresh_token=e77e7653&x-expires=1785027600&x-signature=Vqx%2FwrfSjCfOtSKZJRqGY8uQxzw%3D&t=bacd0480&ps=933b5bde&shp=d05b14bd&shcp=8aecc5ac&idc=useast5&biz_tag=tt_video&s=TIKTOK_FOR_DEVELOPER&sc=cover",
     "backgroundVideoID": "7611122734344441102",
     "steps": []
   },
@@ -32,7 +32,7 @@
   "episodeNumber": 1,
   "seriesRootQuestID": "tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7611122734344441102",
   "placeType": "city",
-  "locationName": "La tour d’or",
+  "locationName": "Japanese",
   "likeCount": 0,
   "playCount": 0,
   "completionCount": 0,
@@ -48,7 +48,7 @@
   "siteAppOpenTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestAppOpenClick",
   "appOpenURL": "adventure3d2://q?i=tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7611122734344441102",
   "createdAt": "2026-07-24T11:06:18.701Z",
-  "updatedAt": "2026-07-25T00:34:12.193Z",
+  "updatedAt": "2026-07-25T01:42:07.993Z",
   "webPagePath": "/quests/tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7611122734344441102/",
   "webPageURL": "https://drama-birth-quest3.pages.dev/quests/tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7611122734344441102/"
 }
