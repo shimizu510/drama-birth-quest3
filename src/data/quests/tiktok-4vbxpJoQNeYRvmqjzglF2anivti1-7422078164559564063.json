@@ -32,7 +32,7 @@
   "episodeNumber": 1,
   "seriesRootQuestID": "tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7422078164559564063",
   "placeType": "city",
-  "locationName": "ONITSUKA TIGER OMOTESANDO NIPPON MADE",
+  "locationName": null,
   "likeCount": 0,
   "playCount": 0,
   "completionCount": 0,
@@ -48,7 +48,7 @@
   "siteAppOpenTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestAppOpenClick",
   "appOpenURL": "adventure3d2://q?i=tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7422078164559564063",
   "createdAt": "2026-07-24T11:06:18.701Z",
-  "updatedAt": "2026-07-25T01:43:15.555Z",
+  "updatedAt": "2026-07-25T01:50:31.104Z",
   "webPagePath": "/quests/tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7422078164559564063/",
   "webPageURL": "https://drama-birth-quest3.pages.dev/quests/tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7422078164559564063/"
 }
