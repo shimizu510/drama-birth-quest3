@@ -1,0 +1,63 @@
+{
+  "id": "CJDTnyYZFdZSEjbNpp9P",
+  "path": "src/data/quests/CJDTnyYZFdZSEjbNpp9P.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/CJDTnyYZFdZSEjbNpp9P/",
+  "placeID": null,
+  "title": "葛西臨海水族園!?",
+  "titles": {
+    "ja": "葛西臨海水族園!?"
+  },
+  "synopsis": null,
+  "synopses": {},
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": "youtube",
+  "bgURL": "afpZLAo5iq4",
+  "coverURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questCovers%2F106A9C1C-7DE7-4CD0-94D9-DAB16199488B.png?alt=media&token=8727e374-7c0e-429d-ac4f-57a5851a0457",
+  "charURL": null,
+  "charPosition": "center",
+  "charAnim": "none",
+  "dialogLines": [
+    ":::textType(narration)",
+    "葛西臨海水族園"
+  ],
+  "localizedDialogLines": {},
+  "storyPlayback": {
+    "backgroundType": "youtube",
+    "backgroundURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questCovers%2F106A9C1C-7DE7-4CD0-94D9-DAB16199488B.png?alt=media&token=8727e374-7c0e-429d-ac4f-57a5851a0457",
+    "backgroundVideoID": "afpZLAo5iq4",
+    "steps": [
+      {
+        "type": "narration",
+        "text": "葛西臨海水族園",
+        "durationMs": 2200,
+        "backgroundURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questCovers%2F106A9C1C-7DE7-4CD0-94D9-DAB16199488B.png?alt=media&token=8727e374-7c0e-429d-ac4f-57a5851a0457",
+        "visibleCharacters": []
+      }
+    ]
+  },
+  "authorUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
+  "authorDisplayName": "Yuji Shimizu",
+  "episodeNumber": null,
+  "seriesRootQuestID": null,
+  "placeType": "dungeon",
+  "locationName": "葛西臨海水族園",
+  "likeCount": 0,
+  "playCount": 0,
+  "completionCount": 0,
+  "siteViewCount": 0,
+  "appOpenClickCount": 0,
+  "appArrivalCount": 0,
+  "subscriberCount": 0,
+  "completionRate": null,
+  "difficultyLabel": "初級",
+  "recommendedPowerText": "バランス編成で、序盤パーティでも挑みやすい",
+  "appPlayReason": "アプリで遊ぶとルナー報酬や続きの冒険導線まで受け取れます。",
+  "siteViewTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestSiteView",
+  "siteAppOpenTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestAppOpenClick",
+  "appOpenURL": "adventure3d2://q?i=CJDTnyYZFdZSEjbNpp9P",
+  "createdAt": "2025-11-16T01:12:52.579Z",
+  "updatedAt": "2026-07-25T09:32:58.515Z",
+  "webPagePath": "/quests/CJDTnyYZFdZSEjbNpp9P/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/CJDTnyYZFdZSEjbNpp9P/"
+}
