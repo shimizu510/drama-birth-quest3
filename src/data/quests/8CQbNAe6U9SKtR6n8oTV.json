@@ -1,0 +1,63 @@
+{
+  "id": "8CQbNAe6U9SKtR6n8oTV",
+  "path": "src/data/quests/8CQbNAe6U9SKtR6n8oTV.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/8CQbNAe6U9SKtR6n8oTV/",
+  "placeID": null,
+  "title": "7",
+  "titles": {
+    "ja": "7"
+  },
+  "synopsis": null,
+  "synopses": {},
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": "image",
+  "bgURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F38C76826-01F7-4314-81AE-8800B95CF582.heic?alt=media&token=d27a7a4b-2886-4d6e-9f29-188f41f7133c",
+  "coverURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questCovers%2FC1910801-EBAE-44DA-99C5-836446880EAB.png?alt=media&token=5b5e1303-6eeb-48b0-b786-9bac2ba3fc00",
+  "charURL": null,
+  "charPosition": "center",
+  "charAnim": "none",
+  "dialogLines": [
+    ":::textType(narration)",
+    "7"
+  ],
+  "localizedDialogLines": {},
+  "storyPlayback": {
+    "backgroundType": "image",
+    "backgroundURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F38C76826-01F7-4314-81AE-8800B95CF582.heic?alt=media&token=d27a7a4b-2886-4d6e-9f29-188f41f7133c",
+    "backgroundVideoID": null,
+    "steps": [
+      {
+        "type": "narration",
+        "text": "7",
+        "durationMs": 2200,
+        "backgroundURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F38C76826-01F7-4314-81AE-8800B95CF582.heic?alt=media&token=d27a7a4b-2886-4d6e-9f29-188f41f7133c",
+        "visibleCharacters": []
+      }
+    ]
+  },
+  "authorUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
+  "authorDisplayName": "Yuji Shimizu",
+  "episodeNumber": 7,
+  "seriesRootQuestID": "6A8D2C2A-3F04-4E16-A805-91DF1A6F3C02",
+  "placeType": "dungeon",
+  "locationName": null,
+  "likeCount": 0,
+  "playCount": 0,
+  "completionCount": 0,
+  "siteViewCount": 0,
+  "appOpenClickCount": 0,
+  "appArrivalCount": 0,
+  "subscriberCount": 0,
+  "completionRate": null,
+  "difficultyLabel": "初級",
+  "recommendedPowerText": "バランス編成で、序盤パーティでも挑みやすい",
+  "appPlayReason": "アプリで遊ぶと、戦闘・報酬・育成までそのまま進められます。",
+  "siteViewTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestSiteView",
+  "siteAppOpenTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestAppOpenClick",
+  "appOpenURL": "adventure3d2://q?i=8CQbNAe6U9SKtR6n8oTV",
+  "createdAt": "2025-11-24T05:55:08.303Z",
+  "updatedAt": "2026-07-25T09:32:58.885Z",
+  "webPagePath": "/quests/8CQbNAe6U9SKtR6n8oTV/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/8CQbNAe6U9SKtR6n8oTV/"
+}
