@@ -32,7 +32,7 @@
   "episodeNumber": 1,
   "seriesRootQuestID": "tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7423691237393288479",
   "placeType": "city",
-  "locationName": null,
+  "locationName": "Disneyland Resort",
   "likeCount": 1,
   "playCount": 1,
   "completionCount": 0,
@@ -48,7 +48,7 @@
   "siteAppOpenTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestAppOpenClick",
   "appOpenURL": "adventure3d2://q?i=tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7423691237393288479",
   "createdAt": "2026-07-24T11:06:18.701Z",
-  "updatedAt": "2026-07-25T01:33:24.589Z",
+  "updatedAt": "2026-07-25T01:43:05.479Z",
   "webPagePath": "/quests/tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7423691237393288479/",
   "webPageURL": "https://drama-birth-quest3.pages.dev/quests/tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7423691237393288479/"
 }
