@@ -15,7 +15,7 @@
   "appDownloadURL": null,
   "bgType": "tiktok",
   "bgURL": "7622498787583413517",
-  "coverURL": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/oEMw6yjmAjZCExp0Ih1ABPmGmiI8IHiIDbS5fB~tplv-tiktokx-cropcenter-q:300:400:q70.jpeg?dr=8596&refresh_token=eddc6150&x-expires=1785027600&x-signature=FH4ZSjODX95huFBS0CxYsG7pYa8%3D&t=bacd0480&ps=933b5bde&shp=d05b14bd&shcp=8aecc5ac&idc=useast5&biz_tag=tt_video&s=TIKTOK_FOR_DEVELOPER&sc=cover",
+  "coverURL": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/oEMw6yjmAjZCExp0Ih1ABPmGmiI8IHiIDbS5fB~tplv-tiktokx-cropcenter-q:300:400:q70.jpeg?dr=8596&refresh_token=0dc7e01a&x-expires=1785193200&x-signature=AuXu2KfiwSQahGyAwhHf8sAhMbM%3D&t=bacd0480&ps=933b5bde&shp=d05b14bd&shcp=8aecc5ac&idc=useast5&biz_tag=tt_video&s=TIKTOK_FOR_DEVELOPER&sc=cover",
   "charURL": null,
   "charPosition": "center",
   "charAnim": "none",
@@ -23,7 +23,7 @@
   "localizedDialogLines": {},
   "storyPlayback": {
     "backgroundType": "tiktok",
-    "backgroundURL": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/oEMw6yjmAjZCExp0Ih1ABPmGmiI8IHiIDbS5fB~tplv-tiktokx-cropcenter-q:300:400:q70.jpeg?dr=8596&refresh_token=eddc6150&x-expires=1785027600&x-signature=FH4ZSjODX95huFBS0CxYsG7pYa8%3D&t=bacd0480&ps=933b5bde&shp=d05b14bd&shcp=8aecc5ac&idc=useast5&biz_tag=tt_video&s=TIKTOK_FOR_DEVELOPER&sc=cover",
+    "backgroundURL": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/oEMw6yjmAjZCExp0Ih1ABPmGmiI8IHiIDbS5fB~tplv-tiktokx-cropcenter-q:300:400:q70.jpeg?dr=8596&refresh_token=0dc7e01a&x-expires=1785193200&x-signature=AuXu2KfiwSQahGyAwhHf8sAhMbM%3D&t=bacd0480&ps=933b5bde&shp=d05b14bd&shcp=8aecc5ac&idc=useast5&biz_tag=tt_video&s=TIKTOK_FOR_DEVELOPER&sc=cover",
     "backgroundVideoID": "7622498787583413517",
     "steps": []
   },
@@ -48,7 +48,7 @@
   "siteAppOpenTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestAppOpenClick",
   "appOpenURL": "adventure3d2://q?i=tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7622498787583413517",
   "createdAt": "2026-07-24T11:06:18.701Z",
-  "updatedAt": "2026-07-25T01:46:30.100Z",
+  "updatedAt": "2026-07-26T23:26:12.657Z",
   "webPagePath": "/quests/tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7622498787583413517/",
   "webPageURL": "https://drama-birth-quest3.pages.dev/quests/tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7622498787583413517/"
 }
