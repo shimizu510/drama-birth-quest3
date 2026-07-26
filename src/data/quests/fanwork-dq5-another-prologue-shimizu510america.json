@@ -1,0 +1,1173 @@
+{
+  "id": "fanwork-dq5-another-prologue-shimizu510america",
+  "path": "src/data/quests/fanwork-dq5-another-prologue-shimizu510america.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/fanwork-dq5-another-prologue-shimizu510america/",
+  "placeID": null,
+  "title": "もうひとつの旅立ち ― 港へ",
+  "titles": {
+    "en": "Another Departure — To the Port",
+    "ja": "もうひとつの旅立ち ― 港へ"
+  },
+  "synopsis": "城での誕生の夢から、父との船旅、港の外での初戦闘へ続く非公式ファン作品。",
+  "synopses": {
+    "en": "An unofficial fan story spanning a dream of birth in a castle, a voyage with a father, and a first battle beyond the port.",
+    "ja": "城での誕生の夢から、父との船旅、港の外での初戦闘へ続く非公式ファン作品。"
+  },
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": "image",
+  "bgURL": null,
+  "coverURL": "FanDQ5_QuestCover.png",
+  "charURL": null,
+  "charPosition": "center",
+  "charAnim": "none",
+  "dialogLines": [
+    ":::clearText",
+    ":::bgm(fandqcastle,0.40,1.20)",
+    ":::bgImage(FanDQ5_CastleBedroom_WarmNight.png,blur,false)",
+    ":::textType(narration)",
+    ":::speaker(narration)",
+    "金色の灯りが揺れる、豪華な城の寝室。遠い記憶のような産声が響いた。",
+    ":::clearText",
+    ":::textType(dialog)",
+    ":::speaker(center)",
+    ":::charAdd(center,FanDQ5_Papas_BurstIn_Full.png,hop,1.38)",
+    ":::screenShake(5,0.12)",
+    "パパス: 何！？ 子どもが産まれたと！？",
+    ":::clearText",
+    ":::charRemove(center)",
+    ":::speaker(left)",
+    ":::charAdd(left,FanDQ5_Martha_Bed_Close.png,none,1.78)",
+    "マーサ: あなた……。",
+    ":::clearText",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_Papas_Tears_Mid.png,upDown,1.72)",
+    "パパス: よくやった！ 元気に泣いて……。",
+    ":::clearText",
+    ":::charRemove(left)",
+    ":::charRemove(right)",
+    ":::speaker(center)",
+    ":::charAdd(center,FanDQ5_Papas_Thinking_Full.png,none,1.42)",
+    "パパス: 早速だが名前をつけないといけないなぁ。",
+    ":::charAnim(center,upDown)",
+    "パパス: う〜ん……。",
+    ":::clearText",
+    ":::flash(gold,0.22,0.08)",
+    ":::charAdd(center,FanDQ5_Papas_Idea_Close.png,hop,2.08)",
+    "パパス: トンヌラ！ というのはどうだ？",
+    ":::clearText",
+    ":::charRemove(center)",
+    ":::speaker(left)",
+    ":::charAdd(left,FanDQ5_Martha_Smile_Mid.png,none,1.78)",
+    "マーサ: まぁ、ステキな名前。",
+    ":::clearText",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_Papas_Proud_Mid.png,upDown,1.68)",
+    "マーサ: でも、私も考えたのです……[[PLAYER_NICKNAME]]というのはいかがでしょうか？",
+    ":::clearText",
+    ":::charRemove(left)",
+    ":::charRemove(right)",
+    ":::flash(white,0.82,0.24)",
+    ":::bgBlack(blur)",
+    ":::textType(narration)",
+    ":::speaker(narration)",
+    "波音が、夢をゆっくり現実へ引き戻した。",
+    ":::clearText",
+    ":::bgImage(FanDQ5_ShipDeck_ClearMorning.png,none,false)",
+    ":::bgm(fandqsea,0.44,1.10)",
+    ":::textType(dialog)",
+    ":::speaker(center)",
+    ":::charAdd(center,FanDQ5_YoungHero_WakeStretch_Full.png,hop,1.36)",
+    "[[PLAYER_NICKNAME]]: おはよう！ なんか赤ちゃんの時にどこかのお城にいた夢見ちゃった……。",
+    ":::clearText",
+    ":::charRemove(center)",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_Papas_DeckLaugh_Mid.png,upDown,1.72)",
+    "パパス: わっはっは、[[PLAYER_NICKNAME]]、寝ぼけているな。",
+    ":::clearText",
+    ":::charRemove(right)",
+    ":::bgImage(FanDQ5_ShipDeck_PortApproach.png,none,false)",
+    ":::speaker(left)",
+    ":::charAdd(left,FanDQ5_YoungHero_Curious_Close.png,none,1.72)",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_Papas_PointPort_Full.png,none,1.42)",
+    "パパス: さて、到着したようだ。港におりるとするか。",
+    ":::clearText",
+    ":::charRemove(left)",
+    ":::charRemove(right)",
+    ":::bgImage(FanDQ5_ShipGangway_Arrival.png,none,false)",
+    ":::speaker(center)",
+    ":::charAdd(center,FanDQ5_Papas_NoticeGangway_Mid.png,none,1.74)",
+    "パパス: おや？ どなたか船に乗り込まれるようだな。",
+    ":::clearText",
+    ":::charRemove(center)",
+    ":::speaker(center)",
+    ":::charAdd(center,FanDQ5_Debora_RunPast_Full.png,hop,1.42)",
+    ":::screenShake(4,0.16)",
+    "デボラ: タッタッタッタ……。",
+    ":::clearText",
+    ":::charRemove(center)",
+    ":::speaker(left)",
+    ":::charAdd(left,FanDQ5_Rudman_Apology_Mid.png,none,1.66)",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_Papas_Proud_Mid.png,none,1.66)",
+    "ルドマン: これは旅のお方。うちの子が失礼しました。",
+    ":::clearText",
+    ":::charRemove(right)",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_Flora_Hesitate_Full.png,none,1.36)",
+    "ルドマン: フローラや。船に乗れるか？",
+    "フローラ: ……。",
+    ":::clearText",
+    ":::charRemove(left)",
+    ":::charRemove(right)",
+    ":::speaker(left)",
+    ":::charAdd(left,FanDQ5_Papas_PointPort_Full.png,none,1.42)",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_Flora_TakeHand_Full.png,none,1.38)",
+    "パパス: どれ。私が手をかしましょう。",
+    "フローラ: あ、ありがとう……。",
+    ":::clearText",
+    ":::charRemove(left)",
+    ":::charRemove(right)",
+    ":::speaker(left)",
+    ":::charAdd(left,FanDQ5_Rudman_Thanks_Mid.png,none,1.66)",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_Papas_Proud_Mid.png,upDown,1.66)",
+    "ルドマン: これは旅のお方、ありがとうございます。",
+    ":::clearText",
+    ":::charRemove(left)",
+    ":::charRemove(right)",
+    ":::bgImage(FanDQ5_Port_BustlingMorning.png,none,false)",
+    ":::bgm(fandqfield,0.46,1.00)",
+    ":::textType(dialog)",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_Papas_PointPort_Full.png,none,1.40)",
+    ":::speaker(left)",
+    ":::charAdd(left,FanDQ5_YoungHero_Listening_Full.png,none,1.34)",
+    "パパス: さぁ[[PLAYER_NICKNAME]]、港で私は友人と話がある。そのへんで遊んでいなさい。",
+    "パパス: あまり遠くに行かないようにな。",
+    ":::clearText",
+    ":::charRemove(right)",
+    ":::charRemove(left)",
+    ":::speaker(center)",
+    ":::charAdd(center,FanDQ5_YoungHero_Curious_Close.png,upDown,2.02)",
+    "[[PLAYER_NICKNAME]]: ちょっと外に行ってみたいなぁ。",
+    ":::flash(white,0.10,0.04)",
+    "[[PLAYER_NICKNAME]]: ちょっとだけならいいよね。",
+    ":::clearText",
+    ":::charRemove(center)",
+    ":::bgImage(FanDQ5_Field_ForestMountainBlueSky.png,none,false)",
+    ":::bgm(fandqfield,0.48,1.00)",
+    ":::textType(narration)",
+    ":::speaker(narration)",
+    "森と山の間を、青空へ続く道がまっすぐ伸びていた。",
+    ":::clearText",
+    ":::textType(dialog)",
+    ":::speaker(center)",
+    ":::charAdd(center,FanDQ5_YoungHero_WakeStretch_Full.png,hop,1.40)",
+    "[[PLAYER_NICKNAME]]: うわぁ、外は広いなぁ。",
+    ":::clearText",
+    ":::charAdd(center,FanDQ5_YoungHero_MonsterShock_Close.png,shake,2.12)",
+    ":::screenShake(9,0.20)",
+    ":::aura(threat)",
+    "[[PLAYER_NICKNAME]]: ちょっと待って！ モンスター！？",
+    ":::clearText",
+    ":::charRemove(center)",
+    ":::bgImage(FanDQ5_Field_BattleClearing.png,blur,false)",
+    ":::bgm(fandqbattle,0.50,0.65)",
+    ":::flash(white,0.28,0.08)",
+    ":::battle(fanSlime,fanSlime,fanSlime)",
+    ":::clearText",
+    ":::aura(none)",
+    ":::bgImage(FanDQ5_Field_AfterBattle.png,blur,false)",
+    ":::speaker(center)",
+    ":::charAdd(center,FanDQ5_Papas_BurstIn_Full.png,hop,1.44)",
+    "パパス: ここにいたのかぁ。",
+    ":::clearText",
+    ":::charAdd(center,FanDQ5_Papas_Proud_Mid.png,none,1.76)",
+    "パパス: まだまだ おもてのひとり歩きはキケンだ。",
+    ":::clearText",
+    ":::charRemove(center)",
+    ":::speaker(left)",
+    ":::charAdd(left,FanDQ5_YoungHero_MonsterShock_Close.png,none,1.64)",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_Papas_PointPort_Full.png,upDown,1.46)",
+    ":::bgm(fandqfield,0.46,0.80)",
+    "パパス: ホイミ♪",
+    ":::flash(gold,0.72,0.18)",
+    ":::sparkleBurst(0.92)",
+    ":::clearText",
+    ":::charRemove(left)",
+    ":::charRemove(right)",
+    ":::speaker(center)",
+    ":::charAdd(center,FanDQ5_Papas_Tears_Mid.png,none,1.92)",
+    "パパス: これからは気をつけるんだぞ。",
+    ":::clearText",
+    ":::charRemove(center)",
+    ":::textType(narration)",
+    ":::speaker(narration)",
+    "父の大きな背中を追い、[[PLAYER_NICKNAME]]は港へ戻っていった。",
+    ":::clearText",
+    ":::fanMonsterWindow(enable)",
+    ":::bgm(none,0.0,0.80)"
+  ],
+  "localizedDialogLines": {},
+  "storyPlayback": {
+    "backgroundType": "image",
+    "backgroundURL": "FanDQ5_QuestCover.png",
+    "backgroundVideoID": null,
+    "steps": [
+      {
+        "type": "background",
+        "backgroundURL": "FanDQ5_CastleBedroom_WarmNight.png",
+        "transition": "blur",
+        "visibleCharacters": []
+      },
+      {
+        "type": "narration",
+        "text": "金色の灯りが揺れる、豪華な城の寝室。遠い記憶のような産声が響いた。",
+        "durationMs": 2200,
+        "backgroundURL": "FanDQ5_CastleBedroom_WarmNight.png",
+        "visibleCharacters": []
+      },
+      {
+        "type": "dialogue",
+        "text": "パパス: 何！？ 子どもが産まれたと！？",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_CastleBedroom_WarmNight.png",
+        "character": {
+          "imageURL": "FanDQ5_Papas_BurstIn_Full.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.38,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Papas_BurstIn_Full.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.38,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "マーサ: あなた……。",
+        "speakerName": "left",
+        "speakerPosition": "left",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_CastleBedroom_WarmNight.png",
+        "character": {
+          "imageURL": "FanDQ5_Martha_Bed_Close.png",
+          "position": "left",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.78,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Martha_Bed_Close.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.78,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "パパス: よくやった！ 元気に泣いて……。",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_CastleBedroom_WarmNight.png",
+        "character": {
+          "imageURL": "FanDQ5_Papas_Tears_Mid.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "upDown",
+          "scale": 1.72,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Martha_Bed_Close.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.78,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Papas_Tears_Mid.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "upDown",
+            "scale": 1.72,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "パパス: 早速だが名前をつけないといけないなぁ。",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_CastleBedroom_WarmNight.png",
+        "character": {
+          "imageURL": "FanDQ5_Papas_Thinking_Full.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.42,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Papas_Thinking_Full.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.42,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "パパス: う〜ん……。",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_CastleBedroom_WarmNight.png",
+        "character": {
+          "imageURL": "FanDQ5_Papas_Thinking_Full.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "upDown",
+          "scale": 1.42,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Papas_Thinking_Full.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "upDown",
+            "scale": 1.42,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "パパス: トンヌラ！ というのはどうだ？",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_CastleBedroom_WarmNight.png",
+        "character": {
+          "imageURL": "FanDQ5_Papas_Idea_Close.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 2.08,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Papas_Idea_Close.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 2.08,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "マーサ: まぁ、ステキな名前。",
+        "speakerName": "left",
+        "speakerPosition": "left",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_CastleBedroom_WarmNight.png",
+        "character": {
+          "imageURL": "FanDQ5_Martha_Smile_Mid.png",
+          "position": "left",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.78,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Martha_Smile_Mid.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.78,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "マーサ: でも、私も考えたのです……[[PLAYER_NICKNAME]]というのはいかがでしょうか？",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_CastleBedroom_WarmNight.png",
+        "character": {
+          "imageURL": "FanDQ5_Papas_Proud_Mid.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "upDown",
+          "scale": 1.68,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Martha_Smile_Mid.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.78,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Papas_Proud_Mid.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "upDown",
+            "scale": 1.68,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "narration",
+        "text": "波音が、夢をゆっくり現実へ引き戻した。",
+        "durationMs": 2200,
+        "backgroundURL": "FanDQ5_CastleBedroom_WarmNight.png",
+        "visibleCharacters": []
+      },
+      {
+        "type": "background",
+        "backgroundURL": "FanDQ5_ShipDeck_ClearMorning.png",
+        "transition": "none",
+        "visibleCharacters": []
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: おはよう！ なんか赤ちゃんの時にどこかのお城にいた夢見ちゃった……。",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_ShipDeck_ClearMorning.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_WakeStretch_Full.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.36,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_WakeStretch_Full.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.36,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "パパス: わっはっは、[[PLAYER_NICKNAME]]、寝ぼけているな。",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_ShipDeck_ClearMorning.png",
+        "character": {
+          "imageURL": "FanDQ5_Papas_DeckLaugh_Mid.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "upDown",
+          "scale": 1.72,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Papas_DeckLaugh_Mid.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "upDown",
+            "scale": 1.72,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "background",
+        "backgroundURL": "FanDQ5_ShipDeck_PortApproach.png",
+        "transition": "none",
+        "visibleCharacters": []
+      },
+      {
+        "type": "dialogue",
+        "text": "パパス: さて、到着したようだ。港におりるとするか。",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_ShipDeck_PortApproach.png",
+        "character": {
+          "imageURL": "FanDQ5_Papas_PointPort_Full.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.42,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.72,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Papas_PointPort_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.42,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "background",
+        "backgroundURL": "FanDQ5_ShipGangway_Arrival.png",
+        "transition": "none",
+        "visibleCharacters": []
+      },
+      {
+        "type": "dialogue",
+        "text": "パパス: おや？ どなたか船に乗り込まれるようだな。",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_ShipGangway_Arrival.png",
+        "character": {
+          "imageURL": "FanDQ5_Papas_NoticeGangway_Mid.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.74,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Papas_NoticeGangway_Mid.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.74,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "デボラ: タッタッタッタ……。",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_ShipGangway_Arrival.png",
+        "character": {
+          "imageURL": "FanDQ5_Debora_RunPast_Full.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.42,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Debora_RunPast_Full.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.42,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "ルドマン: これは旅のお方。うちの子が失礼しました。",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_ShipGangway_Arrival.png",
+        "character": {
+          "imageURL": "FanDQ5_Papas_Proud_Mid.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.66,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Rudman_Apology_Mid.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.66,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Papas_Proud_Mid.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.66,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "ルドマン: フローラや。船に乗れるか？",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_ShipGangway_Arrival.png",
+        "character": {
+          "imageURL": "FanDQ5_Flora_Hesitate_Full.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.36,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Rudman_Apology_Mid.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.66,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Flora_Hesitate_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.36,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "フローラ: ……。",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_ShipGangway_Arrival.png",
+        "character": {
+          "imageURL": "FanDQ5_Flora_Hesitate_Full.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.36,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Rudman_Apology_Mid.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.66,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Flora_Hesitate_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.36,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "パパス: どれ。私が手をかしましょう。",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_ShipGangway_Arrival.png",
+        "character": {
+          "imageURL": "FanDQ5_Flora_TakeHand_Full.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.38,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Papas_PointPort_Full.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.42,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Flora_TakeHand_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.38,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "フローラ: あ、ありがとう……。",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_ShipGangway_Arrival.png",
+        "character": {
+          "imageURL": "FanDQ5_Flora_TakeHand_Full.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.38,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Papas_PointPort_Full.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.42,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Flora_TakeHand_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.38,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "ルドマン: これは旅のお方、ありがとうございます。",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_ShipGangway_Arrival.png",
+        "character": {
+          "imageURL": "FanDQ5_Papas_Proud_Mid.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "upDown",
+          "scale": 1.66,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Rudman_Thanks_Mid.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.66,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Papas_Proud_Mid.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "upDown",
+            "scale": 1.66,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "background",
+        "backgroundURL": "FanDQ5_Port_BustlingMorning.png",
+        "transition": "none",
+        "visibleCharacters": []
+      },
+      {
+        "type": "dialogue",
+        "text": "パパス: さぁ[[PLAYER_NICKNAME]]、港で私は友人と話がある。そのへんで遊んでいなさい。",
+        "speakerName": "left",
+        "speakerPosition": "left",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_Port_BustlingMorning.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_Listening_Full.png",
+          "position": "left",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.34,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Papas_PointPort_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.4,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_Listening_Full.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.34,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "パパス: あまり遠くに行かないようにな。",
+        "speakerName": "left",
+        "speakerPosition": "left",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_Port_BustlingMorning.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_Listening_Full.png",
+          "position": "left",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.34,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Papas_PointPort_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.4,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_Listening_Full.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.34,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: ちょっと外に行ってみたいなぁ。",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_Port_BustlingMorning.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "upDown",
+          "scale": 2.02,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "upDown",
+            "scale": 2.02,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: ちょっとだけならいいよね。",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_Port_BustlingMorning.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "upDown",
+          "scale": 2.02,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "upDown",
+            "scale": 2.02,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "background",
+        "backgroundURL": "FanDQ5_Field_ForestMountainBlueSky.png",
+        "transition": "none",
+        "visibleCharacters": []
+      },
+      {
+        "type": "narration",
+        "text": "森と山の間を、青空へ続く道がまっすぐ伸びていた。",
+        "durationMs": 2200,
+        "backgroundURL": "FanDQ5_Field_ForestMountainBlueSky.png",
+        "visibleCharacters": []
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: うわぁ、外は広いなぁ。",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_Field_ForestMountainBlueSky.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_WakeStretch_Full.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.4,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_WakeStretch_Full.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.4,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: ちょっと待って！ モンスター！？",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_Field_ForestMountainBlueSky.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_MonsterShock_Close.png",
+          "position": "center",
+          "entrance": "slide",
+          "motion": "shake",
+          "scale": 2.12,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_MonsterShock_Close.png",
+            "position": "center",
+            "entrance": "slide",
+            "motion": "shake",
+            "scale": 2.12,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "background",
+        "backgroundURL": "FanDQ5_Field_BattleClearing.png",
+        "transition": "blur",
+        "visibleCharacters": []
+      },
+      {
+        "type": "background",
+        "backgroundURL": "FanDQ5_Field_AfterBattle.png",
+        "transition": "blur",
+        "visibleCharacters": []
+      },
+      {
+        "type": "dialogue",
+        "text": "パパス: ここにいたのかぁ。",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_Field_AfterBattle.png",
+        "character": {
+          "imageURL": "FanDQ5_Papas_BurstIn_Full.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.44,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Papas_BurstIn_Full.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.44,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "パパス: まだまだ おもてのひとり歩きはキケンだ。",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_Field_AfterBattle.png",
+        "character": {
+          "imageURL": "FanDQ5_Papas_Proud_Mid.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.76,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Papas_Proud_Mid.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.76,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "パパス: ホイミ♪",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_Field_AfterBattle.png",
+        "character": {
+          "imageURL": "FanDQ5_Papas_PointPort_Full.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "upDown",
+          "scale": 1.46,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_MonsterShock_Close.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.64,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Papas_PointPort_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "upDown",
+            "scale": 1.46,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "パパス: これからは気をつけるんだぞ。",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_Field_AfterBattle.png",
+        "character": {
+          "imageURL": "FanDQ5_Papas_Tears_Mid.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.92,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Papas_Tears_Mid.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.92,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "narration",
+        "text": "父の大きな背中を追い、[[PLAYER_NICKNAME]]は港へ戻っていった。",
+        "durationMs": 2200,
+        "backgroundURL": "FanDQ5_Field_AfterBattle.png",
+        "visibleCharacters": []
+      }
+    ]
+  },
+  "authorUID": "RDkxTMaNhESgAfBGF3ZKyquzJGW2",
+  "authorDisplayName": "アメポン",
+  "episodeNumber": 1,
+  "seriesRootQuestID": "fanwork-dq5-another-prologue-shimizu510america",
+  "placeType": "city",
+  "locationName": null,
+  "likeCount": 0,
+  "playCount": 0,
+  "completionCount": 0,
+  "siteViewCount": 0,
+  "appOpenClickCount": 0,
+  "appArrivalCount": 0,
+  "subscriberCount": 0,
+  "completionRate": null,
+  "difficultyLabel": "街歩き向け",
+  "recommendedPowerText": "物語を追いながら気軽に進めたい人向け",
+  "appPlayReason": "アプリで遊ぶと、位置連動の冒険と次のクエスト導線までつながります。",
+  "siteViewTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestSiteView",
+  "siteAppOpenTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestAppOpenClick",
+  "appOpenURL": "adventure3d2://q?i=fanwork-dq5-another-prologue-shimizu510america",
+  "createdAt": "2026-03-26T00:00:00.000Z",
+  "updatedAt": "2026-07-26T04:21:52.233Z",
+  "webPagePath": "/quests/fanwork-dq5-another-prologue-shimizu510america/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/fanwork-dq5-another-prologue-shimizu510america/"
+}
