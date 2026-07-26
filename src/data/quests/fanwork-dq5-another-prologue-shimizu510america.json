@@ -3,10 +3,10 @@
   "path": "src/data/quests/fanwork-dq5-another-prologue-shimizu510america.json",
   "url": "https://drama-birth-quest3.pages.dev/quests/fanwork-dq5-another-prologue-shimizu510america/",
   "placeID": null,
-  "title": "もうひとつの旅立ち ― 港へ",
+  "title": "ドラクエ5 ファンフィクション",
   "titles": {
-    "en": "Another Departure — To the Port",
-    "ja": "もうひとつの旅立ち ― 港へ"
+    "en": "Dragon Quest V Fan Fiction",
+    "ja": "ドラクエ5 ファンフィクション"
   },
   "synopsis": "城での誕生の夢から、父との船旅、港の外での初戦闘へ続く非公式ファン作品。",
   "synopses": {
@@ -178,7 +178,7 @@
     ":::clearText",
     ":::charRemove(center)",
     ":::bgImage(FanDQ5_Field_BattleClearing.png,blur,false)",
-    ":::bgm(fandqbattle,0.50,0.65)",
+    ":::bgmPauseTo(fandqbattle,0.50,0.65)",
     ":::flash(white,0.28,0.08)",
     ":::battle(fanSlime,fanSlime,fanSlime)",
     ":::clearText",
@@ -196,7 +196,6 @@
     ":::charAdd(left,FanDQ5_YoungHero_MonsterShock_Close.png,none,1.64)",
     ":::speaker(right)",
     ":::charAdd(right,FanDQ5_Papas_PointPort_Full.png,upDown,1.46)",
-    ":::bgm(fandqfield,0.46,0.80)",
     "パパス: ホイミ♪",
     ":::flash(gold,0.72,0.18)",
     ":::sparkleBurst(0.92)",
@@ -212,8 +211,7 @@
     ":::speaker(narration)",
     "父の大きな背中を追い、[[PLAYER_NICKNAME]]は港へ戻っていった。",
     ":::clearText",
-    ":::fanMonsterWindow(enable)",
-    ":::bgm(none,0.0,0.80)"
+    ":::fanMonsterWindow(enable)"
   ],
   "localizedDialogLines": {},
   "storyPlayback": {
@@ -1163,21 +1161,21 @@
   "placeType": "city",
   "locationName": null,
   "likeCount": 0,
-  "playCount": 1,
-  "completionCount": 1,
+  "playCount": 9,
+  "completionCount": 6,
   "siteViewCount": 0,
   "appOpenClickCount": 0,
   "appArrivalCount": 0,
   "subscriberCount": 0,
-  "completionRate": 1,
-  "difficultyLabel": "入りやすい",
+  "completionRate": 0.6666666666666666,
+  "difficultyLabel": "標準",
   "recommendedPowerText": "物語を追いながら気軽に進めたい人向け",
   "appPlayReason": "アプリで遊ぶと、位置連動の冒険と次のクエスト導線までつながります。",
   "siteViewTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestSiteView",
   "siteAppOpenTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestAppOpenClick",
   "appOpenURL": "adventure3d2://q?i=fanwork-dq5-another-prologue-shimizu510america",
   "createdAt": "2026-03-26T00:00:00.000Z",
-  "updatedAt": "2026-07-26T04:48:57.532Z",
+  "updatedAt": "2026-07-26T09:19:03.441Z",
   "webPagePath": "/quests/fanwork-dq5-another-prologue-shimizu510america/",
   "webPageURL": "https://drama-birth-quest3.pages.dev/quests/fanwork-dq5-another-prologue-shimizu510america/"
 }
