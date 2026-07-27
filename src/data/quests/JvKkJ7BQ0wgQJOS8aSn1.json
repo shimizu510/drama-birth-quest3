@@ -1,0 +1,63 @@
+{
+  "id": "JvKkJ7BQ0wgQJOS8aSn1",
+  "path": "src/data/quests/JvKkJ7BQ0wgQJOS8aSn1.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/JvKkJ7BQ0wgQJOS8aSn1/",
+  "placeID": null,
+  "title": "とりあえず送信",
+  "titles": {
+    "ja": "とりあえず送信"
+  },
+  "synopsis": null,
+  "synopses": {},
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": "image",
+  "bgURL": null,
+  "coverURL": "firestore://questImageBlobs/9Qc0xBgUeleogaaQ1Q9J/imageBlob",
+  "charURL": null,
+  "charPosition": "center",
+  "charAnim": "none",
+  "dialogLines": [
+    ":::textType(narration)",
+    "とりあえず送信"
+  ],
+  "localizedDialogLines": {},
+  "storyPlayback": {
+    "backgroundType": "image",
+    "backgroundURL": "firestore://questImageBlobs/9Qc0xBgUeleogaaQ1Q9J/imageBlob",
+    "backgroundVideoID": null,
+    "steps": [
+      {
+        "type": "narration",
+        "text": "とりあえず送信",
+        "durationMs": 2200,
+        "backgroundURL": "firestore://questImageBlobs/9Qc0xBgUeleogaaQ1Q9J/imageBlob",
+        "visibleCharacters": []
+      }
+    ]
+  },
+  "authorUID": "n0kahB8ZY6MScQy8fpfV7nlsjmN2",
+  "authorDisplayName": "にゃんぽこ",
+  "episodeNumber": 1,
+  "seriesRootQuestID": "98A16FDB-4BFC-4983-BB18-6B30D2743857",
+  "placeType": "dungeon",
+  "locationName": null,
+  "likeCount": 0,
+  "playCount": 0,
+  "completionCount": 0,
+  "siteViewCount": 0,
+  "appOpenClickCount": 0,
+  "appArrivalCount": 0,
+  "subscriberCount": 0,
+  "completionRate": null,
+  "difficultyLabel": "初級",
+  "recommendedPowerText": "バランス編成で、序盤パーティでも挑みやすい",
+  "appPlayReason": "アプリで遊ぶとルナー報酬や続きの冒険導線まで受け取れます。",
+  "siteViewTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestSiteView",
+  "siteAppOpenTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestAppOpenClick",
+  "appOpenURL": "adventure3d2://q?i=JvKkJ7BQ0wgQJOS8aSn1",
+  "createdAt": "2026-07-27T00:28:23.629Z",
+  "updatedAt": "2026-07-27T00:28:27.657Z",
+  "webPagePath": "/quests/JvKkJ7BQ0wgQJOS8aSn1/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/JvKkJ7BQ0wgQJOS8aSn1/"
+}
