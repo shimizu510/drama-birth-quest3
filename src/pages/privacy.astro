@@ -5,7 +5,7 @@ const canonical = buildAbsoluteUrl('/privacy/', Astro.site);
 const pageTitle = 'プライバシーポリシー | DraMap';
 const pageDescription =
   'DraMap のプライバシーポリシーです。アカウント、位置情報、投稿、写真・動画、音声、サポート、ゲーム内行動データの取扱いを説明します。';
-const updatedAt = '2026年6月8日';
+const updatedAt = '2026年7月26日';
 ---
 <!doctype html>
 <html lang="ja">
@@ -361,8 +361,13 @@ const updatedAt = '2026年6月8日';
             </tr>
             <tr>
               <td>端末・技術情報</td>
-              <td>OS、端末種別、アプリバージョン、クラッシュ・エラー、不正利用対策、ログイン状態、Cookie または類似技術</td>
-              <td>App Functionality / Security</td>
+              <td>OS、端末種別、アプリバージョン、IP アドレスから推定されるおおよその地域、アプリまたは開発者単位の端末識別子、クラッシュ・エラー・性能情報、不正利用対策、ログイン状態、Cookie または類似技術</td>
+              <td>Device ID / Diagnostics / App Functionality / Security</td>
+            </tr>
+            <tr>
+              <td>広告情報</td>
+              <td>表示された広告、広告の表示・視聴・タップ等の操作、広告配信と効果測定に必要な情報</td>
+              <td>Advertising Data / Product Interaction</td>
             </tr>
           </tbody>
         </table>
@@ -378,6 +383,7 @@ const updatedAt = '2026年6月8日';
           <li>ユーザー投稿の表示、検索、共有、公開ページ生成、通報・ブロック・モデレーション対応のため</li>
           <li>不正利用、スパム、権利侵害、危険行為、規約違反、セキュリティ上の問題を検知・防止・調査するため</li>
           <li>障害解析、品質改善、UI 改善、機能改善、問い合わせ対応、重要なお知らせのため</li>
+          <li>広告の配信、表示回数・視聴完了・操作の測定、不正な広告利用の防止のため</li>
           <li>法令、ガイドライン、App Store 審査、紛争、行政機関・裁判所等からの適法な要請に対応するため</li>
         </ul>
         <p class="legal-note">
@@ -440,7 +446,7 @@ const updatedAt = '2026年6月8日';
         </p>
         <ul>
           <li>Apple: Sign in with Apple、MapKit、App Store、端末権限管理など</li>
-          <li>Google / Firebase: 認証、Firestore、Storage、App Check、クラウド保存、Google Sign-In など</li>
+          <li>Google / Firebase / AdMob: 認証、Firestore、Storage、App Check、クラウド保存、Google Sign-In、広告配信、広告効果測定など</li>
           <li>Cloudflare Pages 等のホスティング基盤: 公開サイト、クエストページ、場所ページの配信</li>
           <li>TikTok、YouTube 等の外部サービス: ユーザーが連携・投稿・確認機能を利用する場合の外部サービス連携</li>
         </ul>
@@ -483,6 +489,7 @@ const updatedAt = '2026年6月8日';
           <li>プライバシーポリシー、お問い合わせ、通報、ブロック機能は、アプリ内の該当メニューから利用できます。</li>
           <li>公開投稿の削除・訂正・非表示、自己情報の確認・訂正・削除等について、法令および運営上可能な範囲で対応します。</li>
           <li>外部ログインや外部サービス連携は、アプリ内機能または各外部サービス側の設定から解除できる場合があります。</li>
+          <li>広告に関する地域別の同意・プライバシー選択肢が表示される場合は、その画面から選択内容を確認・変更できます。</li>
         </ul>
       </section>
 

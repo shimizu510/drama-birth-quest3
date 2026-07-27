@@ -61,6 +61,17 @@
         margin: 0 0 12px;
         font-size: clamp(2rem, 5vw, 3rem);
       }
+
+      a {
+        display: inline-flex;
+        margin-top: 20px;
+        padding: 12px 18px;
+        border-radius: 999px;
+        color: #fff;
+        background: var(--accent);
+        font-weight: 700;
+        text-decoration: none;
+      }
     </style>
   </head>
   <body>
@@ -68,8 +79,21 @@
       <p class="eyebrow">TikTok Callback</p>
       <h1>Callback Ready</h1>
       <p>
-        This page is reserved for TikTok iOS Universal Link callback handling for DraMap.
+        Returning to DraMap to finish TikTok authentication…
       </p>
+      <a id="return-to-app" href="adventure3d2://tiktok/auth/callback">Return to DraMap</a>
     </main>
+    <script>
+      (() => {
+        const target = new URL("adventure3d2://tiktok/auth/callback");
+        const incoming = new URL(window.location.href);
+        incoming.searchParams.forEach((value, key) => {
+          target.searchParams.append(key, value);
+        });
+        const targetURL = target.toString();
+        document.getElementById("return-to-app").href = targetURL;
+        window.location.replace(targetURL);
+      })();
+    </script>
   </body>
 </html>
