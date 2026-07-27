@@ -33,9 +33,9 @@
   ],
   "source": "mapkit_user_registered",
   "status": "active",
-  "coverImageURL": "firestore://places/LOSOK26RYjS4LyGbYYij/photos/m9nVJgLEv1VC5ippCJ9T/imageBlob",
+  "coverImageURL": null,
   "questCount": 0,
-  "photoCount": 1,
+  "photoCount": 0,
   "commentCount": 1,
   "ratingAverage": 5,
   "recentComments": [
@@ -49,7 +49,7 @@
   "createdByUID": "n0kahB8ZY6MScQy8fpfV7nlsjmN2",
   "createdByName": "にゃんぽこ",
   "createdAt": "2026-07-27T01:22:43.704Z",
-  "updatedAt": "2026-07-27T01:23:12.897Z",
+  "updatedAt": "2026-07-27T01:23:34.679Z",
   "webPagePath": "/places/navi-park-urayasu-fujimi-parking-no-10-losok26ryjs4lygbyyij/",
   "webPageURL": "https://drama-birth-quest3.pages.dev/places/navi-park-urayasu-fujimi-parking-no-10-losok26ryjs4lygbyyij/"
 }
