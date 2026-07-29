@@ -15,7 +15,7 @@
   "appDownloadURL": null,
   "bgType": "tiktok",
   "bgURL": "7607222913615367431",
-  "coverURL": "https://p16-common-sign.tiktokcdn.com/tos-alisg-p-0037/ocSJ4h3AMwJHJER0AQ8eAzAA7XEoATDIfMYjeS~tplv-tiktokx-cropcenter-q:300:400:q70.webp?dr=14782&refresh_token=359bdc9d&x-expires=1785333600&x-signature=rJk8j1r%2BFBY5C2Ge59mrqZ01x0M%3D&t=bacd0480&ps=933b5bde&shp=d05b14bd&shcp=8aecc5ac&idc=my&biz_tag=tt_video&s=TIKTOK_FOR_DEVELOPER&sc=cover",
+  "coverURL": "https://p16-common-sign.tiktokcdn.com/tos-alisg-p-0037/ocSJ4h3AMwJHJER0AQ8eAzAA7XEoATDIfMYjeS~tplv-tiktokx-cropcenter-q:300:400:q70.webp?dr=14782&refresh_token=6f4408c7&x-expires=1785380400&x-signature=W36URNWYqORuesEuw4jCQHhyeHo%3D&t=bacd0480&ps=933b5bde&shp=d05b14bd&shcp=8aecc5ac&idc=my&sc=cover&biz_tag=tt_video&s=TIKTOK_FOR_DEVELOPER",
   "charURL": null,
   "charPosition": "center",
   "charAnim": "none",
@@ -23,7 +23,7 @@
   "localizedDialogLines": {},
   "storyPlayback": {
     "backgroundType": "tiktok",
-    "backgroundURL": "https://p16-common-sign.tiktokcdn.com/tos-alisg-p-0037/ocSJ4h3AMwJHJER0AQ8eAzAA7XEoATDIfMYjeS~tplv-tiktokx-cropcenter-q:300:400:q70.webp?dr=14782&refresh_token=359bdc9d&x-expires=1785333600&x-signature=rJk8j1r%2BFBY5C2Ge59mrqZ01x0M%3D&t=bacd0480&ps=933b5bde&shp=d05b14bd&shcp=8aecc5ac&idc=my&biz_tag=tt_video&s=TIKTOK_FOR_DEVELOPER&sc=cover",
+    "backgroundURL": "https://p16-common-sign.tiktokcdn.com/tos-alisg-p-0037/ocSJ4h3AMwJHJER0AQ8eAzAA7XEoATDIfMYjeS~tplv-tiktokx-cropcenter-q:300:400:q70.webp?dr=14782&refresh_token=6f4408c7&x-expires=1785380400&x-signature=W36URNWYqORuesEuw4jCQHhyeHo%3D&t=bacd0480&ps=933b5bde&shp=d05b14bd&shcp=8aecc5ac&idc=my&sc=cover&biz_tag=tt_video&s=TIKTOK_FOR_DEVELOPER",
     "backgroundVideoID": "7607222913615367431",
     "steps": []
   },
@@ -32,7 +32,7 @@
   "episodeNumber": 1,
   "seriesRootQuestID": "tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7607222913615367431",
   "placeType": "city",
-  "locationName": null,
+  "locationName": "ジャングルクルーズ: ワイルドライフ•エクスペディション",
   "likeCount": 0,
   "playCount": 0,
   "completionCount": 0,
@@ -48,7 +48,7 @@
   "siteAppOpenTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestAppOpenClick",
   "appOpenURL": "adventure3d2://q?i=tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7607222913615367431",
   "createdAt": "2026-07-25T09:22:35.371Z",
-  "updatedAt": "2026-07-28T14:15:32.670Z",
+  "updatedAt": "2026-07-29T03:47:58.020Z",
   "webPagePath": "/quests/tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7607222913615367431/",
   "webPageURL": "https://drama-birth-quest3.pages.dev/quests/tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7607222913615367431/"
 }
