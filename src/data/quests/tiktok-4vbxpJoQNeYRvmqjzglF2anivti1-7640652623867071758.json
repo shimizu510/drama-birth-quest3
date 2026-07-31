@@ -15,7 +15,7 @@
   "appDownloadURL": null,
   "bgType": "tiktok",
   "bgURL": "7640652623867071758",
-  "coverURL": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/oIdJsc0EAfRyAIxE3CFqADADgbS1AD5SfQCEJt~tplv-tiktokx-cropcenter-q:300:400:q70.jpeg?dr=8596&refresh_token=698e8d81&x-expires=1785135600&x-signature=KqHCmoYO8hJF%2BDOcfMowd4QMr4Y%3D&t=bacd0480&ps=933b5bde&shp=d05b14bd&shcp=8aecc5ac&idc=useast5&biz_tag=tt_video&s=TIKTOK_FOR_DEVELOPER&sc=cover",
+  "coverURL": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/oIdJsc0EAfRyAIxE3CFqADADgbS1AD5SfQCEJt~tplv-tiktokx-cropcenter-q:300:400:q70.jpeg?dr=8596&refresh_token=d7f5bae9&x-expires=1785625200&x-signature=rbMIdaCx0Pj7GM5AczNEPrLeknY%3D&t=bacd0480&ps=933b5bde&shp=d05b14bd&shcp=8aecc5ac&idc=useast5&sc=cover&biz_tag=tt_video&s=TIKTOK_FOR_DEVELOPER",
   "charURL": null,
   "charPosition": "center",
   "charAnim": "none",
@@ -23,7 +23,7 @@
   "localizedDialogLines": {},
   "storyPlayback": {
     "backgroundType": "tiktok",
-    "backgroundURL": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/oIdJsc0EAfRyAIxE3CFqADADgbS1AD5SfQCEJt~tplv-tiktokx-cropcenter-q:300:400:q70.jpeg?dr=8596&refresh_token=698e8d81&x-expires=1785135600&x-signature=KqHCmoYO8hJF%2BDOcfMowd4QMr4Y%3D&t=bacd0480&ps=933b5bde&shp=d05b14bd&shcp=8aecc5ac&idc=useast5&biz_tag=tt_video&s=TIKTOK_FOR_DEVELOPER&sc=cover",
+    "backgroundURL": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/oIdJsc0EAfRyAIxE3CFqADADgbS1AD5SfQCEJt~tplv-tiktokx-cropcenter-q:300:400:q70.jpeg?dr=8596&refresh_token=d7f5bae9&x-expires=1785625200&x-signature=rbMIdaCx0Pj7GM5AczNEPrLeknY%3D&t=bacd0480&ps=933b5bde&shp=d05b14bd&shcp=8aecc5ac&idc=useast5&sc=cover&biz_tag=tt_video&s=TIKTOK_FOR_DEVELOPER",
     "backgroundVideoID": "7640652623867071758",
     "steps": []
   },
@@ -34,13 +34,13 @@
   "placeType": "city",
   "locationName": null,
   "likeCount": 0,
-  "playCount": 5,
+  "playCount": 14,
   "completionCount": 1,
   "siteViewCount": 0,
   "appOpenClickCount": 0,
   "appArrivalCount": 0,
   "subscriberCount": 0,
-  "completionRate": 0.2,
+  "completionRate": 0.07142857142857142,
   "difficultyLabel": "歯ごたえあり",
   "recommendedPowerText": "物語を追いながら気軽に進めたい人向け",
   "appPlayReason": "アプリで遊ぶと、位置連動の冒険と次のクエスト導線までつながります。",
@@ -48,7 +48,7 @@
   "siteAppOpenTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestAppOpenClick",
   "appOpenURL": "adventure3d2://q?i=tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7640652623867071758",
   "createdAt": "2026-07-24T11:06:18.701Z",
-  "updatedAt": "2026-07-26T07:09:59.697Z",
+  "updatedAt": "2026-07-31T23:16:42.547Z",
   "webPagePath": "/quests/tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7640652623867071758/",
   "webPageURL": "https://drama-birth-quest3.pages.dev/quests/tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7640652623867071758/"
 }
