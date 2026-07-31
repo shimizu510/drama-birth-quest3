@@ -18,7 +18,7 @@
   "bgType": "image",
   "bgURL": null,
   "coverURL": "FanDQ5_QuestCover.png",
-  "charURL": null,
+  "charURL": "FanDQ5_YoungHero_Curious_Close.png",
   "charPosition": "center",
   "charAnim": "none",
   "dialogLines": [
@@ -223,21 +223,48 @@
         "type": "background",
         "backgroundURL": "FanDQ5_CastleBedroom_WarmNight.png",
         "transition": "blur",
-        "visibleCharacters": []
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1,
+            "flipped": false
+          }
+        ]
       },
       {
         "type": "narration",
         "text": "【非公式ファン作品／ネタバレあり】原作：ドラゴンクエスト5 天空の花嫁。権利者による公式・提携・許諾・承認を示すものではありません。",
         "durationMs": 2200,
         "backgroundURL": "FanDQ5_CastleBedroom_WarmNight.png",
-        "visibleCharacters": []
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1,
+            "flipped": false
+          }
+        ]
       },
       {
         "type": "narration",
         "text": "金色の灯りが揺れる、豪華な城の寝室。遠い記憶のような産声が響いた。",
         "durationMs": 2200,
         "backgroundURL": "FanDQ5_CastleBedroom_WarmNight.png",
-        "visibleCharacters": []
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1,
+            "flipped": false
+          }
+        ]
       },
       {
         "type": "dialogue",
@@ -1160,14 +1187,14 @@
   "seriesRootQuestID": "fanwork-dq5-another-prologue-shimizu510america",
   "placeType": "city",
   "locationName": null,
-  "likeCount": 0,
-  "playCount": 9,
-  "completionCount": 6,
+  "likeCount": 1,
+  "playCount": 34,
+  "completionCount": 15,
   "siteViewCount": 0,
   "appOpenClickCount": 0,
   "appArrivalCount": 0,
   "subscriberCount": 0,
-  "completionRate": 0.6666666666666666,
+  "completionRate": 0.4411764705882353,
   "difficultyLabel": "標準",
   "recommendedPowerText": "物語を追いながら気軽に進めたい人向け",
   "appPlayReason": "アプリで遊ぶと、位置連動の冒険と次のクエスト導線までつながります。",
@@ -1175,7 +1202,7 @@
   "siteAppOpenTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestAppOpenClick",
   "appOpenURL": "adventure3d2://q?i=fanwork-dq5-another-prologue-shimizu510america",
   "createdAt": "2026-03-26T00:00:00.000Z",
-  "updatedAt": "2026-07-26T09:19:03.441Z",
+  "updatedAt": "2026-07-31T00:26:25.437Z",
   "webPagePath": "/quests/fanwork-dq5-another-prologue-shimizu510america/",
   "webPageURL": "https://drama-birth-quest3.pages.dev/quests/fanwork-dq5-another-prologue-shimizu510america/"
 }
