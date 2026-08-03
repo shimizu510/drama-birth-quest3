@@ -1,5 +1,4 @@
 ---
-const appStoreUrl = 'https://apps.apple.com/app/dramap/id6761260013?mt=8';
 const canonical = new URL('/en/', Astro.site);
 const pageTitle = 'DraMap — Learn Japanese Through a Real-World Adventure';
 const pageDescription =
@@ -66,6 +65,36 @@ const pageDescription =
         justify-content: space-between;
         gap: 24px;
         padding: 22px 0;
+      }
+
+      .app-copy-panel {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        margin-top: 16px;
+        padding: 14px 18px;
+        border: 1px solid rgba(104, 229, 255, 0.2);
+        border-radius: 16px;
+        background: rgba(15, 29, 52, 0.9);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+      }
+
+      .app-copy-panel strong {
+        font-size: 1rem;
+      }
+
+      .copy-app-store-link {
+        min-height: 44px;
+        padding: 10px 18px;
+        border: 0;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--blue), #7047ff);
+        color: #fff;
+        font: inherit;
+        font-weight: 850;
+        cursor: pointer;
+        box-shadow: 0 12px 30px rgba(57, 119, 255, 0.3);
       }
 
       .brand,
@@ -370,10 +399,21 @@ const pageDescription =
         .levels { grid-template-columns: repeat(5, minmax(52px, 1fr)); overflow-x: auto; }
         .cta { margin: 70px 0; padding: 54px 20px; }
         .actions .button { width: 100%; }
+        .app-copy-panel { align-items: stretch; flex-direction: column; text-align: center; }
+        .copy-app-store-link { width: 100%; }
       }
     </style>
   </head>
   <body>
+    <section class="shell app-copy-panel" aria-label="Download DraMap for iOS">
+      <strong>Download DraMap for iOS</strong>
+      <button
+        class="copy-app-store-link"
+        type="button"
+        data-copy-app-store="https://apps.apple.com/app/id6761260013"
+        data-copied-label="Copied ✓"
+      >Copy App Store Link</button>
+    </section>
     <header class="shell topbar">
       <a class="brand" href="/en/">
         <img src="/app-icon.png" alt="DraMap app icon" />
@@ -383,7 +423,6 @@ const pageDescription =
         <a href="#learn">Learn</a>
         <a href="#jlpt">JLPT</a>
         <a class="language-link" href="/" lang="ja" hreflang="ja">日本語</a>
-        <a class="button button-primary" href={appStoreUrl} target="_blank" rel="noopener noreferrer external">Download</a>
       </nav>
     </header>
 
@@ -397,7 +436,6 @@ const pageDescription =
             Start with your first character—or keep climbing all the way to JLPT N1.
           </p>
           <div class="actions">
-            <a class="button button-primary" href={appStoreUrl} target="_blank" rel="noopener noreferrer external">Download on the App Store</a>
             <a class="button" href="#learn">See how you learn</a>
           </div>
         </div>
@@ -488,9 +526,6 @@ const pageDescription =
         <p class="kicker">Your next quest is waiting</p>
         <h2>Make the world your Japanese classroom.</h2>
         <p>Explore real places, meet new challenges, and build Japanese skills that stay with you beyond the test.</p>
-        <div class="actions">
-          <a class="button button-primary" href={appStoreUrl} target="_blank" rel="noopener noreferrer external">Download DraMap</a>
-        </div>
       </section>
     </main>
 
@@ -503,5 +538,28 @@ const pageDescription =
         <a href="/" lang="ja" hreflang="ja">Japanese site</a>
       </div>
     </footer>
+    <script is:inline>
+      document.querySelectorAll('[data-copy-app-store]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const url = button.getAttribute('data-copy-app-store');
+          const originalLabel = button.textContent;
+          try {
+            await navigator.clipboard.writeText(url);
+          } catch {
+            const input = document.createElement('textarea');
+            input.value = url;
+            input.setAttribute('readonly', '');
+            input.style.position = 'fixed';
+            input.style.opacity = '0';
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand('copy');
+            input.remove();
+          }
+          button.textContent = button.getAttribute('data-copied-label');
+          window.setTimeout(() => { button.textContent = originalLabel; }, 2500);
+        });
+      });
+    </script>
   </body>
 </html>
