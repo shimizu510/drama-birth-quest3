@@ -1,5 +1,5 @@
 ---
-const appStoreUrl = 'https://apps.apple.com/app/id6761260013';
+const appStoreUrl = 'https://apps.apple.com/app/dramap/id6761260013?mt=8';
 const canonical = new URL('/en/', Astro.site);
 const pageTitle = 'DraMap — Learn Japanese Through a Real-World Adventure';
 const pageDescription =
@@ -383,7 +383,7 @@ const pageDescription =
         <a href="#learn">Learn</a>
         <a href="#jlpt">JLPT</a>
         <a class="language-link" href="/" lang="ja" hreflang="ja">日本語</a>
-        <a class="button button-primary" href={appStoreUrl}>Download</a>
+        <a class="button button-primary" href={appStoreUrl} target="_blank" rel="noopener noreferrer external">Download</a>
       </nav>
     </header>
 
@@ -397,7 +397,7 @@ const pageDescription =
             Start with your first character—or keep climbing all the way to JLPT N1.
           </p>
           <div class="actions">
-            <a class="button button-primary" href={appStoreUrl}>Download on the App Store</a>
+            <a class="button button-primary" href={appStoreUrl} target="_blank" rel="noopener noreferrer external">Download on the App Store</a>
             <a class="button" href="#learn">See how you learn</a>
           </div>
         </div>
@@ -489,7 +489,7 @@ const pageDescription =
         <h2>Make the world your Japanese classroom.</h2>
         <p>Explore real places, meet new challenges, and build Japanese skills that stay with you beyond the test.</p>
         <div class="actions">
-          <a class="button button-primary" href={appStoreUrl}>Download DraMap</a>
+          <a class="button button-primary" href={appStoreUrl} target="_blank" rel="noopener noreferrer external">Download DraMap</a>
         </div>
       </section>
     </main>
