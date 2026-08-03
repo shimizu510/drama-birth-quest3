@@ -211,7 +211,7 @@
     ":::speaker(narration)",
     "父の大きな背中を追い、[[PLAYER_NICKNAME]]は港へ戻っていった。",
     ":::clearText",
-    ":::fanMonsterWindow(enable)"
+    ":::fanMonsterWindow(fanSlime|fanObakeNezumi|fanBabyPunther|fanKubinagaItachi|fanDoraky|fanOokidzuchi|fanIkkakuUsagi)"
   ],
   "localizedDialogLines": {},
   "storyPlayback": {

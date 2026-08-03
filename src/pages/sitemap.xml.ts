@@ -18,6 +18,10 @@ export function GET() {
       lastmod: new Date().toISOString(),
     },
     {
+      loc: buildAbsoluteUrl('/en/', site),
+      lastmod: new Date().toISOString(),
+    },
+    {
       loc: buildAbsoluteUrl('/places/', site),
       lastmod: new Date().toISOString(),
     },

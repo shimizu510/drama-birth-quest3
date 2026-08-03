@@ -1,0 +1,507 @@
+---
+const appStoreUrl = 'https://apps.apple.com/jp/app/dramap/id6761260013';
+const canonical = new URL('/en/', Astro.site);
+const pageTitle = 'DraMap — Learn Japanese Through a Real-World Adventure';
+const pageDescription =
+  'Explore the world while learning Japanese from hiragana and katakana to kanji, vocabulary, grammar, and JLPT N5–N1.';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="ja" href={new URL('/', Astro.site)} />
+    <link rel="alternate" hreflang="en" href={canonical} />
+    <link rel="icon" type="image/png" href="/app-icon.png" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL('/app-images/adventure-hero.png', Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <style>
+      :root {
+        color-scheme: dark;
+        --night: #07101f;
+        --night-soft: #0c1930;
+        --panel: rgba(15, 29, 52, 0.82);
+        --panel-solid: #101f38;
+        --text: #f7f9ff;
+        --muted: #aab7cd;
+        --line: rgba(255, 255, 255, 0.12);
+        --cyan: #68e5ff;
+        --blue: #3977ff;
+        --violet: #9d78ff;
+        --gold: #ffd56a;
+      }
+
+      * { box-sizing: border-box; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        margin: 0;
+        overflow-x: hidden;
+        background:
+          radial-gradient(circle at 85% 0%, rgba(57, 119, 255, 0.28), transparent 32rem),
+          radial-gradient(circle at 10% 32%, rgba(157, 120, 255, 0.16), transparent 30rem),
+          var(--night);
+        color: var(--text);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      a { color: inherit; }
+
+      .shell {
+        width: min(1180px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 22px 0;
+      }
+
+      .brand,
+      .nav,
+      .actions {
+        display: flex;
+        align-items: center;
+      }
+
+      .brand {
+        gap: 11px;
+        font-size: 1.18rem;
+        font-weight: 850;
+        letter-spacing: -0.02em;
+        text-decoration: none;
+      }
+
+      .brand img {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        box-shadow: 0 10px 30px rgba(57, 119, 255, 0.35);
+      }
+
+      .nav { gap: 24px; }
+
+      .nav a {
+        color: var(--muted);
+        font-size: 0.92rem;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .nav a:hover { color: var(--text); }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.08fr) minmax(330px, 0.78fr);
+        gap: 54px;
+        align-items: center;
+        min-height: 700px;
+        padding: 76px 0 92px;
+      }
+
+      .kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        margin: 0 0 22px;
+        color: var(--cyan);
+        font-size: 0.78rem;
+        font-weight: 850;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      .kicker::before {
+        width: 30px;
+        height: 2px;
+        background: currentColor;
+        content: "";
+      }
+
+      h1 {
+        max-width: 760px;
+        margin: 0;
+        font-size: clamp(3.1rem, 7.3vw, 6.4rem);
+        line-height: 0.96;
+        letter-spacing: -0.065em;
+      }
+
+      .gradient-text {
+        background: linear-gradient(100deg, var(--cyan), #fff 43%, var(--violet));
+        background-clip: text;
+        color: transparent;
+      }
+
+      .hero-copy > p:not(.kicker) {
+        max-width: 680px;
+        margin: 28px 0 0;
+        color: var(--muted);
+        font-size: clamp(1.06rem, 1.8vw, 1.24rem);
+        line-height: 1.75;
+      }
+
+      .actions {
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 32px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 52px;
+        padding: 13px 21px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .button-primary {
+        border-color: transparent;
+        background: linear-gradient(110deg, var(--blue), #694cff);
+        box-shadow: 0 18px 44px rgba(57, 119, 255, 0.3);
+      }
+
+      .hero-visual {
+        position: relative;
+        min-height: 610px;
+      }
+
+      .hero-visual::before {
+        position: absolute;
+        inset: 8% -14% 2%;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(104, 229, 255, 0.18), transparent 67%);
+        filter: blur(8px);
+        content: "";
+      }
+
+      .hero-shot {
+        position: absolute;
+        inset: 0 0 0 auto;
+        width: min(430px, 100%);
+        height: 100%;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 32px;
+        object-fit: cover;
+        box-shadow: 0 38px 100px rgba(0, 0, 0, 0.48);
+      }
+
+      .floating-card {
+        position: absolute;
+        left: -30px;
+        bottom: 38px;
+        width: min(270px, 72%);
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(8, 18, 34, 0.9);
+        box-shadow: 0 22px 60px rgba(0, 0, 0, 0.42);
+        backdrop-filter: blur(16px);
+      }
+
+      .floating-card strong { display: block; font-size: 1.05rem; }
+      .floating-card span { color: var(--muted); font-size: 0.86rem; }
+
+      .section { padding: 96px 0; }
+
+      .section-heading {
+        display: grid;
+        grid-template-columns: minmax(0, 0.8fr) minmax(280px, 0.55fr);
+        gap: 50px;
+        align-items: end;
+        margin-bottom: 42px;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: clamp(2.25rem, 5vw, 4.3rem);
+        line-height: 1.02;
+        letter-spacing: -0.045em;
+      }
+
+      .section-heading p,
+      .card p,
+      .journey-copy p,
+      .cta p {
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .learning-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .card {
+        min-height: 260px;
+        padding: 26px;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025));
+      }
+
+      .card-number {
+        color: var(--cyan);
+        font-size: 0.78rem;
+        font-weight: 850;
+        letter-spacing: 0.12em;
+      }
+
+      .card h3 {
+        margin: 42px 0 10px;
+        font-size: 1.42rem;
+        letter-spacing: -0.025em;
+      }
+
+      .kana {
+        display: block;
+        margin-top: 20px;
+        color: rgba(255, 255, 255, 0.2);
+        font-family: "Hiragino Sans", "Noto Sans JP", sans-serif;
+        font-size: 2.4rem;
+        font-weight: 900;
+      }
+
+      .journey {
+        display: grid;
+        grid-template-columns: minmax(300px, 0.82fr) minmax(0, 1fr);
+        gap: 64px;
+        align-items: center;
+        padding: 54px;
+        border: 1px solid var(--line);
+        border-radius: 30px;
+        background: linear-gradient(135deg, rgba(57, 119, 255, 0.13), rgba(157, 120, 255, 0.08));
+      }
+
+      .journey img {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        border-radius: 22px;
+        object-fit: cover;
+        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.35);
+      }
+
+      .levels {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+        margin-top: 30px;
+      }
+
+      .level {
+        padding: 14px 8px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        text-align: center;
+      }
+
+      .level strong { display: block; color: var(--gold); }
+      .level span { color: var(--muted); font-size: 0.72rem; }
+
+      .cta {
+        margin: 96px 0;
+        padding: 72px 30px;
+        border: 1px solid var(--line);
+        border-radius: 30px;
+        background:
+          radial-gradient(circle at 50% 0%, rgba(104, 229, 255, 0.18), transparent 46%),
+          var(--panel-solid);
+        text-align: center;
+      }
+
+      .cta p { max-width: 650px; margin: 20px auto 0; }
+      .cta .actions { justify-content: center; }
+
+      footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 30px 0 42px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+
+      footer div { display: flex; flex-wrap: wrap; gap: 18px; }
+      footer a { text-decoration: none; }
+
+      @media (max-width: 900px) {
+        .nav a:not(.language-link) { display: none; }
+        .hero { grid-template-columns: 1fr; padding-top: 52px; }
+        .hero-visual { min-height: 560px; width: min(470px, 100%); margin: 0 auto; }
+        .learning-grid { grid-template-columns: repeat(2, 1fr); }
+        .section-heading { grid-template-columns: 1fr; gap: 16px; }
+        .journey { grid-template-columns: 1fr; }
+        .journey img { max-height: 530px; }
+      }
+
+      @media (max-width: 600px) {
+        .shell { width: min(100% - 24px, 1180px); }
+        .topbar { padding: 14px 0; }
+        .brand img { width: 42px; height: 42px; }
+        .nav { gap: 12px; }
+        .nav .button { min-height: 42px; padding: 9px 12px; font-size: 0.82rem; }
+        h1 { font-size: clamp(3rem, 16vw, 4.5rem); }
+        .hero { gap: 44px; min-height: 0; padding: 48px 0 68px; }
+        .hero-visual { min-height: 480px; }
+        .hero-shot { border-radius: 24px; }
+        .floating-card { left: 10px; bottom: 22px; }
+        .section { padding: 70px 0; }
+        .learning-grid { grid-template-columns: 1fr; }
+        .card { min-height: 230px; }
+        .journey { gap: 34px; padding: 24px; border-radius: 22px; }
+        .levels { grid-template-columns: repeat(5, minmax(52px, 1fr)); overflow-x: auto; }
+        .cta { margin: 70px 0; padding: 54px 20px; }
+        .actions .button { width: 100%; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="shell topbar">
+      <a class="brand" href="/en/">
+        <img src="/app-icon.png" alt="DraMap app icon" />
+        <span>DraMap</span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#learn">Learn</a>
+        <a href="#jlpt">JLPT</a>
+        <a class="language-link" href="/" lang="ja" hreflang="ja">日本語</a>
+        <a class="button button-primary" href={appStoreUrl}>Download</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="shell hero">
+        <div class="hero-copy">
+          <p class="kicker">A world-sized Japanese classroom</p>
+          <h1>Learn Japanese.<br /><span class="gradient-text">Explore everything.</span></h1>
+          <p>
+            DraMap turns real places into quests, discoveries, and memorable Japanese lessons.
+            Start with your first character—or keep climbing all the way to JLPT N1.
+          </p>
+          <div class="actions">
+            <a class="button button-primary" href={appStoreUrl}>Download on the App Store</a>
+            <a class="button" href="#learn">See how you learn</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="DraMap adventure preview">
+          <img class="hero-shot" src="/app-images/adventure-hero.png" alt="A fantasy adventure inside DraMap" />
+          <div class="floating-card">
+            <strong>Today’s quest: unlock 日本</strong>
+            <span>Learn in context. Remember through adventure.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="shell section" id="learn">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">One journey, every essential skill</p>
+            <h2>From your first kana to natural Japanese.</h2>
+          </div>
+          <p>
+            Lessons become part of the world around you. Build reading, vocabulary, grammar, and comprehension without losing the sense of discovery.
+          </p>
+        </div>
+        <div class="learning-grid">
+          <article class="card">
+            <span class="card-number">01 / WRITING SYSTEMS</span>
+            <h3>Hiragana & Katakana</h3>
+            <p>Master both syllabaries from the ground up with visual recognition and repeatable practice.</p>
+            <span class="kana">あ ア</span>
+          </article>
+          <article class="card">
+            <span class="card-number">02 / READING</span>
+            <h3>Kanji in Context</h3>
+            <p>Learn characters through meaning, readings, words, and situations—not isolated memorization.</p>
+            <span class="kana">旅 学 語</span>
+          </article>
+          <article class="card">
+            <span class="card-number">03 / EXPRESSION</span>
+            <h3>Vocabulary</h3>
+            <p>Grow a practical word bank for everyday life, travel, stories, and JLPT study.</p>
+            <span class="kana">ことば</span>
+          </article>
+          <article class="card">
+            <span class="card-number">04 / STRUCTURE</span>
+            <h3>Grammar</h3>
+            <p>Understand how Japanese works through clear patterns, examples, and reading practice.</p>
+            <span class="kana">文法</span>
+          </article>
+          <article class="card">
+            <span class="card-number">05 / COMPREHENSION</span>
+            <h3>Reading Adventures</h3>
+            <p>Use what you learn in stories and quests that make progress feel meaningful.</p>
+            <span class="kana">冒険</span>
+          </article>
+          <article class="card">
+            <span class="card-number">06 / MASTERY</span>
+            <h3>Review That Builds</h3>
+            <p>Revisit skills across your journey and keep moving from foundations to advanced Japanese.</p>
+            <span class="kana">復習</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="shell section" id="jlpt">
+        <div class="journey">
+          <img src="/app-images/map-monsters.png" alt="Monsters appearing on the DraMap adventure map" />
+          <div class="journey-copy">
+            <p class="kicker">Your complete JLPT path</p>
+            <h2>Begin at zero. Aim for N1.</h2>
+            <p>
+              New to Japanese? Start with kana and essential sentence patterns. Already studying for the JLPT?
+              Follow a structured path through the vocabulary, kanji, grammar, and reading skills needed from N5 to N1.
+            </p>
+            <p>
+              DraMap supports your long-term journey—from basic recognition and beginner confidence to advanced comprehension and exam readiness.
+            </p>
+            <div class="levels" aria-label="JLPT learning levels">
+              <div class="level"><strong>N5</strong><span>Foundation</span></div>
+              <div class="level"><strong>N4</strong><span>Everyday</span></div>
+              <div class="level"><strong>N3</strong><span>Bridge</span></div>
+              <div class="level"><strong>N2</strong><span>Advanced</span></div>
+              <div class="level"><strong>N1</strong><span>Mastery</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="shell cta">
+        <p class="kicker">Your next quest is waiting</p>
+        <h2>Make the world your Japanese classroom.</h2>
+        <p>Explore real places, meet new challenges, and build Japanese skills that stay with you beyond the test.</p>
+        <div class="actions">
+          <a class="button button-primary" href={appStoreUrl}>Download DraMap</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="shell">
+      <span>© 2026 Yuji Shimizu. All Rights Reserved.</span>
+      <div>
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/" lang="ja" hreflang="ja">Japanese site</a>
+      </div>
+    </footer>
+  </body>
+</html>
