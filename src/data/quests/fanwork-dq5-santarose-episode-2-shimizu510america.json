@@ -1,0 +1,2570 @@
+{
+  "id": "fanwork-dq5-santarose-episode-2-shimizu510america",
+  "path": "src/data/quests/fanwork-dq5-santarose-episode-2-shimizu510america.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/fanwork-dq5-santarose-episode-2-shimizu510america/",
+  "placeID": null,
+  "title": "ドラクエ5 ファンフィクション",
+  "titles": {
+    "en": "Dragon Quest V Fan Fiction",
+    "ja": "ドラクエ5 ファンフィクション"
+  },
+  "synopsis": "【非公式ファン作品／ネタバレあり・第2話】サンタローズへ帰郷した少年が、洞窟で行方不明の親方を救う物語。",
+  "synopses": {
+    "en": "Unofficial fan fiction, Episode 2: returning to Santa Rosa and rescuing a missing foreman in the village cave.",
+    "ja": "【非公式ファン作品／ネタバレあり・第2話】サンタローズへ帰郷した少年が、洞窟で行方不明の親方を救う物語。"
+  },
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": "image",
+  "bgURL": "FanDQ5_SantaRosa_Village_Wide.png",
+  "coverURL": "FanDQ5_QuestCover.png",
+  "charURL": "FanDQ5_YoungHero_Curious_Close.png",
+  "charPosition": "center",
+  "charAnim": "none",
+  "dialogLines": [
+    ":::clearText",
+    ":::bgImage(FanDQ5_SantaRosa_Village_Wide.png,none,false)",
+    ":::bgm(fandqfield,0.45,1.10)",
+    ":::textType(narration)",
+    ":::speaker(narration)",
+    "丘と川を渡る風の先に、吊り橋を抱いた緑豊かな村・サンタローズが見えてきた。",
+    ":::clearText",
+    ":::textType(dialog)",
+    ":::speaker(left)",
+    ":::charAdd(left,FanDQ5_Guard_Surprised_Full.png,shake,1.42)",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_Papas_Proud_Mid.png,none,1.62)",
+    "入り口の見張り兵士: やや！ パパスさんでは！？ 2年も村を出たまま、いったいどこに……！？",
+    ":::clearText",
+    ":::speaker(right)",
+    "パパス: 待たせたな。",
+    ":::clearText",
+    ":::speaker(left)",
+    ":::charAdd(left,FanDQ5_Guard_Welcome_Full.png,hop,1.42)",
+    "入り口の見張り兵士: おかえりなさい。",
+    ":::screenShake(3,0.14)",
+    "入り口の見張り兵士: みんなー、パパスさんが帰ってきたぞー！",
+    ":::clearText",
+    ":::charRemove(left)",
+    ":::charRemove(right)",
+    ":::speaker(left)",
+    ":::charAdd(left,FanDQ5_Bartender_Welcome_Mid.png,upDown,1.70)",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_YoungHero_Curious_Close.png,none,1.55)",
+    "酒場の店長: あぁ、パパスさん！ そして、君があの頃の坊やだね。",
+    ":::clearText",
+    ":::speaker(right)",
+    "[[PLAYER_NICKNAME]]: あの頃？",
+    ":::clearText",
+    ":::speaker(left)",
+    "酒場の店長: 夜にでもうちの酒場に寄っておくれよ。",
+    ":::clearText",
+    ":::charRemove(right)",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_Papas_DeckLaugh_Mid.png,upDown,1.64)",
+    "パパス: ありがとう。また、行かせてもらうな。",
+    ":::clearText",
+    ":::charRemove(left)",
+    ":::charRemove(right)",
+    ":::speaker(center)",
+    ":::charAdd(center,FanDQ5_Sister_Formal_Mid.png,none,1.88)",
+    "シスター: これはパパスどの。よくぞご無事で戻られました。",
+    ":::clearText",
+    ":::charAdd(center,FanDQ5_Sister_Playful_Full.png,hop,1.54)",
+    "シスター: と、かたくるしいことはやめにしましょう……。",
+    ":::flash(gold,0.18,0.08)",
+    "シスター: わ〜い！ パパスさんが帰ってきた！ うれしい〜！ わ〜い！ わ〜い！",
+    ":::clearText",
+    ":::charRemove(center)",
+    ":::speaker(center)",
+    ":::charAdd(center,FanDQ5_YoungHero_WakeStretch_Full.png,hop,1.48)",
+    "[[PLAYER_NICKNAME]]: お父さん、すごい！ 人気者だぁ。",
+    ":::clearText",
+    ":::charRemove(center)",
+    ":::clearText",
+    ":::bgImage(FanDQ5_SantaRosa_HouseExterior.png,none,false)",
+    ":::speaker(left)",
+    ":::charAdd(left,FanDQ5_Sancho_Tearful_Full.png,shake,1.48)",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_Papas_Proud_Mid.png,none,1.64)",
+    "サンチョ: だっ、だんなさま！ お帰りなさいませ！",
+    ":::clearText",
+    ":::speaker(right)",
+    "パパス: サンチョ、待たせたな。",
+    ":::clearText",
+    ":::speaker(left)",
+    ":::charAdd(left,FanDQ5_Sancho_Invite_Full.png,upDown,1.48)",
+    "サンチョ: このサンチョ……だんなさまのお帰りをどれほど待ち侘びたことか。ささ、中へ。",
+    ":::clearText",
+    ":::charRemove(left)",
+    ":::charRemove(right)",
+    ":::clearText",
+    ":::bgImage(FanDQ5_SantaRosa_HouseInterior.png,none,false)",
+    ":::speaker(center)",
+    ":::charAdd(center,FanDQ5_Papas_DeckLaugh_Mid.png,upDown,1.72)",
+    "パパス: この家に戻るとホッとするなぁ。",
+    ":::clearText",
+    ":::charRemove(center)",
+    ":::speaker(narration)",
+    ":::textType(narration)",
+    "タッタッタ――木の階段を、小さな足音が駆け下りてくる。",
+    ":::clearText",
+    ":::textType(dialog)",
+    ":::speaker(left)",
+    ":::charAdd(left,FanDQ5_Bianca_Greeting_Full.png,hop,1.45)",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_Papas_Proud_Mid.png,none,1.58)",
+    "ビアンカ: おじさま、お帰りなさい。",
+    ":::clearText",
+    ":::charRemove(right)",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_YoungHero_Curious_Close.png,none,1.60)",
+    "[[PLAYER_NICKNAME]]: ……。",
+    ":::clearText",
+    ":::charRemove(left)",
+    ":::charRemove(right)",
+    ":::speaker(left)",
+    ":::charAdd(left,FanDQ5_DuncanWife_Warm_Mid.png,none,1.76)",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_Papas_NoticeGangway_Mid.png,none,1.68)",
+    "ダンカンの おかみさん: あら、パパス。",
+    "パパス: おぉ、ダンカンの おかみさんじゃないか。",
+    ":::clearText",
+    ":::charRemove(right)",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_Sancho_Invite_Full.png,none,1.48)",
+    "サンチョ: この村に、ご主人の薬をとりにきたようなので、寄ってもらったんですよ。",
+    ":::clearText",
+    ":::charRemove(left)",
+    ":::charRemove(right)",
+    ":::speaker(center)",
+    ":::charAdd(center,FanDQ5_YoungHero_Listening_Full.png,none,1.50)",
+    "[[PLAYER_NICKNAME]]: ここがお父さんの家？ なのかな。",
+    ":::clearText",
+    ":::charRemove(center)",
+    ":::speaker(center)",
+    ":::charAdd(center,FanDQ5_Bianca_Upstairs_Invite_Full.png,hop,1.48)",
+    "ビアンカ: ねえ、大人の話って長くなるから上に行きましょうよ。",
+    ":::clearText",
+    ":::charRemove(center)",
+    ":::sfx(dungeonEntrance.mp3)",
+    ":::clearText",
+    ":::bgImage(FanDQ5_SantaRosa_HouseBedroom.png,none,false)",
+    ":::speaker(left)",
+    ":::charAdd(left,FanDQ5_Bianca_Greeting_Full.png,none,1.52)",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_YoungHero_Curious_Close.png,none,1.58)",
+    "ビアンカ: 私はビアンカ。私のこと覚えてる？",
+    ":::clearText",
+    ":::speaker(right)",
+    "[[PLAYER_NICKNAME]]: え！？ えーと……。",
+    ":::clearText",
+    ":::speaker(left)",
+    "ビアンカ: そうよね。あなた、まだ小さかったもんね。",
+    ":::clearText",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_YoungHero_Listening_Full.png,none,1.44)",
+    "[[PLAYER_NICKNAME]]: （この子も……同じくらいじゃないのかな。）",
+    ":::clearText",
+    ":::speaker(left)",
+    ":::charAdd(left,FanDQ5_Bianca_Book_Proud_Mid.png,upDown,1.72)",
+    "ビアンカ: 私は8才だから2つもお姉さんなのよ。ご本読んであげようか？",
+    ":::clearText",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_YoungHero_WakeStretch_Full.png,hop,1.44)",
+    "[[PLAYER_NICKNAME]]: うん！",
+    ":::clearText",
+    ":::speaker(left)",
+    "ビアンカ: じゃ、読んであげるね！",
+    ":::clearText",
+    ":::speaker(right)",
+    "[[PLAYER_NICKNAME]]: ワクワク。",
+    ":::clearText",
+    ":::speaker(left)",
+    ":::charAdd(left,FanDQ5_Bianca_Book_Struggle_Mid.png,shake,1.76)",
+    "ビアンカ: えーと……。そ……ら……に。えーと……。",
+    "ビアンカ: く……せし……ありきしか……。",
+    ":::clearText",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_YoungHero_Curious_Close.png,none,1.62)",
+    "[[PLAYER_NICKNAME]]: （ぜんぜん読めてないぞ。）",
+    ":::clearText",
+    ":::speaker(left)",
+    ":::charAdd(left,FanDQ5_Bianca_Book_Pout_Mid.png,shake,1.80)",
+    "ビアンカ: これはダメだわ。だって難しい字が多すぎるんですもの！",
+    ":::clearText",
+    ":::charRemove(left)",
+    ":::charRemove(right)",
+    ":::speaker(center)",
+    ":::charAdd(center,FanDQ5_DuncanWife_Call_Mid.png,upDown,1.78)",
+    "ダンカンの おかみさん: ビアンカ！ そろそろ宿に戻りますよ！",
+    ":::clearText",
+    ":::charRemove(center)",
+    ":::speaker(left)",
+    ":::charAdd(left,FanDQ5_Bianca_Greeting_Full.png,hop,1.48)",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_YoungHero_Listening_Full.png,none,1.46)",
+    "ビアンカ: はーい！ ママ！",
+    "ビアンカ: またね！",
+    ":::clearText",
+    ":::speaker(right)",
+    "[[PLAYER_NICKNAME]]: う……うん。",
+    ":::clearText",
+    ":::charRemove(left)",
+    ":::charRemove(right)",
+    ":::sfx(dungeonEntrance.mp3)",
+    ":::clearText",
+    ":::bgImage(FanDQ5_SantaRosa_HouseInterior.png,none,false)",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_Papas_Thinking_Full.png,none,1.48)",
+    ":::speaker(left)",
+    ":::charAdd(left,FanDQ5_YoungHero_Listening_Full.png,none,1.40)",
+    "パパス: さて……と。",
+    "パパス: 父さんはちょっと出かけるが、いい子にしてるんだよ。",
+    ":::clearText",
+    ":::speaker(left)",
+    ":::charAdd(left,FanDQ5_YoungHero_MonsterShock_Close.png,shake,1.60)",
+    "[[PLAYER_NICKNAME]]: え！ パパ！ 僕も行きたい。",
+    ":::clearText",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_Papas_PointPort_Full.png,none,1.44)",
+    "パパス: 危ないから、家でゆっくり遊んでてな。",
+    ":::clearText",
+    ":::charRemove(left)",
+    ":::charRemove(right)",
+    ":::sfx(dungeonEntrance.mp3)",
+    ":::clearText",
+    ":::bgImage(FanDQ5_SantaRosa_Village_Wide.png,none,false)",
+    ":::speaker(center)",
+    ":::charAdd(center,FanDQ5_YoungHero_Curious_Close.png,none,1.72)",
+    "[[PLAYER_NICKNAME]]: お父さん、どこに行くんだろう。",
+    ":::clearText",
+    ":::cameraPush(1.10,0.34)",
+    ":::charAdd(center,FanDQ5_YoungHero_WakeStretch_Full.png,hop,1.48)",
+    "[[PLAYER_NICKNAME]]: ついて行ってみよう！",
+    ":::clearText",
+    ":::charRemove(center)",
+    ":::clearText",
+    ":::bgImage(FanDQ5_SantaRosa_CaveEntrance.png,none,false)",
+    ":::textType(narration)",
+    ":::speaker(narration)",
+    "パパスは小舟に乗り、川の流れとともに洞窟の暗がりへ消えていった。",
+    ":::clearText",
+    ":::textType(dialog)",
+    ":::speaker(left)",
+    ":::charAdd(left,FanDQ5_YoungMan_Worried_Mid.png,shake,1.70)",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_YoungHero_Listening_Full.png,none,1.42)",
+    "お兄さん: 困った……。親方が洞窟内に薬の原料をとりに行ったまま戻らないんだ。って坊やに言ってもな。はは！",
+    ":::clearText",
+    ":::speaker(right)",
+    "[[PLAYER_NICKNAME]]: そうなんだ……。",
+    ":::clearText",
+    ":::charRemove(left)",
+    ":::speaker(center)",
+    ":::charRemove(right)",
+    ":::charAdd(center,FanDQ5_YoungHero_MonsterShock_Close.png,shake,1.82)",
+    "[[PLAYER_NICKNAME]]: ぼ……ぼくだって、洞窟の中に入れるもん！",
+    ":::clearText",
+    ":::charRemove(center)",
+    ":::sfx(dungeonEntrance.mp3)",
+    ":::dungeonBGM(fandqdungeon,0.46,180)",
+    ":::bgm(none,0.0,0.45)",
+    ":::clearText",
+    ":::questDungeonCheckpoint",
+    ":::clearText",
+    ":::bgBlack(blur)",
+    ":::textType(narration)",
+    ":::speaker(narration)",
+    "地下2階。宝箱に触れたその時、岩陰から大きないびきが聞こえた。",
+    ":::clearText",
+    ":::bgImage(FanDQ5_Cave_ForemanRock.png,blur,false)",
+    ":::textType(dialog)",
+    ":::speaker(center)",
+    ":::charAdd(center,FanDQ5_Foreman_Asleep_Rock_Full.png,none,1.36)",
+    "親方: ぐうぐう……。",
+    ":::clearText",
+    ":::screenShake(7,0.20)",
+    ":::charAdd(center,FanDQ5_Foreman_Stuck_Awake_Full.png,shake,1.40)",
+    "親方: は！ いかんいかん！ 動けないのでいつの間にか眠ってしまったらしい！",
+    ":::clearText",
+    ":::charRemove(center)",
+    ":::speaker(left)",
+    ":::charAdd(left,FanDQ5_YoungHero_MonsterShock_Close.png,shake,1.58)",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_Foreman_Stuck_Awake_Full.png,none,1.28)",
+    "[[PLAYER_NICKNAME]]: お……おじさん！ 大丈夫！？ よくこんなとこで眠れるね！",
+    ":::clearText",
+    ":::speaker(right)",
+    "親方: 坊や、悪いがこの岩をちょっと押してくれるか！",
+    ":::clearText",
+    ":::speaker(left)",
+    ":::charAdd(left,FanDQ5_YoungHero_Curious_Close.png,none,1.58)",
+    "[[PLAYER_NICKNAME]]: 僕に動かせるかなぁ。",
+    ":::clearText",
+    ":::speaker(right)",
+    "親方: もう少しで動かせそうなんだ。",
+    ":::clearText",
+    ":::speaker(left)",
+    ":::charAdd(left,FanDQ5_YoungHero_Push_Full.png,shake,1.38)",
+    "[[PLAYER_NICKNAME]]: わかった！ やってみる！",
+    "[[PLAYER_NICKNAME]]: んんんっ！！",
+    ":::clearText",
+    ":::speaker(right)",
+    ":::charAdd(right,FanDQ5_Foreman_Cheering_Mid.png,upDown,1.58)",
+    "親方: いいぞぉ。もうちょっとだ！",
+    ":::clearText",
+    ":::speaker(left)",
+    ":::screenShake(14,0.32)",
+    ":::cameraPush(1.12,0.28)",
+    "[[PLAYER_NICKNAME]]: よいしょー！！",
+    ":::flash(white,0.72,0.16)",
+    "[[PLAYER_NICKNAME]]: お、押せたー！",
+    ":::clearText",
+    ":::charRemove(left)",
+    ":::charRemove(right)",
+    ":::speaker(center)",
+    ":::charAdd(center,FanDQ5_Foreman_Grateful_Full.png,hop,1.46)",
+    "親方: やれやれ、助かった。",
+    "親方: これでダンカンの おかみさんに薬を渡せるってもんだ！",
+    ":::clearText",
+    ":::charAdd(center,FanDQ5_Foreman_Rush_Full.png,hop,1.40)",
+    "親方: 急いで戻って薬草を調合しなくっちゃな！ 坊や、ありがとなっ！",
+    ":::clearText",
+    ":::charRemove(center)",
+    ":::speaker(center)",
+    ":::charAdd(center,FanDQ5_YoungHero_MonsterShock_Close.png,shake,1.76)",
+    "[[PLAYER_NICKNAME]]: え、ちょっと待って！",
+    ":::clearText",
+    ":::charAdd(center,FanDQ5_YoungHero_Curious_Close.png,none,1.76)",
+    "[[PLAYER_NICKNAME]]: おじさん！ ……僕も連れてっ……。なんだよー。助けてあげたのに……。",
+    ":::clearText",
+    ":::charRemove(center)",
+    ":::bgm(none,0.0,0.35)",
+    ":::clearText",
+    ":::questDungeonResume",
+    ":::clearText"
+  ],
+  "localizedDialogLines": {},
+  "storyPlayback": {
+    "backgroundType": "image",
+    "backgroundURL": "FanDQ5_SantaRosa_Village_Wide.png",
+    "backgroundVideoID": null,
+    "steps": [
+      {
+        "type": "background",
+        "backgroundURL": "FanDQ5_SantaRosa_Village_Wide.png",
+        "transition": "none",
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "narration",
+        "text": "丘と川を渡る風の先に、吊り橋を抱いた緑豊かな村・サンタローズが見えてきた。",
+        "durationMs": 2200,
+        "backgroundURL": "FanDQ5_SantaRosa_Village_Wide.png",
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "入り口の見張り兵士: やや！ パパスさんでは！？ 2年も村を出たまま、いったいどこに……！？",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_Village_Wide.png",
+        "character": {
+          "imageURL": "FanDQ5_Papas_Proud_Mid.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.62,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Guard_Surprised_Full.png",
+            "position": "left",
+            "entrance": "slide",
+            "motion": "shake",
+            "scale": 1.42,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Papas_Proud_Mid.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.62,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "パパス: 待たせたな。",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_Village_Wide.png",
+        "character": {
+          "imageURL": "FanDQ5_Papas_Proud_Mid.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.62,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Guard_Surprised_Full.png",
+            "position": "left",
+            "entrance": "slide",
+            "motion": "shake",
+            "scale": 1.42,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Papas_Proud_Mid.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.62,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "入り口の見張り兵士: おかえりなさい。",
+        "speakerName": "left",
+        "speakerPosition": "left",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_Village_Wide.png",
+        "character": {
+          "imageURL": "FanDQ5_Guard_Welcome_Full.png",
+          "position": "left",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.42,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Guard_Welcome_Full.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.42,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Papas_Proud_Mid.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.62,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "入り口の見張り兵士: みんなー、パパスさんが帰ってきたぞー！",
+        "speakerName": "left",
+        "speakerPosition": "left",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_Village_Wide.png",
+        "character": {
+          "imageURL": "FanDQ5_Guard_Welcome_Full.png",
+          "position": "left",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.42,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Guard_Welcome_Full.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.42,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Papas_Proud_Mid.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.62,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "酒場の店長: あぁ、パパスさん！ そして、君があの頃の坊やだね。",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_Village_Wide.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.55,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Bartender_Welcome_Mid.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "upDown",
+            "scale": 1.7,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.55,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: あの頃？",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_Village_Wide.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.55,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Bartender_Welcome_Mid.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "upDown",
+            "scale": 1.7,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.55,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "酒場の店長: 夜にでもうちの酒場に寄っておくれよ。",
+        "speakerName": "left",
+        "speakerPosition": "left",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_Village_Wide.png",
+        "character": {
+          "imageURL": "FanDQ5_Bartender_Welcome_Mid.png",
+          "position": "left",
+          "entrance": "fade",
+          "motion": "upDown",
+          "scale": 1.7,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Bartender_Welcome_Mid.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "upDown",
+            "scale": 1.7,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.55,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "パパス: ありがとう。また、行かせてもらうな。",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_Village_Wide.png",
+        "character": {
+          "imageURL": "FanDQ5_Papas_DeckLaugh_Mid.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "upDown",
+          "scale": 1.64,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Bartender_Welcome_Mid.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "upDown",
+            "scale": 1.7,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Papas_DeckLaugh_Mid.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "upDown",
+            "scale": 1.64,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "シスター: これはパパスどの。よくぞご無事で戻られました。",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_Village_Wide.png",
+        "character": {
+          "imageURL": "FanDQ5_Sister_Formal_Mid.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.88,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Sister_Formal_Mid.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.88,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "シスター: と、かたくるしいことはやめにしましょう……。",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_Village_Wide.png",
+        "character": {
+          "imageURL": "FanDQ5_Sister_Playful_Full.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.54,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Sister_Playful_Full.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.54,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "シスター: わ〜い！ パパスさんが帰ってきた！ うれしい〜！ わ〜い！ わ〜い！",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_Village_Wide.png",
+        "character": {
+          "imageURL": "FanDQ5_Sister_Playful_Full.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.54,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Sister_Playful_Full.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.54,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: お父さん、すごい！ 人気者だぁ。",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_Village_Wide.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_WakeStretch_Full.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.48,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_WakeStretch_Full.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.48,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "background",
+        "backgroundURL": "FanDQ5_SantaRosa_HouseExterior.png",
+        "transition": "none",
+        "visibleCharacters": []
+      },
+      {
+        "type": "dialogue",
+        "text": "サンチョ: だっ、だんなさま！ お帰りなさいませ！",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseExterior.png",
+        "character": {
+          "imageURL": "FanDQ5_Papas_Proud_Mid.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.64,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Sancho_Tearful_Full.png",
+            "position": "left",
+            "entrance": "slide",
+            "motion": "shake",
+            "scale": 1.48,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Papas_Proud_Mid.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.64,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "パパス: サンチョ、待たせたな。",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseExterior.png",
+        "character": {
+          "imageURL": "FanDQ5_Papas_Proud_Mid.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.64,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Sancho_Tearful_Full.png",
+            "position": "left",
+            "entrance": "slide",
+            "motion": "shake",
+            "scale": 1.48,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Papas_Proud_Mid.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.64,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "サンチョ: このサンチョ……だんなさまのお帰りをどれほど待ち侘びたことか。ささ、中へ。",
+        "speakerName": "left",
+        "speakerPosition": "left",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseExterior.png",
+        "character": {
+          "imageURL": "FanDQ5_Sancho_Invite_Full.png",
+          "position": "left",
+          "entrance": "fade",
+          "motion": "upDown",
+          "scale": 1.48,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Sancho_Invite_Full.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "upDown",
+            "scale": 1.48,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Papas_Proud_Mid.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.64,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "background",
+        "backgroundURL": "FanDQ5_SantaRosa_HouseInterior.png",
+        "transition": "none",
+        "visibleCharacters": []
+      },
+      {
+        "type": "dialogue",
+        "text": "パパス: この家に戻るとホッとするなぁ。",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseInterior.png",
+        "character": {
+          "imageURL": "FanDQ5_Papas_DeckLaugh_Mid.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "upDown",
+          "scale": 1.72,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Papas_DeckLaugh_Mid.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "upDown",
+            "scale": 1.72,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "narration",
+        "text": "タッタッタ――木の階段を、小さな足音が駆け下りてくる。",
+        "durationMs": 2200,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseInterior.png",
+        "visibleCharacters": []
+      },
+      {
+        "type": "dialogue",
+        "text": "ビアンカ: おじさま、お帰りなさい。",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseInterior.png",
+        "character": {
+          "imageURL": "FanDQ5_Papas_Proud_Mid.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.58,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Bianca_Greeting_Full.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.45,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Papas_Proud_Mid.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.58,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: ……。",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseInterior.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.6,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Bianca_Greeting_Full.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.45,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.6,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "ダンカンの おかみさん: あら、パパス。",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseInterior.png",
+        "character": {
+          "imageURL": "FanDQ5_Papas_NoticeGangway_Mid.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.68,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_DuncanWife_Warm_Mid.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.76,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Papas_NoticeGangway_Mid.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.68,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "パパス: おぉ、ダンカンの おかみさんじゃないか。",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseInterior.png",
+        "character": {
+          "imageURL": "FanDQ5_Papas_NoticeGangway_Mid.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.68,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_DuncanWife_Warm_Mid.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.76,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Papas_NoticeGangway_Mid.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.68,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "サンチョ: この村に、ご主人の薬をとりにきたようなので、寄ってもらったんですよ。",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseInterior.png",
+        "character": {
+          "imageURL": "FanDQ5_Sancho_Invite_Full.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.48,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_DuncanWife_Warm_Mid.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.76,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Sancho_Invite_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.48,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: ここがお父さんの家？ なのかな。",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseInterior.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_Listening_Full.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.5,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_Listening_Full.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.5,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "ビアンカ: ねえ、大人の話って長くなるから上に行きましょうよ。",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseInterior.png",
+        "character": {
+          "imageURL": "FanDQ5_Bianca_Upstairs_Invite_Full.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.48,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Bianca_Upstairs_Invite_Full.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.48,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "background",
+        "backgroundURL": "FanDQ5_SantaRosa_HouseBedroom.png",
+        "transition": "none",
+        "visibleCharacters": []
+      },
+      {
+        "type": "dialogue",
+        "text": "ビアンカ: 私はビアンカ。私のこと覚えてる？",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseBedroom.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.58,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Bianca_Greeting_Full.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.52,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.58,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: え！？ えーと……。",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseBedroom.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.58,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Bianca_Greeting_Full.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.52,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.58,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "ビアンカ: そうよね。あなた、まだ小さかったもんね。",
+        "speakerName": "left",
+        "speakerPosition": "left",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseBedroom.png",
+        "character": {
+          "imageURL": "FanDQ5_Bianca_Greeting_Full.png",
+          "position": "left",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.52,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Bianca_Greeting_Full.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.52,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.58,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: （この子も……同じくらいじゃないのかな。）",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseBedroom.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_Listening_Full.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.44,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Bianca_Greeting_Full.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.52,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_Listening_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.44,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "ビアンカ: 私は8才だから2つもお姉さんなのよ。ご本読んであげようか？",
+        "speakerName": "left",
+        "speakerPosition": "left",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseBedroom.png",
+        "character": {
+          "imageURL": "FanDQ5_Bianca_Book_Proud_Mid.png",
+          "position": "left",
+          "entrance": "fade",
+          "motion": "upDown",
+          "scale": 1.72,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Bianca_Book_Proud_Mid.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "upDown",
+            "scale": 1.72,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_Listening_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.44,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: うん！",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseBedroom.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_WakeStretch_Full.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.44,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Bianca_Book_Proud_Mid.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "upDown",
+            "scale": 1.72,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_WakeStretch_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.44,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "ビアンカ: じゃ、読んであげるね！",
+        "speakerName": "left",
+        "speakerPosition": "left",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseBedroom.png",
+        "character": {
+          "imageURL": "FanDQ5_Bianca_Book_Proud_Mid.png",
+          "position": "left",
+          "entrance": "fade",
+          "motion": "upDown",
+          "scale": 1.72,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Bianca_Book_Proud_Mid.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "upDown",
+            "scale": 1.72,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_WakeStretch_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.44,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: ワクワク。",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseBedroom.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_WakeStretch_Full.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.44,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Bianca_Book_Proud_Mid.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "upDown",
+            "scale": 1.72,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_WakeStretch_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.44,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "ビアンカ: えーと……。そ……ら……に。えーと……。",
+        "speakerName": "left",
+        "speakerPosition": "left",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseBedroom.png",
+        "character": {
+          "imageURL": "FanDQ5_Bianca_Book_Struggle_Mid.png",
+          "position": "left",
+          "entrance": "slide",
+          "motion": "shake",
+          "scale": 1.76,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Bianca_Book_Struggle_Mid.png",
+            "position": "left",
+            "entrance": "slide",
+            "motion": "shake",
+            "scale": 1.76,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_WakeStretch_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.44,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "ビアンカ: く……せし……ありきしか……。",
+        "speakerName": "left",
+        "speakerPosition": "left",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseBedroom.png",
+        "character": {
+          "imageURL": "FanDQ5_Bianca_Book_Struggle_Mid.png",
+          "position": "left",
+          "entrance": "slide",
+          "motion": "shake",
+          "scale": 1.76,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Bianca_Book_Struggle_Mid.png",
+            "position": "left",
+            "entrance": "slide",
+            "motion": "shake",
+            "scale": 1.76,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_WakeStretch_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.44,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: （ぜんぜん読めてないぞ。）",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseBedroom.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.62,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Bianca_Book_Struggle_Mid.png",
+            "position": "left",
+            "entrance": "slide",
+            "motion": "shake",
+            "scale": 1.76,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.62,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "ビアンカ: これはダメだわ。だって難しい字が多すぎるんですもの！",
+        "speakerName": "left",
+        "speakerPosition": "left",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseBedroom.png",
+        "character": {
+          "imageURL": "FanDQ5_Bianca_Book_Pout_Mid.png",
+          "position": "left",
+          "entrance": "slide",
+          "motion": "shake",
+          "scale": 1.8,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Bianca_Book_Pout_Mid.png",
+            "position": "left",
+            "entrance": "slide",
+            "motion": "shake",
+            "scale": 1.8,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.62,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "ダンカンの おかみさん: ビアンカ！ そろそろ宿に戻りますよ！",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseBedroom.png",
+        "character": {
+          "imageURL": "FanDQ5_DuncanWife_Call_Mid.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "upDown",
+          "scale": 1.78,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_DuncanWife_Call_Mid.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "upDown",
+            "scale": 1.78,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "ビアンカ: はーい！ ママ！",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseBedroom.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_Listening_Full.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.46,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Bianca_Greeting_Full.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.48,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_Listening_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.46,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "ビアンカ: またね！",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseBedroom.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_Listening_Full.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.46,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Bianca_Greeting_Full.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.48,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_Listening_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.46,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: う……うん。",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseBedroom.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_Listening_Full.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.46,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Bianca_Greeting_Full.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.48,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_Listening_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.46,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "background",
+        "backgroundURL": "FanDQ5_SantaRosa_HouseInterior.png",
+        "transition": "none",
+        "visibleCharacters": []
+      },
+      {
+        "type": "dialogue",
+        "text": "パパス: さて……と。",
+        "speakerName": "left",
+        "speakerPosition": "left",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseInterior.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_Listening_Full.png",
+          "position": "left",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.4,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Papas_Thinking_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.48,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_Listening_Full.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.4,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "パパス: 父さんはちょっと出かけるが、いい子にしてるんだよ。",
+        "speakerName": "left",
+        "speakerPosition": "left",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseInterior.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_Listening_Full.png",
+          "position": "left",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.4,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Papas_Thinking_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.48,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_Listening_Full.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.4,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: え！ パパ！ 僕も行きたい。",
+        "speakerName": "left",
+        "speakerPosition": "left",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseInterior.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_MonsterShock_Close.png",
+          "position": "left",
+          "entrance": "slide",
+          "motion": "shake",
+          "scale": 1.6,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Papas_Thinking_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.48,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_MonsterShock_Close.png",
+            "position": "left",
+            "entrance": "slide",
+            "motion": "shake",
+            "scale": 1.6,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "パパス: 危ないから、家でゆっくり遊んでてな。",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_HouseInterior.png",
+        "character": {
+          "imageURL": "FanDQ5_Papas_PointPort_Full.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.44,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Papas_PointPort_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.44,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_MonsterShock_Close.png",
+            "position": "left",
+            "entrance": "slide",
+            "motion": "shake",
+            "scale": 1.6,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "background",
+        "backgroundURL": "FanDQ5_SantaRosa_Village_Wide.png",
+        "transition": "none",
+        "visibleCharacters": []
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: お父さん、どこに行くんだろう。",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_Village_Wide.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.72,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.72,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: ついて行ってみよう！",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_Village_Wide.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_WakeStretch_Full.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.48,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_WakeStretch_Full.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.48,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "background",
+        "backgroundURL": "FanDQ5_SantaRosa_CaveEntrance.png",
+        "transition": "none",
+        "visibleCharacters": []
+      },
+      {
+        "type": "narration",
+        "text": "パパスは小舟に乗り、川の流れとともに洞窟の暗がりへ消えていった。",
+        "durationMs": 2200,
+        "backgroundURL": "FanDQ5_SantaRosa_CaveEntrance.png",
+        "visibleCharacters": []
+      },
+      {
+        "type": "dialogue",
+        "text": "お兄さん: 困った……。親方が洞窟内に薬の原料をとりに行ったまま戻らないんだ。って坊やに言ってもな。はは！",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_CaveEntrance.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_Listening_Full.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.42,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungMan_Worried_Mid.png",
+            "position": "left",
+            "entrance": "slide",
+            "motion": "shake",
+            "scale": 1.7,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_Listening_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.42,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: そうなんだ……。",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_CaveEntrance.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_Listening_Full.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.42,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungMan_Worried_Mid.png",
+            "position": "left",
+            "entrance": "slide",
+            "motion": "shake",
+            "scale": 1.7,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_YoungHero_Listening_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.42,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: ぼ……ぼくだって、洞窟の中に入れるもん！",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_SantaRosa_CaveEntrance.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_MonsterShock_Close.png",
+          "position": "center",
+          "entrance": "slide",
+          "motion": "shake",
+          "scale": 1.82,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_MonsterShock_Close.png",
+            "position": "center",
+            "entrance": "slide",
+            "motion": "shake",
+            "scale": 1.82,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "narration",
+        "text": "地下2階。宝箱に触れたその時、岩陰から大きないびきが聞こえた。",
+        "durationMs": 2200,
+        "backgroundURL": "FanDQ5_SantaRosa_CaveEntrance.png",
+        "visibleCharacters": []
+      },
+      {
+        "type": "background",
+        "backgroundURL": "FanDQ5_Cave_ForemanRock.png",
+        "transition": "blur",
+        "visibleCharacters": []
+      },
+      {
+        "type": "dialogue",
+        "text": "親方: ぐうぐう……。",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_Cave_ForemanRock.png",
+        "character": {
+          "imageURL": "FanDQ5_Foreman_Asleep_Rock_Full.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.36,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Foreman_Asleep_Rock_Full.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.36,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "親方: は！ いかんいかん！ 動けないのでいつの間にか眠ってしまったらしい！",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_Cave_ForemanRock.png",
+        "character": {
+          "imageURL": "FanDQ5_Foreman_Stuck_Awake_Full.png",
+          "position": "center",
+          "entrance": "slide",
+          "motion": "shake",
+          "scale": 1.4,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Foreman_Stuck_Awake_Full.png",
+            "position": "center",
+            "entrance": "slide",
+            "motion": "shake",
+            "scale": 1.4,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: お……おじさん！ 大丈夫！？ よくこんなとこで眠れるね！",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_Cave_ForemanRock.png",
+        "character": {
+          "imageURL": "FanDQ5_Foreman_Stuck_Awake_Full.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.28,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_MonsterShock_Close.png",
+            "position": "left",
+            "entrance": "slide",
+            "motion": "shake",
+            "scale": 1.58,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Foreman_Stuck_Awake_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.28,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "親方: 坊や、悪いがこの岩をちょっと押してくれるか！",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_Cave_ForemanRock.png",
+        "character": {
+          "imageURL": "FanDQ5_Foreman_Stuck_Awake_Full.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.28,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_MonsterShock_Close.png",
+            "position": "left",
+            "entrance": "slide",
+            "motion": "shake",
+            "scale": 1.58,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Foreman_Stuck_Awake_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.28,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: 僕に動かせるかなぁ。",
+        "speakerName": "left",
+        "speakerPosition": "left",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_Cave_ForemanRock.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+          "position": "left",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.58,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.58,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Foreman_Stuck_Awake_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.28,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "親方: もう少しで動かせそうなんだ。",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_Cave_ForemanRock.png",
+        "character": {
+          "imageURL": "FanDQ5_Foreman_Stuck_Awake_Full.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.28,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "left",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.58,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Foreman_Stuck_Awake_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.28,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: わかった！ やってみる！",
+        "speakerName": "left",
+        "speakerPosition": "left",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_Cave_ForemanRock.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_Push_Full.png",
+          "position": "left",
+          "entrance": "slide",
+          "motion": "shake",
+          "scale": 1.38,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_Push_Full.png",
+            "position": "left",
+            "entrance": "slide",
+            "motion": "shake",
+            "scale": 1.38,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Foreman_Stuck_Awake_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.28,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: んんんっ！！",
+        "speakerName": "left",
+        "speakerPosition": "left",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_Cave_ForemanRock.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_Push_Full.png",
+          "position": "left",
+          "entrance": "slide",
+          "motion": "shake",
+          "scale": 1.38,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_Push_Full.png",
+            "position": "left",
+            "entrance": "slide",
+            "motion": "shake",
+            "scale": 1.38,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Foreman_Stuck_Awake_Full.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.28,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "親方: いいぞぉ。もうちょっとだ！",
+        "speakerName": "right",
+        "speakerPosition": "right",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_Cave_ForemanRock.png",
+        "character": {
+          "imageURL": "FanDQ5_Foreman_Cheering_Mid.png",
+          "position": "right",
+          "entrance": "fade",
+          "motion": "upDown",
+          "scale": 1.58,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_Push_Full.png",
+            "position": "left",
+            "entrance": "slide",
+            "motion": "shake",
+            "scale": 1.38,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Foreman_Cheering_Mid.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "upDown",
+            "scale": 1.58,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: よいしょー！！",
+        "speakerName": "left",
+        "speakerPosition": "left",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_Cave_ForemanRock.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_Push_Full.png",
+          "position": "left",
+          "entrance": "slide",
+          "motion": "shake",
+          "scale": 1.38,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_Push_Full.png",
+            "position": "left",
+            "entrance": "slide",
+            "motion": "shake",
+            "scale": 1.38,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Foreman_Cheering_Mid.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "upDown",
+            "scale": 1.58,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: お、押せたー！",
+        "speakerName": "left",
+        "speakerPosition": "left",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_Cave_ForemanRock.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_Push_Full.png",
+          "position": "left",
+          "entrance": "slide",
+          "motion": "shake",
+          "scale": 1.38,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_Push_Full.png",
+            "position": "left",
+            "entrance": "slide",
+            "motion": "shake",
+            "scale": 1.38,
+            "flipped": false
+          },
+          {
+            "imageURL": "FanDQ5_Foreman_Cheering_Mid.png",
+            "position": "right",
+            "entrance": "fade",
+            "motion": "upDown",
+            "scale": 1.58,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "親方: やれやれ、助かった。",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_Cave_ForemanRock.png",
+        "character": {
+          "imageURL": "FanDQ5_Foreman_Grateful_Full.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.46,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Foreman_Grateful_Full.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.46,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "親方: これでダンカンの おかみさんに薬を渡せるってもんだ！",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_Cave_ForemanRock.png",
+        "character": {
+          "imageURL": "FanDQ5_Foreman_Grateful_Full.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.46,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Foreman_Grateful_Full.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.46,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "親方: 急いで戻って薬草を調合しなくっちゃな！ 坊や、ありがとなっ！",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_Cave_ForemanRock.png",
+        "character": {
+          "imageURL": "FanDQ5_Foreman_Rush_Full.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.4,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_Foreman_Rush_Full.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.4,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: え、ちょっと待って！",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_Cave_ForemanRock.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_MonsterShock_Close.png",
+          "position": "center",
+          "entrance": "slide",
+          "motion": "shake",
+          "scale": 1.76,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_MonsterShock_Close.png",
+            "position": "center",
+            "entrance": "slide",
+            "motion": "shake",
+            "scale": 1.76,
+            "flipped": false
+          }
+        ]
+      },
+      {
+        "type": "dialogue",
+        "text": "[[PLAYER_NICKNAME]]: おじさん！ ……僕も連れてっ……。なんだよー。助けてあげたのに……。",
+        "speakerName": "center",
+        "speakerPosition": "center",
+        "durationMs": 2400,
+        "backgroundURL": "FanDQ5_Cave_ForemanRock.png",
+        "character": {
+          "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+          "position": "center",
+          "entrance": "fade",
+          "motion": "none",
+          "scale": 1.76,
+          "flipped": false
+        },
+        "visibleCharacters": [
+          {
+            "imageURL": "FanDQ5_YoungHero_Curious_Close.png",
+            "position": "center",
+            "entrance": "fade",
+            "motion": "none",
+            "scale": 1.76,
+            "flipped": false
+          }
+        ]
+      }
+    ]
+  },
+  "authorUID": "RDkxTMaNhESgAfBGF3ZKyquzJGW2",
+  "authorDisplayName": "ユティオ",
+  "episodeNumber": 2,
+  "seriesRootQuestID": "fanwork-dq5-another-prologue-shimizu510america",
+  "placeType": "city",
+  "locationName": null,
+  "likeCount": 0,
+  "playCount": 0,
+  "completionCount": 0,
+  "siteViewCount": 0,
+  "appOpenClickCount": 0,
+  "appArrivalCount": 0,
+  "subscriberCount": 0,
+  "completionRate": null,
+  "difficultyLabel": "街歩き向け",
+  "recommendedPowerText": "物語を追いながら気軽に進めたい人向け",
+  "appPlayReason": "アプリで遊ぶと、位置連動の冒険と次のクエスト導線までつながります。",
+  "siteViewTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestSiteView",
+  "siteAppOpenTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestAppOpenClick",
+  "appOpenURL": "adventure3d2://q?i=fanwork-dq5-santarose-episode-2-shimizu510america",
+  "createdAt": "2026-03-27T00:00:00.000Z",
+  "updatedAt": "2026-08-07T23:39:33.165Z",
+  "webPagePath": "/quests/fanwork-dq5-santarose-episode-2-shimizu510america/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/fanwork-dq5-santarose-episode-2-shimizu510america/"
+}
