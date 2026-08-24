@@ -15,7 +15,7 @@
   "appDownloadURL": null,
   "bgType": "tiktok",
   "bgURL": "7609966089082047758",
-  "coverURL": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/ow4CCBcwpSDqXc7cBfFEgbD4EnARg4CIEAf5SA~tplv-tiktokx-cropcenter-q:300:400:q70.jpeg?dr=8596&refresh_token=09b3cb00&x-expires=1785632400&x-signature=GPc0btLHgcaoPm%2FTrIZbQXM1nns%3D&t=bacd0480&ps=933b5bde&shp=d05b14bd&shcp=8aecc5ac&idc=useast5&biz_tag=tt_video&s=TIKTOK_FOR_DEVELOPER&sc=cover",
+  "coverURL": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/ow4CCBcwpSDqXc7cBfFEgbD4EnARg4CIEAf5SA~tplv-tiktokx-cropcenter-q:300:400:q70.jpeg?dr=8596&refresh_token=1d0c0177&x-expires=1787648400&x-signature=xBt%2Fr1lYgHYp3i49EklnbBYtO80%3D&t=bacd0480&ps=933b5bde&shp=d05b14bd&shcp=8aecc5ac&idc=useast5&biz_tag=tt_video&s=TIKTOK_FOR_DEVELOPER&sc=cover",
   "charURL": null,
   "charPosition": "center",
   "charAnim": "none",
@@ -23,12 +23,12 @@
   "localizedDialogLines": {},
   "storyPlayback": {
     "backgroundType": "tiktok",
-    "backgroundURL": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/ow4CCBcwpSDqXc7cBfFEgbD4EnARg4CIEAf5SA~tplv-tiktokx-cropcenter-q:300:400:q70.jpeg?dr=8596&refresh_token=09b3cb00&x-expires=1785632400&x-signature=GPc0btLHgcaoPm%2FTrIZbQXM1nns%3D&t=bacd0480&ps=933b5bde&shp=d05b14bd&shcp=8aecc5ac&idc=useast5&biz_tag=tt_video&s=TIKTOK_FOR_DEVELOPER&sc=cover",
+    "backgroundURL": "https://p19-common-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/ow4CCBcwpSDqXc7cBfFEgbD4EnARg4CIEAf5SA~tplv-tiktokx-cropcenter-q:300:400:q70.jpeg?dr=8596&refresh_token=1d0c0177&x-expires=1787648400&x-signature=xBt%2Fr1lYgHYp3i49EklnbBYtO80%3D&t=bacd0480&ps=933b5bde&shp=d05b14bd&shcp=8aecc5ac&idc=useast5&biz_tag=tt_video&s=TIKTOK_FOR_DEVELOPER&sc=cover",
     "backgroundVideoID": "7609966089082047758",
     "steps": []
   },
   "authorUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
-  "authorDisplayName": "Yuji Shimizu",
+  "authorDisplayName": "YUJI",
   "episodeNumber": 1,
   "seriesRootQuestID": "tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7609966089082047758",
   "placeType": "city",
@@ -48,7 +48,7 @@
   "siteAppOpenTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestAppOpenClick",
   "appOpenURL": "adventure3d2://q?i=tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7609966089082047758",
   "createdAt": "2026-07-24T11:06:18.701Z",
-  "updatedAt": "2026-08-01T01:12:00.554Z",
+  "updatedAt": "2026-08-24T09:28:01.085Z",
   "webPagePath": "/quests/tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7609966089082047758/",
   "webPageURL": "https://drama-birth-quest3.pages.dev/quests/tiktok-4vbxpJoQNeYRvmqjzglF2anivti1-7609966089082047758/"
 }
