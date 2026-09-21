@@ -26,9 +26,15 @@
   "coverImageURL": null,
   "questCount": 0,
   "photoCount": 0,
-  "commentCount": 2,
+  "commentCount": 3,
   "ratingAverage": 5,
   "recentComments": [
+    {
+      "text": "年パスがあれば、、",
+      "authorDisplayName": "YUJI",
+      "rating": 5,
+      "createdAt": "2026-09-21T01:36:23.679Z"
+    },
     {
       "text": "また行きたい",
       "authorDisplayName": "YUJI",
@@ -45,7 +51,7 @@
   "createdByUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
   "createdByName": "Yuji Shimizu",
   "createdAt": "2026-05-17T08:12:55.165Z",
-  "updatedAt": "2026-09-21T01:21:40.010Z",
+  "updatedAt": "2026-09-21T01:36:26.211Z",
   "webPagePath": "/places/東京ディズニーランド-tb20fd0hocuvomuo9xlx/",
   "webPageURL": "https://drama-birth-quest3.pages.dev/places/東京ディズニーランド-tb20fd0hocuvomuo9xlx/"
 }
