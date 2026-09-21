@@ -36,9 +36,15 @@
   "coverImageURL": null,
   "questCount": 0,
   "photoCount": 0,
-  "commentCount": 2,
+  "commentCount": 3,
   "ratingAverage": 5,
   "recentComments": [
+    {
+      "text": "楽しかったー！！",
+      "authorDisplayName": "YUJI",
+      "rating": 5,
+      "createdAt": "2026-09-21T00:19:15.058Z"
+    },
     {
       "text": "ストームライダーが好きでした！",
       "authorDisplayName": "アメポン",
@@ -55,7 +61,7 @@
   "createdByUID": "RDkxTMaNhESgAfBGF3ZKyquzJGW2",
   "createdByName": "アメポン",
   "createdAt": "2026-06-08T10:50:40.404Z",
-  "updatedAt": "2026-06-09T10:42:04.852Z",
+  "updatedAt": "2026-09-21T00:19:20.210Z",
   "webPagePath": "/places/tokyo-disneysea-jxu0pdpxsezyunsgt8rd/",
   "webPageURL": "https://drama-birth-quest3.pages.dev/places/tokyo-disneysea-jxu0pdpxsezyunsgt8rd/"
 }
