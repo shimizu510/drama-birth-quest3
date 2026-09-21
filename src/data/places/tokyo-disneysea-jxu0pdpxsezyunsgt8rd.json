@@ -33,9 +33,9 @@
   ],
   "source": "mapkit_user_registered",
   "status": "active",
-  "coverImageURL": null,
+  "coverImageURL": "firestore://places/jxu0PdpXSezYunSgt8Rd/photos/0nXxZmmCXBinvFvTaFwa/imageBlob",
   "questCount": 0,
-  "photoCount": 0,
+  "photoCount": 1,
   "commentCount": 3,
   "ratingAverage": 5,
   "recentComments": [
@@ -61,7 +61,7 @@
   "createdByUID": "RDkxTMaNhESgAfBGF3ZKyquzJGW2",
   "createdByName": "アメポン",
   "createdAt": "2026-06-08T10:50:40.404Z",
-  "updatedAt": "2026-09-21T00:19:20.210Z",
+  "updatedAt": "2026-09-21T00:19:43.667Z",
   "webPagePath": "/places/tokyo-disneysea-jxu0pdpxsezyunsgt8rd/",
   "webPageURL": "https://drama-birth-quest3.pages.dev/places/tokyo-disneysea-jxu0pdpxsezyunsgt8rd/"
 }
