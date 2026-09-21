@@ -25,7 +25,7 @@
   "status": "active",
   "coverImageURL": "firestore://places/oQ0G1cIQYVSy5Dp94C48/photos/YxyFilqf1Xb5mfpHSgjU/imageBlob",
   "questCount": 0,
-  "photoCount": 1,
+  "photoCount": 2,
   "commentCount": 1,
   "ratingAverage": 5,
   "recentComments": [
@@ -39,7 +39,7 @@
   "createdByUID": "RDkxTMaNhESgAfBGF3ZKyquzJGW2",
   "createdByName": "アメポン",
   "createdAt": "2026-06-08T10:49:39.987Z",
-  "updatedAt": "2026-06-12T06:22:10.358Z",
+  "updatedAt": "2026-09-21T01:02:48.149Z",
   "webPagePath": "/places/kinkaku-ji-oq0g1ciqyvsy5dp94c48/",
   "webPageURL": "https://drama-birth-quest3.pages.dev/places/kinkaku-ji-oq0g1ciqyvsy5dp94c48/"
 }
