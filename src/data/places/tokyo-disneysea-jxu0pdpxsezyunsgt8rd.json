@@ -36,9 +36,15 @@
   "coverImageURL": "firestore://places/jxu0PdpXSezYunSgt8Rd/photos/0nXxZmmCXBinvFvTaFwa/imageBlob",
   "questCount": 0,
   "photoCount": 1,
-  "commentCount": 3,
+  "commentCount": 4,
   "ratingAverage": 5,
   "recentComments": [
+    {
+      "text": "また行きたい〜",
+      "authorDisplayName": "YUJI",
+      "rating": 5,
+      "createdAt": "2026-09-21T00:44:19.595Z"
+    },
     {
       "text": "楽しかったー！！",
       "authorDisplayName": "YUJI",
@@ -50,18 +56,12 @@
       "authorDisplayName": "アメポン",
       "rating": 5,
       "createdAt": "2026-06-09T10:42:01.149Z"
-    },
-    {
-      "text": "アクアトピアがなくなっちゃうのが泣ける😭",
-      "authorDisplayName": "アメポン",
-      "rating": 5,
-      "createdAt": "2026-06-08T10:50:40.407Z"
     }
   ],
   "createdByUID": "RDkxTMaNhESgAfBGF3ZKyquzJGW2",
   "createdByName": "アメポン",
   "createdAt": "2026-06-08T10:50:40.404Z",
-  "updatedAt": "2026-09-21T00:19:43.667Z",
+  "updatedAt": "2026-09-21T00:44:24.574Z",
   "webPagePath": "/places/tokyo-disneysea-jxu0pdpxsezyunsgt8rd/",
   "webPageURL": "https://drama-birth-quest3.pages.dev/places/tokyo-disneysea-jxu0pdpxsezyunsgt8rd/"
 }
