@@ -26,9 +26,15 @@
   "coverImageURL": null,
   "questCount": 0,
   "photoCount": 0,
-  "commentCount": 1,
+  "commentCount": 2,
   "ratingAverage": 5,
   "recentComments": [
+    {
+      "text": "何ができるのか",
+      "authorDisplayName": "YUJI",
+      "rating": 5,
+      "createdAt": "2026-09-21T02:48:05.993Z"
+    },
     {
       "text": "どんなところ？",
       "authorDisplayName": "YUJI",
@@ -39,7 +45,7 @@
   "createdByUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
   "createdByName": "YUJI",
   "createdAt": "2026-09-21T02:26:32.621Z",
-  "updatedAt": "2026-09-21T02:26:38.691Z",
+  "updatedAt": "2026-09-21T02:48:10.861Z",
   "webPagePath": "/places/maruya-wood-industry-mapkit_c7fc960dcca17314672db0fc5ceb89d9/",
   "webPageURL": "https://drama-birth-quest3.pages.dev/places/maruya-wood-industry-mapkit_c7fc960dcca17314672db0fc5ceb89d9/"
 }
