@@ -26,13 +26,20 @@
   "coverImageURL": null,
   "questCount": 0,
   "photoCount": 0,
-  "commentCount": 0,
-  "ratingAverage": 0,
-  "recentComments": [],
+  "commentCount": 1,
+  "ratingAverage": 5,
+  "recentComments": [
+    {
+      "text": "行ってみたい",
+      "authorDisplayName": "YUJI",
+      "rating": 5,
+      "createdAt": "2026-09-26T23:37:53.983Z"
+    }
+  ],
   "createdByUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
   "createdByName": "YUJI",
   "createdAt": "2026-09-26T15:32:11.217Z",
-  "updatedAt": "2026-09-26T15:32:15.293Z",
+  "updatedAt": "2026-09-26T23:37:58.293Z",
   "webPagePath": "/places/place-gdezzdk2ocbukklsltjl/",
   "webPageURL": "https://drama-birth-quest3.pages.dev/places/place-gdezzdk2ocbukklsltjl/"
 }
