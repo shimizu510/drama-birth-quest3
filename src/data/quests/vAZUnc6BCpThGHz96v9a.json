@@ -1,0 +1,63 @@
+{
+  "id": "vAZUnc6BCpThGHz96v9a",
+  "path": "src/data/quests/vAZUnc6BCpThGHz96v9a.json",
+  "url": "https://drama-birth-quest3.pages.dev/quests/vAZUnc6BCpThGHz96v9a/",
+  "placeID": null,
+  "title": "投稿できるかな？",
+  "titles": {
+    "ja": "投稿できるかな？"
+  },
+  "synopsis": null,
+  "synopses": {},
+  "sourceLanguageCode": "ja",
+  "appDownloadURL": null,
+  "bgType": "image",
+  "bgURL": null,
+  "coverURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F4vbxpJoQNeYRvmqjzglF2anivti1%2Fcover_07BA51E2-9DAA-4842-BD2C-34AEE3564CB1.png?alt=media&token=1ff72028-7a41-40a3-a26d-bac3a54a4857",
+  "charURL": null,
+  "charPosition": "center",
+  "charAnim": "none",
+  "dialogLines": [
+    ":::textType(narration)",
+    "投稿できるかな？"
+  ],
+  "localizedDialogLines": {},
+  "storyPlayback": {
+    "backgroundType": "image",
+    "backgroundURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F4vbxpJoQNeYRvmqjzglF2anivti1%2Fcover_07BA51E2-9DAA-4842-BD2C-34AEE3564CB1.png?alt=media&token=1ff72028-7a41-40a3-a26d-bac3a54a4857",
+    "backgroundVideoID": null,
+    "steps": [
+      {
+        "type": "narration",
+        "text": "投稿できるかな？",
+        "durationMs": 2200,
+        "backgroundURL": "https://firebasestorage.googleapis.com:443/v0/b/poketquest-3a73d.firebasestorage.app/o/questBGs%2F4vbxpJoQNeYRvmqjzglF2anivti1%2Fcover_07BA51E2-9DAA-4842-BD2C-34AEE3564CB1.png?alt=media&token=1ff72028-7a41-40a3-a26d-bac3a54a4857",
+        "visibleCharacters": []
+      }
+    ]
+  },
+  "authorUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
+  "authorDisplayName": "YUJI",
+  "episodeNumber": 1,
+  "seriesRootQuestID": "E497B76A-228F-4E6F-8D5E-9197498BE5E4",
+  "placeType": "dungeon",
+  "locationName": null,
+  "likeCount": 0,
+  "playCount": 0,
+  "completionCount": 0,
+  "siteViewCount": 0,
+  "appOpenClickCount": 0,
+  "appArrivalCount": 0,
+  "subscriberCount": 0,
+  "completionRate": null,
+  "difficultyLabel": "初級",
+  "recommendedPowerText": "バランス編成で、序盤パーティでも挑みやすい",
+  "appPlayReason": "アプリで遊ぶとルナー報酬や続きの冒険導線まで受け取れます。",
+  "siteViewTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestSiteView",
+  "siteAppOpenTrackerURL": "https://us-central1-poketquest-3a73d.cloudfunctions.net/trackQuestAppOpenClick",
+  "appOpenURL": "adventure3d2://q?i=vAZUnc6BCpThGHz96v9a",
+  "createdAt": "2026-09-19T21:29:20.141Z",
+  "updatedAt": "2026-10-24T22:42:38.947Z",
+  "webPagePath": "/quests/vAZUnc6BCpThGHz96v9a/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/quests/vAZUnc6BCpThGHz96v9a/"
+}
