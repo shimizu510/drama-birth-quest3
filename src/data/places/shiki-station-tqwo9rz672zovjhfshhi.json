@@ -1,0 +1,51 @@
+{
+  "id": "tqwo9RZ672ZOVJhFsHhi",
+  "slug": "shiki-station-tqwo9rz672zovjhfshhi",
+  "path": "src/data/places/shiki-station-tqwo9rz672zovjhfshhi.json",
+  "url": "https://drama-birth-quest3.pages.dev/places/shiki-station-tqwo9rz672zovjhfshhi/",
+  "title": "Shiki Station",
+  "normalizedTitle": "shikistation",
+  "address": "Tohoku, Niiza, Saitama, Japan",
+  "normalizedAddress": "tohokuniizasaitamajapan",
+  "latitude": 35.8222263,
+  "longitude": 139.5751855,
+  "category": "Mkpoicategorypublictransport",
+  "phoneNumber": null,
+  "websiteURL": null,
+  "priceRange": null,
+  "openingHoursSummary": null,
+  "menuURL": null,
+  "roomSummary": null,
+  "experienceTags": [
+    "barrier_free",
+    "budget",
+    "onsite_strategy"
+  ],
+  "familyTags": [],
+  "accessibilityTags": [
+    "rest_space_possible",
+    "step_light_possible"
+  ],
+  "budgetTags": [
+    "free_or_public",
+    "low_cost"
+  ],
+  "onsiteTags": [
+    "short_stay_ok",
+    "walkable"
+  ],
+  "source": "mapkit_user_registered",
+  "status": "active",
+  "coverImageURL": null,
+  "questCount": 0,
+  "photoCount": 0,
+  "commentCount": 0,
+  "ratingAverage": 0,
+  "recentComments": [],
+  "createdByUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
+  "createdByName": "YUJI",
+  "createdAt": "2026-09-21T01:05:32.980Z",
+  "updatedAt": "2026-10-25T04:26:59.294Z",
+  "webPagePath": "/places/shiki-station-tqwo9rz672zovjhfshhi/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/places/shiki-station-tqwo9rz672zovjhfshhi/"
+}
