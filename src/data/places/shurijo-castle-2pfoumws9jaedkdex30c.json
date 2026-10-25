@@ -1,0 +1,43 @@
+{
+  "id": "2pfOUmwS9JaeDKdEx30C",
+  "slug": "shurijo-castle-2pfoumws9jaedkdex30c",
+  "path": "src/data/places/shurijo-castle-2pfoumws9jaedkdex30c.json",
+  "url": "https://drama-birth-quest3.pages.dev/places/shurijo-castle-2pfoumws9jaedkdex30c/",
+  "title": "Shurijo Castle",
+  "normalizedTitle": "shurijocastle",
+  "address": "〒903-0815, 沖縄県那覇市, 首里金城町1-2",
+  "normalizedAddress": "9030815沖縄県那覇市首里金城町12",
+  "latitude": 26.2170379,
+  "longitude": 127.7194829,
+  "category": "Mkpoicategorycastle",
+  "phoneNumber": "+81 98 886 2020",
+  "websiteURL": "https://oki-park.jp/shurijo/",
+  "priceRange": null,
+  "openingHoursSummary": null,
+  "menuURL": null,
+  "roomSummary": null,
+  "experienceTags": [
+    "onsite_strategy"
+  ],
+  "familyTags": [],
+  "accessibilityTags": [],
+  "budgetTags": [],
+  "onsiteTags": [
+    "short_stay_ok",
+    "walkable"
+  ],
+  "source": "mapkit_user_registered",
+  "status": "active",
+  "coverImageURL": null,
+  "questCount": 0,
+  "photoCount": 0,
+  "commentCount": 0,
+  "ratingAverage": 0,
+  "recentComments": [],
+  "createdByUID": "4vbxpJoQNeYRvmqjzglF2anivti1",
+  "createdByName": "YUJI",
+  "createdAt": "2026-09-21T01:29:48.338Z",
+  "updatedAt": "2026-10-25T06:35:24.074Z",
+  "webPagePath": "/places/shurijo-castle-2pfoumws9jaedkdex30c/",
+  "webPageURL": "https://drama-birth-quest3.pages.dev/places/shurijo-castle-2pfoumws9jaedkdex30c/"
+}
